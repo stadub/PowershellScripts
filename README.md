@@ -1,7 +1,9 @@
 # Powershell Scripts
 
-EncodeVia7z.ps1 Encode files from folder to upload to cloud.
-====================
+EncodeVia7z 
+---------------------
+###Encode files from folder to upload to cloud.
+
 Encoding performed by 7z util
 Usage
 ./Encode Via 7z.ps1 Source Folder Dest Folder
