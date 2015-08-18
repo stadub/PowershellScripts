@@ -20,9 +20,11 @@ To decrypt manually:
 4. Use key from previous step as 7z password for decode file
 
 ### Bookmarsk - Create directory bookmark 
-Extended version of code from stackowerflow http://stackoverflow.com/questions/7984974/directory-bookmarks-in-powershell
 ---------------------
+
+Extended version of code from stackowerflow http://stackoverflow.com/questions/7984974/directory-bookmarks-in-powershell
+
 Commands:
-Set-PSBookmark  [ bs ]
-Get-PSBookmark  [ bg ]
-Get-PSBookmarks [ bl ]
+>Save-PSBookmark [ bs]  BookmarkName (Opt)Directory 
+>Load-PSBookmark [ bg ] BookmarkName
+>Get-PSBookmarks [ bl ]

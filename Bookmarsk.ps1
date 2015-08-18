@@ -1,31 +1,30 @@
 $marks = @{}
-
 $marksPath = Join-Path (split-path -parent $profile) .bookmarks
 
 if(test-path $marksPath){
 	import-csv $marksPath | %{$marks[$_.key]=$_.value}
 }
 
-function Set-PSBookmark (){
+function Save-PSBookmark (){
 	Param (
 	[Parameter(Mandatory=$true)]
-	$number,
+	$name,
 	[string]$dir = $null
 	)
 	if( [string]::IsNullOrEmpty($dir)){
 		$dir=(pwd).path;
 	}
-	$marks["$number"] = $dir;
-	echo ("Saved bookmark '{0}' to directory '{1}'" -f $number, $dir) 
+	$marks["$name"] = $dir;
+	echo ("Saved bookmark '{0}' to directory '{1}'" -f $name, $dir) 
     Save-PSBookmarks
 }
 
 
-function Get-PSBookmark(){
+function Load-PSBookmark(){
 	[CmdletBinding()]
 	[Parameter(Mandatory=$true)]
-    Param($number)
-	cd $marks["$number"];
+    Param($name)
+	cd $marks["$name"];
 }
 
 
@@ -37,9 +36,9 @@ function Get-PSBookmarks{
 $marks
 }
 
-Set-Alias bs Set-PSBookmark
-Set-Alias bg Get-PSBookmark
-Set-Alias bl Get-PSBookmarks
+Set-Alias bs Save-PSBookmark
+Set-Alias bl Load-PSBookmark
+Set-Alias bv Get-PSBookmarks
 
 $Completion_PSBookmarks = {
     param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)
