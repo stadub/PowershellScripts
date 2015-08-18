@@ -12,6 +12,8 @@ param (
 [string]$DestFolder =  (Get-Location).Path
 )
 
+
+
 $utilFolder="C:\Program Files\7-Zip\";
 $Slash=[IO.Path]::DirectorySeparatorChar; 
 $aborted=$false;
