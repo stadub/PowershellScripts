@@ -22,9 +22,11 @@ To decrypt manually:
 ### Bookmarsk - Create directory bookmark 
 ---------------------
 
-Extended version of code from stackowerflow http://stackoverflow.com/questions/7984974/directory-bookmarks-in-powershell
+Extended version of bookmarks creation code from stackowerflow http://stackoverflow.com/questions/7984974/directory-bookmarks-in-powershell
 
 Commands:
 >Save-PSBookmark [ bs]  BookmarkName (Opt)Directory 
+
 >Load-PSBookmark [ bg ] BookmarkName
+
 >Get-PSBookmarks [ bl ]
