@@ -32,13 +32,13 @@ function Save-PSBookmarks{
 $marks.getenumerator() | export-csv $marksPath -notype
 }
 
-function Get-PSBookmarks{
+function List-PSBookmarks{
 $marks
 }
 
 Set-Alias bs Save-PSBookmark
 Set-Alias bl Load-PSBookmark
-Set-Alias bv Get-PSBookmarks
+Set-Alias bv List-PSBookmarks
 
 $Completion_PSBookmarks = {
     param($commandName, $parameterName, $wordToComplete, $commandAst, $fakeBoundParameter)

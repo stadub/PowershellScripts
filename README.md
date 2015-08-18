@@ -27,6 +27,6 @@ Extended version of bookmarks creation code from stackowerflow http://stackoverf
 Commands:
 >Save-PSBookmark [ bs]  BookmarkName (Opt)Directory 
 
->Load-PSBookmark [ bg ] BookmarkName
+>Load-PSBookmark [ bl ] BookmarkName
 
->Get-PSBookmarks [ bl ]
+>List-PSBookmarks [ bv ]
