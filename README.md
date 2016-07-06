@@ -1,5 +1,14 @@
 # Powershell Scripts
 
+### Uninstall - Uninstall installed Application from system 
+---------------------
+
+Allows to uninstall Application from system via commandline
+
+Usage
+>./Uninstall-Application "Microsoft*4.5*"
+
+
 ### EncodeVia7z - Encode files from folder to upload to cloud.
 ---------------------
 
