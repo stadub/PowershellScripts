@@ -3,6 +3,20 @@
 ### Uninstall - Uninstall installed Application from system 
 ---------------------
 
+Allow to download git repo from github unpack it and start config script in one click:
+
+Script arguments:
+  githubRepo - github repository url(browser url pointed on repo)
+  destDir - destanation folder where will be unpacked github repo
+  installScrip (optional) - script ile to be invocked after repo unpacking
+
+Usage
+>./DownloadGithub "https://github.com/stadub/CmdScripts/archive/master.zip" "C:\Sources\Cmd" "InstallBin.cmd"
+
+
+### Uninstall - Uninstall installed Application from system 
+---------------------
+
 Allows to uninstall Application from system via commandline
 
 Usage
