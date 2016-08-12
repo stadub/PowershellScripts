@@ -1,7 +1,7 @@
 
 <#PSScriptInfo
 
-.VERSION 1.0
+.VERSION 1.1
 
 .GUID 2c1b4da3-c20e-475a-8584-70326e3bee43
 
@@ -27,20 +27,24 @@
 
 .RELEASENOTES
 
-#>
-
-<# 
-
-.DESCRIPTION 
-Allow to download git repo from github unpack it and start config script in one click:
-
-Script arguments:
-  [string]$githubRepo - github repository url(browser url pointed on repo)
-
-  [string]$destDir - destanation folder where will be unpacked github repo
-  [string]$installScrip (optional) - script ile to be invocked after repo unpacking
 
 #> 
+
+
+<#
+.SYNOPSIS
+  Download github repo and execute repo script
+.DESCRIPTION
+  Allow to download git repo from github unpack it and start config script
+.EXAMPLE
+   DownloadGithub "https://github.com/stadub/CmdScripts/archive/master.zip" "C:\Sources\Cmd" "InstallBin.cmd"
+.PARAMETER githubRepo
+   Github repository url(browser url pointed on repo)
+.PARAMETER destDir 
+   Destanation folder where will be unpacked github repo
+.PARAMETER installScrip (optional)
+   Script ile to be invocked after repo unpacking
+  #>
 param(
   [parameter(Mandatory=$true)]
   [string]$githubRepo,
