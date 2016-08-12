@@ -3,9 +3,9 @@
 
 .VERSION 1.0
 
-.GUID C2558B23-0D7D-4D1A-8FBC-AAA446466036
+.GUID 27c80b64-2c07-43ee-ae20-4d94965295eb
 
-.AUTHOR Dima Stadub
+.AUTHOR dmitry.stadub
 
 .COMPANYNAME 
 
@@ -27,17 +27,22 @@
 
 .RELEASENOTES
 
-#>
-<#
-  .SYNOPSIS
-  Uninstall Application
-  .DESCRIPTION
+
+#> 
+
+
+<# 
+.SYNOPSIS
+   Uninstall Application
+.DESCRIPTION 
   Allows to Uninstall Application from system 
-  .EXAMPLE
-   Uninstall-Application "Microsoft*4.5*"
-  .PARAMETER SoftwareName
-  Application name(Or application name format)
-  #>
+.EXAMPLE
+    Uninstall-Application "Microsoft*4.5*"
+.PARAMETER SoftwareName
+ Application name(Or application name format)
+#> 
+
+
 function Uninstall-Application {
 param(
   
