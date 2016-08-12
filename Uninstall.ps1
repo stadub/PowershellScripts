@@ -5,7 +5,7 @@
 
 .GUID 27c80b64-2c07-43ee-ae20-4d94965295eb
 
-.AUTHOR dmitry.stadub
+.AUTHOR Dima Stadub
 
 .COMPANYNAME 
 
