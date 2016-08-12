@@ -1,6 +1,6 @@
 # Powershell Scripts
 
-### Uninstall - Uninstall installed Application from system 
+### DownloadGithub - Download github repo and execute repo script
 ---------------------
 
 Allow to download git repo from github unpack it and start config script in one click:
@@ -13,6 +13,8 @@ Script arguments:
 Usage
 >./DownloadGithub "https://github.com/stadub/CmdScripts/archive/master.zip" "C:\Sources\Cmd" "InstallBin.cmd"
 
+Installation
+>Install-Script -Name DownloadGithub
 
 ### Uninstall - Uninstall installed Application from system 
 ---------------------
@@ -22,6 +24,8 @@ Allows to uninstall Application from system via commandline
 Usage
 >./Uninstall-Application "Microsoft*4.5*"
 
+Installation
+>Install-Script -Name Uninstall
 
 ### EncodeVia7z - Encode files from folder to upload to cloud.
 ---------------------
