@@ -1,3 +1,33 @@
+
+<#PSScriptInfo
+
+.VERSION 1.0
+
+.GUID C2558B23-0D7D-4D1A-8FBC-AAA446466036
+
+.AUTHOR Dima Stadub
+
+.COMPANYNAME 
+
+.COPYRIGHT 
+
+.TAGS uninstall msiexec
+
+.LICENSEURI 
+
+.PROJECTURI https://github.com/stadub/PowershellScripts
+
+.ICONURI 
+
+.EXTERNALMODULEDEPENDENCIES 
+
+.REQUIREDSCRIPTS 
+
+.EXTERNALSCRIPTDEPENDENCIES 
+
+.RELEASENOTES
+
+#>
 <#
   .SYNOPSIS
   Uninstall Application
