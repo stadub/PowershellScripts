@@ -44,12 +44,12 @@
 
 
 
-filter Grep(){
+filter Get-SearchAndPrint(){
 	Param ([string]$filterStr = $null)
 	$_|select-string -pattern $filterStr
 }
 
-filter Cut(){
+filter Split-String(){
 	Param ([string]$separator = $null)
 	$_.Split|select-string -pattern $separator
 }
@@ -62,7 +62,7 @@ function Get-Batchfile ($file) {
     }
 }
   
-function VsVars32($version = "10.0")
+function Initialize-VisualStudioEnvieronment($version = "10.0")
 {
     $key = "HKLM:SOFTWARE\Microsoft\VisualStudio\" + $version
     $VsKey = get-ItemProperty $key
@@ -115,4 +115,10 @@ param(
    New-Item -Path $destanation -ItemType $type -Value $source
 }
 
+
+Set-Alias grep Get-SearchAndPrint
+Set-Alias cut Split-String
+Set-Alias VsVars32 Initialize-VisualStudioEnvieronment
+Set-Alias ga Get-CmdletAlias
+Set-Alias fl New-FileSystemLink
 
