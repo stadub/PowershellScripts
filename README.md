@@ -1,22 +1,36 @@
 # Powershell Scripts
 
-### DownloadGithub - Download github repo and execute repo script
+### ExportGithub - Export github repo and execute repo script
+
 ---------------------
 
 Allow to download git repo from github unpack it and start config script in one click:
 
 Script arguments:
-  githubRepo - github repository url(browser url pointed on repo)
-  destDir - destanation folder where will be unpacked github repo
-  installScrip (optional) - script ile to be invocked after repo unpacking
+  Repo - Github repository url(browser url pointed on repo)
+  Destanation - Destanation folder where will be unpacked github repo
+  InstallScript (optional) - script file to be invoked after repo unpacking
 
 Usage
->./DownloadGithub "https://github.com/stadub/CmdScripts/archive/master.zip" "C:\Sources\Cmd" "InstallBin.cmd"
+
+>echo "https://github.com/dotnet/core/tree/2.2.103" | ExportGithub  (will download to current directory)
+
+>./ExportGithub "https://github.com/torvalds/linux/archive/master.zip" "C:\Sources\Linux" 
+
+>./ExportGithub "https://github.com/stadub/CmdScripts/archive/master.zip" "C:\CmdScripts\Cmd" "InstallBin.cmd" 
+(Export to specific directory and start script)
+
+>./ExportGithub -User electron -Repo electron -Branch chromium-upgrade/73 -Destanation "C:\Sources\Electron"  InstallScript="npm install"
+
+>./ExportGithub -User Microsoft -Repo vscode (Export the main repo to current directory)
+
+>./ExportGithub "https://github.com/stadub/CmdScripts/archive/master.zip" "C:\CmdScripts\Cmd" "InstallBin.cmd"
 
 Installation
->Install-Script -Name DownloadGithub
+>Install-Script -Name ExportGithub
 
-### Uninstall - Uninstall installed Application from system 
+### Uninstall - Uninstall installed Application from system
+
 ---------------------
 
 Allows to uninstall Application from system via commandline
@@ -27,33 +41,151 @@ Usage
 Installation
 >Install-Script -Name Uninstall
 
-### EncodeVia7z - Encode files from folder to upload to cloud.
+### EncodeVia7z -   Encode files from folder for(for example) uploading to cloud.
+
 ---------------------
 
-Encoding performed by 7z util
+Used as backups encoding solution.
+Encoding performed with 7z password protection
+
+Script arguments:
+  SrcFolder (optional) - Folder to be encoded
+  DestFolder - Destanation folder where encoded files be created
 
 Usage
->./Encode Via 7z.ps1 Source Folder Dest Folder
+>./EncodeVia7z "c:\windows\System42" "d:\System"
 
 There is no decoding script. Because currently used only for backups and(thank goodness) there was no necessity to decode it.
 To decrypt manually:
 
-1. Concat value from .master Key and add ':' to beginning and by using resulting key extract .keys file from .keys.7z
+There was no reasons (thank goodness) decoding stored data so currently there no decoder script 
+It you need - please create github issue and I'll add scrpit for folder decoding.
 
-2. Find appropriate row in .key for file that should be decoded.
+Manually files can be decoded with the next algorithm:
+1)Concat value from .masterKey and add ':' to beginign and by using resulting key extract .keys file from .keys.7z
 
-3. Concat first row from .masterKey with first row from .key file and ':' to beginning
+2)Find apropriate row in .key for file that shoudl be decoded.
 
-4. Use key from previous step as 7z password for decode file
+3)Concat first row from .masterKey with first row from .key file and ':' to beginign
 
-### Bookmarsk - Create directory bookmark 
+4)Use key from previouse step as 7z password for decode file
+
+### Bookmarsk - Create directory bookmark script
+
 ---------------------
 
-Extended version of bookmarks creation code from stackowerflow http://stackoverflow.com/questions/7984974/directory-bookmarks-in-powershell
+Commands:
+  Add-PSBookmark - Add folder to bookmarks list  
+  Restore-PSBookmarks - Reload bookmarks list
+  Open-PSBookmark - Navigate to bookmark
+  Save-PSBookmarks - Save bookmarks to file
+  Get-PSBookmarks - List bookmarks
+
+#### Aliases created by script:
+
+Set-Alias ba Add-PSBookmark
+Set-Alias bo Open-PSBookmark
+Set-Alias bv Get-PSBookmarks
+
+Usage:
+Add bookmark
+>./Add-PSBookmark [ ba ]  BookmarkName (Opt)Directory 
+
+>$pwd |  Add-PSBookmark -Name "ThisDirectory"
+
+Open bookmsrks:
+>./Open-PSBookmark [ bo ]  -Bookmark "Project" 
+
+>"SourcesDir" |  Open-PSBookmark [ bo ]
+
+List bookmsrks:
+>./Get-PSBookmarks [ bv ] 
+
+>./Get-PSBookmarks [ bl ]
+
+
+### CurrencyConv - Currency converter.
+
+---------------------
+
+Exchange value from one currency to another.
+Support currency name autocomplete.
+
+Get-ExchangeRate - Convert selected amount from one currency to another
+
+Script arguments:
+   From[Base] - base currency to convert
+   To[Result] {Default - USD} - the result value currency
+   Amount[Value][Count] - amount to be converted
+           $to,
+
+Get-Countries - Get supported currency list by country
+Get-Currencies - Get supported currency list
+
+#### Aliases created by script:
+
+Set-Alias gxc Get-Currencies
+Set-Alias xe Get-ExchangeRate
+
+Usage:
+List supported countries:
+>./Get-Countries
+
+List supported currencies:
+>./Get-Currencies
+
+Convert amount:
+>./Get-ExchangeRate USD BYN 5
+>./Get-ExchangeRate -From USD -To BYN 5
+>./Get-ExchangeRate -Base USD -Result BYN -Amount 5
+
+>([PSCustomObject]@{From="BYN"; To="USD";Value=4})|  Get-ExchangeRate
+
+>([PSCustomObject]@{Base="PHP"; Amount=400})|  Get-ExchangeRate
+
+
+###  Shell-Functions -some function wrappers to make a bridge with bash and powershell functions
+
+---------------------
+
+Functions and filters which emulate cmd/bash functions absent(or have different logic) in powershell
 
 Commands:
->Save-PSBookmark [ bs]  BookmarkName (Opt)Directory 
+Get-SearchAndPrint - Text serach wrapper with more grep behaviour.
+Split-String - Split string and return only the selected part.
+Initialize-VisualStudioEnvieronment - Set Visual studio specific env variables.
+Get-CmdletAlias - Search for alias by name.
+New-FileSystemLink - Create file system link or junction.
 
->Load-PSBookmark [ bl ] BookmarkName
+#### Aliases created by script:
 
->List-PSBookmarks [ bv ]
+Set-Alias grep Get-SearchAndPrint
+Set-Alias cut Split-String
+Set-Alias VsVars32 Initialize-VisualStudioEnvieronment
+Set-Alias ga Get-CmdletAlias
+Set-Alias fl New-FileSystemLink
+
+Usage:
+
+Text search:
+>./ ls | Get-SearchAndPrint "file"
+>./ ls | grep "file"
+
+Split string:
+>./ "aaa bbb" | Split-String " "
+>./ "aaa bbb" | cut " "
+
+Set Visual studio Envieronment:
+>./Initialize-VisualStudioEnvieronment
+>./Initialize-VisualStudioEnvieronment "12.0"
+>./vsVars32 "12.0"
+
+Search powershell alias:
+>./Get-CmdletAlias "di"
+>./ga "di"
+
+Create symbolic/hard link or directory junction point:
+>./New-FileSystemLink -Source "C:\windows" -Destanation "D:\Linux" Junction
+>./New-FileSystemLink "C:\data.dat" "${env:appData}/file.dat"
+>./New-FileSystemLink -s "C:\data.dat" -dest "${env:appData}/file.dat" Symbolic
+>./New-FileSystemLink "C:\sources.dat" "d:/replicate" Hard
