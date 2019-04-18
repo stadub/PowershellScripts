@@ -81,8 +81,10 @@ function DownloadUtil {
         [string]$url
     )
 
-    $reply = Read-Host -Prompt "Would you like to download '$name'?[y/n]"
-    if ( -not $reply -match "[yY]" ) {  
+    $reply = Read-Host -Prompt "Would you like to download '$name'?[y/n] `
+    [Y] Yes [N] No [S] Suspend(default is ""Yes""):"
+    
+    if ( -not $reply -match "[yY]" -and $null -ne $reply ) {  
         throw "Execution aborted"
     }
 
@@ -154,6 +156,8 @@ $script:aborted = $false
 $Keyfile = ".keys";
 $KeyfilePath = $DestFolder + $Slash + $Keyfile;
 $MaserKeyfilePath = $DestFolder + $Slash + ".masterKey"
+
+
 function ZipFile {
     param (
         [ValidateScript( { Test-Path ( $SrcFolder + $Slash + $_ ) -pathType leaf })] 
@@ -177,7 +181,7 @@ function ZipFile {
     }
 
     $AllArgs = @('a', "$_dstFile", "$_srcFile", "-p:$Key");
-    Write-Debug $AllArgs
+
     $process = Start-Process -FilePath $7zPath -ArgumentList $AllArgs -NoNewWindow -PassThru -Wait
 
     $code = $process.ExitCode.ToString();
@@ -238,31 +242,71 @@ function EncodeFile() {
 
     if ( $result -eq "0" ) {
         throw "Encoding aborted. Some error occured."
+        $script:aborted = $false
     }
 
 }
 
-function EncodFolder {
+<#
+ .Synopsis
+   Encode files from folder for(for example) uploading to cloud
+
+ .Description
+    Used as backups encoding solution.
+    Encoding performed with 7z password protection
+
+ .Parameter SrcFolder
+  Folder to be encoded.
+
+ .Parameter DestFolder
+  Destanation folder where encoded files be created.
+
+ .Example
+   # Add bookmark with name.
+   ./Add-PSBookmark [ ba ]  BookmarkName (Opt)Directory 
+
+ .Example
+   # Add bookmark from pipeline.
+   $pwd |  Add-PSBookmark -Name "ThisDirectory"
+#>
+function EncodeFolder {
     param (
         [Parameter(Mandatory = $true)][string]$SrcFolder,
         [Parameter(Mandatory = $true)][string]$DestFolder
     )
+
+    if ( [string]::IsNullOrEmpty($SrcFolder) ) {
+        $SrcFolder = (Get-Location).Path
+    }
+    
     CheckUtils
     if ( Test-Path $KeyfilePath ) {
-        #rm -Force $KeyfilePath | out-null
+        Write-Error "Key file already exist"
+
+        $reply = Read-Host -Prompt "Would you like to remove it? [y/n] `
+        [Y] Yes [N] No [S] Suspend(default is ""Yes""):"
+        if ( -not $reply -match "[yY]" -and $null -ne $reply ) {  
+            throw "Execution aborted"
+            return -1;
+        }
+        
+        Remove-Item -Force $KeyfilePath | out-null
     }
 
     $salt = [System.Guid]::NewGuid().ToString();
 
-
     Get-ChildItem $SrcFolder | ForEach-Object {
-        if ($aborted -eq $true) { return; }
+        if ($script:aborted -eq $true) { return; }
         $FileName = $_.Name;
+        if($_.Attributes -eq [System.IO.FileAttributes]::Directory ){
+            Write-Error "Cannot process the deirectory ${$_.Name}. Directories are not supported."
+            continue;
+        }
 
         EncodeFile $salt $SrcFolder $DestFolder $FileName
     }
 
-    EncodeFile $salt $DestFolder $DestFolder $Keyfile
+    EncodeFile $salt $SrcFolder $DestFolder $Keyfile
 
     $KeysFileHash = Get-Content  $KeyfilePath | Select-Object -last 1
     $KeysFileHash = $KeysFileHash.Split(' ')[0];
@@ -275,4 +319,4 @@ function EncodFolder {
 #EncodFolder $SrcFolder $DestFolder;
 
 
-Export-ModuleMember -Function EncodFolder
+Export-ModuleMember -Function EncodeFolder
