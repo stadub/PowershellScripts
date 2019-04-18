@@ -104,7 +104,7 @@ PrivateData = @{
         ProjectUri = 'https://github.com/stadub/PowershellScripts/tree/master/FolderEncoder'
 
         # A URL to an icon representing this module.
-        IconUri = 'https://raw.githubusercontent.com/stadub/PowershellScripts/master/FolderEncoder/Ccon.ico'
+        IconUri = 'https://raw.githubusercontent.com/stadub/PowershellScripts/master/FolderEncoder/Icon.ico'
 
         # ReleaseNotes of this module
         ReleaseNotes = '
