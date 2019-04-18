@@ -92,10 +92,11 @@ AliasesToExport = @('*')
 # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
 PrivateData = @{
 
+
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = @('7zip','encode','zip', 'archive', 'backup' )
+        Tags = @('7zip','encode','zip', 'archive', 'backup', 'compress', '7-Zip', 'Encrypt')
 
         # A URL to the license for this module.
         LicenseUri = 'http://opensource.org/licenses/MIT'
