@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0'
+ModuleVersion = '1.1.1'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -95,7 +95,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = @('bookmarks','bookmark','pushd','list-directory')
+        Tags = @('bookmarks','bookmark','pushd','list-directory', 'navigation', 'workspaces', 'cd' )
 
         # A URL to the license for this module.
         LicenseUri = 'http://opensource.org/licenses/MIT'
