@@ -1,39 +1,44 @@
-# Powershell Scripts
+# Bookmarsk - Directory bookmarks
 
-### Bookmarsk - Create directory bookmark script
+[Nuget Page](https://www.powershellgallery.com/packages/Bookmarks)
 
 ---------------------
 
-Commands:
-  Add-PSBookmark - Add folder to bookmarks list
-  Remove-PSBookmarks - Remove bookmark from list
+## Commands
 
+  Add-PSBookmark - Add folder to bookmarks list
+
+  Remove-PSBookmarks - Remove bookmark from list
+  
   Restore-PSBookmarks - Reload bookmarks list
+
   Open-PSBookmark - Navigate to bookmark
+
   Save-PSBookmarks - Save bookmarks to file
+
   Get-PSBookmarks - List bookmarks
 
-#### Aliases created by script:
+## Aliases created by script
 
-Set-Alias ba Add-PSBookmark
-Set-Alias br Remove-PSBookmark
-Set-Alias bo Open-PSBookmark
-Set-Alias bv Get-PSBookmarks
-Set-Alias bl Get-PSBookmarks
+- ba Add-PSBookmark
+- br Remove-PSBookmark
+- bo Open-PSBookmark
+- bv Get-PSBookmarks
+- bl Get-PSBookmarks
 
+## Usage
 
-Usage:
-Add bookmark
->./Add-PSBookmark [ ba ]  BookmarkName (Opt)Directory 
+Add bookmark:
+>./Add-PSBookmark [ ba ]  BookmarkName (Opt)Directory
 
 >$pwd |  Add-PSBookmark -Name "ThisDirectory"
 
 Open bookmsrks:
->./Open-PSBookmark [ bo ]  -Bookmark "Project" 
+>./Open-PSBookmark [ bo ]  -Bookmark "Project"
 
 >"SourcesDir" |  Open-PSBookmark [ bo ]
 
 List bookmsrks:
->./Get-PSBookmarks [ bv ] 
+>./Get-PSBookmarks [ bv ]
 
 >./Get-PSBookmarks [ bl ]

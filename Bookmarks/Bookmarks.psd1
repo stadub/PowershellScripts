@@ -101,10 +101,10 @@ PrivateData = @{
         LicenseUri = 'http://opensource.org/licenses/MIT'
 
         # A URL to the main website for this project.
-        ProjectUri = 'https://github.com/stadub/PowershellScripts'
+        ProjectUri = 'https://github.com/stadub/PowershellScripts/tree/master/Bookmarks'
 
         # A URL to an icon representing this module.
-        IconUri = 'https://github.com/stadub/PowershellScripts/Bookmarks/Bookmarks.ico'
+        IconUri = 'https://raw.githubusercontent.com/stadub/PowershellScripts/master/Bookmarks/Bookmarks.ico'
 
         # ReleaseNotes of this module
         ReleaseNotes = '
@@ -116,7 +116,7 @@ PrivateData = @{
 } # End of PrivateData hashtable
 
 # HelpInfo URI of this module
-HelpInfoURI = 'https://github.com/stadub/PowershellScripts/Bookmarks/README.md'
+HelpInfoURI = 'https://github.com/stadub/PowershellScripts/blob/master/Bookmarks/README.md'
 
 # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
 # DefaultCommandPrefix = ''
