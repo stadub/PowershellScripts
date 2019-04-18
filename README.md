@@ -1,6 +1,8 @@
 # Powershell Scripts
 
-### ExportGithub - Export github repo and execute repo script
+---------------------
+
+## ExportGithub - Export github repo and execute repo script
 
 ---------------------
 
@@ -29,7 +31,7 @@ Usage
 Installation
 >Install-Script -Name ExportGithub
 
-### Uninstall - Uninstall installed Application from system
+## Uninstall - Uninstall installed Application from system
 
 ---------------------
 
@@ -41,7 +43,7 @@ Usage
 Installation
 >Install-Script -Name Uninstall
 
-### EncodeVia7z -   Encode files from folder for(for example) uploading to cloud.
+## EncodeVia7z -   Encode files from folder for(for example) uploading to cloud.
 
 ---------------------
 
@@ -70,41 +72,47 @@ Manually files can be decoded with the next algorithm:
 
 4)Use key from previouse step as 7z password for decode file
 
-### Bookmarsk - Create directory bookmark script
+## Bookmarsk - Directory bookmarks
+
+[Nuget Page](https://www.powershellgallery.com/packages/Bookmarks/1.1.1)
+
+[GitHub Folder](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks)
 
 ---------------------
 
-Commands:
-  Add-PSBookmark - Add folder to bookmarks list  
+### Commands
+
+  Add-PSBookmark - Add folder to bookmarks list
+
+  Remove-PSBookmarks - Remove bookmark from list
+  
   Restore-PSBookmarks - Reload bookmarks list
+
   Open-PSBookmark - Navigate to bookmark
+
   Save-PSBookmarks - Save bookmarks to file
+
   Get-PSBookmarks - List bookmarks
 
-#### Aliases created by script:
+### Usage
 
-Set-Alias ba Add-PSBookmark
-Set-Alias bo Open-PSBookmark
-Set-Alias bv Get-PSBookmarks
-
-Usage:
-Add bookmark
->./Add-PSBookmark [ ba ]  BookmarkName (Opt)Directory 
+Add bookmark:
+>./Add-PSBookmark [ ba ]  BookmarkName (Opt)Directory
 
 >$pwd |  Add-PSBookmark -Name "ThisDirectory"
 
 Open bookmsrks:
->./Open-PSBookmark [ bo ]  -Bookmark "Project" 
+>./Open-PSBookmark [ bo ]  -Bookmark "Project"
 
 >"SourcesDir" |  Open-PSBookmark [ bo ]
 
 List bookmsrks:
->./Get-PSBookmarks [ bv ] 
+>./Get-PSBookmarks [ bv ]
 
 >./Get-PSBookmarks [ bl ]
 
 
-### CurrencyConv - Currency converter.
+## CurrencyConv - Currency converter.
 
 ---------------------
 
@@ -122,7 +130,7 @@ Script arguments:
 Get-Countries - Get supported currency list by country
 Get-Currencies - Get supported currency list
 
-#### Aliases created by script:
+### Aliases created by script:
 
 Set-Alias gxc Get-Currencies
 Set-Alias xe Get-ExchangeRate
@@ -144,7 +152,7 @@ Convert amount:
 >([PSCustomObject]@{Base="PHP"; Amount=400})|  Get-ExchangeRate
 
 
-###  Shell-Functions -some function wrappers to make a bridge with bash and powershell functions
+## Shell-Functions -some function wrappers to make a bridge with bash and powershell functions
 
 ---------------------
 
@@ -157,7 +165,7 @@ Initialize-VisualStudioEnvieronment - Set Visual studio specific env variables.
 Get-CmdletAlias - Search for alias by name.
 New-FileSystemLink - Create file system link or junction.
 
-#### Aliases created by script:
+### Aliases created by script:
 
 Set-Alias grep Get-SearchAndPrint
 Set-Alias cut Split-String
