@@ -1,44 +1,34 @@
-# Bookmarsk - Directory bookmarks
+# EncodeVia7z -  Encode files from folder for(for example) uploading to cloud
 
-[PowerShell Gallery](https://www.powershellgallery.com/packages/Bookmarks/1.1.1)
+Used as backups encoding solution.
+Encoding performed with 7z password protection
+
+[PowerShell Gallery](https://www.powershellgallery.com/packages/FolderEncoder/1.0.0)
 
 ---------------------
 
-## Commands
+## Script arguments
 
-  Add-PSBookmark - Add folder to bookmarks list
-
-  Remove-PSBookmarks - Remove bookmark from list
-  
-  Restore-PSBookmarks - Reload bookmarks list
-
-  Open-PSBookmark - Navigate to bookmark
-
-  Save-PSBookmarks - Save bookmarks to file
-
-  Get-PSBookmarks - List bookmarks
-
-## Aliases created by script
-
-- ba Add-PSBookmark
-- br Remove-PSBookmark
-- bo Open-PSBookmark
-- bv Get-PSBookmarks
-- bl Get-PSBookmarks
+  SrcFolder (optional) - Folder to be encoded
+  DestFolder - Destanation folder where encoded files be created
 
 ## Usage
 
-Add bookmark:
->./Add-PSBookmark [ ba ]  BookmarkName (Opt)Directory
+>./EncodeVia7z "c:\windows\System42" "d:\System\"
 
->$pwd |  Add-PSBookmark -Name "ThisDirectory"
+## Decoding
 
-Open bookmsrks:
->./Open-PSBookmark [ bo ]  -Bookmark "Project"
+There is no decoding script. Because currently used only for backups and(thank goodness) there was no necessity to decode it.
+To decrypt manually:
 
->"SourcesDir" |  Open-PSBookmark [ bo ]
+There was no reasons (thank goodness) decoding stored data so currently there no decoder script.
+It you need - please create github issue and I'll add scrpit for folder decoding.
 
-List bookmsrks:
->./Get-PSBookmarks [ bv ]
+Manually files can be decoded with the next algorithm:
+1 Concat value from .masterKey and add ':' to beginign and by using resulting key extract .keys file from .keys.7z
 
->./Get-PSBookmarks [ bl ]
+2 Find apropriate row in .key for file that shoudl be decoded.
+
+3 Concat first row from .masterKey with first row from .key file and ':' to beginign
+
+4 Use key from previouse step as 7z password for decode file
