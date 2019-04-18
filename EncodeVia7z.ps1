@@ -247,7 +247,7 @@ function EncodFolder {
         [Parameter(Mandatory = $true)][string]$SrcFolder,
         [Parameter(Mandatory = $true)][string]$DestFolder
     )
-
+    CheckUtils
     if ( Test-Path $KeyfilePath ) {
         #rm -Force $KeyfilePath | out-null
     }
@@ -270,6 +270,9 @@ function EncodFolder {
     Write-Output "$salt $KeysFileHash">$MaserKeyfilePath
 }
 
-CheckUtils
+#CheckUtils
 
-EncodFolder $SrcFolder $DestFolder;
+#EncodFolder $SrcFolder $DestFolder;
+
+
+Export-ModuleMember -Function EncodFolder

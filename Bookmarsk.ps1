@@ -67,3 +67,6 @@ Register-ArgumentCompleter -CommandName Get-PSBookmark -ParameterName "number" -
 $function:tabexpansion2 = $function:tabexpansion2 -replace 'End\r\n{', 'End { if ($null -ne $options) { $options += $global:options} else {$options = $global:options}'
 
 
+Export-ModuleMember -Function Add-PSBookmark
+Export-ModuleMember -Function Open-PSBookmark
+Export-ModuleMember -Function Get-PSBookmarks

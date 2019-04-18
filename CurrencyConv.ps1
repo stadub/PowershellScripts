@@ -120,3 +120,7 @@ function Get-Currencies {
 
 Set-Alias gxc Get-Currencies
 Set-Alias xe Get-ExchangeRate
+
+Export-ModuleMember -Function Get-Currencies
+Export-ModuleMember -Function Get-ExchangeRate
+Export-ModuleMember -Function Get-Countries
