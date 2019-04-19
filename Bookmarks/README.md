@@ -1,6 +1,6 @@
 # Bookmarsk - Directory bookmarks
 
-[PowerShell Gallery](https://www.powershellgallery.com/packages/Bookmarks/1.1.2)
+[PowerShell Gallery](https://www.powershellgallery.com/packages/Bookmarks/1.1.3)
 
 ---------------------
 
