@@ -108,6 +108,6 @@ Hi, I written this module(and ther from repo) for my own usage.
 But if you found it usefull you can Buy me a beer/cup of tee:)
 [comment]: <> By Paypal [![PayPal.me](https://img.shields.io/badge/PayPal-me-blue.svg?maxAge=2592000)](https://www.paypal.me/dima.by)
 [comment]: <> Or 
-By Yandex Money[https://money.yandex.ru/i/ym2015_icon.png](https://money.yandex.ru/to/410014572567962)
+Yandex Money[https://money.yandex.ru/i/ym2015_icon.png](https://money.yandex.ru/to/410014572567962)
 
 If you have any idea or suggestion - please add a github issue and I'll try to implement it.
