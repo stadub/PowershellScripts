@@ -4,7 +4,7 @@
 
 ---------------------
 
-<p align="center"><img src="/Assets/demo.gif?raw=true"/></p>
+<p align="center"><img src="https://raw.githubusercontent.com/stadub/PowershellScripts/master/Bookmarks/Assets/demo.gif"/></p>
 
 ## Commands
 
