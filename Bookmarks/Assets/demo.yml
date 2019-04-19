@@ -1,0 +1,323 @@
+# The configurations that used for the recording, feel free to edit them
+config:
+
+  # Specify a command to be executed
+  # like `/bin/bash -l`, `ls`, or any other commands
+  # the default is bash for Linux
+  # or powershell.exe for Windows
+  command: powershell.exe
+  
+  # Specify the current working directory path
+  # the default is the current working directory path
+  cwd: C:\Users\Dmitry.Stadub\Documents\PowerShell\PowershellScripts\Bookmarks
+  
+  # Export additional ENV variables
+  env:
+    recording: true
+  
+  # Explicitly set the number of columns
+  # or use `auto` to take the current
+  # number of columns of your shell
+  cols: 120
+  
+  # Explicitly set the number of rows
+  # or use `auto` to take the current
+  # number of rows of your shell
+  rows: 30
+  
+  # Amount of times to repeat GIF
+  # If value is -1, play once
+  # If value is 0, loop indefinitely
+  # If value is a positive number, loop n times
+  repeat: 0
+  
+  # Quality
+  # 1 - 100
+  quality: 100
+  
+  # Delay between frames in ms
+  # If the value is `auto` use the actual recording delays
+  frameDelay: auto
+  
+  # Maximum delay between frames in ms
+  # Ignored if the `frameDelay` isn't set to `auto`
+  # Set to `auto` to prevent limiting the max idle time
+  maxIdleTime: 2000
+  
+  # The surrounding frame box
+  # The `type` can be null, window, floating, or solid`
+  # To hide the title use the value null
+  # Don't forget to add a backgroundColor style with a null as type
+  frameBox:
+    type: floating
+    title: Terminalizer
+    style:
+      border: 0px black solid
+      # boxShadow: none
+      # margin: 0px
+  
+  # Add a watermark image to the rendered gif
+  # You need to specify an absolute path for
+  # the image on your machine or a URL, and you can also
+  # add your own CSS styles
+  watermark:
+    imagePath: null
+    style:
+      position: absolute
+      right: 15px
+      bottom: 15px
+      width: 100px
+      opacity: 0.9
+  
+  # Cursor style can be one of
+  # `block`, `underline`, or `bar`
+  cursorStyle: block
+  
+  # Font family
+  # You can use any font that is installed on your machine
+  # in CSS-like syntax
+  fontFamily: "Monaco, Lucida Console, Ubuntu Mono, Monospace"
+  
+  # The size of the font
+  fontSize: 12
+  
+  # The height of lines
+  lineHeight: 1
+  
+  # The spacing between letters
+  letterSpacing: 0
+  
+  # Theme
+  theme:
+    background: "transparent"
+    foreground: "#afafaf"
+    cursor: "#c7c7c7"
+    black: "#232628"
+    red: "#fc4384"
+    green: "#b3e33b"
+    yellow: "#ffa727"
+    blue: "#75dff2"
+    magenta: "#ae89fe"
+    cyan: "#708387"
+    white: "#d5d5d0"
+    brightBlack: "#626566"
+    brightRed: "#ff7fac"
+    brightGreen: "#c8ed71"
+    brightYellow: "#ebdf86"
+    brightBlue: "#75dff2"
+    brightMagenta: "#ae89fe"
+    brightCyan: "#b1c6ca"
+    brightWhite: "#f9f9f4"
+  
+# Records, feel free to edit them
+records:
+  - delay: 500
+    content: "\e[0m\e[0K"
+  - delay: 500
+    content: "Windows PowerShell\e[0K\e[?25l\r\nCopyright (C) Microsoft Corporation. All rights reserved.\e[0K\r\n\e[0K\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "PS C:\\Bookmarks>\e[0K\e[77G"
+  - delay: 500
+    content: "\e[?25l\rPS C:\\Bookmarks> \e[0;33;93mImp\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;33;93mort-Module\e[0m .\\Book\e[0K"
+  - delay: 500
+    content: "marks.psd1\e[0K"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "PS C:\\Bookmarks>\e[0K\e[77G"
+  - delay: 500
+    content: "\e[?25l\rPS C:\\Bookmarks> \e[0;33;93mb\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;33;93ml\e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "PS C:\\Bookmarks>\e[0K\e[77G"
+  - delay: 500
+    content: "\e[?25l\rPS C:\\Bookmarks> \e[0;33;93mb\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;33;93ma\e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0;1mcmdlet Add-PSBookmark at command pipeline position 1\e[0m\e[0K\r\nSupply values for the following parameters:\e[0K\r\nName:\e[0K\e[7G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rName: b\e[0K\e[?25h"
+  - delay: 500
+    content: "o\e[0K"
+  - delay: 500
+    content: "o\e[0K"
+  - delay: 500
+    content: "k\e[0K"
+  - delay: 500
+    content: "m\e[0K"
+  - delay: 500
+    content: "a\e[0K"
+  - delay: 500
+    content: "r\e[0K"
+  - delay: 500
+    content: "k\e[0K"
+  - delay: 500
+    content: "s\e[0K"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "Location 'C:\\Bookmarks' saved to bookmark bookmarks\e[0K\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "PS C:\\Bookmarks>\e[0K\e[77G"
+  - delay: 500
+    content: "\e[?25l\rPS C:\\Bookmarks> \e[0;33;93mc\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;33;93md\e[0m\e[0K"
+  - delay: 500
+    content: "\e[80G"
+  - delay: 500
+    content: "\e[?25l\rPS C:\\Bookmarks> \e[0;33;93mcd\e[0m d\e[0K\e[?25h"
+  - delay: 500
+    content: ":\e[0K"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "PS D:\\>\e[0K\e[9G"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93m$\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;32;92m$p\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;32;92mw\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32;92md\e[0m\e[0K"
+  - delay: 500
+    content: "\e[14G"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\\e[0;31;91m> \e[0;32;92m$pwd\e[0m |\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[16G"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;32;92m$pwd\e[0m | \e[0;33;93mb\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;33;93ma\e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\r\n\e[0;1mcmdlet Add-PSBookmark at command pipeline position 1\e[0m\e[0K\r\nSupply values for the following parameters:\e[0K\r\nName:\e[0K\e[7G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rName: d\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "Location 'D:\\' saved to bookmark d\e[0K\e[?25l\r\nPS D:\\>\e[0K\e[9G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93ml\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;33;93ms\e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93ml\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\>\e[0K\e[9G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93mb\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;33;93ml\e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\nName                           Value\e[0K\r\n----                           -----\e[0K\r\nd                              D:\\\e[0K\r\nbookmarks                      C:\\Bookmarks\e[0K\r\n\e[0K\r\n\e[0K\r\nPS D:\\>\e[0K\e[9G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93mb\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;33;93mr\e[0m\e[0K"
+  - delay: 500
+    content: "\e[12G"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93mbr\e[0m d\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\nLocation 'd' removed from bookmarks\e[0K\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "PS D:\\>\e[0K\e[9G"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93mb\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;33;93ma\e[0m\e[0K"
+  - delay: 500
+    content: "\e[12G"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\\e[0;31;91m> \e[0;33;93mba\e[0m \e[0;36m\"\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93mba\e[0m \e[0;36m\"\"\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[13G"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93mba\e[0m \e[0;36m\"d\"\e[0m\e[0K\e[14G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93mba\e[0m \e[0;36m\"dr\"\e[0m\e[0K\e[15G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93mba\e[0m \e[0;36m\"dri\"\e[0m\e[0K\e[16G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93mba\e[0m \e[0;36m\"driv\"\e[0m\e[0K\e[17G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93mba\e[0m \e[0;36m\"drive\"\e[0m\e[0K\e[18G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93mba\e[0m \e[0;36m\"drive \"\e[0m\e[0K\e[19G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93mba\e[0m \e[0;36m\"drive d\"\e[0m\e[0K\e[20G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "Location 'D:\\' saved to bookmark drive d\e[0K\e[?25l\r\nPS D:\\>\e[0K\e[9G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93mb\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;33;93mo\e[0m\e[0K"
+  - delay: 500
+    content: "\e[12G"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\\e[0;31;91m> \e[0;33;93mbo\e[0m \e[0;36m\"\e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93mbo\e[0m \e[0;36m\"\"\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[13G"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93mbo\e[0m \e[0;36m\"d\"\e[0m\e[0K\e[14G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93mbo\e[0m \e[0;36m\"dr\"\e[0m\e[0K\e[15G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93mbo\e[0m \e[0;36m\"dri\"\e[0m\e[0K\e[16G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93mbo\e[0m \e[0;36m\"driv\"\e[0m\e[0K\e[17G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93mbo\e[0m \e[0;36m\"drive\"\e[0m\e[0K\e[18G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93mbo\e[0m \e[0;36m\"drive \"\e[0m\e[0K\e[19G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93mbo\e[0m \e[0;36m\"drive d\"\e[0m\e[0K\e[20G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "PS D:\\>\e[0K\e[9G"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93mc\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;33;93md\e[0m\e[0K"
+  - delay: 500
+    content: "\e[12G"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93mcd\e[0m c\e[0K\e[?25h"
+  - delay: 500
+    content: ":\e[0K"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "PS C:\\Bookmarks>\e[0K\e[77G"
+  - delay: 500
+    content: "\e[?25l\rPS C:\\Bookmarks> \e[0;33;93mcd\e[0m c:\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS C:\\Bookmarks> \e[0;33;93mbo\e[0m \e[0;36m\"drive d\"\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "PS D:\\>\e[0K\e[9G"
+  - delay: 500
+    content: "\e[?25l\rPS D:\\> \e[0;33;93me\e[0m\e[0K\e[?25h"

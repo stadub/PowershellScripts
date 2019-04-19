@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.1.1'
+ModuleVersion = '1.1.2'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -104,11 +104,11 @@ PrivateData = @{
         ProjectUri = 'https://github.com/stadub/PowershellScripts/tree/master/Bookmarks'
 
         # A URL to an icon representing this module.
-        IconUri = 'https://raw.githubusercontent.com/stadub/PowershellScripts/master/Bookmarks/Bookmarks.ico'
+        IconUri = 'https://raw.githubusercontent.com/stadub/PowershellScripts/master/Bookmarks/Assets/Icon.ico'
 
         # ReleaseNotes of this module
         ReleaseNotes = '
-            This is the first piblic reliease.
+            Fixed dependencies.
         '
 
     } # End of PSData hashtable

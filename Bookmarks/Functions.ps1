@@ -36,7 +36,7 @@ function Add-PSBookmark () {
 	Restore-PSBookmarks
     $marks["$Name"] = $dir
 	Save-PSBookmarks
-	Write-Output ("Location '{1}' saved to bookmark {0}" -f $Name, $dir) 	
+	Write-Output ("Location '{1}' saved to bookmark '{0}'" -f $Name, $dir) 	
 }
 
 

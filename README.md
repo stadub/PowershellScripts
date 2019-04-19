@@ -66,7 +66,7 @@ Full info : [FolderEncoder](https://github.com/stadub/PowershellScripts/tree/mas
 
 ## Bookmarsk - Directory bookmarks
 
-[PowerShell Gallery](https://www.powershellgallery.com/packages/Bookmarks/1.1.1)
+[PowerShell Gallery](https://www.powershellgallery.com/packages/Bookmarks/1.1.2)
 
 [GitHub Folder](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks)
 
