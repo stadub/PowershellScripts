@@ -130,7 +130,6 @@ $marksPath = Join-Path (split-path -parent $profile) .bookmarks
 
 Restore-PSBookmarks
 
-
 Export-ModuleMember -Function Add-PSBookmark 
 Export-ModuleMember -Function Remove-PSBookmarks
 Export-ModuleMember -Function Open-PSBookmark
