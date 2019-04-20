@@ -45,7 +45,7 @@ Manually files can be decoded with the next algorithm:
 3)Concat first row from .masterKey with first row from .key file and ':' to beginign
 4)Use key from previouse step as 7z password for decode file
 .EXAMPLE
-   EncodeVia7z "c:\windows\System42" "d:\System"
+   Invoke-FolderEncode "c:\windows\System42" "d:\System"
 .PARAMETER SrcFolder (optional)
    Folder to be encoded
 .PARAMETER DestFolder
@@ -174,9 +174,17 @@ function ZipFile {
     $_srcFile = $SrcFolder + $Slash + $FileName
     $_dstFile = $DestFolder + $Slash + $FileName.Replace('.', '_')
 
+    
+    if( Test-Path $DestFolder -PathType Leaf){
+        Write-Error "The destanation path ${DestFolder} is file."
+    }
+    if( ! (Test-Path $DestFolder) ){
+        Write-Information "The destanation path ${DestFolder} doesn't exist. Creating folder."
+        mkdir $DestFolder
+    }
 
     if ( Test-Path "${_dstFile}.7z" ) {
-        Write-Error "Arhive ""$FileName"" allready exist in folder ""$DestFolder"", please select another distanation."
+        Write-Error "Arhive ""$FileName"" allready exist in folder ""$DestFolder"", please select another destination."
         return -1;
     }
 
@@ -241,7 +249,7 @@ function EncodeFile() {
     $result = ZipFile -FileName  $FileName -Key $Key -SrcFolder $SrcFolder   -DestFolder $DestFolder;
 
     if ( $result -eq "0" ) {
-        throw "Encoding aborted. Some error occured."
+        Write-Error "Encoding aborted. Some error occured."
         $script:aborted = $false
     }
 
@@ -255,38 +263,34 @@ function EncodeFile() {
     Used as backups encoding solution.
     Encoding performed with 7z password protection
 
- .Parameter SrcFolder
-  Folder to be encoded.
-
  .Parameter DestFolder
   Destanation folder where encoded files be created.
 
- .Example
-   # Add bookmark with name.
-   ./Add-PSBookmark [ ba ]  BookmarkName (Opt)Directory 
+  .Parameter SrcFolder
+  Folder to be encoded.
 
  .Example
-   # Add bookmark from pipeline.
-   $pwd |  Add-PSBookmark -Name "ThisDirectory"
+   # Add bookmark with name.
+   />Invoke-FolderEncode "c:\windows\System42" "d:\System\"
 #>
-function EncodeFolder {
+function Invoke-FolderEncode {
     param (
-        [Parameter(Mandatory = $true)][string]$SrcFolder,
-        [Parameter(Mandatory = $true)][string]$DestFolder
+        [Parameter(Mandatory = $true)][string]$DestFolder,
+        [Parameter(Mandatory = $false)][string]$SrcFolder
     )
+    $ErrorActionPreference ="Stop"
 
     if ( [string]::IsNullOrEmpty($SrcFolder) ) {
         $SrcFolder = (Get-Location).Path
     }
-    
     CheckUtils
     if ( Test-Path $KeyfilePath ) {
-        Write-Error "Key file already exist"
-
+        Write-Error "Key file already exist"  -ErrorAction:Continue
+        
         $reply = Read-Host -Prompt "Would you like to remove it? [y/n] `
         [Y] Yes [N] No [S] Suspend(default is ""Yes""):"
         if ( -not $reply -match "[yY]" -and $null -ne $reply ) {  
-            throw "Execution aborted"
+            Write-Error "Execution aborted"
             return -1;
         }
         
@@ -295,15 +299,16 @@ function EncodeFolder {
 
     $salt = [System.Guid]::NewGuid().ToString();
 
+    Write-Output "Start encoding the folder ${SrcFolder}"
     Get-ChildItem $SrcFolder | ForEach-Object {
         if ($script:aborted -eq $true) { return; }
         $FileName = $_.Name;
-        if($_.Attributes -eq [System.IO.FileAttributes]::Directory ){
-            Write-Error "Cannot process the deirectory ${$_.Name}. Directories are not supported."
-            continue;
+        if( $_.Attributes -eq [System.IO.FileAttributes]::Directory ){
+            Write-Warning -Message "Cannot process the deirectory ${FileName}. Directories are not supported."
+        }else{
+            EncodeFile $salt $SrcFolder $DestFolder $FileName
         }
 
-        EncodeFile $salt $SrcFolder $DestFolder $FileName
     }
 
     EncodeFile $salt $SrcFolder $DestFolder $Keyfile
@@ -318,5 +323,4 @@ function EncodeFolder {
 
 #EncodFolder $SrcFolder $DestFolder;
 
-
-Export-ModuleMember -Function EncodeFolder
+Export-ModuleMember -Function Invoke-FolderEncode

@@ -1,0 +1,357 @@
+# The configurations that used for the recording, feel free to edit them
+config:
+
+  # Specify a command to be executed
+  # like `/bin/bash -l`, `ls`, or any other commands
+  # the default is bash for Linux
+  # or powershell.exe for Windows
+  command: powershell.exe
+  
+  # Specify the current working directory path
+  # the default is the current working directory path
+  cwd: \\
+  
+  # Export additional ENV variables
+  env:
+    recording: true
+  
+  # Explicitly set the number of columns
+  # or use `auto` to take the current
+  # number of columns of your shell
+  cols: 120
+  
+  # Explicitly set the number of rows
+  # or use `auto` to take the current
+  # number of rows of your shell
+  rows: 30
+  
+  # Amount of times to repeat GIF
+  # If value is -1, play once
+  # If value is 0, loop indefinitely
+  # If value is a positive number, loop n times
+  repeat: 0
+  
+  # Quality
+  # 1 - 100
+  quality: 100
+  
+  # Delay between frames in ms
+  # If the value is `auto` use the actual recording delays
+  frameDelay: auto
+  
+  # Maximum delay between frames in ms
+  # Ignored if the `frameDelay` isn't set to `auto`
+  # Set to `auto` to prevent limiting the max idle time
+  maxIdleTime: 2000
+  
+  # The surrounding frame box
+  # The `type` can be null, window, floating, or solid`
+  # To hide the title use the value null
+  # Don't forget to add a backgroundColor style with a null as type
+  frameBox:
+    type: floating
+    title: Terminalizer
+    style:
+      border: 0px black solid
+      # boxShadow: none
+      # margin: 0px
+  
+  # Add a watermark image to the rendered gif
+  # You need to specify an absolute path for
+  # the image on your machine or a URL, and you can also
+  # add your own CSS styles
+  watermark:
+    imagePath: null
+    style:
+      position: absolute
+      right: 15px
+      bottom: 15px
+      width: 100px
+      opacity: 0.9
+  
+  # Cursor style can be one of
+  # `block`, `underline`, or `bar`
+  cursorStyle: block
+  
+  # Font family
+  # You can use any font that is installed on your machine
+  # in CSS-like syntax
+  fontFamily: "Monaco, Lucida Console, Ubuntu Mono, Monospace"
+  
+  # The size of the font
+  fontSize: 12
+  
+  # The height of lines
+  lineHeight: 1
+  
+  # The spacing between letters
+  letterSpacing: 0
+  
+  # Theme
+  theme:
+    background: "transparent"
+    foreground: "#afafaf"
+    cursor: "#c7c7c7"
+    black: "#232628"
+    red: "#fc4384"
+    green: "#b3e33b"
+    yellow: "#ffa727"
+    blue: "#75dff2"
+    magenta: "#ae89fe"
+    cyan: "#708387"
+    white: "#d5d5d0"
+    brightBlack: "#626566"
+    brightRed: "#ff7fac"
+    brightGreen: "#c8ed71"
+    brightYellow: "#ebdf86"
+    brightBlue: "#75dff2"
+    brightMagenta: "#ae89fe"
+    brightCyan: "#b1c6ca"
+    brightWhite: "#f9f9f4"
+  
+# Records, feel free to edit them
+records:
+  - delay: 1406
+    content: "\e[0m\e[0K"
+  - delay: 185
+    content: "Windows PowerShell\e[0K\e[?25l\r\nCopyright (C) Microsoft Corporation. All rights reserved.\e[0K\r\n\e[0K\r\n\e[0K\e[?25h"
+  - delay: 184
+    content: "PS \\>\e[0K\e[81G"
+  - delay: 1532
+    content: "\e[?25l\rPS \\> \e[0;33;93mi\e[0m\e[0K\e[?25h"
+  - delay: 129
+    content: "\e[0;33;93mm\e[0m\e[0K"
+  - delay: 433
+    content: "\e[0;33;93mp\e[0m\e[0K"
+  - delay: 164
+    content: "\e[0;33;93mo\e[0m\e[0K"
+  - delay: 181
+    content: "\e[0;33;93mr\e[0m\e[0K"
+  - delay: 161
+    content: "\e[0;33;93mt\e[0m\e[0K"
+  - delay: 277
+    content: "\e[0;33;93m-\e[0m\e[0K"
+  - delay: 256
+    content: "\e[0;33;93mm\e[0m\e[0K"
+  - delay: 217
+    content: "\e[0;33;93mo\e[0m\e[0K"
+  - delay: 154
+    content: "\e[0;33;93md\e[0m\e[0K"
+  - delay: 536
+    content: "\e[?25l\rPS \\> \e[0;33;93mImport-Module\e[0m\e[0K\e[?25h"
+  - delay: 807
+    content: "\e[95G"
+  - delay: 594
+    content: "\e[?25l\rPS \\> \e[0;33;93mImport-Module\e[0m .\e[0K\e[?25h"
+  - delay: 100
+    content: "/\e[0K"
+  - delay: 1495
+    content: "F\e[0K"
+  - delay: 245
+    content: "o\e[0K"
+  - delay: 192
+    content: "\e[?25l\rPS \\> \e[0;33;93mImport-Module\e[0m .\\FolderEncoder.psd1\e[0K\e[?25h"
+  - delay: 1053
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 61
+    content: "PS \\>\e[0K\e[81G"
+  - delay: 2007
+    content: "\e[?25l\rPS \\> \e[0;33;93mi\e[0m\e[0K\e[?25h"
+  - delay: 156
+    content: "\e[0;33;93mn\e[0m\e[0K"
+  - delay: 591
+    content: "\e[0;33;93mv\e[0m\e[0K"
+  - delay: 341
+    content: "\e[0;33;93mo\e[0m\e[0K"
+  - delay: 185
+    content: "\e[0;33;93mk\e[0m\e[0K"
+  - delay: 130
+    content: "\e[0;33;93me\e[0m\e[0K"
+  - delay: 279
+    content: "\e[0;33;93m-\e[0m\e[0K"
+  - delay: 482
+    content: "\e[0;33;93mf\e[0m\e[0K"
+  - delay: 157
+    content: "\e[0;33;93mo\e[0m\e[0K"
+  - delay: 149
+    content: "\e[0;33;93ml\e[0m\e[0K"
+  - delay: 499
+    content: "\e[?25l\rPS \\> \e[0;33;93mInvoke-FolderEncode\e[0m\e[0K"
+  - delay: 35
+    content: "\e[?25h"
+  - delay: 753
+    content: "\e[101G"
+  - delay: 1000
+    content: "\e[?25l\rPS \\> \e[0;33;93mInvoke-FolderEncode\e[0m d\e[0K\e[?25h"
+  - delay: 325
+    content: ":\e[0K"
+  - delay: 326
+    content: "\\\e[0K"
+  - delay: 598
+    content: "b\e[0K"
+  - delay: 186
+    content: "a\e[0K"
+  - delay: 154
+    content: "c\e[0K"
+  - delay: 281
+    content: "k\e[0K"
+  - delay: 251
+    content: "u\e[0K"
+  - delay: 1187
+    content: "p\e[0K"
+  - delay: 436
+    content: "\e[111G"
+  - delay: 249
+    content: "\e[?25l\rPS \\> \e[0;33;93mInvoke-FolderEncode\e[0m d:\\backup .\e[0K\e[?25h"
+  - delay: 66
+    content: "/\e[0K"
+  - delay: 353
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 62
+    content: "7Zip didn't found.\e[0K\e[?25l\r\nWould you like to download '7-Zip'?[y/n]\e[0K\r\n    [Y] Yes [N] No [S] Suspend(default is \"Yes\")::\e[0K\e[52G\e[?25h"
+  - delay: 1350
+    content: "\e[?25l\r    [Y] Yes [N] No [S] Suspend(default is \"Yes\"):: y\e[0K\e[?25h"
+  - delay: 937
+    content: "\e[?25l\r\nStarting download '7-Zip'\e[0K\r\n\e[0K\e[?25h"
+  - delay: 845
+    content: "\e[?25l\r\n\e[0K\r\n    Directory: \\\e[0K\r\n\e[0K\r\n\e[0K\r\nMode                LastWriteTime         Length Name\e[0K\r\n----                -------------         ------ ----\e[0K\r\nd-----        4/20/2019  12:06 PM                bin\e[0K\r\n\e[0K\e[?25h"
+  - delay: 61
+    content: "fciv didn't found.\e[0K\e[?25l\r\nWould you like to download 'fciv'?[y/n]\e[0K\r\n    [Y] Yes [N] No [S] Suspend(default is \"Yes\")::\e[0K\e[52G\e[?25h"
+  - delay: 622
+    content: "\e[?25l\r    [Y] Yes [N] No [S] Suspend(default is \"Yes\"):: y\e[0K\e[?25h"
+  - delay: 317
+    content: "\e[?25l\r\nStarting download 'fciv'\e[0K\r\n\e[0K\e[?25h"
+  - delay: 471
+    content: "\e[?25l\r\n7-Zip (A) 9.20  Copyright (c) 1999-2010 Igor Pavlov  2010-11-18\e[0K\r\n\e[0K\r\nProcessing archive: C:\\Users\\Dmitry.Stadub\\AppData\\Local\\Temp\\tmp2621.tmp\e[0K\r\n\e[0K\e[?25h"
+  - delay: 27
+    content: "\e[?25l\r\nExtracting  ReadMe.txt\e[0K\r\nExtracting  fciv.exe\e[0K\r\n\e[0K\r\nEverything is Ok\e[0K\r\n\e[0K\e[?25h"
+  - delay: 35
+    content: "\e[?25l\r\nFiles: 2\e[0K\r\nSize:       88411\e[0K\r\nCompressed: 119600\e[0K\r\nStart encoding the folder ./\e[0K\r\n\e[0K\e[?25h"
+  - delay: 26
+    content: "\e[0;33;93mWARNING: Cannot process the deirectory Assets. Directories are not supported.\e[0m\e[0K\e[?25l\r\n\e[0;33;93mWARNING: Cannot process the deirectory bin. Directories are not supported.\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 35
+    content: "Encoding file \"FolderEncoder.psd1\"\e[0K\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 962
+    content: "\e[?25l\r\n7-Zip (A) 9.20  Copyright (c) 1999-2010 Igor Pavlov  2010-11-18\e[0K\r\nScanning\e[0K\r\n\e[0K\r\nCreating archive d:\\backup\\FolderEncoder_psd1.7z\e[0K\r\n\e[0K\r\n\e[0K\e[?25h"
+  - delay: 34
+    content: "Compressing  FolderEncoder.psd1    0%\e[0K"
+  - delay: 940
+    content: "\e[?25l\rCompressing  FolderEncoder.psd1\e[0K\r\n\e[0K\r\nEverything is Ok\e[0K\r\n\e[0K\e[?25h"
+  - delay: 937
+    content: "Encoding file \"Functions.ps1\"\e[0K\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 527
+    content: "\e[?25l\r\n7-Zip (A) 9.20  Copyright (c) 1999-2010 Igor Pavlov  2010-11-18\e[0K\r\nScanning\e[0K\r\n\e[0K\r\nCreating archive d:\\backup\\Functions_ps1.7z\e[0K\r\n\e[0K\r\n\e[0K\e[?25h"
+  - delay: 35
+    content: "Compressing  Functions.ps1    0%\e[0K"
+  - delay: 907
+    content: "\e[?25l\rCompressing  Functions.ps1\e[0K\r\n\e[0K\r\nEverything is Ok\e[0K\r\n\e[0K\e[?25h"
+  - delay: 965
+    content: "Encoding file \"README.md\"\e[0K"
+  - delay: 37
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 563
+    content: "\e[?25l\r\n7-Zip (A) 9.20  Copyright (c) 1999-2010 Igor Pavlov  2010-11-18\e[0K\r\nScanning\e[0K\r\n\e[0K\r\nCreating archive d:\\backup\\README_md.7z\e[0K\r\n\e[0K\r\n\e[0K\e[?25h"
+  - delay: 24
+    content: "Compressing  README.md    0%\e[0K"
+  - delay: 912
+    content: "\e[?25l\rCompressing  README.md\e[0K\r\n\e[0K\e[?25h"
+  - delay: 25
+    content: "\e[?25l\r\nEverything is Ok\e[0K\r\n\e[0K\e[?25h"
+  - delay: 968
+    content: "Encoding file \".keys\"\e[0K\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 515
+    content: "\e[?25l\r\n7-Zip (A) 9.20  Copyright (c) 1999-2010 Igor Pavlov  2010-11-18\e[0K\r\nScanning\e[0K\r\n\e[0K\r\nCreating archive d:\\backup\\_keys.7z\e[0K\r\n\e[0K\r\n\e[0K\e[?25h"
+  - delay: 34
+    content: "Compressing  .keys    0%\e[0K"
+  - delay: 907
+    content: "\e[?25l\rCompressing  .keys\e[0K\r\n\e[0K\r\nEverything is Ok\e[0K\r\n\e[0K\e[?25h"
+  - delay: 970
+    content: "\e[?25l\r\n\e[0K\r\nPS \\>\e[0K\e[81G\e[?25h"
+  - delay: 1061
+    content: "\e[?25l\rPS \\> \e[0;33;93ml\e[0m\e[0K\e[?25h"
+  - delay: 95
+    content: "\e[0;33;93ms\e[0m\e[0K"
+  - delay: 318
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 28
+    content: "\e[?25l\r\n\e[0K\r\n    Directory: \\\e[0K\e[1G\e[?25h"
+  - delay: 27
+    content: "\e[?25l\r\n\e[0K\r\n\e[0K\r\nMode                LastWriteTime         Length Name\e[0K\r\n----                -------------         ------ ----\e[0K\r\nd-----        4/20/2019  11:23 AM                Assets\e[0K\r\nd-----        4/20/2019  12:06 PM                bin\e[0K\r\n-a----        4/20/2019  12:06 PM            436 .keys\e[0K\r\n-a----        4/20/2019  12:07 PM            160 .masterKey\e[0K\r\n-a----        4/19/2019   3:28 AM           4327 FolderEncoder.psd1\e[0K\r\n-a----        4/20/2019  11:59 AM           9207 Functions.ps1\e[0K\r\n-a----        4/20/2019  11:45 AM           3330 README.md\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\e[?25h"
+  - delay: 32
+    content: "PS \\>\e[0K\e[81G"
+  - delay: 2285
+    content: "\e[?25l\rPS \\> \e[0;33;93mc\e[0m\e[0K\e[?25h"
+  - delay: 62
+    content: "\e[0;33;93ma\e[0m\e[0K"
+  - delay: 309
+    content: "\e[0;33;93mt\e[0m\e[0K"
+  - delay: 189
+    content: "\e[85G"
+  - delay: 1001
+    content: "\e[?25l\rPS \\> \e[0;33;93mcat\e[0m k\e[0K\e[?25h"
+  - delay: 151
+    content: "r\e[0K"
+  - delay: 414
+    content: "\e[?25l\rPS \\> \e[0;33;93mcat\e[0m k\e[0K\e[?25h"
+  - delay: 157
+    content: "e\e[0K"
+  - delay: 120
+    content: "y\e[0K"
+  - delay: 812
+    content: "\e[?25l\rPS \\> \e[0;33;93mcat\e[0m ke\e[0K\e[?25h"
+  - delay: 153
+    content: "\e[?25l\rPS \\> \e[0;33;93mcat\e[0m k\e[0K\e[?25h"
+  - delay: 126
+    content: "\e[?25l\rPS \\> \e[0;33;93mcat\e[0m\e[0K\e[85G\e[?25h"
+  - delay: 505
+    content: "\e[?25l\rPS \\> \e[0;33;93mcat\e[0m .\e[0K\e[?25h"
+  - delay: 596
+    content: "k\e[0K"
+  - delay: 125
+    content: "e\e[0K"
+  - delay: 188
+    content: "y\e[0K"
+  - delay: 275
+    content: "\e[?25l\rPS \\> \e[0;33;93mcat\e[0m .\\.keys\e[0K\e[?25h"
+  - delay: 690
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 36
+    content: "47fb26f8c9971b8da48f6ba814c6c596ee440d31 FolderEncoder.psd1\e[0K\e[?25l\r\nd0cedbfd69ea1fc431ea5292e8b80972f26dfc7a Functions.ps1\e[0K\r\n9a830ebf19052579693620bb1197fd38ca466dfb README.md\e[0K\r\n7763b4263c5ad4d99cb1430c05fcf477ea57027b .keys\e[0K\r\nPS \\>\e[0K\e[81G\e[?25h"
+  - delay: 1430
+    content: "\e[?25l\rPS \\> \e[0;33;93mcat\e[0m .\\.keys\e[0K\e[?25h"
+  - delay: 1131
+    content: "\e[?25l\rPS \\> \e[0;33;93mcat\e[0m .\\.key\e[0K\e[?25h"
+  - delay: 179
+    content: "\e[?25l\rPS \\> \e[0;33;93mcat\e[0m .\\.ke\e[0K\e[?25h"
+  - delay: 156
+    content: "\e[?25l\rPS \\> \e[0;33;93mcat\e[0m .\\.k\e[0K\e[?25h"
+  - delay: 162
+    content: "\e[?25l\rPS \\> \e[0;33;93mcat\e[0m .\\.\e[0K\e[?25h"
+  - delay: 653
+    content: "m\e[0K"
+  - delay: 161
+    content: "a\e[0K"
+  - delay: 277
+    content: "s\e[0K"
+  - delay: 347
+    content: "t\e[0K"
+  - delay: 89
+    content: "e\e[0K"
+  - delay: 156
+    content: "r\e[0K"
+  - delay: 348
+    content: "Key\e[0K"
+  - delay: 1097
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 27
+    content: "c8047d98-c0b6-42c3-a286-bec3e2cf25ef 7763b4263c5ad4d99cb1430c05fcf477ea57027b\e[0K\e[?25l\r\nPS \\>\e[0K\e[81G\e[?25h"
+  - delay: 2249
+    content: "\e[?25l\rPS \\> \e[0;33;93me\e[0m\e[0K\e[?25h"
+  - delay: 129
+    content: "\e[0;33;93mx\e[0m\e[0K"
+  - delay: 155
+    content: "\e[0;33;93mi\e[0m\e[0K"
+  - delay: 156
+    content: "\e[?25l\rPS \\> \e[0;32;92mexit\e[0m\e[0K\e[?25h"
+  - delay: 469
+    content: "\e[?25l\r\n\e[0K\e[?25h"
