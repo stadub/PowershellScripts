@@ -2,8 +2,7 @@
 
 Used as backups encoding solution.
 Encoding performed with 7z password protection
-
-[PowerShell Gallery](https://www.powershellgallery.com/packages/FolderEncoder/2.0.0) [![https://www.powershellgallery.com/packages/FolderEncoder/2.0.0](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/FolderEncoder/2.0.0)
+ [![https://www.powershellgallery.com/packages/FolderEncoder/2.0.0](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/FolderEncoder/2.0.0)
 
 ---------------------
 

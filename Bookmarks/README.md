@@ -1,8 +1,6 @@
 # Bookmarsk - Directory bookmarks
 
-
-[PowerShell Gallery](https://www.powershellgallery.com/packages/Bookmarks/1.1.3) [![https://www.powershellgallery.com/packages/Bookmarks/1.1.3](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Bookmarks/1.1.3)
-
+[![https://www.powershellgallery.com/packages/Bookmarks/1.1.3](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Bookmarks/1.1.3)
 
 ---------------------
 

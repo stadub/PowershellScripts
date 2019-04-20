@@ -45,10 +45,8 @@ Installation
 
 # FolderEncode - Encode files from folder for(for example) uploading to cloud
 
-[PowerShell Gallery](https://www.powershellgallery.com/packages/FolderEncoder/2.0.0) [![https://www.powershellgallery.com/packages/FolderEncoder/2.0.0](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/FolderEncoder/2.0.0)
-
-[FolderEncoder](https://github.com/stadub/PowershellScripts/tree/master/FolderEncoder) [![https://github.com/stadub/PowershellScripts/tree/master/FolderEncoder](https://img.shields.io/badge/Bookmarks-repo-blue.svg?style=popout&logo=github)](https://github.com/stadub/PowershellScripts/tree/master/FolderEncoder)
-
+[![https://www.powershellgallery.com/packages/FolderEncoder/2.0.0](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/FolderEncoder/2.0.0) 
+[![https://github.com/stadub/PowershellScripts/tree/master/FolderEncoder](https://img.shields.io/badge/Bookmarks-repo-blue.svg?style=popout&logo=github)](https://github.com/stadub/PowershellScripts/tree/master/FolderEncoder)
 
 ---------------------
 
@@ -75,9 +73,8 @@ Detailed info : [FolderEncoder](https://github.com/stadub/PowershellScripts/tree
 
 # Bookmarsk - Directory bookmarks
 
-[PowerShell Gallery](https://www.powershellgallery.com/packages/Bookmarks/2.0.0) [![https://www.powershellgallery.com/packages/Bookmarks/2.0.0](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Bookmarks/1.1.3)
-
-[Bookmarsk](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks) [![https://github.com/stadub/PowershellScripts/tree/master/Bookmarks](https://img.shields.io/badge/Bookmarks-repo-blue.svg?style=popout&logo=github)](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks)
+[![https://www.powershellgallery.com/packages/Bookmarks/2.0.0](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Bookmarks/1.1.3)
+[![https://github.com/stadub/PowershellScripts/tree/master/Bookmarks](https://img.shields.io/badge/Bookmarks-repo-blue.svg?style=popout&logo=github)](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks)
 
 ---------------------
 
