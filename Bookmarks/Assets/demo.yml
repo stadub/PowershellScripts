@@ -9,7 +9,7 @@ config:
   
   # Specify the current working directory path
   # the default is the current working directory path
-  cwd: C:\Users\Dmitry.Stadub\Documents\PowerShell\PowershellScripts\Bookmarks
+  cwd: \\
   
   # Export additional ENV variables
   env:

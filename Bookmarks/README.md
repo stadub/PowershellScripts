@@ -1,7 +1,8 @@
 # Bookmarsk - Directory bookmarks
 
 
-[PowerShell Gallery](https://www.powershellgallery.com/packages/Bookmarks/1.1.3) [![https://www.powershellgallery.com/packages/Bookmarks/1.1.3](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg)](https://www.powershellgallery.com/packages/Bookmarks/1.1.3)
+[PowerShell Gallery](https://www.powershellgallery.com/packages/Bookmarks/1.1.3) [![https://www.powershellgallery.com/packages/Bookmarks/1.1.3](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Bookmarks/1.1.3)
+
 
 ---------------------
 
@@ -27,29 +28,44 @@ Save-PSBookmarkk - Save bookmarks to file
 
 ## Aliases
 
-
-| Cmdlet             | Alias    |
-| -------------------|:--------:|
-| `Add-PSBookmark`   | `ba`     |
-| `Remove-PSBookmark`| `br`     |
-| `Open-PSBookmark`  | `bo`     |
-| `Get-PSBookmarks`  | `bv` `bl`|
+| Cmdlet           | Alias  |
+| -----------------|:------:|
+| Add-PSBookmark   | ba     |
+| Remove-PSBookmark| br     |
+| Open-PSBookmark  | bo     |
+| Get-PSBookmarks  | bv | bl|
 
 ## Usage
 
 Add bookmark:
-`/>Add-PSBookmark -Bookmark BookmarkName`
-`/>$pwd |  Add-PSBookmark -Name "ThisDirectory"`
+
+```powershell
+/>Add-PSBookmark -Bookmark BookmarkName
+```
+
+```powershell
+/> $pwd |  Add-PSBookmark -Name "ThisDirectory"
+```
 
 Open bookmsrks:
-`/>./Open-PSBookmark -Bookmark "Project"`
 
-`/>"SourcesDir" |  Open-PSBookmark`
+```powershell
+/>Open-PSBookmark -Bookmark "Project"
+```
+
+```powershell
+/>"SourcesDir" |  Open-PSBookmark
+```
 
 List bookmsrks:
-`>./Get-PSBookmarks [ bv ]`
 
-`>./Get-PSBookmarks [ bl ]`
+```powershell
+/>Get-PSBookmarks [ bv ]
+```
+
+```powershell
+.>Get-PSBookmarks [ bl ]
+```
 
 ## Changelog
 
