@@ -43,69 +43,98 @@ Usage
 Installation
 >Install-Script -Name Uninstall
 
-## EncodeVia7z -   Encode files from folder for(for example) uploading to cloud.
+# FolderEncode - Encode files from folder for(for example) uploading to cloud
 
+[PowerShell Gallery](https://www.powershellgallery.com/packages/FolderEncoder/2.0.0) [![https://www.powershellgallery.com/packages/FolderEncoder/2.0.0](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/FolderEncoder/2.0.0)
 
-[PowerShell Gallery](https://www.powershellgallery.com/packages/FolderEncoder/1.0.0)
+[FolderEncoder](https://github.com/stadub/PowershellScripts/tree/master/FolderEncoder) [![https://github.com/stadub/PowershellScripts/tree/master/FolderEncoder](https://img.shields.io/badge/Bookmarks-repo-blue.svg?style=popout&logo=github)](https://github.com/stadub/PowershellScripts/tree/master/FolderEncoder)
 
-[GitHub Folder](https://github.com/stadub/PowershellScripts/tree/master/FolderEncoder)
 
 ---------------------
 
 Used as backups encoding solution.
 Encoding performed with 7z password protection
 
-Script arguments:
-  SrcFolder (optional) - Folder to be encoded
-  DestFolder - Destanation folder where encoded files be created
+## Commands
 
-Usage
->./EncodeVia7z "c:\windows\System42" "d:\System"
+```powershell
+Invoke-FolderEncode - Add folder to bookmarks list
+  [-DestFolder] <string>
+  [-SrcFolder] <string> (Optional)
+```
 
-Full info : [FolderEncoder](https://github.com/stadub/PowershellScripts/tree/master/FolderEncoder)
+## Usage
 
-## Bookmarsk - Directory bookmarks
+```powershell
+/>Invoke-FolderEncode -DestFolder "d:\System\" -SrcFolder "c:\windows\System42"
+/> cd c:\Windows; Invoke-FolderEncode "d:\bkacup\" #use current folder as src
+```
 
-[PowerShell Gallery](https://www.powershellgallery.com/packages/Bookmarks/1.1.2)
 
-[GitHub Folder](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks)
+Detailed info : [FolderEncoder](https://github.com/stadub/PowershellScripts/tree/master/FolderEncoder)
+
+# Bookmarsk - Directory bookmarks
+
+[PowerShell Gallery](https://www.powershellgallery.com/packages/Bookmarks/2.0.0) [![https://www.powershellgallery.com/packages/Bookmarks/2.0.0](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Bookmarks/1.1.3)
+
+[Bookmarsk](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks) [![https://github.com/stadub/PowershellScripts/tree/master/Bookmarks](https://img.shields.io/badge/Bookmarks-repo-blue.svg?style=popout&logo=github)](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks)
 
 ---------------------
 
-### Commands
+## Commands
 
-  Add-PSBookmark - Add folder to bookmarks list
+```powershell
+Add-PSBookmark  - Add folder to bookmarks list
+  [-Name] <string>
+  [-Path] <string> (Optional)
 
-  Remove-PSBookmarks - Remove bookmark from list
-  
-  Restore-PSBookmarks - Reload bookmarks list
+Remove-PSBookmark - Remove bookmark from list
+  [-Bookmark] <string>
 
-  Open-PSBookmark - Navigate to bookmark
+Open-PSBookmark - Navigate to bookmark
+  [-Bookmark] <string>
 
-  Save-PSBookmarks - Save bookmarks to file
+Get-PSBookmarks - List bookmarks
 
-  Get-PSBookmarks - List bookmarks
+Save-PSBookmarkk - Save bookmarks to file
+```
 
-### Usage
+## Usage
 
 Add bookmark:
->./Add-PSBookmark [ ba ]  BookmarkName (Opt)Directory
 
->$pwd |  Add-PSBookmark -Name "ThisDirectory"
+```powershell
+/>Add-PSBookmark -Bookmark BookmarkName
+```
+
+```powershell
+/> $pwd |  Add-PSBookmark -Name "ThisDirectory"
+```
 
 Open bookmsrks:
->./Open-PSBookmark [ bo ]  -Bookmark "Project"
 
->"SourcesDir" |  Open-PSBookmark [ bo ]
+```powershell
+/>Open-PSBookmark -Bookmark "Project"
+```
+
+```powershell
+/>"SourcesDir" |  Open-PSBookmark
+```
 
 List bookmsrks:
->./Get-PSBookmarks [ bv ]
 
->./Get-PSBookmarks [ bl ]
+```powershell
+/>Get-PSBookmarks [ bv ]
+```
 
-Full info : [Bookmarsk](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks)
+```powershell
+.>Get-PSBookmarks [ bl ]
+```
 
-## CurrencyConv - Currency converter.
+Detailed info : [Bookmarsk](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks)
+
+
+# CurrencyConv - Currency converter.
 
 ---------------------
 
