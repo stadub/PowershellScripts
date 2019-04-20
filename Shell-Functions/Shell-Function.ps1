@@ -44,14 +44,14 @@
 
 
 
-filter Get-SearchAndPrint(){
-	Param ([string]$filterStr = $null)
-	$_|select-string -pattern $filterStr
+filter Get-SearchAndPrint() {
+    Param ([string]$filterStr = $null)
+    $_ | select-string -pattern $filterStr
 }
 
-filter Split-String(){
-	Param ([string]$separator = $null)
-	$_.Split|select-string -pattern $separator
+filter Split-String() {
+    Param ([string]$separator = $null)
+    $_.Split | select-string -pattern $separator
 }
 
 function Get-Batchfile ($file) {
@@ -62,8 +62,7 @@ function Get-Batchfile ($file) {
     }
 }
   
-function Initialize-VisualStudioEnvieronment($version = "10.0")
-{
+function Initialize-VisualStudioEnvieronment($version = "10.0") {
     $key = "HKLM:SOFTWARE\Microsoft\VisualStudio\" + $version
     $VsKey = get-ItemProperty $key
     $VsInstallPath = [System.IO.Path]::GetDirectoryName($VsKey.InstallDir)
@@ -75,9 +74,8 @@ function Initialize-VisualStudioEnvieronment($version = "10.0")
     #add a call to set-consoleicon as seen below...hm...!
 }
 
-function Get-CmdletAlias ($cmdletname)
-{
-   get-alias | Where-Object {$_.definition -like "*$cmdletname*"} | Format-Table Definition, Name -auto
+function Get-CmdletAlias ($cmdletname) {
+    get-alias | Where-Object { $_.definition -like "*$cmdletname*" } | Format-Table Definition, Name -auto
 }
 #function Color-Console
 #    {
@@ -91,34 +89,50 @@ function Get-CmdletAlias ($cmdletname)
 
 
 enum LinkType {
-Symbolic
-Hard
-Junction
+    Symbolic
+    Hard
+    Junction
 }
 
 
 function New-FileSystemLink {
-[cmdletbinding(DefaultParameterSetName='Positional' )]
-param(
-  [Parameter(Position=0, ParameterSetName='Positional', ValueFromPipeline=$True, Mandatory = $true)]
-  [Alias("-s","-Source")]
-  [string]$source,
+    [cmdletbinding(DefaultParameterSetName = 'Positional' )]
+    param(
+        [Parameter(Position = 0, ParameterSetName = 'Positional', ValueFromPipeline = $True, Mandatory = $true)]
+        [Alias("-s", "-Source")]
+        [string]$source,
   
- [Parameter(Position=1, ParameterSetName='Positional')]
-  [Alias("-dest","-Destanation")]
-  [string]$destanation = $((Get-Location).Path),
+        [Parameter(Position = 1, ParameterSetName = 'Positional')]
+        [Alias("-dest", "-Destanation")]
+        [string]$destanation = $((Get-Location).Path),
   
-  [Parameter(Position=2, ParameterSetName='Positional', Mandatory = $true)]
-  [ServerType]$type = [LinkType]::Symbolic 
+        [Parameter(Position = 2, ParameterSetName = 'Positional', Mandatory = $true)]
+        [ServerType]$type = [LinkType]::Symbolic 
   
-)
-   New-Item -Path $destanation -ItemType $type -Value $source
+    )
+    New-Item -Path $destanation -ItemType $type -Value $source
 }
 
+function Propmpt {
+  param (
+    [Parameter(Position = 0, ParameterSetName = 'Positional', ValueFromPipeline = $True, Mandatory = $true)]
+    [Alias("Question", "-Description")]
+    [string]$text
+  )
+  $reply = Read-Host -Prompt "$text`
+  [Y] Yes [N] No [S] Suspend(default is ""Yes""):"
+
+  if (  $reply -match "[yY]" -and $null -ne $reply ) {  
+      return $true
+  }
+  if (  $reply -match "[Ss]" ) { throw "Execution aborted" }
+  return $false
+}
 
 Set-Alias grep Get-SearchAndPrint
 Set-Alias cut Split-String
 Set-Alias VsVars32 Initialize-VisualStudioEnvieronment
 Set-Alias ga Get-CmdletAlias
 Set-Alias fl New-FileSystemLink
+Set-Alias pb Export-Module
 
