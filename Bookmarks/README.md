@@ -25,32 +25,31 @@ Get-PSBookmarks - List bookmarks
 Save-PSBookmarkk - Save bookmarks to file
 ```
 
-## Aliases created by script
+## Aliases
 
-```powershell
-- ba Add-PSBookmark
-- br Remove-PSBookmark
-- bo Open-PSBookmark
-- bv Get-PSBookmarks
-- bl Get-PSBookmarks
-```
+
+| Cmdlet             | Alias    |
+| -------------------|:--------:|
+| `Add-PSBookmark`   | `ba`     |
+| `Remove-PSBookmark`| `br`     |
+| `Open-PSBookmark`  | `bo`     |
+| `Get-PSBookmarks`  | `bv` `bl`|
 
 ## Usage
 
 Add bookmark:
-Add-PSBookmark -Bookmark BookmarkName
->$pwd |  Add-PSBookmark -Name "ThisDirectory"
+`/>Add-PSBookmark -Bookmark BookmarkName`
+`/>$pwd |  Add-PSBookmark -Name "ThisDirectory"`
 
 Open bookmsrks:
->./Open-PSBookmark [ bo ]  -Bookmark "Project"
+`/>./Open-PSBookmark -Bookmark "Project"`
 
->"SourcesDir" |  Open-PSBookmark [ bo ]
+`/>"SourcesDir" |  Open-PSBookmark`
 
 List bookmsrks:
->./Get-PSBookmarks [ bv ]
+`>./Get-PSBookmarks [ bv ]`
 
->./Get-PSBookmarks [ bl ]
-
+`>./Get-PSBookmarks [ bl ]`
 
 ## Changelog
 
@@ -105,12 +104,14 @@ Save-PSBookmarkk - Save bookmarks to file
 ## Motivation
 
 Hi, I written this module(and ther from repo) for my own usage.
-But if you found it usefull you can Buy me a beer/cup of tee:)
+But if you found it usefull you can Buy me a beer/cup of tee😊
 
-[comment]: <> By Paypal [![PayPal.me](https://img.shields.io/badge/PayPal-me-blue.svg?maxAge=2592000)](https://www.paypal.me/dima.by)
+<!--   By Paypal [![PayPal.me](https://img.shields.io/badge/PayPal-me-blue.svg?maxAge=2592000)](https://www.paypal.me/dima.by)
 
-[comment]: <> Or 
+ <> Or 
+ -->
+[![Yandex Money](https://money.yandex.ru/i/ym2015_icon.png)](https://money.yandex.ru/to/410014572567962)
 
-Yandex Money[https://money.yandex.ru/i/ym2015_icon.png](https://money.yandex.ru/to/410014572567962)
+<!-- Yandex Money (https://money.yandex.ru/i/ym2015_icon.png)(https://money.yandex.ru/to/410014572567962) -->
 
-If you have any idea or suggestion - please add a github issue and I'll try to implement it.
+If you have any idea or suggestion - please add a github issue and I'll try to implement it😉
