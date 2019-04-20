@@ -11,11 +11,11 @@
 
 .COPYRIGHT 
 
-.TAGS github.com github download DownloadGithub GithubDownload ExportGithub GithubExport GetGithub zip archive
+.TAGS  github.com, github, download, zip, archive, branch, export, git, repo, DownloadGithub, GithubDownload, ExportGithub, GithubExport, GetGithub
 
 .LICENSEURI 
 
-.PROJECTURI https://github.com/stadub/PowershellScripts
+.PROJECTURI https://github.com/stadub/PowershellScripts/EXportGithub
 
 .ICONURI 
 
