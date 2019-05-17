@@ -1,0 +1,1019 @@
+# The configurations that used for the recording, feel free to edit them
+config:
+
+  # Specify a command to be executed
+  # like `/bin/bash -l`, `ls`, or any other commands
+  # the default is bash for Linux
+  # or powershell.exe for Windows
+  command: powershell.exe
+  
+  # Specify the current working directory path
+  # the default is the current working directory path
+  cwd: \\>
+  
+  # Export additional ENV variables
+  env:
+    recording: true
+  
+  # Explicitly set the number of columns
+  # or use `auto` to take the current
+  # number of columns of your shell
+  cols: 120
+  
+  # Explicitly set the number of rows
+  # or use `auto` to take the current
+  # number of rows of your shell
+  rows: 30
+  
+  # Amount of times to repeat GIF
+  # If value is -1, play once
+  # If value is 0, loop indefinitely
+  # If value is a positive number, loop n times
+  repeat: 0
+  
+  # Quality
+  # 1 - 100
+  quality: 100
+  
+  # Delay between frames in ms
+  # If the value is `auto` use the actual recording delays
+  frameDelay: auto
+  
+  # Maximum delay between frames in ms
+  # Ignored if the `frameDelay` isn't set to `auto`
+  # Set to `auto` to prevent limiting the max idle time
+  maxIdleTime: 2000
+  
+  # The surrounding frame box
+  # The `type` can be null, window, floating, or solid`
+  # To hide the title use the value null
+  # Don't forget to add a backgroundColor style with a null as type
+  frameBox:
+    type: floating
+    title: Terminalizer
+    style:
+      border: 0px black solid
+      # boxShadow: none
+      # margin: 0px
+  
+  # Add a watermark image to the rendered gif
+  # You need to specify an absolute path for
+  # the image on your machine or a URL, and you can also
+  # add your own CSS styles
+  watermark:
+    imagePath: null
+    style:
+      position: absolute
+      right: 15px
+      bottom: 15px
+      width: 100px
+      opacity: 0.9
+  
+  # Cursor style can be one of
+  # `block`, `underline`, or `bar`
+  cursorStyle: block
+  
+  # Font family
+  # You can use any font that is installed on your machine
+  # in CSS-like syntax
+  fontFamily: "Monaco, Lucida Console, Ubuntu Mono, Monospace"
+  
+  # The size of the font
+  fontSize: 12
+  
+  # The height of lines
+  lineHeight: 1
+  
+  # The spacing between letters
+  letterSpacing: 0
+  
+  # Theme
+  theme:
+    background: "transparent"
+    foreground: "#afafaf"
+    cursor: "#c7c7c7"
+    black: "#232628"
+    red: "#fc4384"
+    green: "#b3e33b"
+    yellow: "#ffa727"
+    blue: "#75dff2"
+    magenta: "#ae89fe"
+    cyan: "#708387"
+    white: "#d5d5d0"
+    brightBlack: "#626566"
+    brightRed: "#ff7fac"
+    brightGreen: "#c8ed71"
+    brightYellow: "#ebdf86"
+    brightBlue: "#75dff2"
+    brightMagenta: "#ae89fe"
+    brightCyan: "#b1c6ca"
+    brightWhite: "#f9f9f4"
+  
+# Records, feel free to edit them
+records:
+  - delay: 1715
+    content: "\e[0m\e[0K"
+  - delay: 308
+    content: "Windows PowerShell\e[0K\e[?25l\r\nCopyright (C) Microsoft Corporation. All rights reserved.\e[0K\r\n\e[0K\r\n\e[0K\e[?25h"
+  - delay: 254
+    content: "PS \\>\e[0K\e[81G"
+  - delay: 995
+    content: "\e[?25l\rPS \\> \e[0;33;93mI\e[0m\e[0K\e[?25h"
+  - delay: 317
+    content: "\e[0;33;93mm\e[0m\e[0K"
+  - delay: 342
+    content: "\e[0;33;93mp\e[0m\e[0K"
+  - delay: 161
+    content: "\e[0;33;93mo\e[0m\e[0K"
+  - delay: 150
+    content: "\e[0;33;93mr\e[0m\e[0K"
+  - delay: 190
+    content: "\e[0;33;93mt\e[0m\e[0K"
+  - delay: 624
+    content: "\e[0;33;93m-\e[0m\e[0K"
+  - delay: 401
+    content: "\e[0;33;93mM\e[0m\e[0K"
+  - delay: 224
+    content: "\e[0;33;93mo\e[0m\e[0K"
+  - delay: 128
+    content: "\e[0;33;93md\e[0m\e[0K"
+  - delay: 188
+    content: "\e[0;33;93mu\e[0m\e[0K"
+  - delay: 438
+    content: "\e[0;33;93mle\e[0m\e[0K"
+  - delay: 461
+    content: "\e[95G"
+  - delay: 1229
+    content: "\e[?25l\rPS \\> \e[0;33;93mImport-Module\e[0m C\e[0K\e[?25h"
+  - delay: 340
+    content: "u\e[0K"
+  - delay: 156
+    content: "r\e[0K"
+  - delay: 369
+    content: "\e[?25l\rPS \\> \e[0;33;93mImport-Module\e[0m .\\Currency-Conv.psd1\e[0K\e[?25h"
+  - delay: 852
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 54
+    content: "For using the CurrencyConverter api you need to receive free api key.\e[0K\e[?25l\r\nPlease open in the browser link 'https://free.currencyconverterapi.com/free-api-key' and follow the site instructions.\e[0K\r\nAfterwards enter the received api key here: :\e[0K\e[47G\e[?25h"
+  - delay: 2820
+    content: "\e[?25l\rAfterwards enter the received api key here: : Y\e[0K\e[?25h"
+  - delay: 307
+    content: "p\e[0K"
+  - delay: 1592
+    content: "o\e[0K"
+  - delay: 219
+    content: "u\e[0K"
+  - delay: 158
+    content: "\e[52G"
+  - delay: 1219
+    content: "\e[?25l\rAfterwards enter the received api key here: : You g\e[0K\e[?25h"
+  - delay: 156
+    content: "o\e[0K"
+  - delay: 217
+    content: "i\e[0K"
+  - delay: 129
+    content: "n\e[0K"
+  - delay: 95
+    content: "g\e[0K"
+  - delay: 151
+    content: "\e[58G"
+  - delay: 185
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going t\e[0K\e[?25h"
+  - delay: 39
+    content: "o\e[0K"
+  - delay: 152
+    content: "\e[61G"
+  - delay: 285
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to b\e[0K\e[?25h"
+  - delay: 375
+    content: "e\e[0K"
+  - delay: 158
+    content: "\e[64G"
+  - delay: 216
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be a\e[0K\e[?25h"
+  - delay: 159
+    content: "s\e[0K"
+  - delay: 183
+    content: "k\e[0K"
+  - delay: 96
+    content: "e\e[0K"
+  - delay: 89
+    content: "d\e[0K"
+  - delay: 191
+    content: "\e[70G"
+  - delay: 1186
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked f\e[0K\e[?25h"
+  - delay: 127
+    content: "o\e[0K"
+  - delay: 184
+    content: "r\e[0K"
+  - delay: 160
+    content: "\e[74G"
+  - delay: 1032
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for t\e[0K\e[?25h"
+  - delay: 497
+    content: "h\e[0K"
+  - delay: 128
+    content: "e\e[0K"
+  - delay: 151
+    content: "\e[78G"
+  - delay: 503
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the k\e[0K\e[?25h"
+  - delay: 97
+    content: "e\e[0K"
+  - delay: 187
+    content: "y\e[0K"
+  - delay: 126
+    content: "\e[82G"
+  - delay: 874
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key o\e[0K\e[?25h"
+  - delay: 159
+    content: "n\e[0K"
+  - delay: 246
+    content: "l\e[0K"
+  - delay: 119
+    content: "y\e[0K"
+  - delay: 133
+    content: "\e[87G"
+  - delay: 436
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only t\e[0K\e[?25h"
+  - delay: 97
+    content: "h\e[0K"
+  - delay: 120
+    content: "e\e[0K"
+  - delay: 158
+    content: "\e[91G"
+  - delay: 441
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the f\e[0K\e[?25h"
+  - delay: 55
+    content: "e\e[0K"
+  - delay: 1692
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the f\e[0K\e[?25h"
+  - delay: 126
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the\e[0K\e[91G\e[?25h"
+  - delay: 336
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the b\e[0K\e[?25h"
+  - delay: 95
+    content: "e\e[0K"
+  - delay: 343
+    content: "f\e[0K"
+  - delay: 161
+    content: "o\e[0K"
+  - delay: 128
+    content: "r\e[0K"
+  - delay: 89
+    content: "e\e[0K"
+  - delay: 160
+    content: "\e[98G"
+  - delay: 2590
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the before t\e[0K\e[?25h"
+  - delay: 152
+    content: "h\e[0K"
+  - delay: 129
+    content: "e\e[0K"
+  - delay: 655
+    content: "\e[102G"
+  - delay: 441
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the before the f\e[0K\e[?25h"
+  - delay: 184
+    content: "i\e[0K"
+  - delay: 127
+    content: "r\e[0K"
+  - delay: 186
+    content: "s\e[0K"
+  - delay: 161
+    content: "t\e[0K"
+  - delay: 95
+    content: "\e[108G"
+  - delay: 279
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the before the first u\e[0K\e[?25h"
+  - delay: 151
+    content: "s\e[0K"
+  - delay: 376
+    content: "a\e[0K"
+  - delay: 249
+    content: "g\e[0K"
+  - delay: 65
+    content: "e\e[0K"
+  - delay: 688
+    content: "!\e[0K"
+  - delay: 934
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the before the first usage\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the before the first usag\e[0K\e[?25h"
+  - delay: 34
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the before the first usa\e[0K\e[?25h"
+  - delay: 34
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the before the first us\e[0K\e[?25h"
+  - delay: 32
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the before the first u\e[0K\e[?25h"
+  - delay: 25
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the before the first\e[0K\e[108G\e[?25h"
+  - delay: 32
+    content: "\e[107G"
+  - delay: 33
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the before the firs\e[0K\e[?25h"
+  - delay: 34
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the before the fir\e[0K\e[?25h"
+  - delay: 56
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the before the fi\e[0K\e[?25h"
+  - delay: 34
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the before the f\e[0K\e[?25h"
+  - delay: 33
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the before the\e[0K\e[102G\e[?25h"
+  - delay: 34
+    content: "\e[101G"
+  - delay: 32
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the before th\e[0K\e[?25h"
+  - delay: 33
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the before t\e[0K\e[?25h"
+  - delay: 28
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the before\e[0K\e[98G\e[?25h"
+  - delay: 32
+    content: "\e[97G"
+  - delay: 33
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the befor\e[0K\e[?25h"
+  - delay: 23
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the befo\e[0K\e[?25h"
+  - delay: 35
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the bef\e[0K\e[?25h"
+  - delay: 32
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the be\e[0K\e[?25h"
+  - delay: 32
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the b\e[0K\e[?25h"
+  - delay: 33
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only the\e[0K\e[91G\e[?25h"
+  - delay: 24
+    content: "\e[90G"
+  - delay: 33
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only th\e[0K\e[?25h"
+  - delay: 33
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only t\e[0K\e[?25h"
+  - delay: 33
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key only\e[0K\e[87G\e[?25h"
+  - delay: 33
+    content: "\e[86G"
+  - delay: 59
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key onl\e[0K\e[?25h"
+  - delay: 32
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key on\e[0K\e[?25h"
+  - delay: 33
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key o\e[0K\e[?25h"
+  - delay: 33
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the key\e[0K\e[82G\e[?25h"
+  - delay: 27
+    content: "\e[81G"
+  - delay: 34
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the ke\e[0K\e[?25h"
+  - delay: 33
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the k\e[0K\e[?25h"
+  - delay: 23
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for the\e[0K\e[78G\e[?25h"
+  - delay: 32
+    content: "\e[77G"
+  - delay: 34
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for th\e[0K\e[?25h"
+  - delay: 34
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for t\e[0K\e[?25h"
+  - delay: 31
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked for\e[0K\e[74G\e[?25h"
+  - delay: 33
+    content: "\e[73G"
+  - delay: 24
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked fo\e[0K\e[?25h"
+  - delay: 33
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked f\e[0K\e[?25h"
+  - delay: 33
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be asked\e[0K\e[70G\e[?25h"
+  - delay: 33
+    content: "\e[69G"
+  - delay: 33
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be aske\e[0K\e[?25h"
+  - delay: 58
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be ask\e[0K\e[?25h"
+  - delay: 32
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be as\e[0K\e[?25h"
+  - delay: 33
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be a\e[0K\e[?25h"
+  - delay: 35
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to be\e[0K\e[64G\e[?25h"
+  - delay: 32
+    content: "\e[63G"
+  - delay: 27
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to b\e[0K\e[?25h"
+  - delay: 35
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going to\e[0K\e[61G\e[?25h"
+  - delay: 22
+    content: "\e[60G"
+  - delay: 32
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going t\e[0K\e[?25h"
+  - delay: 34
+    content: "\e[?25l\rAfterwards enter the received api key here: : You going\e[0K\e[58G\e[?25h"
+  - delay: 33
+    content: "\e[57G"
+  - delay: 32
+    content: "\e[?25l\rAfterwards enter the received api key here: : You goin\e[0K\e[?25h"
+  - delay: 32
+    content: "\e[?25l\rAfterwards enter the received api key here: : You goi\e[0K\e[?25h"
+  - delay: 25
+    content: "\e[?25l\rAfterwards enter the received api key here: : You go\e[0K\e[?25h"
+  - delay: 33
+    content: "\e[?25l\rAfterwards enter the received api key here: : You g\e[0K\e[?25h"
+  - delay: 33
+    content: "\e[?25l\rAfterwards enter the received api key here: : You\e[0K\e[52G\e[?25h"
+  - delay: 66
+    content: "\e[?25l\rAfterwards enter the received api key here: : Ypo\e[0K\e[?25h"
+  - delay: 58
+    content: "\e[?25l\rAfterwards enter the received api key here: : Yp\e[0K\e[?25h"
+  - delay: 32
+    content: "\e[?25l\rAfterwards enter the received api key here: : Y\e[0K\e[?25h"
+  - delay: 36
+    content: "\e[?25l\rAfterwards enter the received api key here: :\e[0K\e[47G\e[?25h"
+  - delay: 4844
+    content: "\e[?25l\rAfterwards enter the received api key here: : *My Api Key*\e[0K\e[?25h"
+  - delay: 710
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 35
+    content: "PS \\>\e[0K\e[81G"
+  - delay: 3630
+    content: "\e[?25l\rPS \\> \e[0;33;93mG\e[0m\e[0K\e[?25h"
+  - delay: 182
+    content: "\e[0;33;93me\e[0m\e[0K"
+  - delay: 97
+    content: "\e[0;33;93mt\e[0m\e[0K"
+  - delay: 217
+    content: "\e[0;33;93m-\e[0m\e[0K"
+  - delay: 1030
+    content: "\e[0;33;93mE\e[0m\e[0K"
+  - delay: 223
+    content: "\e[0;33;93mx\e[0m\e[0K"
+  - delay: 468
+    content: "\e[0;33;93mc\e[0m\e[0K"
+  - delay: 118
+    content: "\e[0;33;93mh\e[0m\e[0K"
+  - delay: 1319
+    content: "\e[0;33;93mangeRate\e[0m\e[0K"
+  - delay: 719
+    content: "\e[98G"
+  - delay: 1153
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ExchangeRate\e[0m U\e[0K\e[?25h"
+  - delay: 128
+    content: "S\e[0K"
+  - delay: 121
+    content: "D\e[0K"
+  - delay: 671
+    content: "\e[102G"
+  - delay: 1376
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD B\e[0K\e[?25h"
+  - delay: 753
+    content: "Y\e[0K"
+  - delay: 1034
+    content: "\e[?25l\r\e[5A\e[0;33;93;46m\e[0K\r\n Reading web response\e[0K\r\n    Reading response stream... (Number of bytes read: 716)\e[0K\r\n\e[0K\r\n\e[0mAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BY\e[0K\e[?25h"
+  - delay: 25
+    content: "\e[?25l\r\e[3A\e[0;33;93;46m    Reading response stream... (Number of bytes read: 3454)\e[0K\r\n\e[0K\r\n\e[0mAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BY\e[0K\e[?25h"
+  - delay: 35
+    content: "\e[?25l\r\e[3A\e[0;33;93;46m    Reading response stream... (Number of bytes read: 6600)\e[0K\r\n\e[0K\r\n\e[0mAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BY\e[0K\e[?25h"
+  - delay: 36
+    content: "\e[?25l\r\e[5A\e[0K\r\nPS \\> \e[0;33;93mImport-Module\e[0m .\\Currency-Conv.psd1\e[0K\r\nFor using the CurrencyConverter api you need to receive free api key.\e[0K\r\nPlease open in the browser link 'https://free.currencyconverterapi.com/free-api-key' and follow the site instructions.\e[0K\r\nAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BY\e[0K\e[?25h"
+  - delay: 88
+    content: "R\e[0K"
+  - delay: 1932
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN\e[0K\e[?25h"
+  - delay: 753
+    content: "\e[106G"
+  - delay: 1503
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\e[?25h"
+  - delay: 691
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 186
+    content: "\e[?25l\r\e[6A\e[0;33;93;46m\e[0K\r\n Reading web response\e[0K\r\n    Reading response stream... (Number of bytes read: 2085)\e[0K\r\n\e[0K\r\n\e[0mAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 25
+    content: "\e[?25l\r\e[4A\e[0;33;93;46m    Reading response stream... (Number of bytes read: 3454)\e[0K\r\n\e[0K\r\n\e[0mAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 35
+    content: "\e[?25l\r\e[4A\e[0;33;93;46m    Reading response stream... (Number of bytes read: 7561)\e[0K\r\n\e[0K\r\n\e[0mAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 34
+    content: "\e[?25l\r\e[6A\e[0K\r\nPS \\> \e[0;33;93mImport-Module\e[0m .\\Currency-Conv.psd1\e[0K\r\nFor using the CurrencyConverter api you need to receive free api key.\e[0K\r\nPlease open in the browser link 'https://free.currencyconverterapi.com/free-api-key' and follow the site instructions.\e[0K\r\nAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 344
+    content: "\e[?25l\r\e[6A\e[0;33;93;46m\e[0K\r\n Reading web response\e[0K\r\n    Reading response stream... (Number of bytes read: 716)\e[0K\r\n\e[0K\r\n\e[0mAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 26
+    content: "\e[?25l\r\e[4A\e[0;33;93;46m    Reading response stream... (Number of bytes read: 4823)\e[0K\r\n\e[0K\r\n\e[0mAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 35
+    content: "\e[?25l\r\e[4A\e[0;33;93;46m    Reading response stream... (Number of bytes read: 8930)\e[0K\r\n\e[0K\r\n\e[0mAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 26
+    content: "\e[?25l\r\e[6A\e[0K\r\nPS \\> \e[0;33;93mImport-Module\e[0m .\\Currency-Conv.psd1\e[0K\r\nFor using the CurrencyConverter api you need to receive free api key.\e[0K\r\nPlease open in the browser link 'https://free.currencyconverterapi.com/free-api-key' and follow the site instructions.\e[0K\r\nAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 630
+    content: "\e[?25l\r\e[6A\e[0;33;93;46m\e[0K\r\n Reading web response\e[0K\r\n    Reading response stream... (Number of bytes read: 716)\e[0K\r\n\e[0K\r\n\e[0mAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 25
+    content: "\e[?25l\r\e[4A\e[0;33;93;46m    Reading response stream... (Number of bytes read: 3454)\e[0K\r\n\e[0K\r\n\e[0mAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 35
+    content: "\e[?25l\r\e[4A\e[0;33;93;46m    Reading response stream... (Number of bytes read: 8394)\e[0K\r\n\e[0K\r\n\e[0mAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 34
+    content: "\e[?25l\r\e[6A\e[0K\r\nPS \\> \e[0;33;93mImport-Module\e[0m .\\Currency-Conv.psd1\e[0K\r\nFor using the CurrencyConverter api you need to receive free api key.\e[0K\r\nPlease open in the browser link 'https://free.currencyconverterapi.com/free-api-key' and follow the site instructions.\e[0K\r\nAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 184
+    content: "\e[?25l\r\e[6A\e[0;33;93;46m\e[0K\r\n Reading web response\e[0K\r\n    Reading response stream... (Number of bytes read: 0)\e[0K\r\n\e[0K\r\n\e[0mAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 35
+    content: "\e[?25l\r\e[4A\e[0;33;93;46m    Reading response stream... (Number of bytes read: 3454)\e[0K\r\n\e[0K\r\n\e[0mAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 26
+    content: "\e[?25l\r\e[6A\e[0K\r\nPS \\> \e[0;33;93mImport-Module\e[0m .\\Currency-Conv.psd1\e[0K\r\nFor using the CurrencyConverter api you need to receive free api key.\e[0K\r\nPlease open in the browser link 'https://free.currencyconverterapi.com/free-api-key' and follow the site instructions.\e[0K\r\nAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 37
+    content: "\e[?25l\r\n\e[0K\r\nDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\>\e[0K\e[81G\e[?25h"
+  - delay: 3088
+    content: "\e[?25l\rPS \\> \e[0;33;93mG\e[0m\e[0K\e[?25h"
+  - delay: 224
+    content: "\e[0;33;93me\e[0m\e[0K"
+  - delay: 87
+    content: "\e[0;33;93mt\e[0m\e[0K"
+  - delay: 132
+    content: "\e[0;33;93m-\e[0m\e[0K"
+  - delay: 405
+    content: "\e[0;33;93mE\e[0m\e[0K"
+  - delay: 154
+    content: "\e[0;33;93mx\e[0m\e[0K"
+  - delay: 408
+    content: "\e[0;33;93mc\e[0m\e[0K"
+  - delay: 190
+    content: "\e[0;33;93mh\e[0m\e[0K"
+  - delay: 211
+    content: "\e[0;33;93mangeRate\e[0m\e[0K"
+  - delay: 1157
+    content: "\e[98G"
+  - delay: 1256
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-\e[0m\e[0K\e[?25h"
+  - delay: 436
+    content: "\e[0;37;90mF\e[0m\e[0K"
+  - delay: 245
+    content: "\e[0;37;90mr\e[0m\e[0K"
+  - delay: 162
+    content: "\e[0;37;90mo\e[0m\e[0K"
+  - delay: 97
+    content: "\e[0;37;90mm\e[0m\e[0K"
+  - delay: 403
+    content: "\e[104G"
+  - delay: 1120
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m U\e[0K\e[?25h"
+  - delay: 916
+    content: "\e[?25l\r\e[17A\e[0;33;93;46m\e[0K\r\n Reading web response\e[0K\r\n    Reading response stream... (Number of bytes read: 3443)\e[0K\r\n\e[0K\r\n\e[0mAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m U\e[0K\e[?25h"
+  - delay: 26
+    content: "\e[?25l\r\e[15A\e[0;33;93;46m    Reading response stream... (Number of bytes read: 7805)\e[0K\r\n\e[0K\r\n\e[0mAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m U\e[0K\e[?25h"
+  - delay: 36
+    content: "\e[?25l\r\e[17A\e[0K\r\nPS \\> \e[0;33;93mImport-Module\e[0m .\\Currency-Conv.psd1\e[0K\r\nFor using the CurrencyConverter api you need to receive free api key.\e[0K\r\nPlease open in the browser link 'https://free.currencyconverterapi.com/free-api-key' and follow the site instructions.\e[0K\r\nAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD\e[0K\e[?25h"
+  - delay: 680
+    content: "\e[108G"
+  - delay: 718
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-\e[0m\e[0K\e[?25h"
+  - delay: 410
+    content: "\e[0;37;90mT\e[0m\e[0K"
+  - delay: 246
+    content: "\e[0;37;90mo\e[0m\e[0K"
+  - delay: 849
+    content: "\e[112G"
+  - delay: 1624
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m B\e[0K\e[?25h"
+  - delay: 97
+    content: "Y\e[0K"
+  - delay: 152
+    content: "N\e[0K"
+  - delay: 375
+    content: "\e[116G"
+  - delay: 1186
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m1\e[0m\e[0K\e[?25h"
+  - delay: 128
+    content: "\e[0;1m0\e[0m\e[0K"
+  - delay: 620
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 195
+    content: "\e[?25l\r\e[18A\e[0;33;93;46m\e[0K\r\n Reading web response\e[0K\r\n    Reading response stream... (Number of bytes read: 0)\e[0K\r\n\e[0K\r\n\e[0mAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 26
+    content: "\e[?25l\r\e[16A\e[0;33;93;46m    Reading response stream... (Number of bytes read: 3576)\e[0K\r\n\e[0K\r\n\e[0mAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 34
+    content: "\e[?25l\r\e[18A\e[0K\r\nPS \\> \e[0;33;93mImport-Module\e[0m .\\Currency-Conv.psd1\e[0K\r\nFor using the CurrencyConverter api you need to receive free api key.\e[0K\r\nPlease open in the browser link 'https://free.currencyconverterapi.com/free-api-key' and follow the site instructions.\e[0K\r\nAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 184
+    content: "\e[?25l\r\e[18A\e[0;33;93;46m\e[0K\r\n Reading web response\e[0K\r\n    Reading response stream... (Number of bytes read: 0)\e[0K\r\n\e[0K\r\n\e[0mAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 34
+    content: "\e[?25l\r\e[16A\e[0;33;93;46m    Reading response stream... (Number of bytes read: 7805)\e[0K\r\n\e[0K\r\n\e[0mAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 34
+    content: "\e[?25l\r\e[18A\e[0K\r\nPS \\> \e[0;33;93mImport-Module\e[0m .\\Currency-Conv.psd1\e[0K\r\nFor using the CurrencyConverter api you need to receive free api key.\e[0K\r\nPlease open in the browser link 'https://free.currencyconverterapi.com/free-api-key' and follow the site instructions.\e[0K\r\nAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 158
+    content: "\e[?25l\r\e[18A\e[0;33;93;46m\e[0K\r\n Reading web response\e[0K\r\n    Reading response stream... (Number of bytes read: 0)\e[0K\r\n\e[0K\r\n\e[0mAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 26
+    content: "\e[?25l\r\e[18A\e[0K\r\nPS \\> \e[0;33;93mImport-Module\e[0m .\\Currency-Conv.psd1\e[0K\r\nFor using the CurrencyConverter api you need to receive free api key.\e[0K\r\nPlease open in the browser link 'https://free.currencyconverterapi.com/free-api-key' and follow the site instructions.\e[0K\r\nAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 186
+    content: "\e[?25l\r\e[18A\e[0;33;93;46m\e[0K\r\n Reading web response\e[0K\r\n    Reading response stream... (Number of bytes read: 0)\e[0K\r\n\e[0K\r\n\e[0mAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 36
+    content: "\e[?25l\r\e[16A\e[0;33;93;46m    Reading response stream... (Number of bytes read: 7805)\e[0K\r\n\e[0K\r\n\e[0mAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 25
+    content: "\e[?25l\r\e[18A\e[0K\r\nPS \\> \e[0;33;93mImport-Module\e[0m .\\Currency-Conv.psd1\e[0K\r\nFor using the CurrencyConverter api you need to receive free api key.\e[0K\r\nPlease open in the browser link 'https://free.currencyconverterapi.com/free-api-key' and follow the site instructions.\e[0K\r\nAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 319
+    content: "\e[?25l\r\e[18A\e[0;33;93;46m\e[0K\r\n Reading web response\e[0K\r\n    Reading response stream... (Number of bytes read: 7805)\e[0K\r\n\e[0K\r\n\e[0mAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 30
+    content: "\e[?25l\r\e[18A\e[0K\r\nPS \\> \e[0;33;93mImport-Module\e[0m .\\Currency-Conv.psd1\e[0K\r\nFor using the CurrencyConverter api you need to receive free api key.\e[0K\r\nPlease open in the browser link 'https://free.currencyconverterapi.com/free-api-key' and follow the site instructions.\e[0K\r\nAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:11 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 10\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 20.83750\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\e[?25h"
+  - delay: 28
+    content: "PS \\>\e[0K\e[81G"
+  - delay: 3096
+    content: "\e[?25l\rPS \\> \e[0;33;93mG\e[0m\e[0K\e[?25h"
+  - delay: 217
+    content: "\e[0;33;93me\e[0m\e[0K"
+  - delay: 63
+    content: "\e[0;33;93mt\e[0m\e[0K"
+  - delay: 149
+    content: "\e[0;33;93m-\e[0m\e[0K"
+  - delay: 377
+    content: "\e[0;33;93mE\e[0m\e[0K"
+  - delay: 193
+    content: "\e[0;33;93mx\e[0m\e[0K"
+  - delay: 345
+    content: "\e[0;33;93mc\e[0m\e[0K"
+  - delay: 154
+    content: "\e[0;33;93mh\e[0m\e[0K"
+  - delay: 188
+    content: "\e[0;33;93mangeRate\e[0m\e[0K"
+  - delay: 690
+    content: "\e[98G"
+  - delay: 997
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-\e[0m\e[0K\e[?25h"
+  - delay: 465
+    content: "\e[0;37;90mB\e[0m\e[0K"
+  - delay: 879
+    content: "\e[0;37;90ma\e[0m\e[0K"
+  - delay: 123
+    content: "\e[0;37;90ms\e[0m\e[0K"
+  - delay: 224
+    content: "\e[0;37;90me\e[0m\e[0K"
+  - delay: 277
+    content: "\e[104G"
+  - delay: 2097
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-Base\e[0m P\e[0K\e[?25h"
+  - delay: 842
+    content: "h\e[0K"
+  - delay: 967
+    content: "P\e[0K"
+  - delay: 754
+    content: "\e[108G"
+  - delay: 1248
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-Base\e[0m PhP \e[0;37;90m-\e[0m\e[0K\e[?25h"
+  - delay: 406
+    content: "\e[0;37;90mR\e[0m\e[0K"
+  - delay: 183
+    content: "\e[0;37;90me\e[0m\e[0K"
+  - delay: 192
+    content: "\e[0;37;90ms\e[0m\e[0K"
+  - delay: 184
+    content: "\e[0;37;90mu\e[0m\e[0K"
+  - delay: 346
+    content: "\e[0;37;90ml\e[0m\e[0K"
+  - delay: 95
+    content: "\e[0;37;90mt\e[0m\e[0K"
+  - delay: 183
+    content: "\e[116G"
+  - delay: 1943
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-Base\e[0m PhP \e[0;37;90m-Result\e[0m E\e[0K\e[?25h"
+  - delay: 187
+    content: "U\e[0K"
+  - delay: 213
+    content: "R\e[0K"
+  - delay: 440
+    content: "\e[120G"
+  - delay: 1722
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-Base\e[0m PhP \e[0;37;90m-Result\e[0m EUR \e[0;37;90m\e[0K-\r\n\e[0m\e[0K\e[?25h"
+  - delay: 497
+    content: "\e[0;37;90mA\e[0m\e[0K"
+  - delay: 279
+    content: "\e[0;37;90mm\e[0m\e[0K"
+  - delay: 223
+    content: "\e[0;37;90mo\e[0m\e[0K"
+  - delay: 217
+    content: "\e[0;37;90mu\e[0m\e[0K"
+  - delay: 161
+    content: "\e[0;37;90mn\e[0m\e[0K"
+  - delay: 88
+    content: "\e[0;37;90mt\e[0m\e[0K"
+  - delay: 189
+    content: "\e[8G"
+  - delay: 1250
+    content: "\e[?25l\r\e[0;37;90mAmount\e[0m \e[0;1m5\e[0m\e[0K\e[?25h"
+  - delay: 346
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 189
+    content: "\e[?25l\r\e[27A\e[0;33;93;46m\e[0K\r\n Reading web response\e[0K\r\n    Reading response stream... (Number of bytes read: 0)\e[0K\r\n\e[0K\r\n\e[0mDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:11 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 10\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 20.83750\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-Base\e[0m PhP \e[0;37;90m-Result\e[0m EUR \e[0;37;90m\e[0K-\r\nAmount\e[0m \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 26
+    content: "\e[?25l\r\e[25A\e[0;33;93;46m    Reading response stream... (Number of bytes read: 3576)\e[0K\r\n\e[0K\r\n\e[0mDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:11 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 10\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 20.83750\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-Base\e[0m PhP \e[0;37;90m-Result\e[0m EUR \e[0;37;90m\e[0K-\r\nAmount\e[0m \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 35
+    content: "\e[?25l\r\e[27AAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:11 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 10\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 20.83750\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-Base\e[0m PhP \e[0;37;90m-Result\e[0m EUR \e[0;37;90m\e[0K-\r\nAmount\e[0m \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 188
+    content: "\e[?25l\r\e[27A\e[0;33;93;46m\e[0K\r\n Reading web response\e[0K\r\n    Reading response stream... (Number of bytes read: 0)\e[0K\r\n\e[0K\r\n\e[0mDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:11 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 10\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 20.83750\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-Base\e[0m PhP \e[0;37;90m-Result\e[0m EUR \e[0;37;90m\e[0K-\r\nAmount\e[0m \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 35
+    content: "\e[?25l\r\e[25A\e[0;33;93;46m    Reading response stream... (Number of bytes read: 7805)\e[0K\r\n\e[0K\r\n\e[0mDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:11 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 10\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 20.83750\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-Base\e[0m PhP \e[0;37;90m-Result\e[0m EUR \e[0;37;90m\e[0K-\r\nAmount\e[0m \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 27
+    content: "\e[?25l\r\e[27AAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:11 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 10\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 20.83750\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-Base\e[0m PhP \e[0;37;90m-Result\e[0m EUR \e[0;37;90m\e[0K-\r\nAmount\e[0m \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 220
+    content: "\e[?25l\r\e[27A\e[0;33;93;46m\e[0K\r\n Reading web response\e[0K\r\n    Reading response stream... (Number of bytes read: 0)\e[0K\r\n\e[0K\r\n\e[0mDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:11 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 10\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 20.83750\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-Base\e[0m PhP \e[0;37;90m-Result\e[0m EUR \e[0;37;90m\e[0K-\r\nAmount\e[0m \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 34
+    content: "\e[?25l\r\e[27AAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:11 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 10\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 20.83750\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-Base\e[0m PhP \e[0;37;90m-Result\e[0m EUR \e[0;37;90m\e[0K-\r\nAmount\e[0m \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 220
+    content: "\e[?25l\r\e[27A\e[0;33;93;46m\e[0K\r\n Reading web response\e[0K\r\n    Reading response stream... (Number of bytes read: 3576)\e[0K\r\n\e[0K\r\n\e[0mDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:11 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 10\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 20.83750\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-Base\e[0m PhP \e[0;37;90m-Result\e[0m EUR \e[0;37;90m\e[0K-\r\nAmount\e[0m \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 25
+    content: "\e[?25l\r\e[27AAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:11 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 10\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 20.83750\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-Base\e[0m PhP \e[0;37;90m-Result\e[0m EUR \e[0;37;90m\e[0K-\r\nAmount\e[0m \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 225
+    content: "\e[?25l\r\e[27A\e[0;33;93;46m\e[0K\r\n Reading web response\e[0K\r\n    Reading response stream... (Number of bytes read: 3576)\e[0K\r\n\e[0K\r\n\e[0mDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:11 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 10\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 20.83750\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-Base\e[0m PhP \e[0;37;90m-Result\e[0m EUR \e[0;37;90m\e[0K-\r\nAmount\e[0m \e[0;1m5\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 31
+    content: "\e[?25l\r\e[27AAfterwards enter the received api key here: : aa9464c63b35f8a405af\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m USD BYN \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:12:51 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 5\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 10.41875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:11 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 10\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 20.83750\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-Base\e[0m PhP \e[0;37;90m-Result\e[0m EUR \e[0;37;90m\e[0K-\r\nAmount\e[0m \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:36 PM\e[0K\r\nFrom   : PHP\e[0K\e[?25h"
+  - delay: 28
+    content: "\e[?25l\r\nTo     : EUR\e[0K\r\nAmount : 5\e[0K\r\nRate   : 0.016975\e[0K\r\nResult : 0.084875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\>\e[0K\e[81G\e[?25h"
+  - delay: 7653
+    content: "\e[?25l\rPS \\\e[0;31;91m> \e[0m(\e[0;33;93m[\e[0m\e[0K\e[?25h"
+  - delay: 31
+    content: "\e[?25l\rPS \\> ([PSCustomObject]@{\e[0;1mBase\e[0;37;90m=\e[0;36m\"PHP\"\e[0m; \e[0;1mAmount\e[0;37;90m=\e[0;1m4\e[0K0"
+  - delay: 34
+    content: "\r\n0\e[0m})|  \e[0;33;93mGet-ExchangeRate\e[0m\e[0K\e[?25h"
+  - delay: 470
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 215
+    content: "\e[?25l\r\e[27A\e[0;33;93;46m\e[0K\r\n Reading web response\e[0K\r\n    Reading response stream... (Number of bytes read: 3576)\e[0K\r\n\e[0K\r\n\e[0mFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 10\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 20.83750\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-Base\e[0m PhP \e[0;37;90m-Result\e[0m EUR \e[0;37;90m\e[0K-\r\nAmount\e[0m \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:36 PM\e[0K\r\nFrom   : PHP\e[0K\r\nTo     : EUR\e[0K\r\nAmount : 5\e[0K\r\nRate   : 0.016975\e[0K\r\nResult : 0.084875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> ([PSCustomObject]@{\e[0;1mBase\e[0;37;90m=\e[0;36m\"PHP\"\e[0m; \e[0;1mAmount\e[0;37;90m=\e[0;1m4\e[0K0\r\n0\e[0m})|  \e[0;33;93mGet-ExchangeRate\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 33
+    content: "\e[?25l\r\e[27APS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:11 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 10\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 20.83750\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-Base\e[0m PhP \e[0;37;90m-Result\e[0m EUR \e[0;37;90m\e[0K-\r\nAmount\e[0m \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:36 PM\e[0K\r\nFrom   : PHP\e[0K\r\nTo     : EUR\e[0K\r\nAmount : 5\e[0K\r\nRate   : 0.016975\e[0K\r\nResult : 0.084875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> ([PSCustomObject]@{\e[0;1mBase\e[0;37;90m=\e[0;36m\"PHP\"\e[0m; \e[0;1mAmount\e[0;37;90m=\e[0;1m4\e[0K0\r\n0\e[0m})|  \e[0;33;93mGet-ExchangeRate\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 379
+    content: "\e[?25l\r\e[27A\e[0;33;93;46m\e[0K\r\n Reading web response\e[0K\r\n    Reading response stream... (Number of bytes read: 0)\e[0K\r\n\e[0K\r\n\e[0mFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 10\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 20.83750\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-Base\e[0m PhP \e[0;37;90m-Result\e[0m EUR \e[0;37;90m\e[0K-\r\nAmount\e[0m \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:36 PM\e[0K\r\nFrom   : PHP\e[0K\r\nTo     : EUR\e[0K\r\nAmount : 5\e[0K\r\nRate   : 0.016975\e[0K\r\nResult : 0.084875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> ([PSCustomObject]@{\e[0;1mBase\e[0;37;90m=\e[0;36m\"PHP\"\e[0m; \e[0;1mAmount\e[0;37;90m=\e[0;1m4\e[0K0\r\n0\e[0m})|  \e[0;33;93mGet-ExchangeRate\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 26
+    content: "\e[?25l\r\e[25A\e[0;33;93;46m    Reading response stream... (Number of bytes read: 3576)\e[0K\r\n\e[0K\r\n\e[0mFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 10\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 20.83750\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-Base\e[0m PhP \e[0;37;90m-Result\e[0m EUR \e[0;37;90m\e[0K-\r\nAmount\e[0m \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:36 PM\e[0K\r\nFrom   : PHP\e[0K\r\nTo     : EUR\e[0K\r\nAmount : 5\e[0K\r\nRate   : 0.016975\e[0K\r\nResult : 0.084875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> ([PSCustomObject]@{\e[0;1mBase\e[0;37;90m=\e[0;36m\"PHP\"\e[0m; \e[0;1mAmount\e[0;37;90m=\e[0;1m4\e[0K0\r\n0\e[0m})|  \e[0;33;93mGet-ExchangeRate\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 37
+    content: "\e[?25l\r\e[27APS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-From\e[0m USD \e[0;37;90m-To\e[0m BYN \e[0;1m10\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:11 PM\e[0K\r\nFrom   : USD\e[0K\r\nTo     : BYN\e[0K\r\nAmount : 10\e[0K\r\nRate   : 2.08375\e[0K\r\nResult : 20.83750\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-Base\e[0m PhP \e[0;37;90m-Result\e[0m EUR \e[0;37;90m\e[0K-\r\nAmount\e[0m \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:36 PM\e[0K\r\nFrom   : PHP\e[0K\r\nTo     : EUR\e[0K\r\nAmount : 5\e[0K\r\nRate   : 0.016975\e[0K\r\nResult : 0.084875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> ([PSCustomObject]@{\e[0;1mBase\e[0;37;90m=\e[0;36m\"PHP\"\e[0m; \e[0;1mAmount\e[0;37;90m=\e[0;1m4\e[0K0\r\n0\e[0m})|  \e[0;33;93mGet-ExchangeRate\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 23
+    content: "\e[?25l\r\n\e[0K\r\nDate   : 5/17/2019 5:13:44 PM\e[0K\r\nFrom   : PHP\e[0K\r\nTo     : USD\e[0K\r\nAmount : 400\e[0K\r\nRate   : 0.018972\e[0K\r\nResult : 7.588800\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\e[?25h"
+  - delay: 33
+    content: "PS \\>\e[0K\e[81G"
+  - delay: 7078
+    content: "\e[?25l\rPS \\> \e[0;33;93mg\e[0m\e[0K\e[?25h"
+  - delay: 66
+    content: "\e[0;33;93me\e[0m\e[0K"
+  - delay: 93
+    content: "\e[0;33;93mt\e[0m\e[0K"
+  - delay: 183
+    content: "\e[0;33;93m-\e[0m\e[0K"
+  - delay: 627
+    content: "\e[0;33;93mc\e[0m\e[0K"
+  - delay: 160
+    content: "\e[0;33;93mo\e[0m\e[0K"
+  - delay: 397
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Command\e[0m\e[0K\e[?25h"
+  - delay: 635
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-CompatibleVersionAddtionaProperties\e[0KS\r\ntr\e[0m\e[0K\e[?25h"
+  - delay: 686
+    content: "\e[?25l\r\e[1APS \\> \e[0;33;93mGet-ComplexResourceQualifier\e[0m\e[0K\r\n\e[0K\r\e[1A\e[109G\e[?25h"
+  - delay: 466
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ComplexResourceQualifie\e[0m\e[0K\r\n\e[0K\r\e[1A\e[108G\e[?25h"
+  - delay: 498
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ComplexResourceQualifi\e[0m\e[0K\r\n\e[0K\r\e[1A\e[107G\e[?25h"
+  - delay: 33
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ComplexResourceQualif\e[0m\e[0K\r\n\e[0K\r\e[1A\e[106G\e[?25h"
+  - delay: 25
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ComplexResourceQuali\e[0m\e[0K\r\n\e[0K\r\e[1A\e[105G\e[?25h"
+  - delay: 33
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ComplexResourceQual\e[0m\e[0K\r\n\e[0K\r\e[1A\e[104G\e[?25h"
+  - delay: 33
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ComplexResourceQua\e[0m\e[0K\r\n\e[0K\r\e[1A\e[103G\e[?25h"
+  - delay: 33
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ComplexResourceQu\e[0m\e[0K\r\n\e[0K\r\e[1A\e[102G\e[?25h"
+  - delay: 33
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ComplexResourceQ\e[0m\e[0K\r\n\e[0K\r\e[1A\e[101G\e[?25h"
+  - delay: 33
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ComplexResource\e[0m\e[0K\r\n\e[0K\r\e[1A\e[100G\e[?25h"
+  - delay: 32
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ComplexResourc\e[0m\e[0K\r\n\e[0K\r\e[1A\e[99G\e[?25h"
+  - delay: 27
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ComplexResour\e[0m\e[0K\r\n\e[0K\r\e[1A\e[98G\e[?25h"
+  - delay: 28
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ComplexResou\e[0m\e[0K\r\n\e[0K\r\e[1A\e[97G\e[?25h"
+  - delay: 63
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ComplexRes\e[0m\e[0K\r\n\e[0K\r\e[1A\e[95G\e[?25h"
+  - delay: 65
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-ComplexR\e[0m\e[0K\r\n\e[0K\r\e[1A\e[93G\e[?25h"
+  - delay: 34
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Complex\e[0m\e[0K\r\n\e[0K\r\e[1A\e[92G\e[?25h"
+  - delay: 33
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Comple\e[0m\e[0K\r\n\e[0K\r\e[1A\e[91G\e[?25h"
+  - delay: 31
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Compl\e[0m\e[0K\r\n\e[0K\r\e[1A\e[90G\e[?25h"
+  - delay: 60
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Comp\e[0m\e[0K\r\n\e[0K\r\e[1A\e[89G\e[?25h"
+  - delay: 25
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Com\e[0m\e[0K\r\n\e[0K\r\e[1A\e[88G\e[?25h"
+  - delay: 257
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Co\e[0m\e[0K\r\n\e[0K\r\e[1A\e[87G\e[?25h"
+  - delay: 1502
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Cou\e[0m\e[0K\r\n\e[0K\r\e[1A\e[88G\e[?25h"
+  - delay: 125
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Coun\e[0m\e[0K\r\n\e[0K\r\e[1A\e[89G\e[?25h"
+  - delay: 306
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Count\e[0m\e[0K\r\n\e[0K\r\e[1A\e[90G\e[?25h"
+  - delay: 600
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Countr\e[0m\e[0K\r\n\e[0K\r\e[1A\e[91G\e[?25h"
+  - delay: 185
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Countri\e[0m\e[0K\r\n\e[0K\r\e[1A\e[92G\e[?25h"
+  - delay: 128
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Countrie\e[0m\e[0K\r\n\e[0K\r\e[1A\e[93G\e[?25h"
+  - delay: 185
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Countries\e[0m\e[0K\r\n\e[0K\r\e[1A\e[94G\e[?25h"
+  - delay: 653
+    content: "\e[95G"
+  - delay: 2873
+    content: "\e[94G"
+  - delay: 161
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Countrie\e[0m\e[0K\r\n\e[0K\r\e[1A\e[93G\e[?25h"
+  - delay: 95
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Countri\e[0m\e[0K\r\n\e[0K\r\e[1A\e[92G\e[?25h"
+  - delay: 121
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Countr\e[0m\e[0K\r\n\e[0K\r\e[1A\e[91G\e[?25h"
+  - delay: 130
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Count\e[0m\e[0K\r\n\e[0K\r\e[1A\e[90G\e[?25h"
+  - delay: 94
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Coun\e[0m\e[0K\r\n\e[0K\r\e[1A\e[89G\e[?25h"
+  - delay: 118
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Cou\e[0m\e[0K\r\n\e[0K\r\e[1A\e[88G\e[?25h"
+  - delay: 99
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Co\e[0m\e[0K\r\n\e[0K\r\e[1A\e[87G\e[?25h"
+  - delay: 127
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-C\e[0m\e[0K\r\n\e[0K\r\e[1A\e[86G\e[?25h"
+  - delay: 657
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Cu\e[0m\e[0K\r\n\e[0K\r\e[1A\e[87G\e[?25h"
+  - delay: 182
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Cur\e[0m\e[0K\r\n\e[0K\r\e[1A\e[88G\e[?25h"
+  - delay: 160
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Curr\e[0m\e[0K\r\n\e[0K\r\e[1A\e[89G\e[?25h"
+  - delay: 219
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Curri\e[0m\e[0K\r\n\e[0K\r\e[1A\e[90G\e[?25h"
+  - delay: 407
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Curr\e[0m\e[0K\r\n\e[0K\r\e[1A\e[89G\e[?25h"
+  - delay: 119
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Curre\e[0m\e[0K\r\n\e[0K\r\e[1A\e[90G\e[?25h"
+  - delay: 1031
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Currencies\e[0m\e[0K\r\n\e[0K"
+  - delay: 34
+    content: "\r\e[1A\e[95G\e[?25h"
+  - delay: 658
+    content: "\e[96G"
+  - delay: 1430
+    content: "\e[?25l\rPS \\\e[0;31;91m> \e[0;33;93mGet-Currencies\e[0m |\e[0K\r\n\e[0K\r\e[1A\e[97G\e[?25h"
+  - delay: 380
+    content: "\e[98G"
+  - delay: 1996
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m\e[0K\r\n\e[0K\r\e[1A\e[99G\e[?25h"
+  - delay: 569
+    content: "\e[100G"
+  - delay: 1156
+    content: "\e[?25l\rPS \\\e[0;31;91m> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0K\r\n\e[0K\r\e[1A\e[101G\e[?25h"
+  - delay: 187
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {}\e[0K\r\n\e[0K\r\e[1A\e[102G\e[?25h"
+  - delay: 406
+    content: "\e[101G"
+  - delay: 1841
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;33;93m$\e[0m}\e[0K\r\n\e[0K\r\e[1A\e[102G\e[?25h"
+  - delay: 192
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m}\e[0K\r\n\e[0K\r\e[1A\e[103G\e[?25h"
+  - delay: 368
+    content: "\e[?25l\rPS \\\e[0;31;91m> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.}\e[0K\r\n\e[0K\r\e[1A\e[104G\e[?25h"
+  - delay: 1815
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mi\e[0m}\e[0K\r\n\e[0K\r\e[1A\e[105G\e[?25h"
+  - delay: 153
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m}\e[0K\r\n\e[0K\r\e[1A\e[106G\e[?25h"
+  - delay: 256
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m }\e[0K\r\n\e[0K\r\e[1A\e[107G\e[?25h"
+  - delay: 1035
+    content: "\e[?25l\rPS \\\e[0;31;91m> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-\e[0m}\e[0K\r\n\e[0K\r\e[1A\e[108G\e[?25h"
+  - delay: 149
+    content: "\e[?25l\rPS \\\e[0;31;91m> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-e\e[0m}\e[0K\r\n\e[0K\r\e[1A\e[109G\e[?25h"
+  - delay: 288
+    content: "\e[?25l\rPS \\\e[0;31;91m> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-ef\e[0m}\e[0K\r\n\e[0K\r\e[1A\e[110G\e[?25h"
+  - delay: 367
+    content: "\e[?25l\rPS \\\e[0;31;91m> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-e\e[0m}\e[0K\r\n\e[0K\r\e[1A\e[109G\e[?25h"
+  - delay: 96
+    content: "\e[?25l\rPS \\\e[0;31;91m> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-eg\e[0m}\e[0K\r\n\e[0K\r\e[1A\e[110G\e[?25h"
+  - delay: 476
+    content: "\e[?25l\rPS \\\e[0;31;91m> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-e\e[0m}\e[0K\r\n\e[0K\r\e[1A\e[109G\e[?25h"
+  - delay: 118
+    content: "\e[?25l\rPS \\\e[0;31;91m> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-ed\e[0m}\e[0K\r\n\e[0K\r\e[1A\e[110G\e[?25h"
+  - delay: 685
+    content: "\e[?25l\rPS \\\e[0;31;91m> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-e\e[0m}\e[0K\r\n\e[0K\r\e[1A\e[109G\e[?25h"
+  - delay: 1128
+    content: "\e[?25l\rPS \\\e[0;31;91m> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-eq\e[0m}\e[0K\r\n\e[0K\r\e[1A\e[110G\e[?25h"
+  - delay: 188
+    content: "\e[?25l\rPS \\\e[0;31;91m> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-eq\e[0m }\e[0K\r\n\e[0K\r\e[1A\e[111G\e[?25h"
+  - delay: 1629
+    content: "\e[?25l\rPS \\\e[0;31;91m> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-eq\e[0m \e[0;36m\"}\e[0m\e[0K\r\n\e[0K\r\e[1A\e[112G\e[?25h"
+  - delay: 186
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-eq\e[0m \e[0;36m\"\"\e[0m}\e[0K\r\n\e[0K\r\e[1A\e[113G\e[?25h"
+  - delay: 399
+    content: "\e[112G"
+  - delay: 1599
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-eq\e[0m \e[0;36m\"B\"\e[0m}\e[0K\r\n\e[0K\r\e[1A\e[113G\e[?25h"
+  - delay: 65
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-eq\e[0m \e[0;36m\"BY\"\e[0m}\e[0K\r\n\e[0K\r\e[1A\e[114G\e[?25h"
+  - delay: 152
+    content: "\e[?25l\rPS \\> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-eq\e[0m \e[0;36m\"BYN\"\e[0m}\e[0K\r\n\e[0K\r\e[1A\e[115G\e[?25h"
+  - delay: 441
+    content: "\e[?25l\r\n\e[?25h"
+  - delay: 191
+    content: "\e[?25l\r\e[27A\e[0;33;93;46m\e[0K\r\n Reading web response\e[0K\r\n    Reading response stream... (Number of bytes read: 0)\e[0K\r\n\e[0K\r\n\e[0mDate   : 5/17/2019 5:13:36 PM\e[0K\r\nFrom   : PHP\e[0K\r\nTo     : EUR\e[0K\r\nAmount : 5\e[0K\r\nRate   : 0.016975\e[0K\r\nResult : 0.084875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> ([PSCustomObject]@{\e[0;1mBase\e[0;37;90m=\e[0;36m\"PHP\"\e[0m; \e[0;1mAmount\e[0;37;90m=\e[0;1m4\e[0K0\r\n0\e[0m})|  \e[0;33;93mGet-ExchangeRate\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:44 PM\e[0K\r\nFrom   : PHP\e[0K\r\nTo     : USD\e[0K\r\nAmount : 400\e[0K\r\nRate   : 0.018972\e[0K\r\nResult : 7.588800\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-eq\e[0m \e[0;36m\"BYN\"\e[0m}\e[0K\r\n\e[0K\e[?25h"
+  - delay: 26
+    content: "\e[?25l\r\e[25A\e[0;33;93;46m    Reading response stream... (Number of bytes read: 3576)\e[0K\r\n\e[0K\r\n\e[0mDate   : 5/17/2019 5:13:36 PM\e[0K\r\nFrom   : PHP\e[0K\r\nTo     : EUR\e[0K\r\nAmount : 5\e[0K\r\nRate   : 0.016975\e[0K\r\nResult : 0.084875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> ([PSCustomObject]@{\e[0;1mBase\e[0;37;90m=\e[0;36m\"PHP\"\e[0m; \e[0;1mAmount\e[0;37;90m=\e[0;1m4\e[0K0\r\n0\e[0m})|  \e[0;33;93mGet-ExchangeRate\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:44 PM\e[0K\r\nFrom   : PHP\e[0K\r\nTo     : USD\e[0K\r\nAmount : 400\e[0K\r\nRate   : 0.018972\e[0K\r\nResult : 7.588800\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-eq\e[0m \e[0;36m\"BYN\"\e[0m}\e[0K\r\n\e[0K\e[?25h"
+  - delay: 36
+    content: "\e[?25l\r\e[27APS \\> \e[0;33;93mGet-ExchangeRate\e[0m \e[0;37;90m-Base\e[0m PhP \e[0;37;90m-Result\e[0m EUR \e[0;37;90m\e[0K-\r\nAmount\e[0m \e[0;1m5\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:36 PM\e[0K\r\nFrom   : PHP\e[0K\r\nTo     : EUR\e[0K\r\nAmount : 5\e[0K\r\nRate   : 0.016975\e[0K\r\nResult : 0.084875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> ([PSCustomObject]@{\e[0;1mBase\e[0;37;90m=\e[0;36m\"PHP\"\e[0m; \e[0;1mAmount\e[0;37;90m=\e[0;1m4\e[0K0\r\n0\e[0m})|  \e[0;33;93mGet-ExchangeRate\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:44 PM\e[0K\r\nFrom   : PHP\e[0K\r\nTo     : USD\e[0K\r\nAmount : 400\e[0K\r\nRate   : 0.018972\e[0K\r\nResult : 7.588800\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-eq\e[0m \e[0;36m\"BYN\"\e[0m}\e[0K\r\n\e[0K\e[?25h"
+  - delay: 23
+    content: "\e[?25l\r\ncurrencyName         currencySymbol id\e[0K\r\n------------         -------------- --\e[0K\r\nNew Belarusian Ruble p.             BYN\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\>\e[0K\e[81G\e[?25h"
+  - delay: 11411
+    content: "\e[?25l\rPS \\> \e[0;33;93mx\e[0m\e[0K\e[?25h"
+  - delay: 96
+    content: "\e[0;33;93me\e[0m\e[0K"
+  - delay: 250
+    content: "\e[84G"
+  - delay: 2149
+    content: "\e[?25l\rPS \\> \e[0;33;93mxe\e[0m P\e[0K\e[?25h"
+  - delay: 128
+    content: "H\e[0K"
+  - delay: 154
+    content: "P\e[0K"
+  - delay: 224
+    content: "\e[88G"
+  - delay: 871
+    content: "\e[?25l\rPS \\> \e[0;33;93mxe\e[0m PHP U\e[0K\e[?25h"
+  - delay: 821
+    content: "\e[?25l\r\e[27A\e[0;33;93;46m\e[0K\r\n Reading web response\e[0K\r\n    Reading response stream... (Number of bytes read: 0)\e[0K\r\n\e[0K\r\n\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> ([PSCustomObject]@{\e[0;1mBase\e[0;37;90m=\e[0;36m\"PHP\"\e[0m; \e[0;1mAmount\e[0;37;90m=\e[0;1m4\e[0K0\r\n0\e[0m})|  \e[0;33;93mGet-ExchangeRate\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:44 PM\e[0K\r\nFrom   : PHP\e[0K\r\nTo     : USD\e[0K\r\nAmount : 400\e[0K\r\nRate   : 0.018972\e[0K\r\nResult : 7.588800\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-eq\e[0m \e[0;36m\"BYN\"\e[0m}\e[0K\r\n\e[0K\r\ncurrencyName         currencySymbol id\e[0K\r\n------------         -------------- --\e[0K\r\nNew Belarusian Ruble p.             BYN\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mxe\e[0m PHP U\e[0K\e[?25h"
+  - delay: 26
+    content: "\e[?25l\r\e[27ATo     : EUR\e[0K\r\nAmount : 5\e[0K\r\nRate   : 0.016975\e[0K\r\nResult : 0.084875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> ([PSCustomObject]@{\e[0;1mBase\e[0;37;90m=\e[0;36m\"PHP\"\e[0m; \e[0;1mAmount\e[0;37;90m=\e[0;1m4\e[0K0\r\n0\e[0m})|  \e[0;33;93mGet-ExchangeRate\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:44 PM\e[0K\r\nFrom   : PHP\e[0K\r\nTo     : USD\e[0K\r\nAmount : 400\e[0K\r\nRate   : 0.018972\e[0K\r\nResult : 7.588800\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-eq\e[0m \e[0;36m\"BYN\"\e[0m}\e[0K\r\n\e[0K\r\ncurrencyName         currencySymbol id\e[0K\r\n------------         -------------- --\e[0K\r\nNew Belarusian Ruble p.             BYN\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mxe\e[0m PHP U\e[0K\e[?25h"
+  - delay: 30
+    content: "SD\e[0K"
+  - delay: 1188
+    content: "\e[92G"
+  - delay: 1032
+    content: "\e[?25l\rPS \\> \e[0;33;93mxe\e[0m PHP USD \e[0;1m1\e[0m\e[0K\e[?25h"
+  - delay: 150
+    content: "\e[0;1m0\e[0m\e[0K"
+  - delay: 161
+    content: "\e[0;1m0\e[0m\e[0K"
+  - delay: 908
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 320
+    content: "\e[?25l\r\e[27A\e[0;33;93;46m\e[0K\r\n Reading web response\e[0K\r\n    Reading response stream... (Number of bytes read: 3443)\e[0K\r\n\e[0K\r\n\e[0m\e[0K\r\n\e[0K\r\nPS \\> ([PSCustomObject]@{\e[0;1mBase\e[0;37;90m=\e[0;36m\"PHP\"\e[0m; \e[0;1mAmount\e[0;37;90m=\e[0;1m4\e[0K0\r\n0\e[0m})|  \e[0;33;93mGet-ExchangeRate\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:44 PM\e[0K\r\nFrom   : PHP\e[0K\r\nTo     : USD\e[0K\r\nAmount : 400\e[0K\r\nRate   : 0.018972\e[0K\r\nResult : 7.588800\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-eq\e[0m \e[0;36m\"BYN\"\e[0m}\e[0K\r\n\e[0K\r\ncurrencyName         currencySymbol id\e[0K\r\n------------         -------------- --\e[0K\r\nNew Belarusian Ruble p.             BYN\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mxe\e[0m PHP USD \e[0;1m100\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 25
+    content: "\e[?25l\r\e[27AAmount : 5\e[0K\r\nRate   : 0.016975\e[0K\r\nResult : 0.084875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> ([PSCustomObject]@{\e[0;1mBase\e[0;37;90m=\e[0;36m\"PHP\"\e[0m; \e[0;1mAmount\e[0;37;90m=\e[0;1m4\e[0K0\r\n0\e[0m})|  \e[0;33;93mGet-ExchangeRate\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:44 PM\e[0K\r\nFrom   : PHP\e[0K\r\nTo     : USD\e[0K\r\nAmount : 400\e[0K\r\nRate   : 0.018972\e[0K\r\nResult : 7.588800\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-eq\e[0m \e[0;36m\"BYN\"\e[0m}\e[0K\r\n\e[0K\r\ncurrencyName         currencySymbol id\e[0K\r\n------------         -------------- --\e[0K\r\nNew Belarusian Ruble p.             BYN\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mxe\e[0m PHP USD \e[0;1m100\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 594
+    content: "\e[?25l\r\e[27A\e[0;33;93;46m\e[0K\r\n Reading web response\e[0K\r\n    Reading response stream... (Number of bytes read: 0)\e[0K\r\n\e[0K\r\n\e[0m\e[0K\r\n\e[0K\r\nPS \\> ([PSCustomObject]@{\e[0;1mBase\e[0;37;90m=\e[0;36m\"PHP\"\e[0m; \e[0;1mAmount\e[0;37;90m=\e[0;1m4\e[0K0\r\n0\e[0m})|  \e[0;33;93mGet-ExchangeRate\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:44 PM\e[0K\r\nFrom   : PHP\e[0K\r\nTo     : USD\e[0K\r\nAmount : 400\e[0K\r\nRate   : 0.018972\e[0K\r\nResult : 7.588800\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-eq\e[0m \e[0;36m\"BYN\"\e[0m}\e[0K\r\n\e[0K\r\ncurrencyName         currencySymbol id\e[0K\r\n------------         -------------- --\e[0K\r\nNew Belarusian Ruble p.             BYN\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mxe\e[0m PHP USD \e[0;1m100\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 34
+    content: "\e[?25l\r\e[27AAmount : 5\e[0K\r\nRate   : 0.016975\e[0K\r\nResult : 0.084875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> ([PSCustomObject]@{\e[0;1mBase\e[0;37;90m=\e[0;36m\"PHP\"\e[0m; \e[0;1mAmount\e[0;37;90m=\e[0;1m4\e[0K0\r\n0\e[0m})|  \e[0;33;93mGet-ExchangeRate\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:44 PM\e[0K\r\nFrom   : PHP\e[0K\r\nTo     : USD\e[0K\r\nAmount : 400\e[0K\r\nRate   : 0.018972\e[0K\r\nResult : 7.588800\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-eq\e[0m \e[0;36m\"BYN\"\e[0m}\e[0K\r\n\e[0K\r\ncurrencyName         currencySymbol id\e[0K\r\n------------         -------------- --\e[0K\r\nNew Belarusian Ruble p.             BYN\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mxe\e[0m PHP USD \e[0;1m100\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 188
+    content: "\e[?25l\r\e[27A\e[0;33;93;46m\e[0K\r\n Reading web response\e[0K\r\n    Reading response stream... (Number of bytes read: 3443)\e[0K\r\n\e[0K\r\n\e[0m\e[0K\r\n\e[0K\r\nPS \\> ([PSCustomObject]@{\e[0;1mBase\e[0;37;90m=\e[0;36m\"PHP\"\e[0m; \e[0;1mAmount\e[0;37;90m=\e[0;1m4\e[0K0\r\n0\e[0m})|  \e[0;33;93mGet-ExchangeRate\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:44 PM\e[0K\r\nFrom   : PHP\e[0K\r\nTo     : USD\e[0K\r\nAmount : 400\e[0K\r\nRate   : 0.018972\e[0K\r\nResult : 7.588800\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-eq\e[0m \e[0;36m\"BYN\"\e[0m}\e[0K\r\n\e[0K\r\ncurrencyName         currencySymbol id\e[0K\r\n------------         -------------- --\e[0K\r\nNew Belarusian Ruble p.             BYN\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mxe\e[0m PHP USD \e[0;1m100\e[0m\e[0K\r\n\e[0K\e[?25h"
+  - delay: 33
+    content: "\e[?25l\r\e[27AAmount : 5\e[0K\r\nRate   : 0.016975\e[0K\r\nResult : 0.084875\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> ([PSCustomObject]@{\e[0;1mBase\e[0;37;90m=\e[0;36m\"PHP\"\e[0m; \e[0;1mAmount\e[0;37;90m=\e[0;1m4\e[0K0\r\n0\e[0m})|  \e[0;33;93mGet-ExchangeRate\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:13:44 PM\e[0K\r\nFrom   : PHP\e[0K\r\nTo     : USD\e[0K\r\nAmount : 400\e[0K\r\nRate   : 0.018972\e[0K\r\nResult : 7.588800\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mGet-Currencies\e[0m | \e[0;33;93m?\e[0m {\e[0;32;92m$_\e[0m.\e[0;1mid\e[0m \e[0;37;90m-eq\e[0m \e[0;36m\"BYN\"\e[0m}\e[0K\r\n\e[0K\r\ncurrencyName         currencySymbol id\e[0K\r\n------------         -------------- --\e[0K\r\nNew Belarusian Ruble p.             BYN\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\> \e[0;33;93mxe\e[0m PHP USD \e[0;1m100\e[0m\e[0K\r\n\e[0K\r\n\e[0K\r\nDate   : 5/17/2019 5:14:48 PM\e[0K\r\nFrom   : PHP\e[0K\e[1G\e[?25h"
+  - delay: 27
+    content: "\e[?25l\r\nTo     : USD\e[0K\r\nAmount : 100\e[0K\r\nRate   : 0.018972\e[0K\r\nResult : 1.897200\e[0K\r\n\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\>\e[0K\e[81G\e[?25h"
+  - delay: 3968
+    content: "\e[?25l\rPS \\> \e[0;33;93me\e[0m\e[0K\e[?25h"
+  - delay: 62
+    content: "\e[0;33;93mx\e[0m\e[0K"
+  - delay: 186
+    content: "\e[0;33;93mi\e[0m\e[0K"
+  - delay: 149
+    content: "\e[?25l\rPS \\> \e[0;32;92mexit\e[0m\e[0K\e[?25h"
+  - delay: 2225
+    content: "\e[?25l\rPS \\> \e[0;33;93mexi\e[0m\e[0K\e[?25h"
+  - delay: 129
+    content: "\e[?25l\rPS \\> \e[0;33;93mex\e[0m\e[0K\e[?25h"
+  - delay: 121
+    content: "\e[?25l\rPS \\> \e[0;33;93me\e[0m\e[0K\e[?25h"
+  - delay: 120
+    content: "\e[?25l\rPS \\>\e[0K\e[81G\e[?25h"
+  - delay: 976
+    content: "\e[?25l\rPS \\> \e[0;33;93mg\e[0m\e[0K\e[?25h"
+  - delay: 1217
+    content: "\e[0;33;93mx\e[0m\e[0K"
+  - delay: 222
+    content: "\e[0;33;93mc\e[0m\e[0K"
+  - delay: 432
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 342
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 40
+    content: "currencyName                               currencySymbol id\e[0K\e[?25l\r\n------------                               -------------- --\e[0K\r\nAlbanian Lek                               Lek            ALL\e[0K\r\nEast Caribbean Dollar                      $              XCD\e[0K\r\nEuro                                       ???            EUR\e[0K\r\nBarbadian Dollar                           $              BBD\e[0K\e[1G\e[?25h"
+  - delay: 32
+    content: "\e[?25l\r\nBhutanese Ngultrum                                        BTN\e[0K\r\nBrunei Dollar                              $              BND\e[0K\r\nCentral African CFA Franc                                 XAF\e[0K\r\nCuban Peso                                 $              CUP\e[0K\r\nUnited States Dollar                       $              USD\e[0K\r\nFalkland Islands Pound                     ??             FKP\e[0K\r\nGibraltar Pound                            ??             GIP\e[0K\r\nHungarian Forint                           Ft             HUF\e[0K\r\nIranian Rial                               ???            IRR\e[0K\r\nJamaican Dollar                            J$             JMD\e[0K\r\nAustralian Dollar                          $              AUD\e[0K\r\nLao Kip                                    ???            LAK\e[0K\r\nLibyan Dinar                                              LYD\e[0K\r\nMacedonian Denar                           ??????         MKD\e[0K\r\nWest African CFA Franc                                    XOF\e[0K\r\nNew Zealand Dollar                         $              NZD\e[0K\r\nOmani Rial                                 ???            OMR\e[0K\r\nPapua New Guinean Kina                                    PGK\e[0K\r\nRwandan Franc                                             RWF\e[0K\r\nSamoan Tala                                               WST\e[0K\r\nSerbian Dinar                              ??????.        RSD\e[0K\r\nSwedish Krona                              kr             SEK\e[0K\r\nTanzanian Shilling                         TSh            TZS\e[0K\e[1G\e[?25h"
+  - delay: 38
+    content: "\e[?25l\r\nArmenian Dram                                             AMD\e[0K\r\nBahamian Dollar                            $              BSD\e[0K\r\nBosnia And Herzegovina Konvertibilna Marka KM             BAM\e[0K\r\nCape Verdean Escudo                                       CVE\e[0K\r\nChinese Yuan                               ??             CNY\e[0K\r\nCosta Rican Colon                          ???            CRC\e[0K\r\nCzech Koruna                               K??            CZK\e[0K\r\nEritrean Nakfa                                            ERN\e[0K\r\nGeorgian Lari                                             GEL\e[0K\r\nHaitian Gourde                                            HTG\e[0K\r\nIndian Rupee                               ???            INR\e[0K\r\nJordanian Dinar                                           JOD\e[0K\r\nSouth Korean Won                           ???            KRW\e[0K\r\nLebanese Lira                              ??             LBP\e[0K\r\nMalawian Kwacha                                           MWK\e[0K\r\nMauritanian Ouguiya                                       MRO\e[0K\r\nMozambican Metical                                        MZN\e[0K\r\nNetherlands Antillean Gulden               ??             ANG\e[0K\r\nPeruvian Nuevo Sol                         S/.            PEN\e[0K\r\nQatari Riyal                               ???            QAR\e[0K\r\nSao Tome And Principe Dobra                               STD\e[0K\r\nSierra Leonean Leone                                      SLL\e[0K\r\nSomali Shilling                            S              SOS\e[0K\r\nSudanese Pound                                            SDG\e[0K\r\nSyrian Pound                               ??             SYP\e[0K\r\nAngolan Kwanza                                            AOA\e[0K\r\nAruban Florin                              ??             AWG\e[0K\r\nBahraini Dinar                                            BHD\e[0K\r\nBelize Dollar                              BZ$            BZD\e[0K\r\nBotswana Pula                              P              BWP\e[0K\r\nBurundi Franc                                             BIF\e[0K\r\nCayman Islands Dollar                      $              KYD\e[0K\r\n\e[0K\e[?25h"
+  - delay: 22
+    content: "Colombian Peso                             $              COP\e[0K\e[?25l\r\nDanish Krone                               kr             DKK\e[0K\r\nGuatemalan Quetzal                         Q              GTQ\e[0K\r\nHonduran Lempira                           L              HNL\e[0K\r\nIndonesian Rupiah                          Rp             IDR\e[0K\r\nIsraeli New Sheqel                         ???            ILS\e[0K\r\nKazakhstani Tenge                          ????           KZT\e[0K\r\nKuwaiti Dinar                                             KWD\e[0K\r\nLesotho Loti                                              LSL\e[0K\r\nMalaysian Ringgit                          RM             MYR\e[0K\r\nMauritian Rupee                            ???            MUR\e[0K\r\nMongolian Tugrik                           ???            MNT\e[0K\r\nMyanma Kyat                                               MMK\e[0K\r\nNigerian Naira                             ???            NGN\e[0K\r\nPanamanian Balboa                          B/.            PAB\e[0K\r\nPhilippine Peso                            ???            PHP\e[0K\r\nRomanian Leu                               lei            RON\e[0K\r\nSaudi Riyal                                ???            SAR\e[0K\r\n\e[0K\e[?25h"
+  - delay: 42
+    content: "Singapore Dollar                           $              SGD\e[0K\e[?25l\r\nSouth African Rand                         R              ZAR\e[0K\r\nSurinamese Dollar                          $              SRD\e[0K\r\nNew Taiwan Dollar                          NT$            TWD\e[0K\r\nPaanga                                                    TOP\e[0K\r\nVenezuelan Bolivar                                        VEF\e[0K\r\nAlgerian Dinar                                            DZD\e[0K\r\nArgentine Peso                             $              ARS\e[0K\r\nAzerbaijani Manat                          ??????         AZN\e[0K\r\nBelarusian Ruble                           p.             BYR\e[0K\r\nBolivian Boliviano                         $b             BOB\e[0K\r\nBulgarian Lev                              ????           BGN\e[0K\r\nCanadian Dollar                            $              CAD\e[0K\r\nChilean Peso                               $              CLP\e[0K\r\nCongolese Franc                                           CDF\e[0K\r\nDominican Peso                             RD$            DOP\e[0K\r\nFijian Dollar                              $              FJD\e[0K\r\nGambian Dalasi                                            GMD\e[0K\r\nGuyanese Dollar                            $              GYD\e[0K\r\nIcelandic Kr??na                           kr             ISK\e[0K\r\nIraqi Dinar                                               IQD\e[0K\r\nJapanese Yen                               ??             JPY\e[0K\r\nNorth Korean Won                           ???            KPW\e[0K\r\nLatvian Lats                               Ls             LVL\e[0K\r\nSwiss Franc                                Fr.            CHF\e[0K\r\nMalagasy Ariary                                           MGA\e[0K\r\nMoldovan Leu                                              MDL\e[0K\r\nMoroccan Dirham                                           MAD\e[0K\r\nNepalese Rupee                             ???            NPR\e[0K\r\nNicaraguan Cordoba                         C$             NIO\e[0K\r\nPakistani Rupee                            ???            PKR\e[0K\e[?25h"
+  - delay: 27
+    content: "\e[?25l\r\nParaguayan Guarani                         Gs             PYG\e[0K\r\nSaint Helena Pound                         ??             SHP\e[0K\r\nSeychellois Rupee                          ???            SCR\e[0K\r\nSolomon Islands Dollar                     $              SBD\e[0K\r\nSri Lankan Rupee                           ???            LKR\e[0K\r\nThai Baht                                  ???            THB\e[0K\r\nTurkish New Lira                                          TRY\e[0K\r\nUAE Dirham                                                AED\e[0K\r\nVanuatu Vatu                                              VUV\e[0K\r\nYemeni Rial                                ???            YER\e[0K\r\nAfghan Afghani                             ??             AFN\e[0K\r\nBangladeshi Taka                                          BDT\e[0K\r\nBrazilian Real                             R$             BRL\e[0K\r\nCambodian Riel                             ???            KHR\e[0K\r\nComorian Franc                                            KMF\e[0K\r\nCroatian Kuna                              kn             HRK\e[0K\r\nDjiboutian Franc                                          DJF\e[0K\r\nEgyptian Pound                             ??             EGP\e[0K\r\nEthiopian Birr                                            ETB\e[0K\r\nCFP Franc                                                 XPF\e[0K\r\nGhanaian Cedi                                             GHS\e[0K\r\nGuinean Franc                                             GNF\e[0K\r\nHong Kong Dollar                           $              HKD\e[0K\r\nSpecial Drawing Rights                                    XDR\e[0K\r\nKenyan Shilling                            KSh            KES\e[0K\e[1G\e[?25h"
+  - delay: 24
+    content: "\e[?25l\r\nKyrgyzstani Som                            ????           KGS\e[0K\r\nLiberian Dollar                            $              LRD\e[0K\r\nMacanese Pataca                                           MOP\e[0K\r\nMaldivian Rufiyaa                                         MVR\e[0K\r\nMexican Peso                               $              MXN\e[0K\r\nNamibian Dollar                            $              NAD\e[0K\r\nNorwegian Krone                            kr             NOK\e[0K\r\nPolish Zloty                               z??            PLN\e[0K\r\nRussian Ruble                              ??????         RUB\e[0K\r\nSwazi Lilangeni                                           SZL\e[0K\r\nTajikistani Somoni                                        TJS\e[0K\r\nTrinidad and Tobago Dollar                 TT$            TTD\e[0K\r\nUgandan Shilling                           USh            UGX\e[0K\r\nUruguayan Peso                             $U             UYU\e[0K\r\nVietnamese Dong                            ???            VND\e[0K\r\nTunisian Dinar                                            TND\e[0K\r\nUkrainian Hryvnia                          ???            UAH\e[0K\r\nUzbekistani Som                            ????           UZS\e[0K\r\n\e[0K\e[?25h"
+  - delay: 33
+    content: "Turkmenistan Manat                                        TMT\e[0K\e[?25l\r\nBritish Pound                              ??             GBP\e[0K\r\nZambian Kwacha                                            ZMW\e[0K\r\nBitcoin                                    BTC            BTC\e[0K\r\nNew Belarusian Ruble                       p.             BYN\e[0K\r\nBermudan Dollar                                           BMD\e[0K\r\nGuernsey Pound                                            GGP\e[0K\r\nChilean Unit Of Account                                   CLF\e[0K\r\nCuban Convertible Peso                                    CUC\e[0K\r\nManx pound                                                IMP\e[0K\r\nJersey Pound                                              JEP\e[0K\r\nSalvadoran Col??n                                         SVC\e[0K\r\nOld Zambian Kwacha                                        ZMK\e[0K\r\nSilver (troy ounce)                                       XAG\e[0K\r\nZimbabwean Dollar                                         ZWL\e[0K\r\n\e[0K\r\n\e[0K\r\nPS \\>\e[0K\e[81G\e[?25h"
+  - delay: 2870
+    content: "\e[?25l\rPS \\> \e[0;33;93me\e[0m\e[0K\e[?25h"
+  - delay: 97
+    content: "\e[0;33;93mx\e[0m\e[0K"
+  - delay: 156
+    content: "\e[0;33;93mi\e[0m\e[0K"
+  - delay: 94
+    content: "\e[?25l\rPS \\> \e[0;32;92mexit\e[0m\e[0K\e[?25h"
+  - delay: 876
+    content: "\e[?25l\r\n\e[0K\e[?25h"
