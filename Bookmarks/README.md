@@ -2,6 +2,8 @@
 
 [![https://www.powershellgallery.com/packages/Bookmarks/1.1.3](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Bookmarks/1.1.3)
 
+<!-- [Documentation](https://powershellscripts.readthedocs.io/en/latest/) -->
+
 ---------------------
 
 ![ConsoleDemo](https://raw.githubusercontent.com/stadub/PowershellScripts/master/Bookmarks/Assets/demo.gif)
@@ -67,7 +69,7 @@ List bookmsrks:
 
 ## Changelog
 
-### [v1.1.3](https://github.com/stadub/PowershellScripts/releases/tag/v0.1.0)
+### [v1.1.3](https://github.com/stadub/PowershellScripts/releases/tag/v0.2.0)
 
 * Add versioning to Markdown page.
 * Move Assets to individual folder.
@@ -94,7 +96,7 @@ List bookmsrks:
 
 * Added command aliases.
 
-### [v0.9](https://github.com/stadub/PowershellScripts/releases/tag/v0.1.0)
+### [v0.9](https://github.com/stadub/PowershellScripts/releases/tag/v0.1.0) Aug 18, 2015
 
 * Added CRUD Bookmark commands:
 
@@ -115,17 +117,29 @@ Save-PSBookmarkk - Save bookmarks to file
 
 ```
 
-## Motivation
+## Donate
 
-Hi, I written this module(and ther from repo) for my own usage.
-But if you found it usefull you can Buy me a beer/cup of tee😊
+The modules are actively maintained during evenings and weekends,
+so if you found it usefull you can Buy me a beer/cup of tee😊
+
+
+
+[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png)](https://www.buymeacoffee.com/dima)
+
+[![Support by Yandex](https://money.yandex.ru/quickpay/button-widget?button-text=15&button-size=m&button-color=orange)](https://money.yandex.ru/to/410014572567962/200)
+
+
+If you wish to report bugs or contribute fixes and features, please see the [contributors guide](./CONTRIBUTING.md)
+
+
+https://github.com/BlueHatbRit/mdpdf/blob/master/CONTRIBUTING.md
+
 
 <!--   By Paypal [![PayPal.me](https://img.shields.io/badge/PayPal-me-blue.svg?maxAge=2592000)](https://www.paypal.me/dima.by)
 
  <> Or 
  -->
-[![Yandex Money](https://money.yandex.ru/i/ym2015_icon.png)](https://money.yandex.ru/to/410014572567962)
 
-<!-- Yandex Money (https://money.yandex.ru/i/ym2015_icon.png)(https://money.yandex.ru/to/410014572567962) -->
+If you have any idea or suggestion - please add a github issue and I'll try to implement it as soon as possible😉
 
-If you have any idea or suggestion - please add a github issue and I'll try to implement it😉
+<!-- https://www.contributor-covenant.org/version/1/4/code-of-conduct -->
