@@ -122,22 +122,12 @@ Save-PSBookmarkk - Save bookmarks to file
 The modules are actively maintained during evenings and weekends,
 so if you found it usefull you can Buy me a beer/cup of tee😊
 
-
-
 [![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png)](https://www.buymeacoffee.com/dima)
 
-[![Support by Yandex](https://money.yandex.ru/quickpay/button-widget?button-text=15&button-size=m&button-color=orange)](https://money.yandex.ru/to/410014572567962/200)
-
-
-If you wish to report bugs or contribute fixes and features, please see the [contributors guide](./CONTRIBUTING.md)
-
-
-https://github.com/BlueHatbRit/mdpdf/blob/master/CONTRIBUTING.md
-
+[![Support by Yandex](https://raw.githubusercontent.com/GitStatic/Resources/master/yaMoney.png)](https://money.yandex.ru/to/410014572567962/200)
 
 <!--   By Paypal [![PayPal.me](https://img.shields.io/badge/PayPal-me-blue.svg?maxAge=2592000)](https://www.paypal.me/dima.by)
 
- <> Or 
  -->
 
 If you have any idea or suggestion - please add a github issue and I'll try to implement it as soon as possible😉
