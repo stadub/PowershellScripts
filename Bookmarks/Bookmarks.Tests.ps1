@@ -19,6 +19,7 @@ Describe "Remove-AllPSBookmarks" {
 Describe "Add-PSBookmark" {
 
     It "adds current folder to bookmarks" {
+        Set-Location $here
         Add-PSBookmark testDir
         $_marks.Count | Should -Be 1
         $_marks.Keys | Should -Be "testDir"
