@@ -9,13 +9,13 @@ resources:
     fetchDepth: 1
 
 jobs:
-  - job: bookmarks
-    displayName: PowerShell 3
+  - job: ps3 
+    displayName: Bookmarks
     continueOnError: false
     pool:
       name: Default
       demands:
-        - bookmarks
+        - ps3
     workspace:
       clean: all
     timeoutInMinutes: 3
