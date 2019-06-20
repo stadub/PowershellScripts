@@ -137,13 +137,13 @@ $_marksPath = Join-Path (split-path -parent $profile) .bookmarks
 Restore-PSBookmarks
 
 
-if(Test-Path ./Shared.ps1){
+if(Test-Path .\Shared.ps1){
     . Shared.ps1
 }
 else{
     Write-Output "loading shared modules"
-    #ls ..\\Shell-Functions/*.ps1
-    . ..\\Shared-Functions/*.ps1
+    ls ..\\Shell-Functions/*.ps1
+    . ..\Shared-Functions\*.ps1
 }
 
 
