@@ -25,4 +25,4 @@ script:
   - sudo pwsh -C 'Install-Module Pester -Force'
   # updated help is needed for tests, run as a Job to avoid Write-Progress output
   - sudo pwsh -C '(update-help &) | Wait-Job'
-  - pwsh -C 'Import-Module Pester;cd .\Bookmarks\; Invoke-Pester -EnableExit
+  - pwsh -C 'Import-Module Pester;cd .\Bookmarks\; Invoke-Pester;'
