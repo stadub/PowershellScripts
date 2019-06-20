@@ -21,7 +21,6 @@ matrix:
             - powershell
 
 script:
-  - pwsh ./build.ps1
   - sudo pwsh -C 'Install-Module Pester -Force'
   # updated help is needed for tests, run as a Job to avoid Write-Progress output
   - sudo pwsh -C '(update-help &) | Wait-Job'
