@@ -1,0 +1,31 @@
+trigger:
+  - master
+pr:
+  - master
+
+resources:
+  - repo: self
+    clean: true
+    fetchDepth: 1
+
+jobs:
+  - job: bookmarks
+    displayName: PowerShell 3
+    continueOnError: false
+    pool:
+      name: Default
+      demands:
+        - bookmarks
+    workspace:
+      clean: all
+    timeoutInMinutes: 3
+    steps:
+      - powershell: |
+          $global:PesterDebugPreference_ShowFullErrors = $true
+          $errorActionPreference = 'stop'
+          Set-StrictMode -Version Latest
+          Install-Module -Name Pester -Force
+          Import-Module Pester
+          . .\Bookmarks\Bookmarks.Tests.psd1
+
+          
