@@ -148,3 +148,79 @@ Hashtable key/values to be added to $first
           $first[$_] = $second[$_];
       }
   }
+
+  function LoadModules {
+      param (
+          [bool]$local = $false,
+          [Parameter(Mandatory = $true)]
+          [string]$functionsFolder,
+          [string]$sharedFolder = $PSScriptRoot
+      )
+
+      $functions  = @( Get-ChildItem -Path $functionsFolder\*.ps1 -ErrorAction SilentlyContinue )
+      $shared = @( Get-ChildItem -Path $sharedFolder\*.ps1 -ErrorAction SilentlyContinue )
+      
+      Foreach($import in @($Public + $functions))
+      {
+          Try
+          {
+              . $import.fullname
+          }
+          Catch
+          {
+              Write-Error -Message "Failed to import function $($import.fullname): $_"
+          }
+      }
+
+
+    ##
+
+
+
+# Add the functions into the runspace
+GetScriptFunctions $functions | ForEach-Object {
+    $rs.SessionStateProxy.InvokeProvider.Item.Set(
+        'function:\{0}' -f $_.Name,
+        $_.Body.GetScriptBlock()) 
+}
+  }
+<#
+.SYNOPSIS
+#
+
+.DESCRIPTION
+This function is based on https://stackoverflow.com/a/45929412/959779
+
+.PARAMETER scriptFile
+Parameter description
+
+.EXAMPLE
+An example
+
+.NOTES
+General notes
+#>
+
+function GetScriptFunctions {
+    param (
+        [string]$scriptFile
+    )
+    # Get the AST of the file
+    $tokens = $errors = $null
+    $ast = [System.Management.Automation.Language.Parser]::ParseFile(
+        $scriptFile,
+        [ref]$tokens,
+        [ref]$errors)
+
+    # Get only function definition ASTs
+    $functionDefinitions = $ast.FindAll({
+        param([System.Management.Automation.Language.Ast] $Ast)
+
+        $Ast -is [System.Management.Automation.Language.FunctionDefinitionAst] -and
+        # Class methods have a FunctionDefinitionAst under them as well, but we don't want them.
+        ($PSVersionTable.PSVersion.Major -lt 5 -or
+        $Ast.Parent -isnot [System.Management.Automation.Language.FunctionMemberAst])
+
+    }, $true)
+    return $functionDefinitions
+}

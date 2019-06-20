@@ -34,7 +34,7 @@ function Add-PSBookmark () {
 	}
 
 	Restore-PSBookmarks
-    $marks["$Name"] = $dir
+    $_marks["$Name"] = $dir
 	Save-PSBookmarks
 	Write-Output ("Location '{1}' saved to bookmark '{0}'" -f $Name, $dir) 	
 }
@@ -60,16 +60,21 @@ function Remove-PSBookmark () {
         [ArgumentCompleter(
             {
                 param($Command, $Parameter, $WordToComplete, $CommandAst, $FakeBoundParams)
-                return @($marks) -like "$WordToComplete*"
+                return @($_marks) -like "$WordToComplete*"
             }
         )]
         $Name
     )
 
 	Restore-PSBookmarks
-    $marks.Remove($Name)
+    $_marks.Remove($Name)
 	Save-PSBookmarks
 	Write-Output ("Location '{0}' removed from bookmarks" -f $Name) 	
+}
+
+function Remove-AllPSBookmarks {
+    $_marks.Clone() | ForEach-Object{$_.keys} | ForEach-Object{$_marks.remove($_)}
+    Save-PSBookmarks
 }
 
 <#
@@ -92,22 +97,23 @@ function Open-PSBookmark() {
     [ArgumentCompleter(
         {
             param($Command, $Parameter, $WordToComplete, $CommandAst, $FakeBoundParams)
-            return @($marks) -like "$WordToComplete*"
+            return @($_marks) -like "$WordToComplete*"
         }
     )]
     $Name
     )
-    Set-Location $marks["$Name"]
+    Set-Location $_marks["$Name"]
 }
 
 function Restore-PSBookmarks {
-	if (test-path $marksPath) {
-		Import-Csv $marksPath | ForEach-Object { $marks[$_.key] = $_.value }
+	if (test-path $_marksPath) {
+		Import-Csv $_marksPath | ForEach-Object { $_marks[$_.key] = $_.value }
 	}
 }
 function Save-PSBookmarks {
-    $marks.getenumerator() | export-csv $marksPath -notype
+    $_marks.getenumerator() | export-csv $_marksPath -notype
 }
+
 
 <#
  .Synopsis
@@ -122,15 +128,34 @@ function Save-PSBookmarks {
 #>
 function Get-PSBookmarks {
     Restore-PSBookmarks
-    $marks
+    $_marks.Clone()
 }
 
-$marks = @{ }
-$marksPath = Join-Path (split-path -parent $profile) .bookmarks
+$_marks = @{ }
+$_marksPath = Join-Path (split-path -parent $profile) .bookmarks
 
 Restore-PSBookmarks
 
-Export-ModuleMember -Function Add-PSBookmark 
-Export-ModuleMember -Function Remove-PSBookmarks
-Export-ModuleMember -Function Open-PSBookmark
-Export-ModuleMember -Function Get-PSBookmarks
+
+if(Test-Path ./Shared.ps1){
+    . Shared.ps1
+}
+else{
+    Write-Output "loading shared modules"
+    #ls ..\\Shell-Functions/*.ps1
+    . ..\\Shared-Functions/*.ps1
+}
+
+
+if ( $MyInvocation.MyCommand.Name.EndsWith('.psm1') ){
+    #Write-Output "Module"
+    Export-ModuleMember -Function Add-PSBookmark 
+    Export-ModuleMember -Function Remove-PSBookmarks
+    Export-ModuleMember -Function Open-PSBookmark
+    Export-ModuleMember -Function Get-PSBookmarks
+    Export-ModuleMember -Function Remove-AllPSBookmarks
+}
+else{
+    #file
+    #Invoke-ScriptFunction $DestFolder $SrcFolder
+}
