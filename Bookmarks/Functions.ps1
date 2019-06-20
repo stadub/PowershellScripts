@@ -146,7 +146,7 @@ else{
 
     Join-Path -Path $curDir -ChildPath "..\Shared-Functions\*.ps1"  -Resolve | `
     ForEach-Object{ 
-        Write-Output $_; #. $_
+        Write-Output $_; . $_
     }
 }
 return
