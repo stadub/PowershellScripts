@@ -142,7 +142,7 @@ if(Test-Path .\Shared.ps1){
 }
 else{
     Write-Output "loading shared modules"
-    ls ..\\Shell-Functions/*.ps1
+    Get-ChildItem ..\\Shared-Functions/*.ps1
     . ..\Shared-Functions\*.ps1
 }
 
