@@ -136,15 +136,20 @@ $_marksPath = Join-Path (split-path -parent $profile) .bookmarks
 
 Restore-PSBookmarks
 
+$curDir = Split-Path $MyInvocation.MyCommand.Path
 
-if(Test-Path .\Shared.ps1){
-    . Shared.ps1
+if(Test-Path ($shared = Join-Path -Path $curDir -ChildPath ".\Shared.ps1" )) {
+    . $shared
 }
 else{
-    Write-Output "loading shared modules"
-    Get-ChildItem ..\\Shared-Functions/*.ps1
-    . ..\Shared-Functions\*.ps1
+    Write-Output "Loading shared modules:"
+
+    Join-Path -Path $curDir -ChildPath "..\Shared-Functions\*.ps1"  -Resolve | `
+    ForEach-Object{ 
+        Write-Output $_; #. $_
+    }
 }
+return
 
 
 if ( $MyInvocation.MyCommand.Name.EndsWith('.psm1') ){
