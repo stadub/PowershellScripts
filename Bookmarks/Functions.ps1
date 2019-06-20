@@ -134,6 +134,7 @@ function Get-PSBookmarks {
 $_marks = @{ }
 $_marksPath = Join-Path (split-path -parent $profile) .bookmarks
 
+
 Restore-PSBookmarks
 
 $curDir = Split-Path $MyInvocation.MyCommand.Path
