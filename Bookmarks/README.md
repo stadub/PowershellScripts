@@ -25,7 +25,7 @@ Install-Module -Name Bookmarks
 Module import:
 
 ```powershell
-Import-Modulev
+Import-Module Bookmarks
 ```
 
 <!--
