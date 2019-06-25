@@ -13,13 +13,21 @@
 ## Instalation
 
 Powershell Gallery:
+
 [![https://www.powershellgallery.com/packages/Bookmarks/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Bookmarks/)
 
+`PowerShellGet` Installation :
 
-Gallery link: 
 ```powershell
 Install-Module -Name Bookmarks
 ```
+
+Module import:
+
+```powershell
+Import-Modulev
+```
+
 <!--
 Direct download link: 
 ```powershell
@@ -95,11 +103,11 @@ Clear bookmarks:
 
 ## Changelog
 
-### [v1.2.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.2.1)
+### [v1.2.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.2.2)
 
 * Tests added
 * Added function `Remove-AllPSBookmarks`
-* Fix boolmarks collection access
+* Fix bookmarks collection access
 
 
 ### [v1.1.3](https://github.com/stadub/PowershellScripts/releases/tag/v0.2.0)
