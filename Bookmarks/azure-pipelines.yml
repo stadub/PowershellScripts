@@ -1,0 +1,27 @@
+trigger:
+  - master
+pr:
+  - master
+
+resources:
+  - repo: self
+    clean: true
+    fetchDepth: 1
+
+jobs:
+  - job: Bookmarks
+    displayName: Bookmarks
+    continueOnError: false
+    pool:
+      vmImage: 'windows-2019'
+    workspace:
+      clean: all
+    timeoutInMinutes: 3
+    steps:
+      - powershell: |
+          $global:PesterDebugPreference_ShowFullErrors = $true
+          $errorActionPreference = 'stop'
+          Set-StrictMode -Version Latest
+          Install-Module -Name Pester -Force
+          Import-Module Pester
+          . .\Bookmarks\Bookmarks.Tests.ps1

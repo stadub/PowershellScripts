@@ -137,6 +137,8 @@ $_marksPath = Join-Path (split-path -parent $profile) .bookmarks
 
 Restore-PSBookmarks
 
+
+##Load Extra functions
 $curDir = Split-Path $MyInvocation.MyCommand.Path
 
 if(Test-Path ($shared = Join-Path -Path $curDir -ChildPath ".\Shared.ps1" )) {
@@ -147,10 +149,9 @@ else{
 
     Join-Path -Path $curDir -ChildPath "..\Shared-Functions\*.ps1"  -Resolve | `
     ForEach-Object{ 
-        Write-Output $_; . $_
+        Write-Output $PSItem; . $PSItem
     }
 }
-return
 
 
 if ( $MyInvocation.MyCommand.Name.EndsWith('.psm1') ){

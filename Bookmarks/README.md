@@ -1,12 +1,10 @@
 # Bookmarks - Directory bookmarks
 
-[![https://www.powershellgallery.com/packages/Bookmarks/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Bookmarks/)
-
 [![PowerShell 3](https://Stadub-Gh.visualstudio.com/PowershellScripts/_apis/build/status/Bookmarks?branchName=master)](https://Stadub-Gh.visualstudio.com/PowershellScripts/_build/latest?definitionId=3?branchName=master)
 [![PowerShell 4, 5 & Core on Windows build](https://ci.appveyor.com/api/projects/status/7tmg8wy30ipanjsd?svg=true)](https://ci.appveyor.com/project/stadub/powershellscripts)
 [![Linux & MacOS build](https://img.shields.io/travis/stadub/PowershellScripts/master.svg?label=linux/macos+build)](https://travis-ci.org/stadub/PowershellScripts)
 [![latest version](https://img.shields.io/powershellgallery/v/Bookmarks.svg?label=latest+version)](https://www.powershellgallery.com/packages/Bookmarks/)
-[![downloads](https://img.shields.io/powershellgallery/dt/Pester.svg?label=download)](https://www.powershellgallery.com/packages/Bookmarks)
+[![downloads](https://img.shields.io/powershellgallery/dt/Bookmarks.svg?label=download)](https://www.powershellgallery.com/packages/Bookmarks)
 
 <!-- [Documentation](https://powershellscripts.readthedocs.io/en/latest/) -->
 
@@ -14,22 +12,20 @@
 
 ## Instalation
 
+Powershell Gallery:
+[![https://www.powershellgallery.com/packages/Bookmarks/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Bookmarks/)
+
+
+Gallery link: 
 ```powershell
-Add-PSBookmark  - Add folder to the bookmarks list
-  [-Name] <string>
-  [-Path] <string> (Optional)
-
-Remove-PSBookmark - Remove bookmark from the list
-  [-Bookmark] <string>
-
-Open-PSBookmark - Navigate to bookmark
-  [-Bookmark] <string>
-
-Get-PSBookmarks - List bookmarks
-
-Save-PSBookmarkk - Save bookmarks to file
+Install-Module -Name Bookmarks
 ```
-
+<!--
+Direct download link: 
+```powershell
+Invoke-WebRequest 'https://www.powershellgallery.com/api/v2/package/Bookmarks/1.1.3' -OutFile 'bookmarks.nupkg'
+$Client.DownloadFile('https://www.powershellgallery.com/api/v2/package/Bookmarks/1.1.3', 'installer.exe')
+ -->
 
 ## Commands
 
@@ -103,7 +99,7 @@ Clear bookmarks:
 
 * Tests added
 * Added function `Remove-AllPSBookmarks`
-* Fix 
+* Fix boolmarks collection access
 
 
 ### [v1.1.3](https://github.com/stadub/PowershellScripts/releases/tag/v0.2.0)
