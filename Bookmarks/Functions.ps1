@@ -29,7 +29,7 @@ function Add-PSBookmark () {
         [Alias("Path")]
         [string]$dir = $null
     )
-    if ( [string]::IsNullOrEmpty($dir) ) {
+    if ( Test-Empty $dir ) {
         $dir = (Get-Location).Path
 	}
 
@@ -106,12 +106,12 @@ function Open-PSBookmark() {
 }
 
 function Restore-PSBookmarks {
-	if (test-path $_marksPath) {
+	if (test-path "$_marksPath" -PathType leaf) {
 		Import-Csv $_marksPath | ForEach-Object { $_marks[$_.key] = $_.value }
 	}
 }
 function Save-PSBookmarks {
-    $_marks.getenumerator() | export-csv $_marksPath -notype
+    $_marks.getenumerator() | export-csv "$_marksPath" -notype
 }
 
 
@@ -131,15 +131,21 @@ function Get-PSBookmarks {
     $_marks.Clone()
 }
 
-$_marks = @{ }
-$_marksPath = Join-Path (split-path -parent $profile) .bookmarks
 
+function Initalize() {
+    
+    $script:_marks = @{ }
+    $script:_marksPath = Get-ProfileDataFile bookmarks
 
-Restore-PSBookmarks
+    Write-Debug "Loading ${MyInvocation.MyCommand.Name}"
+    Restore-PSBookmarks
+}
 
 
 ##Load Extra functions
 $curDir = Split-Path $MyInvocation.MyCommand.Path
+
+if( -not $sharedLoaded){
 
 if(Test-Path ($shared = Join-Path -Path $curDir -ChildPath ".\Shared.ps1" )) {
     . $shared
@@ -152,7 +158,7 @@ else{
         Write-Output $PSItem; . $PSItem
     }
 }
-
+}
 
 if ( $MyInvocation.MyCommand.Name.EndsWith('.psm1') ){
     #Write-Output "Module"
@@ -166,3 +172,5 @@ else{
     #file
     #Invoke-ScriptFunction $DestFolder $SrcFolder
 }
+
+Initalize
