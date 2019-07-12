@@ -1,4 +1,6 @@
 
+Write-Debug "Loading ${MyInvocation.MyCommand.Name}"
+
 <#
 .SYNOPSIS
 Simple wrapper ower `Read-Host` intendend to show "[Yes]/[No]" questions
@@ -16,7 +18,7 @@ Text to be shown in the prompt
     }
 #>
 
-function Show-Prompt {
+function Show-ConfirmPrompt {
     param (
         [Parameter(Position = 0, ParameterSetName = 'Positional', ValueFromPipeline = $True)]
         [Alias("Question", "Description")]
@@ -224,3 +226,165 @@ function GetScriptFunctions {
     }, $true)
     return $functionDefinitions
 }
+
+<#
+.SYNOPSIS
+Check and create folder
+
+.DESCRIPTION
+Check if path and create folder if not exist
+
+.PARAMETER Folder
+Path
+
+.EXAMPLE
+An example
+
+.NOTES
+General notes
+#>
+
+function CreateFolderIfNotExist {
+    param ([string]$Folder)
+    if( Test-Path $Folder -PathType Leaf){
+        Write-Error "The destanation path ${Folder} is file."
+    }
+    if( ! (Test-Path $Folder) ){
+        Write-Information "The destanation path ${Folder} doesn't exist. Creating folder."
+        mkdir $Folder
+    }
+}
+
+
+<#
+.SYNOPSIS
+Check and create folder
+
+.DESCRIPTION
+Check if path and create folder if not exist
+
+
+.EXAMPLE
+An example
+
+.NOTES
+General notes
+#>
+filter First {
+    $_
+    Break
+ }
+
+
+ 
+<#
+.SYNOPSIS
+Download executable from internet
+
+.DESCRIPTION
+Check if path and create folder if not exist
+
+.EXAMPLE
+An example
+
+.NOTES
+General notes
+#>
+function DownloadUtil {
+    param (
+        [string]$name,
+        [string]$file,
+        [string]$url
+    )
+    $reply = Show-ConfirmPrompt 
+    if ( -not $reply  ) {  
+        Write-Error "Execution aborted"
+        return -1;
+    }
+    Write-Output "Starting download '$name'"
+
+    Write-Debug "Downoad url:${url}"
+
+    (New-Object System.Net.WebClient).DownloadFile($url, $file)
+    
+    Write-Debug "File downloaded to ${file}."
+
+}
+
+
+function Extract-ZipFile {
+    param (
+       [ValidateScript( { Test-Path $_  -pathType leaf })] 
+        [Parameter(Mandatory = $true)]
+        [string]$FileName,
+       [ValidateScript( { Test-Path  $_  -pathType Container })] 
+       [Parameter(Mandatory = $true)]
+        [string]$Path
+    )
+    Add-Type -AssemblyName System.IO.Compression.FileSystem
+    [System.IO.Compression.ZipFile]::ExtractToDirectory($FileName, $Path)
+}
+
+function Get-TempFileName()  {
+    return [System.IO.Path]::GetTempFileName()     
+}
+
+function Test-Emply {
+    param (
+        [Parameter(Position = 0)]
+        [string]$string
+    )
+    return [string]::IsNullOrWhitespace($string) 
+}
+
+function Combine-Path {
+    param (
+        [string]$baseDir,
+        [string]$path
+    )
+    $allArgs = $PsBoundParameters.Values + $args
+
+    [IO.Path]::Combine([string[]]$allArgs)
+}
+function Get-ProfileDataFile {
+    param (
+        [string]$file,
+        [string]$moduleName = $null
+    )
+    return Join-Path (Get-ProfileDir $moduleName) $file
+    
+}
+function Get-ProfileDir {
+    param (
+        [string]$moduleName = $null
+    )
+    
+    $profileDir = $ENV:AppData
+
+    if( Test-Emply $moduleName ){
+
+        if ( $script:MyInvocation.MyCommand.Name.EndsWith('.psm1') ){
+            $moduleName = $MyInvocation.MyCommand.Name
+        }
+
+        if ( $script:MyInvocation.MyCommand.Name.EndsWith('.ps1') ){
+            $modulePath = Split-Path -Path $script:MyInvocation.MyCommand.Path
+            $moduleName = Split-Path -Path $modulePath -Leaf
+        }
+    }
+
+    if( Test-Emply $moduleName ){
+        throw "Unable to read module name."             
+    }
+    
+    $scriptProfile =  Combine-Path $profileDir '.ps1' 'ScriptData' $moduleName
+    if ( ! (Test-Path $scriptProfile -PathType Container )) { 
+        New-Item -Path $scriptProfile  -ItemType 'Directory'
+    }
+    return $scriptProfile
+}
+
+
+
+$sharedLoaded = $true
+
