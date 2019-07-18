@@ -249,9 +249,9 @@ function CreateFolderIfNotExist {
     if( Test-Path $Folder -PathType Leaf){
         Write-Error "The destanation path ${Folder} is file."
     }
-    if( ! (Test-Path $Folder) ){
-        Write-Information "The destanation path ${Folder} doesn't exist. Creating folder."
-        mkdir $Folder
+
+    if ( ! (Test-Path $Folder -PathType Container )) { 
+        New-Item -Path $Folder  -ItemType 'Directory'
     }
 }
 
@@ -290,7 +290,7 @@ An example
 .NOTES
 General notes
 #>
-function DownloadUtil {
+function Receive-File {
     param (
         [string]$name,
         [string]$file,
@@ -386,5 +386,5 @@ function Get-ProfileDir {
 
 
 
-$sharedLoaded = $true
+$_sharedLoaded = $true
 
