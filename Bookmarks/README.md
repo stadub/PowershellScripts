@@ -22,20 +22,20 @@ Powershell Gallery:
 Install-Module -Name Bookmarks
 ```
 
+Direct download instalation:
+
+```powershell
+iex ('$module="Bookmarks"'+(new-object net.webclient).DownloadString('https://raw.githubusercontent.com/stadub/PowershellScripts/master/install.ps1'))
+```
+
 Module import:
 
 ```powershell
 Import-Module Bookmarks
 ```
 
-<!--
-Direct download link: 
-```powershell
-Invoke-WebRequest 'https://www.powershellgallery.com/api/v2/package/Bookmarks/1.1.3' -OutFile 'bookmarks.nupkg'
-$Client.DownloadFile('https://www.powershellgallery.com/api/v2/package/Bookmarks/1.1.3', 'installer.exe')
- -->
+# Commands
 
-## Commands
 
 ```powershell
 Add-PSBookmark  - Add folder to the bookmarks list
@@ -77,7 +77,7 @@ Add bookmark:
 /> $pwd |  Add-PSBookmark -Name "ThisDirectory"
 ```
 
-Open bookmsrks:
+Open bookmarks:
 
 ```powershell
 />Open-PSBookmark -Bookmark "Project"
