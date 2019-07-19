@@ -145,7 +145,7 @@ function Initalize() {
 ##Load Extra functions
 $curDir = Split-Path $MyInvocation.MyCommand.Path
 
-if( -not $_sharedLoaded){
+if( ! $_sharedLoaded){
 
 if(Test-Path ($shared = Join-Path -Path $curDir -ChildPath ".\Shared.ps1" )) {
     . $shared

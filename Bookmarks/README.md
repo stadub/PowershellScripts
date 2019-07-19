@@ -162,14 +162,18 @@ Save-PSBookmarkk - Save bookmarks to file
 
 ## Donate
 
-The modules are actively maintained during evenings and weekends,
-so if you found it useful you can Buy me a beer/cup of tea 😊.
+The modules are created and actively maintained during evenings and weekends for my own needs.
+If it's useful for you too, that's great. I don't demand anything in return.
 
-[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png)](https://www.buymeacoffee.com/dima) [![Support by Yandex](https://raw.githubusercontent.com/GitStatic/Resources/master/yaMoney.png)](https://money.yandex.ru/to/410014572567962/200)
+However, if you like it and feel the urge to give something back,
+a coffee or a beer is always appreciated. Thank you very much in advance.
+
+[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png)](https://www.buymeacoffee.com/dima)
+[![Support by Yandex](https://raw.githubusercontent.com/GitStatic/Resources/master/yaMoney.png)](https://money.yandex.ru/to/410014572567962/200)
 
 <!--   By Paypal [![PayPal.me](https://img.shields.io/badge/PayPal-me-blue.svg?maxAge=2592000)](https://www.paypal.me/dima.by)
  -->
 
-If you have any idea or suggestion - please add a github issue and I'll try to implement it as soon as possible😉
+If you have any idea or suggestion - please add a github issue.
 
 <!-- https://www.contributor-covenant.org/version/1/4/code-of-conduct -->
