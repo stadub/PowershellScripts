@@ -1,0 +1,27 @@
+trigger:
+  - master
+pr:
+  - master
+
+resources:
+  - repo: self
+    clean: true
+    fetchDepth: 1
+
+jobs:
+  - job: 7zip
+    displayName: 7zip
+    continueOnError: false
+    pool:
+      vmImage: 'windows-2019'
+    workspace:
+      clean: all
+    timeoutInMinutes: 3
+    steps:
+      - powershell: |
+          $global:PesterDebugPreference_ShowFullErrors = $true
+          $errorActionPreference = 'stop'
+          Set-StrictMode -Version Latest
+          Install-Module -Name Pester -Force
+          Import-Module Pester
+          . .\7zip\7zip.Tests.ps1
