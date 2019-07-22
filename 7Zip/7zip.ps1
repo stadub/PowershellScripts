@@ -371,7 +371,9 @@ function Get-ZipFileContent {
 $curDir = Split-Path $MyInvocation.MyCommand.Path
 
 
-if( -not $_sharedLoaded){
+$sharedLoaded = Get-Variable -Name '_sharedLoaded*' -ValueOnly
+if( ! $sharedLoaded){
+
     if(Test-Path ($shared = Join-Path -Path $curDir -ChildPath ".\Shared.ps1" )) {
         . $shared
     }
