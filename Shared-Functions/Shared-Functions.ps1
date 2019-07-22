@@ -329,7 +329,7 @@ function Get-TempFileName()  {
     return [System.IO.Path]::GetTempFileName()     
 }
 
-function Test-Emply {
+function Test-Empty {
     param (
         [Parameter(Position = 0)]
         [string]$string
@@ -361,7 +361,7 @@ function Get-ProfileDir {
     
     $profileDir = $ENV:AppData
 
-    if( Test-Emply $moduleName ){
+    if( Test-Empty $moduleName ){
 
         if ( $script:MyInvocation.MyCommand.Name.EndsWith('.psm1') ){
             $moduleName = $MyInvocation.MyCommand.Name
@@ -373,7 +373,7 @@ function Get-ProfileDir {
         }
     }
 
-    if( Test-Emply $moduleName ){
+    if( Test-Empty $moduleName ){
         throw "Unable to read module name."             
     }
     

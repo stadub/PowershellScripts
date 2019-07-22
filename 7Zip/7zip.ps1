@@ -59,7 +59,7 @@ function Start-7Zip {
 
     Test-7ZipInstall
 
-    if( -not (Test-Emply $Key)){
+    if( -not (Test-Empty $Key)){
         $Args += "-p:$Key"
    }
 
@@ -250,7 +250,7 @@ function New-ZipFile {
 
         $AllArgs += "-mx${Compression.value__}"
         
-        if( -not (Test-Emply $SplitSize) ){
+        if( -not (Test-Empty $SplitSize) ){
             $AllArgs += "-v$SplitSize"
         }
 
@@ -273,7 +273,7 @@ function New-ZipFile {
 
         }
 
-        if( -not (Test-Emply $FileName) ){
+        if( -not (Test-Empty $FileName) ){
             $AllArgs += "$FileName"
         }
 
@@ -309,7 +309,7 @@ function Test-ZipFileContent {
     $AllArgs = @('t', "$ArchiveName")
 
 
-    if( -not (Test-Emply $FileName) ){
+    if( -not (Test-Empty $FileName) ){
         $AllArgs += "$FileName"
     }
 
@@ -341,11 +341,11 @@ function Get-ZipFileContent {
 
     $AllArgs = @('e', "$ArchiveName")
 
-    if( -not (Test-Emply $FileName) ){
+    if( -not (Test-Empty $FileName) ){
         $AllArgs += "$FileName"
     }
 
-    if( -not (Test-Emply $destFolder) ){
+    if( -not (Test-Empty $destFolder) ){
         CreateFolderIfNotExist "${destFolder}"
         $AllArgs += "-o:$destFolder"
     }
@@ -357,7 +357,7 @@ function Get-ZipFileContent {
 
     $code = Start-7Zip $AllArgs $Key
 
-    # if( -not (Test-Emply $FileName) -and -not (Check-Hash "$ArchiveName" "$FileName")){
+    # if( -not (Test-Empty $FileName) -and -not (Check-Hash "$ArchiveName" "$FileName")){
     #     throw "Extracted file hash is different"
     # }
 
