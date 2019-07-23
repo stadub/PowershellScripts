@@ -148,10 +148,11 @@ function Initalize() {
 $curDir = $MyInvocation.MyCommand.Path
 
 #and for ps 2
-if( $curDir==$null ){
+if( ! $curDir ){
     $curDir = $PSScriptRoot
+}else{
+    $curDir = Split-Path $curDir
 }
-$curDir = Split-Path $curDir
 
 $sharedLoaded = Get-Variable -Name '_sharedLoaded*' -ValueOnly
 if( ! $sharedLoaded){
