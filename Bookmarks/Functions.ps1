@@ -137,7 +137,7 @@ function Initalize() {
     $script:_marks = @{ }
     $script:_marksPath = Get-ProfileDataFile bookmarks
 
-    Write-Debug "Loading ${MyInvocation.MyCommand.Name}"
+    Write-Debug "Loading ${script:MyInvocation.MyCommand.Name}"
     Restore-PSBookmarks
 }
 
