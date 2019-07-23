@@ -364,7 +364,7 @@ function Get-ProfileDir {
     if( Test-Empty $moduleName ){
 
         if ( $script:MyInvocation.MyCommand.Name.EndsWith('.psm1') ){
-            $moduleName = $MyInvocation.MyCommand.Name
+            $moduleName = $script:MyInvocation.MyCommand.Name
         }
 
         if ( $script:MyInvocation.MyCommand.Name.EndsWith('.ps1') ){

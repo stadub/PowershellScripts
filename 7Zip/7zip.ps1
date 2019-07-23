@@ -398,7 +398,7 @@ if(-not $_7ZipLoaded){
 $_7ZipLoaded = $true
 
 
-if ( $MyInvocation.MyCommand.Name.EndsWith('.psm1') ){
+if ( $script:MyInvocation.MyCommand.Name.EndsWith('.psm1') ){
     #Write-Output "Module"
     Export-ModuleMember -Function: Read-ZipFile
     Export-ModuleMember -Function: Add-ZipFileContent

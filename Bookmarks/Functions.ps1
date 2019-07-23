@@ -170,7 +170,7 @@ else{
 }
 }
 
-if ( $MyInvocation.MyCommand.Name.EndsWith('.psm1') ){
+if ( $script:MyInvocation.MyCommand.Name.EndsWith('.psm1') ){
     #Write-Output "Module"
     Export-ModuleMember -Function Add-PSBookmark 
     Export-ModuleMember -Function Remove-PSBookmarks
