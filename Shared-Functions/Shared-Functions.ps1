@@ -1,5 +1,5 @@
 
-Write-Debug "Loading ${script:MyInvocation.MyCommand.Name}"
+#Write-Debug "Loading ${script:MyInvocation.MyCommand.Name}"
 
 <#
 .SYNOPSIS
