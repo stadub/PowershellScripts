@@ -22,6 +22,7 @@ jobs:
           $global:PesterDebugPreference_ShowFullErrors = $true
           $errorActionPreference = 'stop'
           Set-StrictMode -Version Latest
+          $DebugPreference = "Continue"
           Install-Module -Name Pester -Force
           Import-Module Pester
           . .\Bookmarks\Bookmarks.Tests.ps1

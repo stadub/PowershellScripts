@@ -144,34 +144,46 @@ function Initalize() {
 
 ##Load Extra functions
 
+
 #Truing to get path for ps 3+
-$curDir = $MyInvocation.MyCommand.Path
+#Write-Debug "Truing to assig script info from MyInvocation variable"
+#$curScript = $MyInvocation.MyCommand.Source
 
 #and for ps 2
-if( ! $curDir ){
-    $curDir = $PSScriptRoot
-}else{
-    $curDir = Split-Path $curDir
-}
+#if( ! $curScript ){
+    #Write-Debug "MyInvocation variable doesn't exist trying to set from PSScriptRoot"
+    Write-Debug "Trying to set from PSScriptRoot"
+    $curScript = (Get-Variable 'PSCommandPath' -Scope 0).Value
+#}
+$curDir = Split-Path $curScript 
+
+$moduleName = ((Split-Path $curScript -Leaf)  -replace "\.ps.*","")
+
+Write-Debug "Script directory: ${curDir}"
+Write-Debug "Script Name: ${moduleName}"
+
 
 $sharedLoaded = Get-Variable -Name '_sharedLoaded*' -ValueOnly
 if( ! $sharedLoaded){
+    Write-Debug "No shared functions has been loded."
 
 if(Test-Path ($shared = Join-Path -Path $curDir -ChildPath ".\Shared.ps1" )) {
     . $shared
 }
 else{
-    Write-Output "Loading shared modules:"
+    Write-Debug "Loading shared modules:"
 
     Join-Path -Path $curDir -ChildPath "..\Shared-Functions\*.ps1"  -Resolve | `
     ForEach-Object{ 
-        Write-Output $PSItem; . $PSItem
+        Write-Debug $PSItem; . $PSItem
     }
 }
 }
 
-if ( $script:MyInvocation.MyCommand.Name.EndsWith('.psm1') ){
+if ( $moduleName -ne 'Functions' ){
     #Write-Output "Module"
+    Write-Debug "Loaded as module. Exporting functions"
+
     Export-ModuleMember -Function Add-PSBookmark 
     Export-ModuleMember -Function Remove-PSBookmarks
     Export-ModuleMember -Function Open-PSBookmark
