@@ -1,4 +1,4 @@
-$NoExport = $false
+$NoExport = $true
 $ModuleDevelopment = $true
 $DebugPreference = "Continue"
 
