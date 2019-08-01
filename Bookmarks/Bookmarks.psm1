@@ -7,7 +7,7 @@ else {
         Looks like module typing to start in Develoment mode. 
         To start Development mode set flag: `$ModuleDevelopment=`$true
         Also you can set `$DebugPreference=`"Continue`" to getmore detalied strack trace
-        Or set `$NoExport=`$True to disable Export-ModuleMember functions
+        Or set `$NoExport=`$True to disable `Export-ModuleMember` functions
         "
     }
     . $PSScriptRoot\Shared\ModuleLoader.ps1 "$PSScriptRoot"
