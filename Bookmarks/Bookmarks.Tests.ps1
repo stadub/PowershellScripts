@@ -1,6 +1,8 @@
-#$NoExport = $true
+$NoExport = $false
 $ModuleDevelopment = $true
 $DebugPreference = "Continue"
+
+Set-StrictMode -version Latest
 
 $here = Split-Path -Parent $MyInvocation.MyCommand.Path
 . $PSScriptRoot\..\Shared-Functions\ModuleLoader.ps1 "$PSScriptRoot"

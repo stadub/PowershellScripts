@@ -42,7 +42,7 @@ $script:PublicFolder  = Get-ChildItem $scriptRoot\Public\*.ps1 -ErrorAction Sile
 
 $script:Private = Get-ChildItem $scriptRoot\Private\*.ps1 -ErrorAction SilentlyContinue 
 
-if(! $ModuleDevelopment){
+if( !Test-Path variable:ModuleDevelopment  -or !$ModuleDevelopment ){
     Write-Debug "Starting module in production mode."
     $script:SharedFunctions = Get-ChildItem $scriptRoot\Shared\*.ps1 -ErrorAction SilentlyContinue 
 }
@@ -95,7 +95,7 @@ $initScripts = ($script:privateFunctions +  $script:publicFunctions )| `
 #execute all initalizers
 $initScripts | ForEach-Object{ & $_ }
 
-if(! $NoExport){
+if ( !Test-Path variable:NoExport  -or !$NoExport ){
 #Write-Output "Module"
 Write-Debug "Exporting functions"
 
