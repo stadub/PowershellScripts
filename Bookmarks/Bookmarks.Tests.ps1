@@ -1,5 +1,9 @@
+#$NoExport = $true
+$ModuleDevelopment = $true
+$DebugPreference = "Continue"
+
 $here = Split-Path -Parent $MyInvocation.MyCommand.Path
-. "$here\Functions.ps1"
+. $PSScriptRoot\..\Shared-Functions\ModuleLoader.ps1 "$PSScriptRoot"
 
 
 Describe "Remove-AllPSBookmarks" {
