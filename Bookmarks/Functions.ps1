@@ -1,4 +1,13 @@
 
+function _Initalize() {
+    
+    $script:_marks = @{ }
+    $script:_marksPath = Get-ProfileDataFile bookmarks "Bookmarks"
+
+    Restore-PSBookmarks
+}
+
+
 <#
  .Synopsis
    Add folder to bookmarks list.
@@ -106,8 +115,8 @@ function Open-PSBookmark() {
 }
 
 function Restore-PSBookmarks {
-	if (test-path "$_marksPath" -PathType leaf) {
-		Import-Csv $_marksPath | ForEach-Object { $_marks[$_.key] = $_.value }
+	if (test-path "$script:_marksPath" -PathType leaf) {
+		Import-Csv  $script:_marksPath | ForEach-Object { $_marks[$_.key] = $_.value }
 	}
 }
 function Save-PSBookmarks {
@@ -132,67 +141,3 @@ function Get-PSBookmarks {
 }
 
 
-function Initalize() {
-    
-    $script:_marks = @{ }
-    $script:_marksPath = Get-ProfileDataFile bookmarks
-
-    Write-Debug "Loading ${script:MyInvocation.MyCommand.Name}"
-    Restore-PSBookmarks
-}
-
-
-##Load Extra functions
-
-
-#Truing to get path for ps 3+
-#Write-Debug "Truing to assig script info from MyInvocation variable"
-#$curScript = $MyInvocation.MyCommand.Source
-
-#and for ps 2
-#if( ! $curScript ){
-    #Write-Debug "MyInvocation variable doesn't exist trying to set from PSScriptRoot"
-    Write-Debug "Trying to set from PSScriptRoot"
-    $curScript = (Get-Variable 'PSCommandPath' -Scope 0).Value
-#}
-$curDir = Split-Path $curScript 
-
-$moduleName = ((Split-Path $curScript -Leaf)  -replace "\.ps.*","")
-
-Write-Debug "Script directory: ${curDir}"
-Write-Debug "Script Name: ${moduleName}"
-
-
-$sharedLoaded = Get-Variable -Name '_sharedLoaded*' -ValueOnly
-if( ! $sharedLoaded){
-    Write-Debug "No shared functions has been loded."
-
-if(Test-Path ($shared = Join-Path -Path $curDir -ChildPath ".\Shared.ps1" )) {
-    . $shared
-}
-else{
-    Write-Debug "Loading shared modules:"
-
-    Join-Path -Path $curDir -ChildPath "..\Shared-Functions\*.ps1"  -Resolve | `
-    ForEach-Object{ 
-        Write-Debug $PSItem; . $PSItem
-    }
-}
-}
-
-if ( $moduleName -ne 'Functions' ){
-    #Write-Output "Module"
-    Write-Debug "Loaded as module. Exporting functions"
-
-    Export-ModuleMember -Function Add-PSBookmark 
-    Export-ModuleMember -Function Remove-PSBookmarks
-    Export-ModuleMember -Function Open-PSBookmark
-    Export-ModuleMember -Function Get-PSBookmarks
-    Export-ModuleMember -Function Remove-AllPSBookmarks
-}
-else{
-    #file
-    #Invoke-ScriptFunction $DestFolder $SrcFolder
-}
-
-Initalize
