@@ -5,7 +5,7 @@ function LoadModule {
     param ($path)
     $loadRef = Get-PSCallStack
 
-    Write-Debug "Loading module referenced in line ${$loadRef[1].Location}"
+    Write-Debug "Loading module referenced in line $($loadRef[1].Location)"
     if($null -eq $path){
         Write-Debug "No module found."
         return;
@@ -19,12 +19,12 @@ function LoadModule {
         }
         Try
         {
-            Write-Debug "Loading file ${$import.FullName}."
+            Write-Debug "Loading file $($import.FullName)."
             . $import.FullName
         }
         Catch
         {
-            Write-Error "Failed to import function ${$import.FullName}: $_"
+            Write-Error "Failed to import function $($import.FullName): $_"
         }
     }
 
