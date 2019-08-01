@@ -5,7 +5,7 @@ function LoadModule {
     param ($path)
     $loadRef = Get-PSCallStack
 
-    Write-Debug "Loading module referenced in line ${loadRef}"
+    Write-Debug "Loading module referenced in line ${$loadRef[1].Location}"
     if($null -eq $path){
         Write-Debug "No module found."
         return;
@@ -19,17 +19,16 @@ function LoadModule {
         }
         Try
         {
-            Write-Debug "Loading file ${import.FullName}."
+            Write-Debug "Loading file ${$import.FullName}."
             . $import.FullName
         }
         Catch
         {
-            Write-Error "Failed to import function $($import.FullName): $_"
+            Write-Error "Failed to import function ${$import.FullName}: $_"
         }
     }
 
     $functions= Get-ChildItem -Path Function: | `
-        Where-Object { $_.Source -ne ''  } |  `
         Where-Object { $loadedFunctions -notcontains $_ } | `
         ForEach-Object{ Get-Item function:$_ }
 
@@ -54,8 +53,9 @@ else{
     if( -not $SharedFunctions -or -not (Test-Path $SharedFunctions) ){
         throw "Shared functions folder doesn't exist. 
         Looks like module typing to start in Develoment mode. 
-        To start Development mode set flag: `$ModuleDevelopment=`$true.
-        Also you can set `$DebugPreference=`"Continue`"
+        To start Development mode set flag: `$ModuleDevelopment=`$true
+        Also you can set `$DebugPreference=`"Continue`" to getmore detalied strack trace
+        Or set `$NoExport=`$True to disable `Export-ModuleMember` functions
         "
     }
 }
