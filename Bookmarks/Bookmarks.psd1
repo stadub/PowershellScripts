@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.1.3'
+ModuleVersion = '2.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -30,7 +30,9 @@ CompanyName = ''
 Copyright = '(c) Dmitry Stadub. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Create/Restore directory bookmark'
+Description = 'Create/Restore directory bookmark.
+Full documentation at the Github: https://github.com/stadub/PowershellScripts/tree/master/Bookmarks
+'
 
 # Minimum version of the PowerShell engine required by this module
 # PowerShellVersion = ''
@@ -96,7 +98,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = @('bookmarks','bookmark','pushd','list-directory', 'navigation', 'workspaces', 'cd' )
+        Tags = @('bookmarks','bookmark','pushd','list-directory', 'navigation', 'workspaces', 'cd', 'directorymarks', 'directory', 'folder' )
 
         # A URL to the license for this module.
         LicenseUri = 'http://opensource.org/licenses/MIT'
@@ -109,7 +111,10 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '
-        Change module structure
+        Change %userData% detection logic.        
+        Move initation logic to Loader.psm1
+        Change test environment to  StrictMode=Latest
+        Update icon.
         '
 
     } # End of PSData hashtable
