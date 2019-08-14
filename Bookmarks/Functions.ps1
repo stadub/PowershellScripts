@@ -42,7 +42,12 @@ function Add-PSBookmark () {
         $dir = (Get-Location).Path
 	}
 
-	Restore-PSBookmarks
+    Restore-PSBookmarks
+
+    if( $_marks.ContainsKey("$Name") ){
+        throw "Folder bookmark ''$Name'' already exist"
+    }
+
     $_marks["$Name"] = $dir
 	Save-PSBookmarks
 	Write-Output ("Location '{1}' saved to bookmark '{0}'" -f $Name, $dir) 	
@@ -141,3 +146,48 @@ function Get-PSBookmarks {
 }
 
 
+
+<#
+ .Synopsis
+   Update folder location in the bookmarks list
+
+ .Description
+  Update folder location in the bookmarks list
+
+ .Parameter Name
+  The bookmark name.
+
+ .Parameter Path
+  The Path to folder.
+
+ .Example
+   # Update bookmark with name.
+   ./Update-PSBookmark [ bu ]  BookmarkName (Opt)Directory 
+
+ .Example
+   # Update bookmark from pipeline.
+   $pwd |  Update-PSBookmark -Name "ThisDirectory"
+#>
+function Update-PSBookmark () {
+    Param (
+        [Parameter(Position = 0, Mandatory = $true)]
+        [Alias("Bookmark")]
+        $Name,
+        [Parameter(Position = 1, ValueFromPipeline  = $True)]
+        [Alias("Path")]
+        [string]$dir = $null
+    )
+    if ( Test-Empty $dir ) {
+        $dir = (Get-Location).Path
+	}
+
+    Restore-PSBookmarks
+    
+    if( -not  $_marks.ContainsKey("$Name") ){
+        throw "Folder bookmark ''$Name'' doesn't exist"
+    }
+
+    $_marks["$Name"] = $dir
+	Save-PSBookmarks
+	Write-Output ("The bookmark {0} updated with location '{1}'" -f $Name, $dir) 	
+}

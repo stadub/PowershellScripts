@@ -104,3 +104,45 @@ Describe "Open-PSBookmark" {
 
     }
 }
+    
+Describe "Update-PSBookmark" {
+
+    It "update current folder to bookmarks" {
+        Mock -CommandName Import-Csv -MockWith {} -Verifiable
+        Mock -CommandName Export-Csv -MockWith {} -Verifiable
+
+        Add-PSBookmark testDir "c:"
+
+        Set-Location $here
+        Update-PSBookmark testDir
+        $_marks.Count | Should -Be 1
+        $_marks.Keys | Should -Be "testDir"
+        $_marks.Values | Should -Be $here
+    }
+
+    It "Update selected folder in bookmarks list" {
+        Mock -CommandName Import-Csv -MockWith {} -Verifiable
+        Mock -CommandName Export-Csv -MockWith {} -Verifiable
+
+        Add-PSBookmark testDir "c:"
+
+        Update-PSBookmark testDir "$pwd"
+        $_marks = Get-PSBookmarks 
+        $_marks.Count | Should -Be 1
+        $_marks.Keys | Should -Be "testDir"
+        $_marks.Values | Should -Be "$pwd"
+    }
+
+    It "Update path from pipeline to bookmarks" {
+        Mock -CommandName Import-Csv -MockWith {} -Verifiable
+        Mock -CommandName Export-Csv -MockWith {} -Verifiable
+        
+        Add-PSBookmark testDir "$pwd"
+
+        "c:" |Update-PSBookmark testDir 
+        $_marks = Get-PSBookmarks 
+        $_marks.Count | Should -Be 1
+        $_marks.Keys | Should -Be "testDir"
+        $_marks.Values | Should -Be "c:"
+    }
+}
