@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.1.1'
+ModuleVersion = '2.1.5'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -115,7 +115,8 @@ PrivateData = @{
         Move initation logic to Loader.psm1
         Change test environment to  StrictMode=Latest
         Update icon.
-        Remove extra hared functions
+        Remove extra shared functions
+        Add update checker
         '
 
     } # End of PSData hashtable

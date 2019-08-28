@@ -1,6 +1,8 @@
-﻿. $PSScriptRoot\Functions.ps1
-. $PSScriptRoot\Shared-Functions.ps1
+﻿. $PSScriptRoot\Shared-Functions.ps1
 
+. $PSScriptRoot\Functions.ps1
+
+CheckPsGalleryUpdate Bookmarks "2.1.5"
 
 _Initalize
 
