@@ -5,8 +5,12 @@ $DebugPreference = "Continue"
 Set-StrictMode -version Latest
 
 $here = Split-Path -Parent $MyInvocation.MyCommand.Path
-. $PSScriptRoot\..\Shared-Functions\ModuleLoader.ps1 "$PSScriptRoot"
 
+. $PSScriptRoot\Shared-Functions.ps1
+
+. $PSScriptRoot\Functions.ps1
+
+_Initalize
 
 Describe "Remove-AllPSBookmarks" {
 

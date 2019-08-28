@@ -1,6 +1,6 @@
 
 function _Initalize() {
-    
+
     $script:_marks = @{ }
     $script:_marksPath = Get-ProfileDataFile bookmarks "Bookmarks"
 

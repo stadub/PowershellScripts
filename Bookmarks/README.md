@@ -109,11 +109,17 @@ Clear bookmarks:
 
 ## Changelog
 
-### [v1.2.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.2.2)
+### [v2.1.5](https://github.com/stadub/PowershellScripts/tree/Bookmarks-Release-2.1.5)
 
-* Tests added
-* Added function `Remove-AllPSBookmarks`
-* Fix bookmarks collection access
+*Add update checker
+
+### [v2.1.0](https://github.com/stadub/PowershellScripts/tree/Bookmarks-Release-2.1)
+
+  *Change %userData% detection logic.        
+  *Move initation logic to Loader.psm1
+  *Change test environment to  StrictMode=Latest
+  *Update icon.
+  *Remove extra shared functions
 
 
 ### [v1.1.3](https://github.com/stadub/PowershellScripts/releases/tag/v0.2.0)

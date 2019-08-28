@@ -69,5 +69,43 @@ function Combine-Path {
     [IO.Path]::Combine([string[]]$allArgs)
 }
 
-$_sharedLoaded = $true
+filter Last {
+    BEGIN
+    {
+        $current=$null
+    } 
+    PROCESS
+    {
+        $current=$_
+    }
+    END
+    {
+        Write-Output  $current
+    }
+ }
+ 
+ function CheckPsGalleryUpdate {
+    param (
+        [string] $moduleName,
+        [string] $currentVersion
+    )
+   
+   Try
+   {
+       Write-Output "Update check..."
+       $feed = Invoke-WebRequest -Uri "https://www.powershellgallery.com/api/v2/FindPackagesById()?id=%27$moduleName%27"
+       $last=([xml]$feed.Content).feed.entry |Sort-Object -Property updated | Last 
 
+       $version= $last.properties.Version
+   
+       if ($version -gt $currentVersion) {
+           Write-Output "Found a new module version {$version}."
+           $notes=$last.properties.ReleaseNotes.'#text'
+           Write-Output "Release notes: {$notes}."
+           Write-Output "Recomendent to update module with command: Update-Module -Name $moduleName -Force"
+       }
+   }
+   Catch
+   {
+   }    
+}
