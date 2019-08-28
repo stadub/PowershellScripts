@@ -9,7 +9,7 @@ resources:
     fetchDepth: 1
 
 jobs:
-  - job: 7zip
+  - job: szip
     displayName: 7zip
     continueOnError: false
     pool:
