@@ -32,35 +32,38 @@ Describe "Remove-AllPSBookmarks" {
 Describe "Add-PSBookmark" {
 
     It "adds current folder to bookmarks" {
+        $_marks = @{ }
         Mock -CommandName Import-Csv -MockWith {} -Verifiable
         Mock -CommandName Export-Csv -MockWith {} -Verifiable
 
         Set-Location $here
-        Add-PSBookmark testDir
+        Add-PSBookmark testDir1
         $_marks.Count | Should -Be 1
-        $_marks.Keys | Should -Be "testDir"
+        $_marks.Keys | Should -Be "testDir1"
         $_marks.Values | Should -Be $here
     }
 
     It "adds selected folder to bookmarks" {
+        $_marks = @{ }
         Mock -CommandName Import-Csv -MockWith {} -Verifiable
         Mock -CommandName Export-Csv -MockWith {} -Verifiable
 
-        Add-PSBookmark testDir "c:"
+        Add-PSBookmark testDir2 "c:"
         $_marks = Get-PSBookmarks 
         $_marks.Count | Should -Be 1
-        $_marks.Keys | Should -Be "testDir"
+        $_marks.Keys | Should -Be "testDir2"
         $_marks.Values | Should -Be "c:"
     }
 
     It "adds path from pipeline to bookmarks" {
+        $_marks = @{ }
         Mock -CommandName Import-Csv -MockWith {} -Verifiable
         Mock -CommandName Export-Csv -MockWith {} -Verifiable
 
-        "c:" |Add-PSBookmark testDir 
+        "c:" |Add-PSBookmark testDir3 
         $_marks = Get-PSBookmarks 
         $_marks.Count | Should -Be 1
-        $_marks.Keys | Should -Be "testDir"
+        $_marks.Keys | Should -Be "testDir3"
         $_marks.Values | Should -Be "c:"
     }
 }
@@ -112,41 +115,44 @@ Describe "Open-PSBookmark" {
 Describe "Update-PSBookmark" {
 
     It "update current folder to bookmarks" {
+        $_marks = @{ }
         Mock -CommandName Import-Csv -MockWith {} -Verifiable
         Mock -CommandName Export-Csv -MockWith {} -Verifiable
 
-        Add-PSBookmark testDir "c:"
+        Add-PSBookmark testDir1 "c:"
 
         Set-Location $here
-        Update-PSBookmark testDir
+        Update-PSBookmark testDir1
         $_marks.Count | Should -Be 1
-        $_marks.Keys | Should -Be "testDir"
+        $_marks.Keys | Should -Be "testDir1"
         $_marks.Values | Should -Be $here
     }
 
     It "Update selected folder in bookmarks list" {
+        $_marks = @{ }
         Mock -CommandName Import-Csv -MockWith {} -Verifiable
         Mock -CommandName Export-Csv -MockWith {} -Verifiable
 
-        Add-PSBookmark testDir "c:"
+        Add-PSBookmark testDir2 "c:"
 
-        Update-PSBookmark testDir "$pwd"
+        Update-PSBookmark testDir2 "$pwd"
         $_marks = Get-PSBookmarks 
         $_marks.Count | Should -Be 1
-        $_marks.Keys | Should -Be "testDir"
+        $_marks.Keys | Should -Be "testDir2"
         $_marks.Values | Should -Be "$pwd"
     }
 
     It "Update path from pipeline to bookmarks" {
+        $_marks = @{ }
         Mock -CommandName Import-Csv -MockWith {} -Verifiable
         Mock -CommandName Export-Csv -MockWith {} -Verifiable
         
-        Add-PSBookmark testDir "$pwd"
+        Add-PSBookmark testDir3 "$pwd"
 
-        "c:" |Update-PSBookmark testDir 
+        "c:" |Update-PSBookmark testDir3
         $_marks = Get-PSBookmarks 
         $_marks.Count | Should -Be 1
-        $_marks.Keys | Should -Be "testDir"
+        $_marks.Keys | Should -Be "testDir3"
         $_marks.Values | Should -Be "c:"
     }
 }
