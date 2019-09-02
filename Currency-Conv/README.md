@@ -63,6 +63,12 @@ List supported currencies:
 /> Get-Currencies
 ```
 
+Remove currconv.com api key fromthe system:
+
+```powershell
+/> Remove-CurrencyApi-Key
+```
+
 ## Changelog
 
 ### [v0.9.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.8.2) May 17, 2019
