@@ -1,0 +1,1393 @@
+# The configurations that used for the recording, feel free to edit them
+config:
+
+  # Specify a command to be executed
+  # like `/bin/bash -l`, `ls`, or any other commands
+  # the default is bash for Linux
+  # or powershell.exe for Windows
+  command: powershell.exe
+  
+  # Specify the current working directory path
+  # the default is the current working directory path
+  cwd: PowershellScripts
+  
+  # Export additional ENV variables
+  env:
+    recording: true
+  
+  # Explicitly set the number of columns
+  # or use `auto` to take the current
+  # number of columns of your shell
+  cols: 120
+  
+  # Explicitly set the number of rows
+  # or use `auto` to take the current
+  # number of rows of your shell
+  rows: 30
+  
+  # Amount of times to repeat GIF
+  # If value is -1, play once
+  # If value is 0, loop indefinitely
+  # If value is a positive number, loop n times
+  repeat: 0
+  
+  # Quality
+  # 1 - 100
+  quality: 100
+  
+  # Delay between frames in ms
+  # If the value is `auto` use the actual recording delays
+  frameDelay: auto
+  
+  # Maximum delay between frames in ms
+  # Ignored if the `frameDelay` isn't set to `auto`
+  # Set to `auto` to prevent limiting the max idle time
+  maxIdleTime: 2000
+  
+  # The surrounding frame box
+  # The `type` can be null, window, floating, or solid`
+  # To hide the title use the value null
+  # Don't forget to add a backgroundColor style with a null as type
+  frameBox:
+    type: floating
+    title: Terminalizer
+    style:
+      border: 0px black solid
+      # boxShadow: none
+      # margin: 0px
+  
+  # Add a watermark image to the rendered gif
+  # You need to specify an absolute path for
+  # the image on your machine or a URL, and you can also
+  # add your own CSS styles
+  watermark:
+    imagePath: null
+    style:
+      position: absolute
+      right: 15px
+      bottom: 15px
+      width: 100px
+      opacity: 0.9
+  
+  # Cursor style can be one of
+  # `block`, `underline`, or `bar`
+  cursorStyle: block
+  
+  # Font family
+  # You can use any font that is installed on your machine
+  # in CSS-like syntax
+  fontFamily: "Monaco, Lucida Console, Ubuntu Mono, Monospace"
+  
+  # The size of the font
+  fontSize: 12
+  
+  # The height of lines
+  lineHeight: 1
+  
+  # The spacing between letters
+  letterSpacing: 0
+  
+  # Theme
+  theme:
+    background: "transparent"
+    foreground: "#afafaf"
+    cursor: "#c7c7c7"
+    black: "#232628"
+    red: "#fc4384"
+    green: "#b3e33b"
+    yellow: "#ffa727"
+    blue: "#75dff2"
+    magenta: "#ae89fe"
+    cyan: "#708387"
+    white: "#d5d5d0"
+    brightBlack: "#626566"
+    brightRed: "#ff7fac"
+    brightGreen: "#c8ed71"
+    brightYellow: "#ebdf86"
+    brightBlue: "#75dff2"
+    brightMagenta: "#ae89fe"
+    brightCyan: "#b1c6ca"
+    brightWhite: "#f9f9f4"
+  
+# Records, feel free to edit them
+records:
+  - delay: 500
+    content: "\e[0m\e[0K"
+  - delay: 500
+    content: "Windows PowerShell\e[0K\e[?25l\r\nCopyright (C) Microsoft Corporation. All rights reserved.\e[0K\r\n\e[0K\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "PS\\>PowershellScripts>\e[0K\e[67G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;32m#\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;32m#\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32m#\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mI\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mm\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mp\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mo\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mr\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mt\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32m-\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mM\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mo\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32md\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mu\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32ml\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25l\r\nPS\\>PowershellScripts>\e[0K\e[67G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mI\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;33;93mm\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93mp\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93mo\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93mr\e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25l\e[0;33;93mt\e[0m\e[0K\e[72G\e[?25h"
+  - delay: 500
+    content: "\e[73G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mImport\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;33;93m-\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93mM\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93mo\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93md\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93mule\e[0m\e[0K"
+  - delay: 500
+    content: "\e[81G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mImport-Module\e[0m \e[0;1m7zip-Archive\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\e[3A\e[0;33;93;46m\e[0K\r\n Reading web response\e[0K\r\n    Reading response stream... (Number of bytes read: 0)\e[0K\r\n\e[0K\r\n\e[0m\e[0K\r\e[1A\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\e[3A\e[0K\r\nPS\\>PowershellScripts> \e[0;32m###Import-Module\e[0m\e[0K\r\nPS\\>PowershellScripts> \e[0;33;93mImport-Module\e[0m 7Zip-Archive\e[0K\r\n\e[0K\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "PS\\>PowershellScripts>\e[0K\e[67G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;32m#\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;32m#\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32m#\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mC\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mr\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32ma\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mt\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32m \e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;32m###Create \e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;32ma\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mr\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mc\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mh\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mi\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mv\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32m \e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mf\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mr\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mo\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mm\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32m \e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mp\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mi\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mp\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32ml\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mi\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mn\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32m \e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "PS\\>PowershellScripts>\e[0K\e[67G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93ml\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;33;93ms\e[0m\e[0K"
+  - delay: 500
+    content: "\e[70G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mls\e[0m \e[0;37;90m-\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;37;90mE\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;37;90mx\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;37;90mclude\e[0m\e[0K"
+  - delay: 500
+    content: "\e[79G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mls\e[0m \e[0;37;90m-Exclude\e[0m .\e[0K\e[?25h"
+  - delay: 500
+    content: "g\e[0K"
+  - delay: 500
+    content: "i\e[0K"
+  - delay: 500
+    content: "t\e[0K"
+  - delay: 500
+    content: "\e[84G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts\e[0;31;91m> \e[0;33;93mls\e[0m \e[0;37;90m-Exclude\e[0m .git |\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[86G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mls\e[0m \e[0;37;90m-Exclude\e[0m .git | \e[0;33;93mN\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;33;93me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93mw\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93m-\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93mZ\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93mipFile\e[0m\e[0K"
+  - delay: 500
+    content: "\e[98G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts\e[0;31;91m> \e[0;33;93mls\e[0m \e[0;37;90m-Exclude\e[0m .git | \e[0;33;93mNew-ZipFile\e[0m \e[0;36m\"\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mls\e[0m \e[0;37;90m-Exclude\e[0m .git | \e[0;33;93mNew-ZipFile\e[0m \e[0;36m\"\"\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[99G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mls\e[0m \e[0;37;90m-Exclude\e[0m .git | \e[0;33;93mNew-ZipFile\e[0m \e[0;36m\"s\"\e[0m\e[0K\e[100G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mls\e[0m \e[0;37;90m-Exclude\e[0m .git | \e[0;33;93mNew-ZipFile\e[0m \e[0;36m\"sc\"\e[0m\e[0K\e[101G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mls\e[0m \e[0;37;90m-Exclude\e[0m .git | \e[0;33;93mNew-ZipFile\e[0m \e[0;36m\"scr\"\e[0m\e[0K\e[102G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mls\e[0m \e[0;37;90m-Exclude\e[0m .git | \e[0;33;93mNew-ZipFile\e[0m \e[0;36m\"scri\"\e[0m\e[0K\e[103G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mls\e[0m \e[0;37;90m-Exclude\e[0m .git | \e[0;33;93mNew-ZipFile\e[0m \e[0;36m\"scrip\"\e[0m\e[0K\e[104G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mls\e[0m \e[0;37;90m-Exclude\e[0m .git | \e[0;33;93mNew-ZipFile\e[0m \e[0;36m\"script\"\e[0m\e[0K\e[105G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mls\e[0m \e[0;37;90m-Exclude\e[0m .git | \e[0;33;93mNew-ZipFile\e[0m \e[0;36m\"scripts\"\e[0m\e[0K\e[106G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "Creating Archive \"scripts\"\e[0K\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\n7-Zip (A) 9.20  Copyright (c) 1999-2010 Igor Pavlov  2010-11-18\e[0K\r\nScanning\e[0K\r\n\e[0K\r\nCreating archive scripts.7z\e[0K\e[18G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\r\nCompressing  fil.7z\e[0K\r\nCompressing  files.7z\e[0K\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "Compressing  FolderEncoder\\Assets\\demo.gif    0%\e[0K"
+  - delay: 50
+    content: "\e[?25l\rCompressing  FolderEncoder\\Assets\\demo.gif    1%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  FolderEncoder\\Assets\\demo.gif\e[0K\r\nCompressing  Github-Functions\\Assets\\demo.gif    2%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Github-Functions\\Assets\\demo.gif    3%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Github-Functions\\Assets\\demo.gif    4%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Github-Functions\\Assets\\demo.gif    5%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Github-Functions\\Assets\\demo.gif    6%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Github-Functions\\Assets\\demo.gif    7%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Github-Functions\\Assets\\demo.gif    8%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Github-Functions\\Assets\\demo.gif    9%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Github-Functions\\Assets\\demo.gif   10%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Github-Functions\\Assets\\demo.gif   12%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Github-Functions\\Assets\\demo.gif   13%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Github-Functions\\Assets\\demo.gif   14%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Github-Functions\\Assets\\demo.gif\e[0K\r\nCompressing  Currency-Conv\\Assets\\demo.gif   15%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Currency-Conv\\Assets\\demo.gif   17%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Currency-Conv\\Assets\\demo.gif   18%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Currency-Conv\\Assets\\demo.gif   19%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Currency-Conv\\Assets\\demo.gif   20%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Currency-Conv\\Assets\\demo.gif   21%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Currency-Conv\\Assets\\demo.gif   22%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Currency-Conv\\Assets\\demo.gif   23%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Currency-Conv\\Assets\\demo.gif   26%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Currency-Conv\\Assets\\demo.gif   27%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Currency-Conv\\Assets\\demo.gif   28%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Currency-Conv\\Assets\\demo.gif   29%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Currency-Conv\\Assets\\demo.gif   30%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Currency-Conv\\Assets\\demo.gif   31%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Currency-Conv\\Assets\\demo.gif   32%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Currency-Conv\\Assets\\demo.gif\e[0K\r\nCompressing  7Zip\\Assets\\demo.gif   34%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\Assets\\demo.gif   35%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\Assets\\demo.gif   36%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\Assets\\demo.gif   39%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\Assets\\demo.gif   40%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\Assets\\demo.gif   41%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\Assets\\demo.gif   43%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\Assets\\demo.gif   44%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\Assets\\demo.gif   45%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\Assets\\demo.gif   47%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\Assets\\demo.gif   48%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\Assets\\demo.gif\e[0K\r\nCompressing  Bookmarks\\Assets\\demo.gif   50%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Bookmarks\\Assets\\demo.gif   51%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Bookmarks\\Assets\\demo.gif   52%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Bookmarks\\Assets\\demo.gif   53%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Bookmarks\\Assets\\demo.gif   54%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Bookmarks\\Assets\\demo.gif   55%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Bookmarks\\Assets\\demo.gif   56%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Bookmarks\\Assets\\demo.gif   58%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Bookmarks\\Assets\\demo.gif   59%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Bookmarks\\Assets\\demo.gif   60%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Bookmarks\\Assets\\demo.gif   62%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Bookmarks\\Assets\\demo.gif\e[0K\r\nCompressing  7Zip\\render1567250166065.gif   64%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567250166065.gif   65%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567250166065.gif   66%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567250166065.gif   67%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567250166065.gif\e[0K\r\nCompressing  7Zip\\render1567329116320.gif   68%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567329116320.gif   69%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567329116320.gif   70%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567329116320.gif   71%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567329116320.gif   72%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567329116320.gif   73%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567329116320.gif   74%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567329116320.gif   75%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567329116320.gif   76%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567329116320.gif   77%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567329116320.gif   78%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567329116320.gif   79%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567329116320.gif   80%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567329116320.gif   81%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567329116320.gif   82%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567329116320.gif   83%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567329116320.gif   84%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567329116320.gif   85%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567329116320.gif   86%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567329116320.gif   87%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567329116320.gif   88%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567329116320.gif   89%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567329116320.gif   90%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\render1567329116320.gif\e[0K\r\nCompressing  FolderEncoder\\Assets\\Icon.ico\e[0K\r\nCompressing  Github-Functions\\Assets\\Icon.ico\e[0K\r\nCompressing  Currency-Conv\\Assets\\Icon.ico\e[0K\r\nCompressing  7Zip\\Assets\\Icon.ico\e[0K\r\nCompressing  7Zip\\Icon.ico\e[0K\r\nCompressing  Bookmarks\\Assets\\Icon.ico\e[0K\r\nCompressing  Bookmarks\\out\\Icon.ico\e[0K\r\nCompressing  Github-Functions\\README.md   91%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Github-Functions\\README.md\e[0K\r\nCompressing  Currency-Conv\\README.md\e[0K\r\nCompressing  README.md   91%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  README.md\e[0K\r\nCompressing  Bookmarks\\README.md\e[0K\r\nCompressing  Bookmarks\\out\\README.md   92%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Bookmarks\\out\\README.md\e[0K\r\nCompressing  7Zip\\README.md\e[0K\r\nCompressing  FolderEncoder\\README.md   93%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  FolderEncoder\\README.md\e[0K\r\nCompressing  .gitignore\e[0K\r\nCompressing  FolderEncoder\\Assets\\Icon.pdn\e[0K\r\nCompressing  Github-Functions\\Assets\\Icon.pdn   94%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Github-Functions\\Assets\\Icon.pdn\e[0K\r\nCompressing  Currency-Conv\\Assets\\Icon.pdn\e[0K\r\nCompressing  7Zip\\Assets\\Icon.pdn\e[0K\r\nCompressing  Bookmarks\\Assets\\Icon.pdn\e[0K\r\nCompressing  7Zip\\7Zip.Tests.ps1   95%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\7Zip.Tests.ps1\e[0K\r\nCompressing  Currency-Conv\\Aliases.ps1\e[0K\r\nCompressing  Currency-Conv\\Export\\PsModule\\Aliases.ps1\e[0K\r\nCompressing  7Zip\\Aliases.ps1\e[0K\r\nCompressing  Bookmarks\\Aliases.ps1\e[0K\e[41G\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r\nCompressing  Bookmarks\\out\\Aliases.ps1\e[0K\r\nCompressing  App-Alias.ps1\e[0K\r\nCompressing  Bookmarks\\Bookmarks.Tests.ps1   96%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Bookmarks\\Bookmarks.Tests.ps1\e[0K\r\nCompressing  Github-Functions\\EXportGithub.ps1\e[0K\r\nCompressing  FolderEncoder\\FolderEncoder.Tests.ps1   96%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  FolderEncoder\\FolderEncoder.Tests.ps1\e[0K\r\nCompressing  Currency-Conv\\Export\\PsModule\\Functions.ps1\e[0K\r\nCompressing  Bookmarks\\out\\Functions.ps1   96%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Bookmarks\\out\\Functions.ps1\e[0K\r\nCompressing  Bookmarks\\Functions.ps1\e[0K\r\nCompressing  Currency-Conv\\Functions.ps1   96%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Currency-Conv\\Functions.ps1\e[0K\r\nCompressing  7Zip\\Functions.ps1\e[0K\r\nCompressing  FolderEncoder\\Get-FileHash.ps1\e[0K\r\nCompressing  FolderEncoder\\Get-FileHash.Tests.ps1\e[0K\e[56G\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r\nCompressing  Git-Functions\\Git-Alias.ps1\e[0K\r\nCompressing  Git-Functions\\Git-Function.ps1\e[0K\r\nCompressing  FolderEncoder\\Hash.ps1   97%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  FolderEncoder\\Hash.ps1\e[0K\r\nCompressing  install.ps1\e[0K\r\nCompressing  FolderEncoder\\Invoke-FolderEncode.ps1   97%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  FolderEncoder\\Invoke-FolderEncode.ps1\e[0K\r\nCompressing  Shared-Functions\\ModuleLoader.ps1\e[0K\r\nCompressing  Shell-Functions\\Provider-Functions.ps1\e[0K\r\nCompressing  PSM-Release.ps1   97%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  PSM-Release.ps1\e[0K\r\nCompressing  Bookmarks\\out\\Shared-Functions.ps1\e[0K\r\nCompressing  Shared-Functions\\Shared-Functions.ps1\e[0K\r\nCompressing  7Zip\\Shared-Functions.ps1\e[0K\r\nCompressing  Bookmarks\\Shared-Functions.ps1   97%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Bookmarks\\Shared-Functions.ps1\e[0K\r\nCompressing  Shell-Functions\\Shell-Alias.ps1\e[0K\r\nCompressing  Shell-Functions\\Shell-Function.ps1\e[0K\r\nCompressing  Upload-GoogleDrive.ps1   97%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Upload-GoogleDrive.ps1\e[0K\r\nCompressing  7Zip\\7zip.psd1\e[0K\r\nCompressing  Bookmarks\\out\\Bookmarks.psd1\e[0K\r\nCompressing  Bookmarks\\Bookmarks.psd1\e[0K\r\nCompressing  Currency-Conv\\Export\\PsModule\\Currency-Conv.psd1   97%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Currency-Conv\\Export\\PsModule\\Currency-Conv.psd1\e[0K\r\nCompressing  Currency-Conv\\Currency-Conv.psd1\e[0K\r\nCompressing  Github-Functions\\EXportGithub.psd1   97%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Github-Functions\\EXportGithub.psd1\e[0K\r\nCompressing  FolderEncoder\\FolderEncoder.psd1\e[0K\r\nCompressing  Shell-Functions\\Shell-Function.psd1\e[0K\r\nCompressing  7Zip\\7zip.psm1\e[0K\e[34G\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r\nCompressing  Bookmarks\\out\\Bookmarks.psm1\e[0K\r\nCompressing  Bookmarks\\Bookmarks.psm1   97%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Bookmarks\\Bookmarks.psm1\e[0K\r\nCompressing  Uninstall.psm1\e[0K\r\nCompressing  index.rst   97%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  index.rst\e[0K\r\nCompressing  .travis.yml\e[0K\r\nCompressing  appveyor.yml   97%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  appveyor.yml\e[0K\r\nCompressing  7Zip\\azure-pipelines.yml\e[0K\r\nCompressing  Bookmarks\\azure-pipelines.yml\e[0K\r\nCompressing  azure-pipelines.yml\e[0K\r\nCompressing  FolderEncoder\\Assets\\demo.yml   97%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  FolderEncoder\\Assets\\demo.yml\e[0K\r\nCompressing  Github-Functions\\Assets\\demo.yml   97%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  Github-Functions\\Assets\\demo.yml\e[0K\r\nCompressing  Currency-Conv\\Assets\\demo.yml\e[0K\r\nCompressing  7Zip\\Assets\\demo.yml   98%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\Assets\\demo.yml\e[0K\r\nCompressing  Bookmarks\\Assets\\demo.yml\e[0K\r\nCompressing  7Zip\\demo.yml   98%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rCompressing  7Zip\\demo.yml   99%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r\nEverything is Ok\e[0K\r\n\e[0K\e[?25h"
+  - delay: 50
+    content: "0\e[0K\e[?25l\r\nPS\\>PowershellScripts>\e[0K\e[67G\e[?25h"
+  - delay: 50
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;32m#\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;32m#\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32m#\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mT\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32ms\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mt\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32m \e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32ma\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mr\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mc\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mh\e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;32m###Test arc\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;32m###Test ar\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;32mc\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mh\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mi\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mv\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25l\r\nPS\\>PowershellScripts>\e[0K\e[67G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mT\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;33;93me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93ms\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93mt\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93m-\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93mA\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93mppLockerPolicy\e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mTest-\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;33;93mZ\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93mipFileContent\e[0m\e[0K"
+  - delay: 500
+    content: "\e[87G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mTest-ZipFileContent\e[0m s\e[0K\e[?25h"
+  - delay: 500
+    content: "c\e[0K"
+  - delay: 500
+    content: "r\e[0K"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mTest-ZipFileContent\e[0m .\\scripts.7z\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "Test file \"\" from archive \".\\scripts.7z\"\e[0K\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\n7-Zip (A) 9.20  Copyright (c) 1999-2010 Igor Pavlov  2010-11-18\e[0K\r\n\e[0K\r\nProcessing archive: .\\scripts.7z\e[0K\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "Testing     fil.7z\e[0K\e[?25l\r\nTesting     files.7z\e[0K\r\nTesting     FolderEncoder\\Assets\\demo.gif\e[0K\r\nTesting     Github-Functions\\Assets\\demo.gif\e[0K\r\nTesting     Currency-Conv\\Assets\\demo.gif\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\nTesting     7Zip\\Assets\\demo.gif\e[0K\r\nTesting     Bookmarks\\Assets\\demo.gif\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\nTesting     FolderEncoder\\Assets\\Icon.ico\e[0K\r\nTesting     Github-Functions\\Assets\\Icon.ico\e[0K\r\nTesting     Currency-Conv\\Assets\\Icon.ico\e[0K\r\nTesting     7Zip\\Assets\\Icon.ico\e[0K\r\nTesting     7Zip\\Icon.ico\e[0K\r\nTesting     Bookmarks\\Assets\\Icon.ico\e[0K\r\nTesting     Bookmarks\\out\\Icon.ico\e[0K\r\nTesting     Github-Functions\\README.md\e[0K\r\nTesting     Currency-Conv\\README.md\e[0K\r\nTesting     README.md\e[0K\r\nTesting     Bookmarks\\README.md\e[0K\r\nTesting     Bookmarks\\out\\README.md\e[0K\r\nTesting     7Zip\\README.md\e[0K\r\nTesting     FolderEncoder\\README.md\e[0K\r\nTesting     .gitignore\e[0K\r\nTesting     FolderEncoder\\Assets\\Icon.pdn\e[0K\r\nTesting     Github-Functions\\Assets\\Icon.pdn\e[0K\r\nTesting     Currency-Conv\\Assets\\Icon.pdn\e[0K\r\nTesting     7Zip\\Assets\\Icon.pdn\e[0K\r\nTesting     Bookmarks\\Assets\\Icon.pdn\e[0K\r\nTesting     7Zip\\7Zip.Tests.ps1\e[0K\r\nTesting     Currency-Conv\\Aliases.ps1\e[0K\r\nTesting     Currency-Conv\\Export\\PsModule\\Aliases.ps1\e[0K\r\nTesting     7Zip\\Aliases.ps1\e[0K\r\nTesting     Bookmarks\\Aliases.ps1\e[0K\r\nTesting     Bookmarks\\out\\Aliases.ps1\e[0K\e[13G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\nTesting     App-Alias.ps1\e[0K\r\nTesting     Bookmarks\\Bookmarks.Tests.ps1\e[0K\r\nTesting     Github-Functions\\EXportGithub.ps1\e[0K\r\nTesting     FolderEncoder\\FolderEncoder.Tests.ps1\e[0K\r\nTesting     Currency-Conv\\Export\\PsModule\\Functions.ps1\e[0K\r\nTesting     Bookmarks\\out\\Functions.ps1\e[0K\r\nTesting     Bookmarks\\Functions.ps1\e[0K\r\nTesting     Currency-Conv\\Functions.ps1\e[0K\r\nTesting     7Zip\\Functions.ps1\e[0K\r\nTesting     FolderEncoder\\Get-FileHash.ps1\e[0K\r\nTesting     FolderEncoder\\Get-FileHash.Tests.ps1\e[0K\r\nTesting     Git-Functions\\Git-Alias.ps1\e[0K\r\nTesting     Git-Functions\\Git-Function.ps1\e[0K\r\nTesting     FolderEncoder\\Hash.ps1\e[0K\r\nTesting     install.ps1\e[0K\r\nTesting     FolderEncoder\\Invoke-FolderEncode.ps1\e[0K\r\nTesting     Shared-Functions\\ModuleLoader.ps1\e[0K\r\nTesting     Shell-Functions\\Provider-Functions.ps1\e[0K\r\nTesting     PSM-Release.ps1\e[0K\r\nTesting     Bookmarks\\out\\Shared-Functions.ps1\e[0K\r\nTesting     Shared-Functions\\Shared-Functions.ps1\e[0K\r\nTesting     7Zip\\Shared-Functions.ps1\e[0K\r\nTesting     Bookmarks\\Shared-Functions.ps1\e[0K\r\nTesting     Shell-Functions\\Shell-Alias.ps1\e[0K\r\nTesting     Shell-Functions\\Shell-Function.ps1\e[0K\r\nTesting     Upload-GoogleDrive.ps1\e[0K\r\nTesting     7Zip\\7zip.psd1\e[0K\r\nTesting     Bookmarks\\out\\Bookmarks.psd1\e[0K\r\nTesting     Bookmarks\\Bookmarks.psd1\e[0K\r\nTesting     Currency-Conv\\Export\\PsModule\\Currency-Conv.psd1\e[0K\r\nTesting\e[0K\e[1G\e[?25h"
+  - delay: 500
+    content: "Testing     Currency-Conv\\Currency-Conv.psd1\e[0K\e[?25l\r\nTesting     Github-Functions\\EXportGithub.psd1\e[0K\r\nTesting     FolderEncoder\\FolderEncoder.psd1\e[0K\r\nTesting     Shell-Functions\\Shell-Function.psd1\e[0K\r\nTesting     7Zip\\7zip.psm1\e[0K\r\nTesting     Bookmarks\\out\\Bookmarks.psm1\e[0K\r\nTesting     Bookmarks\\Bookmarks.psm1\e[0K\r\nTesting     Uninstall.psm1\e[0K\r\nTesting     index.rst\e[0K\r\nTesting     .travis.yml\e[0K\r\nTesting     appveyor.yml\e[0K\r\nTesting     7Zip\\azure-pipelines.yml\e[0K\r\nTesting     Bookmarks\\azure-pipelines.yml\e[0K\r\nTesting     azure-pipelines.yml\e[0K\r\nTesting     FolderEncoder\\Assets\\demo.yml\e[0K\r\nTesting     Github-Functions\\Assets\\demo.yml\e[0K\r\nTesting     Currency-Conv\\Assets\\demo.yml\e[0K\r\nTesting     7Zip\\Assets\\demo.yml\e[0K\r\nTesting     Bookmarks\\Assets\\demo.yml\e[0K\r\nTesting     7Zip\\demo.yml\e[0K\r\nTesting     7Zip\\demo1.yml\e[0K\r\nTesting     7Zip\\demo2.yml\e[0K\r\nTesting     demo3.yml\e[0K\r\nTesting     Shell-Functions\e[0K\r\nTesting     Shared-Functions\e[0K\r\nTesting     outDir\e[0K\r\nTesting     Github-Functions\\Assets\e[0K\r\nTesting     Github-Functions\e[0K\r\nTesting     Git-Functions\e[0K\r\nTesting     FolderEncoder\\Assets\e[0K\r\nTesting     FolderEncoder\e[0K\r\nTesting     Currency-Conv\\Export\\PsModule\e[0K\r\nTesting     Currency-Conv\\Export\e[0K\r\nTesting     Currency-Conv\\Assets\e[0K\r\nTesting     Currency-Conv\e[0K\e[13G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\nTesting     Bookmarks\\out\e[0K\r\nTesting     Bookmarks\\Assets\e[0K\r\nTesting     Bookmarks\e[0K\r\nTesting     7Zip\\out\e[0K\r\nTesting     7Zip\\Assets\e[0K\r\nTesting     7Zip\e[0K\r\n\e[0K\r\nEverything is Ok\e[0K\r\n\e[0K\r\nFolders: 18\e[0K\r\nFiles: 88\e[0K\r\nSize:       12922575\e[0K\r\nCompressed: 6577827\e[0K\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "File test End. Return code: 0\e[0K\e[?25l\r\n0\e[0K\r\nPS\\>PowershellScripts>\e[0K\e[67G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;32m#\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;32m#\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32m#\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mR\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32ma\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32md\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32m \e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32ma\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mr\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mc\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mh\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mi\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mv\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "PS\\>PowershellScripts>\e[0K\e[67G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mR\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;33;93me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93ma\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93md\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93m-\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93mZ\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93mipFile\e[0m\e[0K"
+  - delay: 500
+    content: "\e[80G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mRead-ZipFile\e[0m s\e[0K\e[?25h"
+  - delay: 500
+    content: "c\e[0K"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mRead-ZipFile\e[0m .\\scripts.7z\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "List zip content:\".\\scripts.7z\".\e[0K\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r\n7-Zip (A) 9.20  Copyright (c) 1999-2010 Igor Pavlov  2010-11-18\e[0K\r\n\e[0K\r\nListing archive: .\\scripts.7z\e[0K\r\n\e[0K\r\n--\e[0K\r\nPath = .\\scripts.7z\e[0K\r\nType = 7z\e[0K\r\nMethod = LZMA\e[0K\r\nSolid = +\e[0K\r\nBlocks = 1\e[0K\r\nPhysical Size = 6577827\e[0K\r\nHeaders Size = 1949\e[0K\r\n\e[0K\r\n   Date      Time    Attr\e[0K\e[22G\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   Date      Time    Attr         Size   Compressed  Name\e[0K\r\n------------------- ----- ------------ ------------  ------------------------\e[0K\r\n2019-08-31 13:53:46 ....A         2754      6575878  fil.7z\e[0K\r\n2019-08-31 13:56:32 ....A         2777               files.7z\e[0K\r\n2019-04-20 12:31:40 ....A       881003               FolderEncoder\\Assets\\demo.gif\e[0K\r\n2019-04-20 13:48:36 ....A      1705518               Github-Functions\\Assets\\demo.gif\e[0K\r\n2019-05-17 17:31:05 ....A      2199845               Currency-Conv\\Assets\\demo.gif\e[0K\e[54G\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r\n2019-07-18 17:39:08 ....A      1705518               7Zip\\Assets\\demo.gif\e[0K\r\n2019-08-14 18:53:23 ....A      2265311               Bookmarks\\Assets\\demo.gif\e[0K\r\n2019-08-31 14:17:23 ....A       504138               7Zip\\render1567250166065.gif\e[0K\r\n2019-09-01 12:15:05 ....A      3087644               7Zip\\render1567329116320.gif\e[0K\r\n2019-04-20 11:23:54 ....A         3678               FolderEncoder\\Assets\\Icon.ico\e[0K\r\n2019-04-20 13:48:51 ....A         7654               Github-Functions\\Assets\\Icon.ico\e[0K\r\n2019-04-28 00:57:44 ....A         7654               Currency-Conv\\Assets\\Icon.ico\e[0K\r\n2019-07-18 17:42:27 ....A        10150\e[0K\e[33G\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r2019-07-18 17:42:27 ....A        10150               7Zip\\Assets\\Icon.ico\e[0K\r\n2019-07-18 17:42:27 ....A        10150               7Zip\\Icon.ico\e[0K\r\n2019-08-14 10:27:48 ....A        10150               Bookmarks\\Assets\\Icon.ico\e[0K\r\n2019-08-28 19:42:02 ....A        10150               Bookmarks\\out\\Icon.ico\e[0K\r\n2019-04-28 02:00:02 ....A         3507               Github-Functions\\README.md\e[0K\r\n2019-05-17 17:34:31 ....A         2988               Currency-Conv\\README.md\e[0K\r\n2019-05-21 14:28:29 ....A         8023               README.md\e[0K\r\n2019-08-28 19:47:14 ....A\e[0K\e[28G\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r2019-08-28 19:47:14 ....A         5612               Bookmarks\\README.md\e[0K\r\n2019-08-28 19:47:37 ....A         5612               Bookmarks\\out\\README.md\e[0K\r\n2019-08-28 20:07:47 ....A         6985               7Zip\\README.md\e[0K\r\n2019-08-28 20:07:47 ....A         4296               FolderEncoder\\README.md\e[0K\r\n2019-02-13 15:39:40 ....A           52               .gitignore\e[0K\r\n2019-04-20 11:23:44 ....A         8130               FolderEncoder\\Assets\\Icon.pdn\e[0K\r\n2019-04-20 13:48:56 ....A         9857               Github-Functions\\Assets\\Icon.pdn\e[0K\r\n2019-04-28 00:57:04 ....A        11460               Currency-Conv\\Assets\\Icon.pdn\e[0K\r\n2019-07-18 17:42:00 ....A        16533               7Zip\\Assets\\Icon.pdn\e[0K\r\n2019-08-14 10:27:23 ....A        18925\e[0K\e[32G\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r2019-08-14 10:27:23 ....A        18925               Bookmarks\\Assets\\Icon.pdn\e[0K\r\n2019-07-18 17:25:26 ....A         5006               7Zip\\7Zip.Tests.ps1\e[0K\r\n2019-04-28 00:59:31 ....A           87               Currency-Conv\\Aliases.ps1\e[0K\r\n2019-04-28 00:59:31 ....A           87               Currency-Conv\\Export\\PsModule\\Aliases.ps1\e[0K\r\n2019-07-18 17:44:40 ....A          240               7Zip\\Aliases.ps1\e[0K\r\n2019-08-28 18:44:16 ....A          265               Bookmarks\\Aliases.ps1\e[0K\r\n2019-08-28 19:41:37 ....A          265               Bookmarks\\out\\Aliases.ps1\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r\n2019-02-13 14:43:54 ....A          217               App-Alias.ps1\e[0K\r\n2019-08-28 20:07:47 ....A         4313               Bookmarks\\Bookmarks.Tests.ps1\e[0K\r\n2019-04-23 15:38:22 ....A         5232               Github-Functions\\EXportGithub.ps1\e[0K\r\n2019-06-21 11:01:18 ....A         2654               FolderEncoder\\FolderEncoder.Tests.ps1\e[0K\r\n2019-05-20 11:39:46 ....A         5152               Currency-Conv\\Export\\PsModule\\Functions.ps1\e[0K\r\n2019-08-28 19:44:17 ....A         4241               Bookmarks\\out\\Functions.ps1\e[0K\r\n2019-08-28 19:49:36 ....A         4237               Bookmarks\\Functions.ps1\e[0K\r\n2019-08-28 20:07:47 ....A         4837\e[0K\e[40G\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r2019-08-28 20:07:47 ....A         4837               Currency-Conv\\Functions.ps1\e[0K\r\n2019-08-31 13:53:28 ....A        13563               7Zip\\Functions.ps1\e[0K\r\n2019-07-23 10:32:43 ....A         2498               FolderEncoder\\Get-FileHash.ps1\e[0K\r\n2019-07-02 10:30:01 ....A         1289               FolderEncoder\\Get-FileHash.Tests.ps1\e[0K\r\n2019-08-29 00:27:11 ....A          882               Git-Functions\\Git-Alias.ps1\e[0K\r\n2019-08-29 12:22:19 ....A         2229               Git-Functions\\Git-Function.ps1\e[0K\r\n2019-07-12 20:09:18 ....A         1870               FolderEncoder\\Hash.ps1\e[0K\r\n2019-07-19 12:43:46 ....A\e[0K\e[29G\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r2019-07-19 12:43:46 ....A          744               install.ps1\e[0K\r\n2019-07-23 10:01:39 ....A         5932               FolderEncoder\\Invoke-FolderEncode.ps1\e[0K\r\n2019-08-01 13:25:51 ....A         3494               Shared-Functions\\ModuleLoader.ps1\e[0K\r\n2019-05-03 21:34:14 ....A          263               Shell-Functions\\Provider-Functions.ps1\e[0K\r\n2019-08-28 18:46:32 ....A        11464               PSM-Release.ps1\e[0K\r\n2019-08-28 19:42:18 ....A         2717               Bookmarks\\out\\Shared-Functions.ps1\e[0K\r\n2019-08-28 20:07:47 ....A         9911               Shared-Functions\\Shared-Functions.ps1\e[0K\r\n2019-08-28 21:03:05 ....A         9911               7Zip\\Shared-Functions.ps1\e[0K\r\n2019-08-28 21:23:37 ....A         2907               Bookmarks\\Shared-Functions.ps1\e[0K\r\n2019-04-20 14:27:48 ....A          142               Shell-Functions\\Shell-Alias.ps1\e[0K\e[53G\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r\n2019-08-28 20:07:47 ....A         7538               Shell-Functions\\Shell-Function.ps1\e[0K\r\n2019-04-16 10:54:57 ....A          567               Upload-GoogleDrive.ps1\e[0K\r\n2019-08-28 21:00:48 ....A         4299               7Zip\\7zip.psd1\e[0K\r\n2019-08-28 19:44:10 ....A         4674               Bookmarks\\out\\Bookmarks.psd1\e[0K\r\n2019-08-28 19:44:41 ....A         4674               Bookmarks\\Bookmarks.psd1\e[0K\r\n2019-05-17 20:01:19 ....A         4480               Currency-Conv\\Export\\PsModule\\Currency-Conv.psd1\e[0K\r\n2019-08-28 20:07:47 ....A         4480\e[0K\e[41G\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r2019-08-28 20:07:47 ....A         4480               Currency-Conv\\Currency-Conv.psd1\e[0K\r\n2019-04-22 17:19:21 ....A         4410               Github-Functions\\EXportGithub.psd1\e[0K\r\n2019-04-20 13:14:36 ....A         4327               FolderEncoder\\FolderEncoder.psd1\e[0K\r\n2019-04-20 14:27:26 ....A         3856               Shell-Functions\\Shell-Function.psd1\e[0K\r\n2019-08-30 08:22:10 ....A          457               7Zip\\7zip.psm1\e[0K\r\n2019-08-28 19:43:22 ....A          550               Bookmarks\\out\\Bookmarks.psm1\e[0K\r\n2019-08-28 19:43:55 ....A          550               Bookmarks\\Bookmarks.psm1\e[0K\r\n2019-02-13 15:39:40 ....A         1809\e[0K\e[44G\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r2019-02-13 15:39:40 ....A         1809               Uninstall.psm1\e[0K\r\n2019-04-23 16:35:12 ....A           55               index.rst\e[0K\r\n2019-06-20 20:30:05 ....A          859               .travis.yml\e[0K\r\n2019-06-20 20:16:47 ....A          368               appveyor.yml\e[0K\r\n2019-07-19 12:06:36 ....A          576               7Zip\\azure-pipelines.yml\e[0K\r\n2019-07-24 10:21:21 ....A          637               Bookmarks\\azure-pipelines.yml\e[0K\r\n2019-08-28 20:07:47 ....A          574               azure-pipelines.yml\e[0K\r\n2019-04-20 12:32:08 ....A        12944\e[0K\e[31G\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r2019-04-20 12:32:08 ....A        12944               FolderEncoder\\Assets\\demo.yml\e[0K\r\n2019-04-20 13:48:36 ....A        10491               Github-Functions\\Assets\\demo.yml\e[0K\r\n2019-05-17 17:29:00 ....A        89784               Currency-Conv\\Assets\\demo.yml\e[0K\r\n2019-07-18 17:39:08 ....A        10491               7Zip\\Assets\\demo.yml\e[0K\r\n2019-08-14 18:49:08 ....A        13084               Bookmarks\\Assets\\demo.yml\e[0K\r\n2019-08-31 14:15:58 ....A        14886               7Zip\\demo.yml\e[0K\r\n2019-09-01 12:11:51 ....A        75312               7Zip\\demo1.yml\e[0K\r\n2019-09-02 08:40:26 ....A        13716               7Zip\\demo2.yml\e[0K\r\n2019-09-02 08:41:31 ....A         9404               demo3.yml\e[0K\r\n2019-08-28 20:07:47 D....            0            0  Shell-Functions\e[0K\r\n2019-08-28 20:07:47 D....            0\e[0K\e[35G\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r2019-08-28 20:07:47 D....            0            0  Shared-Functions\e[0K\r\n2019-08-31 13:30:31 D....            0            0  outDir\e[0K\r\n2019-04-20 13:48:56 D....            0            0  Github-Functions\\Assets\e[0K\r\n2019-04-20 14:24:32 D....            0            0  Github-Functions\e[0K\r\n2019-04-20 14:26:52 D....            0            0  Git-Functions\e[0K\r\n2019-06-25 21:07:01 D....            0            0  FolderEncoder\\Assets\e[0K\r\n2019-08-28 20:07:47 D....            0\e[0K\e[42G\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r2019-08-28 20:07:47 D....            0            0  FolderEncoder\e[0K\r\n2019-07-24 10:10:07 D....            0            0  Currency-Conv\\Export\\PsModule\e[0K\r\n2019-05-17 20:43:51 D....            0            0  Currency-Conv\\Export\e[0K\r\n2019-05-17 17:31:05 D....            0            0  Currency-Conv\\Assets\e[0K\r\n2019-08-28 20:07:47 D....            0            0  Currency-Conv\e[0K\r\n2019-08-28 19:47:37 D....            0            0  Bookmarks\\out\e[0K\r\n2019-08-14 18:53:22 D....            0            0  Bookmarks\\Assets\e[0K\r\n2019-08-28 20:07:47 D....\e[0K\e[32G\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r2019-08-28 20:07:47 D....            0            0  Bookmarks\e[0K\r\n2019-08-30 19:48:57 D....            0            0  7Zip\\out\e[0K\r\n2019-07-18 17:39:08 D....            0            0  7Zip\\Assets\e[0K\r\n2019-09-02 08:40:26 D....            0            0  7Zip\e[0K\r\n------------------- ----- ------------ ------------  -------------------\e[0K\e[67G\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r------------------- ----- ------------ ------------  ------------------------\e[0K\r\n                              12922575      6575878  88 files, 18 folders\e[0K\r\n\e[0K\e[?25h"
+  - delay: 50
+    content: "0\e[0K\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 50
+    content: "PS\\>PowershellScripts>\e[0K\e[67G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;32m#\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;32m#\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32m#\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mA\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32md\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32md\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32m \e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mf\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mi\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32ml\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32m \e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mt\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mo\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32m \e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mx\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;32m###Add file to the ex\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;32m###Add file to the exis\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;32mt\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mi\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mn\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mg\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32m \e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32ma\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mr\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mc\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mh\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mi\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mv\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25l\r\nPS\\>PowershellScripts>\e[0K\e[67G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mA\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;33;93md\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93md\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93m-\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93mZ\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93mipFileContent\e[0m\e[0K"
+  - delay: 500
+    content: "\e[86G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mAdd-ZipFileContent\e[0m .\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mAdd-ZipFileContent\e[0m \e[0;37;90m..\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mAdd-ZipFileContent\e[0m ../\e[0K\e[?25h"
+  - delay: 500
+    content: ".\e[0K"
+  - delay: 500
+    content: ".\e[0K"
+  - delay: 500
+    content: "/\e[0K"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mAdd-ZipFileContent\e[0m \e[0;36m'..\\..\\~$i End to end testing test\e[0K.\r\ndocx'\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\e[1APS\\>PowershellScripts> \e[0;33;93mAdd-ZipFileContent\e[0m \e[0;36m'..\\..\\~$ign server.docx'\e[0m\e[0K\r\n\e[0K\r\e[1A\e[111G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mAdd-ZipFileContent\e[0m \e[0;36m'..\\..\\~$nging process.docx'\e[0m\e[0K\r\n\e[0K\r\e[1A\e[114G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mAdd-ZipFileContent\e[0m \e[0;36m'..\\..\\~$registered0.xlsx'\e[0m\e[0K\r\n\e[0K\r\e[1A\e[112G\e[?25h"
+  - delay: 500
+    content: "\e[113G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mAdd-ZipFileContent\e[0m \e[0;36m'..\\..\\~$registered0.xlsx'\e[0m \e[0;37;90m-\e[0m\e[0K\r\n\e[0K\r\e[1A\e[114G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mAdd-ZipFileContent\e[0m \e[0;36m'..\\..\\~$registered0.xlsx'\e[0m \e[0;37;90m-A\e[0m\e[0K\r\n\e[0K\r\e[1A\e[115G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mAdd-ZipFileContent\e[0m \e[0;36m'..\\..\\~$registered0.xlsx'\e[0m \e[0;37;90m-Archiv\e[0Ke\r\nName\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[6G"
+  - delay: 500
+    content: "\e[?25l\r\e[0;37;90mName\e[0m s\e[0K\e[?25h"
+  - delay: 500
+    content: "c\e[0K"
+  - delay: 500
+    content: "\e[?25l\r\e[0;37;90mName\e[0m .\\scripts.7z\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "Adding/updating file \"..\\..\\~$registered0.xlsx\" to arhcive \".\\scripts.7z\"\e[0K\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\n7-Zip (A) 9.20  Copyright (c) 1999-2010 Igor Pavlov  2010-11-18\e[0K\r\n\e[0K\r\nScanning\e[0K\r\n\e[0K\r\nUpdating archive .\\scripts.7z\e[0K\r\n\e[0K\r\n   99%\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rCompressing  ~$registered0.xlsx\e[0K\r\n\e[0K\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "Everything is Ok\e[0K\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "0\e[0K\e[?25l\r\nPS\\>PowershellScripts>\e[0K\e[67G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mr\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;33;93me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93mm\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93mo\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93mv\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mremov\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mremo\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mrem\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mre\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mr\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts>\e[0K\e[67G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;32m#\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;32m#\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32m#\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mR\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mm\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mo\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mv\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32m \e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mf\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mi\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32ml\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32m \e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mf\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mr\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mo\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mm\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32m \e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32ma\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mr\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mc\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mh\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mi\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mv\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "PS\\>PowershellScripts>\e[0K\e[67G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mR\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;33;93me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93mm\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93mo\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93mv\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93m-\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93mZ\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;33;93mipFileContent\e[0m\e[0K"
+  - delay: 500
+    content: "\e[89G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mRemove-ZipFileContent\e[0m \e[0;37;90m-\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;37;90mA\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;37;90mrchiveName\e[0m\e[0K"
+  - delay: 500
+    content: "\e[102G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mRemove-ZipFileContent\e[0m \e[0;37;90m-ArchiveName\e[0m s\e[0K\e[?25h"
+  - delay: 500
+    content: "c\e[0K"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mRemove-ZipFileContent\e[0m \e[0;37;90m-ArchiveName\e[0m .\\scripts.7z\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[115G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mRemove-ZipFileContent\e[0m \e[0;37;90m-ArchiveName\e[0m .\\scripts.7z \e[0;37;90m-\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;37;90mf\e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mRemove-ZipFileContent\e[0m \e[0;37;90m-ArchiveName\e[0m .\\scripts.7z \e[0;37;90m-File\e[0KN\r\name\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[5G"
+  - delay: 500
+    content: "\e[?25l\r\e[0;37;90mame\e[0m 7Zip\\demo2.yml\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "Removing file \"7Zip\\demo2.yml\" from arhcive \".\\scripts.7z\"\e[0K\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\n7-Zip (A) 9.20  Copyright (c) 1999-2010 Igor Pavlov  2010-11-18\e[0K\r\n\e[0K\r\nUpdating archive .\\scripts.7z\e[0K\r\n\e[0K\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "    0%\e[0K"
+  - delay: 50
+    content: "\e[?25l\r    2%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r    3%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r    5%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r    7%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r    9%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   11%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   13%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   14%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   16%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   17%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   19%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   20%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   21%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   22%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   25%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   26%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   27%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   29%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   31%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   32%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   34%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   35%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   40%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   43%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   45%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   47%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   50%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   51%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   52%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   54%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   55%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   56%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   58%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   59%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   61%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   62%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   64%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   66%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   67%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   69%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   70%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   71%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   73%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   74%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   75%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   77%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   78%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   80%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   81%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   82%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   84%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   85%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   87%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   88%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   90%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   91%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   93%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   94%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   96%\e[0K\e[?25h"
+  - delay: 50
+    content: "\e[?25l\r   98%\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "Everything is Ok\e[0K\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "0\e[0K\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "PS\\>PowershellScripts>\e[0K\e[67G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;32m###\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;32mA\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;32m###A\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;32mr\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mc\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mh\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mo\e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;32m###Arch\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;32mi\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mv\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32m \e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mf\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mr\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mo\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mm\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32m \e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mf\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mi\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32ml\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32ms\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32m \e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32ml\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mi\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32ms\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mt\e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "PS\\>PowershellScripts>\e[0K\e[67G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;32m#\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;32m#\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mE\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mx\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mt\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;32m##Ext\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;32m##Ex\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;32m##E\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;32m##\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;32mA\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32md\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mv\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32ma\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mn\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mc\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32me\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32md\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32m \e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32ms\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32my\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mn\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mt\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32ma\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;32mx\e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "\r\e[1A\e[67G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mN\e[0m\e[0K\r\n\e[0K\r\e[1A\e[68G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNw\e[0m\e[0K\r\n\e[0K\r\e[1A\e[69G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mN\e[0m\e[0K\r\n\e[0K\r\e[1A\e[68G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNe\e[0m\e[0K\r\n\e[0K\r\e[1A\e[69G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNew\e[0m\e[0K\r\n\e[0K\r\e[1A\e[70G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNew-\e[0m\e[0K\r\n\e[0K\r\e[1A\e[71G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNew-Z\e[0m\e[0K\r\n\e[0K\r\e[1A\e[72G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNew-Zi\e[0m\e[0K\r\n\e[0K\r\e[1A\e[73G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNew-ZipFile\e[0m\e[0K\r\n\e[0K\r\e[1A\e[78G\e[?25h"
+  - delay: 500
+    content: "\e[79G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNew-ZipFile\e[0m\e[0K\r\n\e[0K\r\e[1A\e[79G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNew-ZipFile\e[0m \e[0;37;90m-\e[0m\e[0K\r\n\e[0K\r\e[1A\e[80G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNew-ZipFile\e[0m \e[0;37;90m-F\e[0m\e[0K\r\n\e[0K\r\e[1A\e[81G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNew-ZipFile\e[0m \e[0;37;90m-Fi\e[0m\e[0K\r\n\e[0K\r\e[1A\e[82G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNew-ZipFile\e[0m \e[0;37;90m-FileName\e[0m\e[0K\r\n\e[0K\r\e[1A\e[88G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNew-ZipFile\e[0m \e[0;37;90m-FileNames\e[0m\e[0K\r\n\e[0K\r\e[1A\e[89G\e[?25h"
+  - delay: 500
+    content: "\e[90G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNew-ZipFile\e[0m \e[0;37;90m-FileNames\e[0m i\e[0K\r\n\e[0K\r\e[1A\e[91G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNew-ZipFile\e[0m \e[0;37;90m-FileNames\e[0m in\e[0K\r\n\e[0K\r\e[1A\e[92G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNew-ZipFile\e[0m \e[0;37;90m-FileNames\e[0m ind\e[0K\r\n\e[0K\r\e[1A\e[93G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNew-ZipFile\e[0m \e[0;37;90m-FileNames\e[0m .\\index.rst\e[0K\r\n\e[0K\r\e[1A\e[101G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts\e[0;31;91m> \e[0;33;93mNew-ZipFile\e[0m \e[0;37;90m-FileNames\e[0m .\\index.rst\e[0;37;90m,\e[0m\e[0K\r\n\e[0K\r\e[1A\e[102G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNew-ZipFile\e[0m \e[0;37;90m-FileNames\e[0m .\\index.rst\e[0;37;90m,\e[0mR\e[0K\r\n\e[0K\r\e[1A\e[103G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNew-ZipFile\e[0m \e[0;37;90m-FileNames\e[0m .\\index.rst\e[0;37;90m,\e[0mRe\e[0K\r\n\e[0K\r\e[1A\e[104G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNew-ZipFile\e[0m \e[0;37;90m-FileNames\e[0m .\\index.rst\e[0;37;90m,\e[0m.\\README.md\e[0K\r\n\e[0K"
+  - delay: 500
+    content: "\r\e[1A\e[113G\e[?25h"
+  - delay: 500
+    content: "\e[114G"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNew-ZipFile\e[0m \e[0;37;90m-FileNames\e[0m .\\index.rst\e[0;37;90m,\e[0m.\\README.md \e[0;37;90m-\e[0m\e[0K\r\n\e[0K\r\e[1A\e[115G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNew-ZipFile\e[0m \e[0;37;90m-FileNames\e[0m .\\index.rst\e[0;37;90m,\e[0m.\\README.md \e[0;37;90m-P\e[0m\e[0K\r\n\e[0K\r\e[1A\e[116G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNew-ZipFile\e[0m \e[0;37;90m-FileNames\e[0m .\\index.rst\e[0;37;90m,\e[0m.\\README.md \e[0;37;90m-Pa\e[0m\e[0K\r\n\e[0K\r\e[1A\e[117G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNew-ZipFile\e[0m \e[0;37;90m-FileNames\e[0m .\\index.rst\e[0;37;90m,\e[0m.\\README.md \e[0;37;90m-Pas\e[0m\e[0K\r\n\e[0K\r\e[1A\e[118G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNew-ZipFile\e[0m \e[0;37;90m-FileNames\e[0m .\\index.rst\e[0;37;90m,\e[0m.\\README.md \e[0;37;90m-Pass\e[0m\e[0K\r\n\e[0K\r\e[1A\e[119G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rPS\\>PowershellScripts> \e[0;33;93mNew-ZipFile\e[0m \e[0;37;90m-FileNames\e[0m .\\index.rst\e[0;37;90m,\e[0m.\\README.md \e[0;37;90m-Passw\e[0Ko\r\nrd\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[4G"
+  - delay: 500
+    content: "\e[?25l\r\e[0;37;90mrd\e[0m q\e[0K\e[?25h"
+  - delay: 500
+    content: "w\e[0K"
+  - delay: 500
+    content: "e\e[0K"
+  - delay: 500
+    content: "a\e[0K"
+  - delay: 500
+    content: "s\e[0K"
+  - delay: 500
+    content: "d\e[0K"
+  - delay: 500
+    content: "\e[11G"
+  - delay: 500
+    content: "\e[?25l\r\e[0;37;90mrd\e[0m qweasd \e[0;37;90m-\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;37;90mC\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;37;90mo\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;37;90mm\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;37;90mpression\e[0m\e[0K"
+  - delay: 500
+    content: "\e[24G"
+  - delay: 500
+    content: "\e[?25l\r\e[0;37;90mrd\e[0m qweasd \e[0;37;90m-Compression\e[0m U\e[0K\e[?25h"
+  - delay: 500
+    content: "l\e[0K"
+  - delay: 500
+    content: "t\e[0K"
+  - delay: 500
+    content: "r\e[0K"
+  - delay: 500
+    content: "a\e[0K"
+  - delay: 500
+    content: "\e[30G"
+  - delay: 500
+    content: "\e[?25l\r\e[0;37;90mrd\e[0m qweasd \e[0;37;90m-Compression\e[0m Ultra \e[0;37;90m-\e[0m\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[0;37;90mA\e[0m\e[0K"
+  - delay: 500
+    content: "\e[0;37;90mr\e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25l\e[0;37;90mchiveName\e[0m\e[0K"
+  - delay: 500
+    content: "\e[?25h"
+  - delay: 500
+    content: "\e[?25l"
+  - delay: 500
+    content: "\e[43G\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\e[0;37;90mrd\e[0m qweasd \e[0;37;90m-Compression\e[0m Ultra \e[0;37;90m-ArchiveName\e[0m f\e[0K\e[?25h"
+  - delay: 500
+    content: "i\e[0K"
+  - delay: 500
+    content: "l\e[0K"
+  - delay: 500
+    content: "e\e[0K"
+  - delay: 500
+    content: "s\e[0K"
+  - delay: 500
+    content: "\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "Creating Archive \"files\"\e[0K\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "Creating Archive \"files\"\e[0K\e[?25l\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\r\n7-Zip (A) 9.20  Copyright (c) 1999-2010 Igor Pavlov  2010-11-18\e[0K\r\nScanning\e[0K\r\n\e[0K\r\nCreating archive files.7z\e[0K\r\n\e[0K\r\n\e[0K\e[?25h"
+  - delay: 500
+    content: "Compressing  README.md\e[0K\e[?25l\r\nCompressing  index.rst    0%\e[0K\e[?25h"
+  - delay: 500
+    content: "\e[?25l\rCompressing  index.rst\e[0K\r\n\e[0K\r\nEverything is Ok\e[0K\r\n\e[0K\e[?25h"
+  - delay: 1500
+    content: "0\e[0K\e[?25l\r\nPS\\>PowershellScripts>\e[0K\e[67G\e[?25h"
