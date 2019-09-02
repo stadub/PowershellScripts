@@ -11,7 +11,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '0.9.0'
+ModuleVersion = '1.0.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -119,6 +119,11 @@ PrivateData = @{
             Test-ZipFileContent szt
             Get-ZipFileContent br
             Full documentation at the Github: https://github.com/stadub/PowershellScripts/tree/master/7zip
+            Changelog:
+            Update icon.
+            Remove extra shared functions
+            Add update checker
+            Change test environment to  StrictMode=Latest
         '
 
     } # End of PSData hashtable

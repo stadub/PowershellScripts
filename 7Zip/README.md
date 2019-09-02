@@ -4,7 +4,7 @@
 
 *Use own bin floder
 
-[![PowerShell 3](https://Stadub-Gh.visualstudio.com/PowershellScripts/_apis/build/status/7Zip?branchName=master)](https://Stadub-Gh.visualstudio.com/PowershellScripts/_build/latest?definitionId=3?branchName=master)
+[![PowerShell 3](https://Stadub-Gh.visualstudio.com/PowershellScripts/_apis/build/status/7Zip?branchName=master)](https://Stadub-Gh.visualstudio.com/PowershellScripts/_build/status/stadub.PowershellScripts?branchName=master)
 [![PowerShell 4, 5 & Core on Windows build](https://ci.appveyor.com/api/projects/status/7tmg8wy30ipanjsd?svg=true)](https://ci.appveyor.com/project/stadub/powershellscripts)
 [![Linux & MacOS build](https://img.shields.io/travis/stadub/PowershellScripts/master.svg?label=linux/macos+build)](https://travis-ci.org/stadub/PowershellScripts)
 [![latest version](https://img.shields.io/powershellgallery/v/7zip-Archive.svg?label=latest+version)](https://www.powershellgallery.com/packages/Bookmarks/)
@@ -181,36 +181,31 @@ Test-ZipFileContent - Perform zip file check
 
 ## Changelog
 
-### [v0.9.5](https://github.com/stadub/PowershellScripts/releases/tag/v0.3.1)
+### [v1.0.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.4.0)
 
-* Add module methods description.
+*First public release.
+*Supported function:
+  `Read-ZipFile` `szr`
+  `Add-ZipFileContent` `sza`
+  `Remove-ZipFileContent` `szrm`
+  `Test-ZipFileContent` `szt`
+  `Get-ZipFileContent` `br`
+
+* Changelog:
+  Update icon.
+  Remove extra shared functions
+  Add update checker
+  Change test environment to  StrictMode=Latest
 * Adding Icon/Readme file/Usage video.
 
 ### [v0.9.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.3.0)
 
 * Adding unit tests
-* Added function `Remove-AllPSBookmarks`
-* Add `Test-ZipFileContent` function
-* Rename `Check7Zip` to `Test-7ZipInstall`
+* Extracted `7zip` module from `FolderEncoder`
+* Module `7zip` adding aliazes and tests
+* `7zip` moduel add readme file, icon and build def
 
-### [v0.8.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.2.0)
-
-* Adding unit tests for all functions
-* Refactor methods and extract worker process function to `Start-7Zip`
-* Fix functions load flow.
-* Move initalization to separated function.
-
-### [v0.7.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.1.0)
-
-* Add the `Remove-ZipFileContent` `Read-ZipFile` functions
-* Separate functions and aliases.
-
-### [v0.6.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.1.0)
-
-* Extracted module from the `FolderEncoder` project and move to individual folder.
-* Rename `Encode7zip` `Decode7Zip` to  `Add-ZipFileContent` and `Get-ZipFileContent` functions
-
-## Motivation
+## Donate
 
 The modules are created and actively maintained during evenings and weekends for my own needs.
 If it's useful for you too, that's great. I don't demand anything in return.
