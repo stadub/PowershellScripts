@@ -24,4 +24,4 @@ jobs:
           Set-StrictMode -Version Latest
           Install-Module -Name Pester -Force
           Import-Module Pester
-          . .\7zip\7zip.Tests.ps1
+          . .\7zip\7Zip-Archive.Tests.ps1
