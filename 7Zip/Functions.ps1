@@ -9,8 +9,6 @@ $script:_7zWinDownloadDir='https://www.7-zip.org/a/7za920.zip'
 
 $script:_7zPath = $null;
 
-Write-Debug "Loading ${script:MyInvocation.MyCommand.Name}"
-
 }
 
 ##Check if 7zip p7z are installed
@@ -411,8 +409,11 @@ function New-ZipFile {
 
     $AllArgs = AddKeyArg $AllArgs $Key
 
-    $AllArgs += "-mx${Compression.value__}"
-
+    if ( $null -ne $Compression ){
+        Write-Debug $Compression
+        Write-Debug "-mx$([int]$Compression)"
+        $AllArgs += "-mx$([int]$Compression)"
+    }
 
     switch ( $UpdateMode )
     {
