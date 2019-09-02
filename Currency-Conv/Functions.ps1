@@ -1,19 +1,65 @@
 #$DebugPreference = "Continue"
-$baseUrl= "https://free.currconv.com"
+
+##Account selection
+
+function _Initalize() {
+
+    $script:license=$null
+
+    $script:apiKey = $null
+    $script:baseUrl = $null
+
+    $script:apiKeyFile = Get-ProfileDataFile currency-conv ".cur_api_key"
+
+    $script:baseUrlFile = Get-ProfileDataFile currency-conv ".path"
 
 
-$apiKeyFile = Join-Path (split-path -parent $profile) .cur_api_key
+    if( !(Test-Path $script:apiKeyFile)){
 
-$apiKey=$null
+        Write-Console "Api key didn't found on the computer. "
+        Write-Console "To use the CurrencyConverter api you need to enter your apiKey or receive free api key."
 
-if( !(Test-Path $apiKeyFile)){
-    Write-Output "For using the CurrencyConverter api you need to receive free api key."
-    Write-Output "Please open in the browser link 'https://free.currencyconverterapi.com/free-api-key' and follow the site instructions."
-    Read-Host -Prompt "Afterwards enter the received api key here: " | Out-File -FilePath $apiKeyFile
+        while ( Test-Empty $script:baseUrl ){
+            LicenseTypePrompt
+        }
+        $script:baseUrl  | Out-File -FilePath $baseUrlFile
+
+        if(  $script:license -ne 'fr' ){
+            Read-Host -Prompt "Enter the received api key here: " | Out-File -FilePath $apiKeyFile
+        }else{
+
+            Read-Host -Prompt "Please open in the browser link 'https://free.currencyconverterapi.com/free-api-key' and follow the site instructions.`
+            Afterwards enter the received api key here: " | Out-File -FilePath $apiKeyFile
+            Write-Console "Important: Do not forget to verify your email address."
+        }
+    }
+
+    Get-Content -Path $apiKeyFile | ForEach-Object{ $script:apiKey= $_}
+    Get-Content -Path $baseUrlFile | ForEach-Object{ $script:baseUrl= $_}
 }
 
-Get-Content -Path $apiKeyFile | ForEach-Object{ $apiKey= $_}
-   
+function LicenseTypePrompt {
+
+    $comercialPath="https://api.currconv.com"
+    $freePath= "https://free.currconv.com"
+
+    $reply = Read-Host -Prompt  "Do you have a ApiKey or whant to receive a free one?`
+    [C] Have comercial key; [F] Have free api Key; [R] Need a new free registration."
+    if (  $reply -match "[Cc]" -and $null -ne $reply ) {  
+        $script:baseUrl = $comercialPath
+        $script:license = "c"
+    }
+    if (  $reply -match "[Ff]" -and $null -ne $reply ) {  
+        $script:baseUrl = $freePath
+        $script:license = "f"
+
+    }
+    if (  $reply -match "[Rr]" -and $null -ne $reply ) {  
+        $script:baseUrl = $freePath
+        $script:license = "fr"
+    }
+}
+
 #$apiKey = "aa9464c63b35f8a405af"
 
 function PerformWebRequest {
@@ -52,6 +98,8 @@ Get-ExchangeRate -From USD -To BYN 5
 Get-ExchangeRate -Base PHP -Result EUR -Amount 5
 ([PSCustomObject]@{From="BYN"; To="USD";Value=4}) |  Get-ExchangeRate
 ([PSCustomObject]@{Base="PHP"; Amount=400})|  Get-ExchangeRate
+
+
 #>
 
 function Get-ExchangeRate {
@@ -144,7 +192,8 @@ Supported currencies list
 Supported currencies list
 
 .EXAMPLE
-Get-Currencies
+/> Get-Currencies | Where-Object {$_.id -eq "BYN"} 
+/> Get-Currencies | %{$_.id}
 #>
 
 function Get-Currencies {
@@ -167,6 +216,17 @@ function Get-Currencies {
 #([PSCustomObject]@{Base="PHP"; Amount=400})|  Get-ExchangeRate
 
 
-Export-ModuleMember -Function Get-Currencies
-Export-ModuleMember -Function Get-ExchangeRate
-Export-ModuleMember -Function Get-Countries
+<#
+.SYNOPSIS
+Remove currconv.com api key fromthe system
+
+.DESCRIPTION
+Remove currconv.com api key fromthe system:
+
+#>
+function Remove-CurrencyApi-Key {
+
+    rm $script:apiKeyFile
+
+    rm $script:baseUrlFile
+}
