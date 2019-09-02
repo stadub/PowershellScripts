@@ -3,14 +3,14 @@
 Download 7Zip utility from internet and use own bin floder
 
 [![PowerShell 3](https://dev.azure.com/Stadub-Gh/PowershellScripts/_apis/build/status/7Zip?branchName=master)](https://dev.azure.com/Stadub-Gh/PowershellScripts/_build/latest?definitionId=4&branchName=master)
-[![PowerShell 4, 5 & Core on Windows build](https://ci.appveyor.com/api/projects/status/7tmg8wy30ipanjsd?svg=true)](https://ci.appveyor.com/project/stadub/powershellscripts)
-[![Linux & MacOS build](https://img.shields.io/travis/stadub/PowershellScripts/master.svg?label=linux/macos+build)](https://travis-ci.org/stadub/PowershellScripts)
-[![latest version](https://img.shields.io/powershellgallery/v/7zip-Archive.svg?label=latest+version)](https://www.powershellgallery.com/packages/Bookmarks/)
-[![downloads](https://img.shields.io/powershellgallery/dt/7zip-Archive.svg?label=downloads)](https://www.powershellgallery.com/packages/Bookmarks)
+[![PowerShell 4, 5 & Core on Windows build](https://ci.appveyor.com/api/projects/status/jr9waysnisfyxpj1?svg=true)](https://ci.appveyor.com/project/stadub/powershellscripts-yvvt0)
+<!-- [![Linux & MacOS build](https://img.shields.io/travis/stadub/PowershellScripts/master.svg?label=linux/macos+build)](https://travis-ci.org/stadub/PowershellScripts) -->
+[![latest version](https://img.shields.io/powershellgallery/v/7zip-Archive.svg?label=latest+version)](https://www.powershellgallery.com/packages/7zip-Archive)
+[![downloads](https://img.shields.io/powershellgallery/dt/7zip-Archive.svg?label=downloads)](https://www.powershellgallery.com/packages/7zip-Archive)
 
 <!-- [Documentation](https://powershellscripts.readthedocs.io/en/latest/) -->
 
-![ConsoleDemo](https://raw.githubusercontent.com/stadub/PowershellScripts/master/Bookmarks/Assets/demo.gif)
+![ConsoleDemo](https://raw.githubusercontent.com/stadub/PowershellScripts/master/7Zip/Assets/demo.gif)
 
 ## Instalation
 
