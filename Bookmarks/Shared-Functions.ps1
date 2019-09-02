@@ -30,7 +30,8 @@ function Get-ProfileDataFile {
 }
 function Get-ProfileDir {
     param (
-        [string]$moduleName = $null
+        [string]$moduleName = $null,
+        [string]$profileFolder = $null
     )
     
     $profileDir = $ENV:AppData
@@ -52,9 +53,15 @@ function Get-ProfileDir {
     }
     
     $scriptProfile =  Combine-Path $profileDir '.ps1' 'ScriptData' $moduleName
+
+    if( Test-Empty $profileFolder){
+        $scriptProfile =  Combine-Path $profileDir '.ps1' 'ScriptData' $moduleName $profileFolder
+
+    }
     if ( ! (Test-Path $scriptProfile -PathType Container )) { 
         New-Item -Path $scriptProfile  -ItemType 'Directory'
     }
+
     return $scriptProfile
 }
 

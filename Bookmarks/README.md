@@ -115,7 +115,7 @@ Clear bookmarks:
 
 ### [v2.1.0](https://github.com/stadub/PowershellScripts/tree/Bookmarks-Release-2.1)
 
-  *Change %userData% detection logic.        
+  *Change %userData% detection logic.
   *Move initation logic to Loader.psm1
   *Change test environment to  StrictMode=Latest
   *Update icon.
