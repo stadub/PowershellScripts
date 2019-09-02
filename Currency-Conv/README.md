@@ -54,7 +54,8 @@ Remove-CurrencyApi-Key- Clean key
 
 | Cmdlet           | Alias    |
 | -----------------|:--------:|
-| Get-Currencies   | gxc | xe |
+| Get-Currencies   | gxc      |
+| Get-ExchangeRate |  xe      |
 
 ## Usage
 
