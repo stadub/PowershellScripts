@@ -101,7 +101,7 @@ Remove currconv.com api key fromthe system:
 
 ## Changelog
 
-### [v1.9.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.9.0) Spet 1, 2019
+### [v1.0.2](https://github.com/stadub/PowershellScripts/releases/tag/v0.9.0) Spet 1, 2019
 
 * Add functions:
 
