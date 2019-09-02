@@ -29,7 +29,7 @@ Install-Module -Name 7zip-Archive
 Direct download instalation:
 
 ```powershell
-iex ('$module="7zip"'+(new-object net.webclient).DownloadString('https://raw.githubusercontent.com/stadub/PowershellScripts/master/install.ps1'))
+iex ('$module="7Zip"'+(new-object net.webclient).DownloadString('https://raw.githubusercontent.com/stadub/PowershellScripts/master/install.ps1'))
 ```
 
 Module import:
