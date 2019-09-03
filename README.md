@@ -30,9 +30,7 @@ Update-PSBookmark [bu] - Update folder location in the bookmarks list
 Install-Module -Name Bookmarks
 ```
 
-### Full documentation and code:
-
-[Bookmarks-Repo](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks)
+### Full documentation and code: [Bookmarks-Repo](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks)
 
 
 ---------------------
@@ -64,9 +62,7 @@ Test-ZipFileContent [szt] - Perform zip file check
 Install-Module -Name 7zip-Archive
 ```
 
-### Full documentation and code:
-
-[7zip-Archive-Repo](https://github.com/stadub/PowershellScripts/tree/master/7Zip)
+### Full documentation and code: [7zip-Archive-Repo](https://github.com/stadub/PowershellScripts/tree/master/7Zip)
 
 ---------------------
 
@@ -92,9 +88,7 @@ Remove-CurrencyApiKey- Clean from PC all stored information
 Install-Module -Name Currency-Conv
 ```
 
-### Full documentation and code:
-
-[Currency-Conv-Repo](https://github.com/stadub/PowershellScripts/tree/master/Currency-Conv)
+### Full documentation and code: [Currency-Conv-Repo](https://github.com/stadub/PowershellScripts/tree/master/Currency-Conv)
 
 
 ---------------------
