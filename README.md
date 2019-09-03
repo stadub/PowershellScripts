@@ -40,6 +40,8 @@ Install-Module -Name Bookmarks
 [![https://www.powershellgallery.com/packages/7zip-Archive/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/7zip-Archive/)
 [![https://github.com/stadub/PowershellScripts/tree/master/7zip/](https://img.shields.io/badge/7zip%20Archive-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/7Zip/)
 
+### Commands
+
 ```powershell
 
 New-ZipFile [szc] - Create new archive
@@ -64,6 +66,7 @@ Install-Module -Name 7zip-Archive
 
 ### Full documentation and code: [7zip-Archive-Repo](https://github.com/stadub/PowershellScripts/tree/master/7Zip)
 
+
 ---------------------
 
 ## Currency-Conv - Currecny converterr
@@ -71,6 +74,7 @@ Install-Module -Name 7zip-Archive
 [![https://www.powershellgallery.com/packages/Currency-Conv/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Currency-Conv/)
 [![https://github.com/stadub/PowershellScripts/tree/master/Currency-Conv/](https://img.shields.io/badge/Currency%20Conv-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/Currency-Conv/)
 
+### Commands
 ```powershell
 Get-ExchangeRate [xe] - Get exchange rate for amount
 
