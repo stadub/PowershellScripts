@@ -4,19 +4,27 @@
 
 ## Bookmarks - Directory bookmarks
 
-[![PowerShell 3](https://Stadub-Gh.visualstudio.com/PowershellScripts/_apis/build/status/Bookmarks?branchName=master)](https://Stadub-Gh.visualstudio.com/PowershellScripts/_build/latest?definitionId=3?branchName=master)
-[![PowerShell 4, 5 & Core on Windows build](https://ci.appveyor.com/api/projects/status/7tmg8wy30ipanjsd?svg=true)](https://ci.appveyor.com/project/stadub/powershellscripts)
-[![Linux & MacOS build](https://img.shields.io/travis/stadub/PowershellScripts/master.svg?label=linux/macos+build)](https://travis-ci.org/stadub/PowershellScripts)
-[![latest version](https://img.shields.io/powershellgallery/v/Bookmarks.svg?label=latest+version)](https://www.powershellgallery.com/packages/Bookmarks/)
-[![downloads](https://img.shields.io/powershellgallery/dt/Bookmarks.svg?label=downloads)](https://www.powershellgallery.com/packages/Bookmarks)
-
 [![https://www.powershellgallery.com/packages/Bookmarks/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Bookmarks/)
-
 [![https://github.com/stadub/PowershellScripts/tree/master/Bookmarks/](https://img.shields.io/badge/Bookmarks-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks/)
+
+### Commands
+
+```powershell
+Add-PSBookmark [ba] - Add folder to the bookmarks list
+
+Remove-PSBookmark [br] - Remove bookmark from the list
+
+Open-PSBookmark [bo] - Navigate to bookmark
+
+Get-PSBookmarks [bl] - List bookmarks
+
+Remove-AllPSBookmarks [bcl] - Clear bookmarks list
+
+Update-PSBookmark [bu] - Update folder location in the bookmarks list
+```
 
 ### Powershell Gallery:
 
-[![https://www.powershellgallery.com/packages/Bookmarks/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Bookmarks/)
 
 ```powershell
 Install-Module -Name Bookmarks
@@ -24,52 +32,72 @@ Install-Module -Name Bookmarks
 
 ### Full documentation and code:
 
-[Bookmarks](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks)
+[Bookmarks-Repo](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks)
 
-### Commands
 
-```powershell
-Add-PSBookmark  - Add folder to the bookmarks list
-  [-Name] <string>
-  [-Path] <string> (Optional)
-
-Remove-PSBookmark - Remove bookmark from the list
-  [-Bookmark] <string>
-
-Open-PSBookmark - Navigate to bookmark
-  [-Bookmark] <string>
-
-Get-PSBookmarks - List bookmarks
-
-Save-PSBookmarkk - Save bookmarks to file
-
-Remove-AllPSBookmarks - Clear bookmarks list
-
-Update-PSBookmark  - Update folder location in the bookmarks list
-  [-Name] <string>
-  [-Path] <string> (Optional)
-```
 ---------------------
 
 ## 7zip-Archive - 7zip utility warpper
 
-[![PowerShell 3](https://dev.azure.com/Stadub-Gh/PowershellScripts/_apis/build/status/7Zip?branchName=master)](https://dev.azure.com/Stadub-Gh/PowershellScripts/_build/latest?definitionId=4&branchName=master)
-[![PowerShell 4, 5 & Core on Windows build](https://ci.appveyor.com/api/projects/status/jr9waysnisfyxpj1?svg=true)](https://ci.appveyor.com/project/stadub/powershellscripts-yvvt0)
-[![latest version](https://img.shields.io/powershellgallery/v/7zip-Archive.svg?label=latest+version)](https://www.powershellgallery.com/packages/7zip-Archive)
-[![downloads](https://img.shields.io/powershellgallery/dt/7zip-Archive.svg?label=downloads)](https://www.powershellgallery.com/packages/7zip-Archive)
-
-Powershell Gallery:
-
 [![https://www.powershellgallery.com/packages/7zip-Archive/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/7zip-Archive/)
+[![https://github.com/stadub/PowershellScripts/tree/master/7zip/](https://img.shields.io/badge/7zip%20Archive-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/7Zip/)
 
+```powershell
 
-Detailed and code:
+New-ZipFile [szc] - Create new archive
 
-[![https://github.com/stadub/PowershellScripts/tree/master/7Zip/](https://img.shields.io/badge/7Zip-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/7Zip)
-[7Zip](https://github.com/stadub/PowershellScripts/tree/master/7Zip)
+Get-ZipFileContent [sz] - Extract archive new archive
+
+Read-ZipFile [szr] - List 7zip file content
+
+Add-ZipFileContent [sza] - Add file to archive
+
+Remove-ZipFileContent [szrm] - Remove file from archive
+
+Test-ZipFileContent [szt] - Perform zip file check
+
+```
+
+### Powershell Gallery:
+
+```powershell
+Install-Module -Name 7zip-Archive
+```
+
+### Full documentation and code:
+
+[7zip-Archive-Repo](https://github.com/stadub/PowershellScripts/tree/master/7Zip)
 
 ---------------------
 
+## Currency-Conv - Currecny converterr
+
+[![https://www.powershellgallery.com/packages/Currency-Conv/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Currency-Conv/)
+[![https://github.com/stadub/PowershellScripts/tree/master/Currency-Conv/](https://img.shields.io/badge/Currency%20Conv-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/Currency-Conv/)
+
+```powershell
+Get-ExchangeRate [xe] - Get exchange rate for amount
+
+Get-Countries - Countries list with currencies
+
+Get-Currencies [gxc] - Supported currencies list
+
+Remove-CurrencyApiKey- Clean from PC all stored information
+
+```
+
+### Powershell Gallery:
+
+```powershell
+Install-Module -Name Currency-Conv
+```
+
+### Full documentation and code:
+
+[Currency-Conv-Repo](https://github.com/stadub/PowershellScripts/tree/master/Currency-Conv)
+
+
+---------------------
 
 
 ## Motivation
