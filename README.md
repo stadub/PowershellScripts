@@ -1,11 +1,10 @@
-# Powershell Scripts
+# Powershell Scripts     [![https://github.com/stadub/PowershellScripts/tree/master/](https://img.shields.io/github/license/stadub/PowershellScripts?style=plastic)](https://github.com/stadub/PowershellScripts/tree/master/)
+
 
 ---------------------
 
-## Bookmarks - Directory bookmarks
-
-[![https://www.powershellgallery.com/packages/Bookmarks/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Bookmarks/)
-[![https://github.com/stadub/PowershellScripts/tree/master/Bookmarks/](https://img.shields.io/badge/Bookmarks-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks/)
+## Bookmarks - Directory bookmarks 
+[![https://www.powershellgallery.com/packages/Bookmarks/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Bookmarks/) [![https://github.com/stadub/PowershellScripts/tree/master/Bookmarks/](https://img.shields.io/badge/Bookmarks-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks/)
 
 ### Commands
 
@@ -37,8 +36,7 @@ Install-Module -Name Bookmarks
 
 ## 7zip-Archive - 7zip utility warpper
 
-[![https://www.powershellgallery.com/packages/7zip-Archive/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/7zip-Archive/)
-[![https://github.com/stadub/PowershellScripts/tree/master/7zip/](https://img.shields.io/badge/7zip%20Archive-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/7Zip/)
+[![https://www.powershellgallery.com/packages/7zip-Archive/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/7zip-Archive/) [![https://github.com/stadub/PowershellScripts/tree/master/7zip/](https://img.shields.io/badge/7zip%20Archive-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/7Zip/)
 
 ### Commands
 
@@ -71,8 +69,7 @@ Install-Module -Name 7zip-Archive
 
 ## Currency-Conv - Currecny converterr
 
-[![https://www.powershellgallery.com/packages/Currency-Conv/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Currency-Conv/)
-[![https://github.com/stadub/PowershellScripts/tree/master/Currency-Conv/](https://img.shields.io/badge/Currency%20Conv-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/Currency-Conv/)
+[![https://www.powershellgallery.com/packages/Currency-Conv/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Currency-Conv/) [![https://github.com/stadub/PowershellScripts/tree/master/Currency-Conv/](https://img.shields.io/badge/Currency%20Conv-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/Currency-Conv/)
 
 ### Commands
 ```powershell
