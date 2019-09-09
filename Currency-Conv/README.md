@@ -120,7 +120,7 @@ Remove currconv.com api key fromthe system:
 
 * Rename `Remove-CurrencyApi-Key` to `Remove-CurrencyApiKey` to be ps1 cmdlet name restrictions compliant
 
-### [v1.0.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.9.0) Spet 1, 2019
+### [v1.0.2](https://github.com/stadub/PowershellScripts/releases/tag/v0.9.0) Spet 1, 2019
 
 * Add functions:
 

@@ -9,7 +9,7 @@ resources:
     fetchDepth: 1
 
 jobs:
-  - job: Currency-Conv
+  - job: Currency_Conv
     displayName: Currency-Conv
     continueOnError: false
     pool:
