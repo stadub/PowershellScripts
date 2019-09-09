@@ -179,6 +179,11 @@ Test-ZipFileContent - Perform zip file check
 
 ## Changelog
 
+### [v1.1.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.9.5)
+
+* Fix Remove-ZipFileContent returns Cannot validate argument on parameter 'FileName'. #14
+* Fix 7-zpi szc New-ZipFile alias is absent bug #14
+
 ### [v1.0.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.4.0)
 
 *First public release.
