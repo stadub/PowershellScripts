@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '1.5.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -30,7 +30,9 @@ CompanyName = ''
 Copyright = '(c) Dmitry Stadub. All rights reserved.'
 
 # Description of the functionality provided by this module
-Description = 'Currency converter. Exchange rates source - https://currencyconverterapi.com'
+Description = 'Currency converter. Exchange rates source - https://currencyconverterapi.com
+Full documentation at the Github: https://github.com/stadub/PowershellScripts/tree/master/Currency-Conv
+'
 
 # Minimum version of the PowerShell engine required by this module
 # PowerShellVersion = ''
@@ -66,7 +68,8 @@ Description = 'Currency converter. Exchange rates source - https://currencyconve
 # FormatsToProcess = @()
 
 # Modules to import as nested modules of the module specified in RootModule/ModuleToProcess
-NestedModules = @('Aliases.ps1','Functions.ps1')
+#NestedModules = @('Aliases.ps1','Functions.ps1')
+RootModule = "Currency-Conv.psm1"
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
 FunctionsToExport = @('*')
@@ -95,7 +98,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = @('currency','currency convereter','exchange','currency-exchange', 'currencyconverterapi' )
+        Tags = @('currency','currency-convereter','exchange','currency-exchange', 'currencyconverterapi', 'convereter', 'exchange-rates' )
 
         # A URL to the license for this module.
         LicenseUri = 'http://opensource.org/licenses/MIT'

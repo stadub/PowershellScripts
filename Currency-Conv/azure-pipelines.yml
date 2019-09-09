@@ -1,0 +1,28 @@
+trigger:
+  - master
+pr:
+  - master
+
+resources:
+  - repo: self
+    clean: true
+    fetchDepth: 1
+
+jobs:
+  - job: Currency_Conv
+    displayName: Currency-Conv
+    continueOnError: false
+    pool:
+      vmImage: 'windows-2019'
+    workspace:
+      clean: all
+    timeoutInMinutes: 3
+    steps:
+      - powershell: |
+          $global:PesterDebugPreference_ShowFullErrors = $true
+          $errorActionPreference = 'stop'
+          Set-StrictMode -Version Latest
+          $DebugPreference = "Continue"
+          Install-Module -Name Pester -Force
+          Import-Module Pester
+          . .\Currency-Conv\Currency-Conv.Tests.ps1

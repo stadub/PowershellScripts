@@ -11,7 +11,8 @@
     # RootModule = ''
     
     # Version number of this module.
-    ModuleVersion = '1.0.2'
+
+    ModuleVersion = '1.1.0'
     
     # Supported PSEditions
     # CompatiblePSEditions = @()
@@ -111,19 +112,9 @@
     
             # ReleaseNotes of this module
             ReleaseNotes = '
-                First public release. 
-                Supported function:
-                Read-ZipFile szr
-                Add-ZipFileContent sza
-                Remove-ZipFileContent szrm
-                Test-ZipFileContent szt
-                Get-ZipFileContent br
-                Full documentation at the Github: https://github.com/stadub/PowershellScripts/tree/master/7Zip
-                Changelog:
-                Update icon.
-                Remove extra shared functions
-                Add update checker
-                Change test environment to  StrictMode=Latest
+                Fix update checker path
+                Fix unit tests to work with strict mode
+                Add ci and build scripts
             '
     
         } # End of PSData hashtable
