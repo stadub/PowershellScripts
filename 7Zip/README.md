@@ -82,6 +82,7 @@ Test-ZipFileContent - Perform zip file check
 
 | Cmdlet               | Alias  |
 | ---------------------|:------:|
+| New-ZipFile          | szc    |
 | Read-ZipFile         | szr    |
 | Add-ZipFileContent   | sza    |
 | Remove-ZipFileContent| szrm   |
@@ -178,6 +179,13 @@ Test-ZipFileContent - Perform zip file check
 ```
 
 ## Changelog
+
+
+### [v1.1.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.9.5)  Spet 9, 2019
+
+* Fix Remove-ZipFileContent error #15
+* Fix szc Allias #14
+* Add smoke tests
 
 ### [v1.0.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.4.0)
 

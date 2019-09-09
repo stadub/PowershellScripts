@@ -2,7 +2,7 @@
 
 function _Initalize() {
     
-$script:_binDir = Get-ProfileDir "7zip" "bin"
+$script:_binDir = szGet-ProfileDir "7zip" "bin"
 Write-Debug "The 7-zip is dir set to $_binDir"
 $script:_7zWin = Join-Path $_binDir "7za.exe"
 $script:_7zWinDownloadDir='https://www.7-zip.org/a/7za920.zip'
@@ -22,19 +22,19 @@ function Test-7ZipInstall {
         Write-Debug "Trying to locate 7-zip by the path: $script:_7zWin"
 
         if( -not (Test-Path "$script:_7zWin")){
-            Write-Output '7Zip didn''t found.'
+            Write-Output '7Zip didn''t downloaded.'
             Write-Output 'Now script going to try to download it.'
             
-            $file = Get-TempFileName
+            $file = szGet-TempFileName
             Write-Debug "Temp file: ${file}"
 
-            Receive-File  "7-Zip" $file $_7zWinDownloadDir
+            szReceive-File  "7-Zip" $file $_7zWinDownloadDir
             Write-Debug "Extracting to directory ${_binDir}"
             if ( -not (Test-Path $_binDir )) {
                 New-Item -Path $_binDir -ItemType 'Directory'
             }     
 
-            Extract-ZipFile -FileName "$file" -Path "$_binDir"
+            szExtract-ZipFile -FileName "$file" -Path "$_binDir"
         }
         $script:_7zPath = $script:_7zWin
 
@@ -56,7 +56,7 @@ function AddKeyArg {
         $AllArgs = $null,
         [string]$Key = $null
     )
-    if( -not (Test-Empty $Key)){
+    if( -not (szTest-Empty $Key)){
         $AllArgs += "-p$Key"
     }
     return $AllArgs
@@ -206,7 +206,6 @@ function Remove-ZipFileContent {
         [Alias("Path","Name", "Archive", "p")]
         [string]$ArchiveName,
 
-        [ValidateScript( { Test-Path $_  -pathType leaf })] 
         [Parameter(Position = 1, Mandatory = $true)]
         [Alias("File", "f")]
         [string]$FileName,
@@ -364,7 +363,7 @@ function New-ZipFile {
     process {
 
         $FileNames| ForEach-Object{
-            if( -not (Test-Empty $_) ){
+            if( -not (szTest-Empty $_) ){
                 Write-Debug "Adding file ""$_"""
                 $files += $_
             }
@@ -432,7 +431,7 @@ function New-ZipFile {
     }
     
 
-    if( -not (Test-Empty $([string]$SplitSize) )){
+    if( -not (szTest-Empty $([string]$SplitSize) )){
 
         $factorName="b"
         switch ( $SplitSizeFactor )
@@ -518,7 +517,7 @@ function Test-ZipFileContent {
     $AllArgs = @('t', "$ArchiveName")
 
 
-    if( -not (Test-Empty $FileName) ){
+    if( -not (szTest-Empty $FileName) ){
         $AllArgs += "$FileName"
     }
 
@@ -586,12 +585,12 @@ function Get-ZipFileContent {
 
     $AllArgs = @('e', "$ArchiveName")
 
-    if( -not (Test-Empty $FileName) ){
+    if( -not (szTest-Empty $FileName) ){
         $AllArgs += "$FileName"
     }
 
-    if( -not (Test-Empty $destFolder) ){
-        CreateFolderIfNotExist "${destFolder}"
+    if( -not (szTest-Empty $destFolder) ){
+        szCreateFolderIfNotExist "${destFolder}"
         $AllArgs += "-o$destFolder"
     }
 

@@ -2,7 +2,7 @@
 
 . $PSScriptRoot\Functions.ps1
 
-CheckPsGalleryUpdate "7zip-Archive" "1.0.3"
+szCheckPsGalleryUpdate 7Zip "1.1.0"
 
 _Initalize
 
