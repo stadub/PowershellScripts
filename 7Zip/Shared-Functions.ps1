@@ -408,20 +408,34 @@ function CheckPsGalleryUpdate {
    
    Try
    {
-       Write-Output "Update check..."
+    Write-Console "Update check..."
        $feed = Invoke-WebRequest -Uri "https://www.powershellgallery.com/api/v2/FindPackagesById()?id=%27$moduleName%27"
        $last=([xml]$feed.Content).feed.entry |Sort-Object -Property updated | Last 
 
        $version= $last.properties.Version
    
        if ($version -gt $currentVersion) {
-           Write-Output "Found a new module version {$version}."
+            Write-Console "Found a new module version {$version}."
            $notes=$last.properties.ReleaseNotes.'#text'
-           Write-Output "Release notes: {$notes}."
-           Write-Output "Recomendent to update module with command: Update-Module -Name $moduleName -Force"
+           Write-Console "Release notes: {$notes}."
+           Write-Console "Recomendent to update module with command: Update-Module -Name $moduleName -Force"
        }
    }
    Catch
    {
    }    
+}
+
+function Write-Console {
+    param (
+        [string]$text,
+        [String[]]$arg=$null
+    )
+    if($null -eq $arg){
+        [Console]::WriteLine($text)
+    }
+    else{
+        [Console]::WriteLine($text, $arg)
+    }
+ 
 }

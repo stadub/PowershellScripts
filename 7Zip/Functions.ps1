@@ -22,7 +22,7 @@ function Test-7ZipInstall {
         Write-Debug "Trying to locate 7-zip by the path: $script:_7zWin"
 
         if( -not (Test-Path "$script:_7zWin")){
-            Write-Output '7Zip didn''t found.'
+            Write-Output '7Zip didn''t downloaded.'
             Write-Output 'Now script going to try to download it.'
             
             $file = Get-TempFileName

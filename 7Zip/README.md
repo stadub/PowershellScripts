@@ -82,6 +82,7 @@ Test-ZipFileContent - Perform zip file check
 
 | Cmdlet               | Alias  |
 | ---------------------|:------:|
+| New-ZipFile          | szc    |
 | Read-ZipFile         | szr    |
 | Add-ZipFileContent   | sza    |
 | Remove-ZipFileContent| szrm   |
