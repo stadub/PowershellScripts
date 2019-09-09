@@ -1,6 +1,6 @@
 
 
-function CreateFolderIfNotExist {
+function CurrencyCreateFolderIfNotExist {
     param ([string]$Folder)
     if( Test-Path $Folder -PathType Leaf){
         Write-Error "The destanation path ${Folder} is file."
@@ -12,7 +12,7 @@ function CreateFolderIfNotExist {
 }
 
 
-function Test-Empty {
+function CurrencyTest-Empty {
     param (
         [Parameter(Position = 0)]
         [string]$string
@@ -20,15 +20,15 @@ function Test-Empty {
     return [string]::IsNullOrWhitespace($string) 
 }
 
-function Get-ProfileDataFile {
+function CurrencyGet-ProfileDataFile {
     param (
         [string]$file,
         [string]$moduleName = $null
     )
-    return Join-Path (Get-ProfileDir $moduleName) $file
+    return Join-Path (CurrencyGet-ProfileDir $moduleName) $file
     
 }
-function Get-ProfileDir {
+function CurrencyGet-ProfileDir {
     param (
         [string]$moduleName = $null,
         [string]$profileFolder = $null
@@ -36,7 +36,7 @@ function Get-ProfileDir {
     
     $profileDir = $ENV:AppData
 
-    if( Test-Empty $moduleName ){
+    if( CurrencyTest-Empty $moduleName ){
 
         if ( $script:MyInvocation.MyCommand.Name.EndsWith('.psm1') ){
             $moduleName = $script:MyInvocation.MyCommand.Name
@@ -48,14 +48,14 @@ function Get-ProfileDir {
         }
     }
 
-    if( Test-Empty $moduleName ){
+    if( CurrencyTest-Empty $moduleName ){
         throw "Unable to read module name."             
     }
     
-    $scriptProfile =  Combine-Path $profileDir '.ps1' 'ScriptData' $moduleName
+    $scriptProfile =  CurrencyCombine-Path $profileDir '.ps1' 'ScriptData' $moduleName
 
-    if( Test-Empty $profileFolder){
-        $scriptProfile =  Combine-Path $profileDir '.ps1' 'ScriptData' $moduleName $profileFolder
+    if( CurrencyTest-Empty $profileFolder){
+        $scriptProfile =  CurrencyCombine-Path $profileDir '.ps1' 'ScriptData' $moduleName $profileFolder
 
     }
     if ( ! (Test-Path $scriptProfile -PathType Container )) { 
@@ -66,7 +66,7 @@ function Get-ProfileDir {
 }
 
 
-function Combine-Path {
+function CurrencyCombine-Path {
     param (
         [string]$baseDir,
         [string]$path
@@ -76,7 +76,7 @@ function Combine-Path {
     [IO.Path]::Combine([string[]]$allArgs)
 }
 
-filter Last {
+filter CurrencyLast {
     BEGIN
     {
         $current=$null
@@ -93,7 +93,7 @@ filter Last {
  
  
 
-function CheckPsGalleryUpdate {
+function CurrencyCheckPsGalleryUpdate {
     param (
         [string] $moduleName,
         [string] $currentVersion
@@ -119,7 +119,7 @@ function CheckPsGalleryUpdate {
    }    
 }
 
-function Write-Console {
+function CurrencyWrite-Console {
     param (
         [string]$text,
         [String[]]$arg=$null
@@ -131,4 +131,20 @@ function Write-Console {
         [Console]::WriteLine($text, $arg)
     }
  
+}
+
+function currencyShow-ConfirmPrompt {
+    param (
+        [Parameter(Position = 0, ParameterSetName = 'Positional', ValueFromPipeline = $True)]
+        [Alias("Question", "Description")]
+        $text ="Would you like to continue?"
+    )
+    $reply = Read-Host -Prompt "$text`
+    [Y] Yes [N] No [S] Suspend(default is ""Yes""):"
+
+    if (  $reply -match "[yY]" -and $null -ne $reply ) {  
+        return $true
+    }
+    if (  $reply -match "[Ss]" ) { throw "Execution aborted" }
+    return $false
 }
