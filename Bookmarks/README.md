@@ -68,6 +68,7 @@ Update-PSBookmark  - Update folder location in the bookmarks list
 | Open-PSBookmark         | bo     |
 | Get-PSBookmarks         | bv | bl|
 | Remove-AllPSBookmarks   | bcl    |
+| Update-PSBookmark       | bu     |
 
 ## Usage
 
