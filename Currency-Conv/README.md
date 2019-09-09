@@ -47,15 +47,27 @@ Get-Countries -Countries list with currencies
 
 Get-Currencies - Supported currencies list
 
-Remove-CurrencyApi-Key- Clean key
+Remove-CurrencyApiKey- Clean key
 ```
 
 ## Aliases
 
-| Cmdlet           | Alias    |
-| -----------------|:--------:|
-| Get-Currencies   | gxc      |
-| Get-ExchangeRate |  xe      |
+| Cmdlet           | Alias |
+| -----------------|:-----:|
+| Get-Currencies   | gxc   |
+| Get-ExchangeRate | xe    |
+
+## Cache Timeouts
+
+Default cache timeouts are stored in global variables so it can be changed to meet your needs.
+
+Default values:
+
+```powershell
+    $global:CurrencyConvExchangeRateCahcheLifetime = $([System.DateTimeOffset]::Now.AddSeconds(60.0))
+    $global:CurrencyConvCountriesCahcheLifetime = $([System.DateTimeOffset]::Now.AddHours(15.0))
+    $global:CurrencyConvCurrenciesCahcheLifetime = $([System.DateTimeOffset]::Now.AddHours(15.0))
+```
 
 ## Usage
 
@@ -96,10 +108,17 @@ List supported currencies:
 Remove currconv.com api key fromthe system:
 
 ```powershell
-/> Remove-CurrencyApi-Key
+/> Remove-CurrencyApiKey
 ```
 
 ## Changelog
+
+### [v1.5.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.9.5) Spet 9, 2019
+
+* Add Request cache
+* Add ability to change cache timeount
+
+* Rename `Remove-CurrencyApi-Key` to `Remove-CurrencyApiKey` to be ps1 cmdlet name restrictions compliant
 
 ### [v1.0.2](https://github.com/stadub/PowershellScripts/releases/tag/v0.9.0) Spet 1, 2019
 
@@ -119,7 +138,6 @@ Remove-CurrencyApi-Key- Clean key
 ```
 
 * Create tests
-
 
 ## Motivation
 

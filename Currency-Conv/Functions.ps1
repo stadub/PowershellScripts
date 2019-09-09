@@ -4,38 +4,59 @@
 
 function _Initalize() {
 
+    $script:currenciesCache = [System.Runtime.Caching.MemoryCache]::Default
+
     $script:license=$null
 
     $script:apiKey = $null
     $script:baseUrl = $null
 
-    $script:apiKeyFile = Get-ProfileDataFile currency-conv ".cur_api_key"
+    $script:apiKeyFile = CurrencyGet-ProfileDataFile currency-conv ".cur_api_key"
 
-    $script:baseUrlFile = Get-ProfileDataFile currency-conv ".path"
-
+    $script:baseUrlFile = CurrencyGet-ProfileDataFile currency-conv ".path"
+    $store = $false
 
     if( !(Test-Path $script:apiKeyFile)){
 
-        Write-Console "Api key didn't found on the computer. "
-        Write-Console "To use the CurrencyConverter api you need to enter your apiKey or receive free api key."
+        CurrencyWrite-Console "Api key didn't found on the computer. "
+        CurrencyWrite-Console "To use the CurrencyConverter api you need to enter your apiKey or receive free api key."
 
-        while ( Test-Empty $script:baseUrl ){
+        while ( CurrencyTest-Empty $script:baseUrl ){
             LicenseTypePrompt
         }
-        $script:baseUrl  | Out-File -FilePath $baseUrlFile
+        
 
         if(  $script:license -ne 'fr' ){
-            Read-Host -Prompt "Enter the received api key here: " | Out-File -FilePath $apiKeyFile
+            $script:apiKey = Read-Host -Prompt "Enter the received api key here: "
         }else{
 
-            Read-Host -Prompt "Please open in the browser link 'https://free.currencyconverterapi.com/free-api-key' and follow the site instructions.`
-            Afterwards enter the received api key here: " | Out-File -FilePath $apiKeyFile
-            Write-Console "Important: Do not forget to verify your email address."
+            $script:apiKey = Read-Host -Prompt "Please open in the browser link 'https://free.currencyconverterapi.com/free-api-key' and follow the site instructions.`
+            Afterwards enter the received api key here: "
+            CurrencyWrite-Console "Important: Do not forget to verify your email address."
         }
+
+        $store = currencyShow-ConfirmPrompt  -Question "Do you want to store the ApiKey on disk for the future usage?"
+
+    }
+    else{
+        Get-Content -Path $apiKeyFile | ForEach-Object{ $script:apiKey= $_}
+        Get-Content -Path $baseUrlFile | ForEach-Object{ $script:baseUrl= $_}
     }
 
-    Get-Content -Path $apiKeyFile | ForEach-Object{ $script:apiKey= $_}
-    Get-Content -Path $baseUrlFile | ForEach-Object{ $script:baseUrl= $_}
+
+    if ($store) {
+
+        $script:apiKey  | Out-File -FilePath $apiKeyFile
+        $script:baseUrl  | Out-File -FilePath $baseUrlFile
+
+        #to doublecheck stored data
+        Get-Content -Path $apiKeyFile | ForEach-Object{ $script:apiKey= $_}
+        Get-Content -Path $baseUrlFile | ForEach-Object{ $script:baseUrl= $_}
+    }
+
+    $global:CurrencyConvExchangeRateCahcheLifetime = $([System.DateTimeOffset]::Now.AddSeconds(60.0))
+    $global:CurrencyConvCountriesCahcheLifetime = $([System.DateTimeOffset]::Now.AddHours(15.0))
+    $global:CurrencyConvCurrenciesCahcheLifetime = $([System.DateTimeOffset]::Now.AddHours(15.0))
 }
 
 function LicenseTypePrompt {
@@ -136,11 +157,11 @@ function Get-ExchangeRate {
 
 
 #"${from}_${to}%2C${to}_${from}"
-    $result = PerformWebRequest "convert" "${From}_${To}"
+    $result = PerformCahcedWebRequest "convert"-cacheExpirity $global:CurrencyConvExchangeRateCahcheLifetime  -arg "${From}_${To}"
 
-    $from = $result.results |  Select-Object -ExpandProperty "${from}_${to}" | ForEach-Object{$_.fr}
-    $to = $result.results |  Select-Object -ExpandProperty "${from}_${to}" | ForEach-Object{$_.to}
-    $val = $result.results |  Select-Object -ExpandProperty "${from}_${to}" | ForEach-Object{$_.val}
+    $from = $result.results |  Select-Object -ExpandProperty "${from}_${to}" | CurrencyLast | ForEach-Object{$_.fr}
+    $to = $result.results |  Select-Object -ExpandProperty "${from}_${to}" | CurrencyLast | ForEach-Object{$_.to}
+    $val = $result.results |  Select-Object -ExpandProperty "${from}_${to}" | CurrencyLast | ForEach-Object{$_.val}
     #$from= $result.results."${from}_${to}"
     #$to= $result.results."${to}_${from}"
 
@@ -179,8 +200,9 @@ Get-Countries
 #>
 
 function Get-Countries {
-	
-    $result = PerformWebRequest "countries" 
+    
+    $result = PerformCahcedWebRequest "countries"  $global:CurrencyConvCountriesCahcheLifetime
+
     return $result.results
 }
 
@@ -197,12 +219,32 @@ Supported currencies list
 #>
 
 function Get-Currencies {
-	
-    $result = PerformWebRequest "currencies" 
+    
+    $result = PerformCahcedWebRequest "currencies" $global:CurrencyConvCurrenciesCahcheLifetime
+
     $result.results.PSObject.Properties | ForEach-Object {
         $_.Value
     }
-    #return $result.results
+}
+
+
+function PerformCahcedWebRequest  {
+    param (
+        [string]$func,
+        [System.DateTimeOffset] $cacheExpirity,
+		[string]$arg='a'
+    )
+
+    if( -not $script:currenciesCache.Contains($func+$arg)){
+
+        $result = PerformWebRequest $func $arg
+
+        $script:currenciesCache.Add($func+$arg, $result, $cacheExpirity)
+    }
+
+
+    return  $script:currenciesCache.Get( $func+$arg)
+
 }
 
 #Get-Currencies | Where-Object {$_.id -eq "BYN"} 
@@ -224,9 +266,15 @@ Remove currconv.com api key fromthe system
 Remove currconv.com api key fromthe system:
 
 #>
-function Remove-CurrencyApi-Key {
+function Remove-CurrencyApiKey {
 
-    rm $script:apiKeyFile
+    Remove-Item $script:apiKeyFile
 
-    rm $script:baseUrlFile
+    Remove-Item $script:baseUrlFile
+
+    $script:apiKey = $null
+    $script:baseUrl = $null
+    $script:license=$null
 }
+
+

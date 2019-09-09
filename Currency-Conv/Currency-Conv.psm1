@@ -2,11 +2,12 @@
 
 . $PSScriptRoot\Functions.ps1
 
-CheckPsGalleryUpdate "Currency-Conv" "1.0.0"
+CurrencyCheckPsGalleryUpdate "Currency-Conv" "1.5.0"
 
 _Initalize
 
 Export-ModuleMember -Function Get-Currencies
-Export-ModuleMember -Function GetImpo-ExchangeRate
+Export-ModuleMember -Function Get-ExchangeRate
 Export-ModuleMember -Function Get-Countries
+Export-ModuleMember -Function Remove-CurrencyApiKey
 . $PSScriptRoot\Aliases.ps1

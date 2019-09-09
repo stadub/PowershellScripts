@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '1.0.0'
+ModuleVersion = '1.5.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -98,7 +98,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = @('currency','currency convereter','exchange','currency-exchange', 'currencyconverterapi', 'convereter', 'exchang rates' )
+        Tags = @('currency','currency-convereter','exchange','currency-exchange', 'currencyconverterapi', 'convereter', 'exchange-rates' )
 
         # A URL to the license for this module.
         LicenseUri = 'http://opensource.org/licenses/MIT'
