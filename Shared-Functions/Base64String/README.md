@@ -6,6 +6,7 @@
 [![latest version](https://img.shields.io/powershellgallery/v/Base64String.svg?label=latest+version)](https://www.powershellgallery.com/packages/Base64String/)
 [![downloads](https://img.shields.io/powershellgallery/dt/Base64String.svg?label=downloads)](https://www.powershellgallery.com/packages/Base64String)
 <!-- [Documentation](https://powershellscripts.readthedocs.io/en/latest/) -->
+[![https://www.powershellgallery.com/packages/Base64String/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Base64String/)
 ---------------------
 
 ![ConsoleDemo](https://github.com/stadub/PowershellScripts/raw/master/Shared-Functions/Base64String/Assets/demo.gif)
@@ -54,12 +55,16 @@ Convert text from Base 64 String:
 
 Powershell Gallery:
 
-[![https://www.powershellgallery.com/packages/Base64String/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Base64String/)
-
 `PowerShellGet` Installation :
 
 ```powershell
 Install-Module -Name Base64String
+```
+
+Direct download instalation:
+
+```powershell
+iex ('$module="Currency-Conv"'+(new-object net.webclient).DownloadString('https://raw.githubusercontent.com/stadub/PowershellScripts/master/install.ps1'))
 ```
 
 Module import:
