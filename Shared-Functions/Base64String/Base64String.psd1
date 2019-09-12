@@ -2,7 +2,7 @@
 
 @{
 
-    ModuleVersion = '1.0.0'
+    ModuleVersion = '1.0.1'
         
     # ID used to uniquely identify this module
     GUID = 'e7bfdc17-9739-4bce-80f3-8eb90d7bc836'
@@ -50,10 +50,11 @@
             ProjectUri = 'https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Base64String'
     
             # A URL to an icon representing this module.
-            IconUri = 'https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Base64String/Assets/Icon.ico'
+            IconUri = 'https://raw.githubusercontent.com/stadub/PowershellScripts/master/Shared-Functions/Base64String/Assets/Icon.ico'
     
             # ReleaseNotes of this module
             ReleaseNotes = '
+                * Update icon
                 * Created functions `ConvertTo-Base64String`  and `ConvertFrom-Base64String`
                 * Created unit tests
             '
