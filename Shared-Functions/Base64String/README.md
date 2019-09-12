@@ -64,7 +64,7 @@ Install-Module -Name Base64String
 Direct download instalation:
 
 ```powershell
-iex ('$module="Currency-Conv"'+(new-object net.webclient).DownloadString('https://raw.githubusercontent.com/stadub/PowershellScripts/master/install.ps1'))
+iex ('$module="Shared-Functions/Base64String"'+(new-object net.webclient).DownloadString('https://raw.githubusercontent.com/stadub/PowershellScripts/master/install.ps1'))
 ```
 
 Module import:
