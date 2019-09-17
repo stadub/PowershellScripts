@@ -7,7 +7,7 @@ Set-StrictMode -version Latest
 
 $here = Split-Path -Parent $MyInvocation.MyCommand.Path
 
-Import-Module .\Base64String.psm1
+Import-Module .\Base64String.psd1
 
 Describe "ConvertTo-Base64String" {
 
@@ -15,7 +15,16 @@ Describe "ConvertTo-Base64String" {
         $text="text"
         $encoded="dABlAHgAdAA="
 
-        $result = ConvertTo-Base64String $text
+        $result = ConvertTo-Base64String -Value $text -UrlSafe $true
+
+        $result | Should -Be $encoded
+    }
+
+    It "UrlSafe produce urlsafe  text " {
+        $text="text"
+        $encoded="dABlAHgAdAA"
+
+        $result = ConvertTo-Base64String -Value $text -UrlSafe $true
 
 
         $result | Should -Be $encoded
@@ -33,6 +42,14 @@ Describe "ConvertFrom-Base64String" {
 
         $result | Should -Be $text
     }
+    It "Support url safe Base64" {
+        $encoded="dABlAHgAdAA"
+        $text="text"
 
+        $result = ConvertFrom-Base64String $encoded
+
+
+        $result | Should -Be $text
+    }
     
 }

@@ -2,7 +2,7 @@
 
 @{
 
-    ModuleVersion = '1.0.1'
+    ModuleVersion = '1.1.0'
         
     # ID used to uniquely identify this module
     GUID = 'e7bfdc17-9739-4bce-80f3-8eb90d7bc836'
@@ -54,9 +54,7 @@
     
             # ReleaseNotes of this module
             ReleaseNotes = '
-                * Update icon
-                * Created functions `ConvertTo-Base64String`  and `ConvertFrom-Base64String`
-                * Created unit tests
+                * Add url safe base 64 endcodding
             '
     
         }

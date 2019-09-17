@@ -18,12 +18,17 @@ Value to convert
 Function ConvertTo-Base64String {
     param (
         [Parameter(Position = 0, ValueFromPipeline  = $True)]
-        [string]$Value
+        [Alias("Text")]
+        [string]$Value,
+        [Parameter(Position = 1)]
+        [bool]$UrlSafe = $false
     )
     $bytes = [System.Text.Encoding]::Unicode.GetBytes($Value)
-    $encoded =[Convert]::ToBase64String($bytes)
+    $encoded = [Convert]::ToBase64String($bytes)
+    if($UrlSafe){
+        $encoded = $encoded.TrimEnd('=').Replace('+', '-').Replace('/', '_')
+    }
     return $encoded
-    
 }
 
 
@@ -47,6 +52,13 @@ Function ConvertFrom-Base64String {
         [Parameter(Position = 0, ValueFromPipeline  = $True)]
         [string]$EncodedValue
     )
+
+    $EncodedValue = $EncodedValue.Replace('_', '/').Replace('-', '+')
+
+    if( $EncodedValue.Length%2 -ne 0 ){
+        $EncodedValue += '='
+    }
+
     $bytes = [System.Convert]::FromBase64String($EncodedValue)
     $decodedText = [System.Text.Encoding]::Unicode.GetString($bytes)
     return  $decodedText

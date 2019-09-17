@@ -16,6 +16,8 @@
 ```powershell
 ConvertFrom-Base64String
   [-EncodedValue] <string>
+  [bool]$UrlSafe (default- $false) - Set to produce url safe string
+
 
 ConvertTo-Base64String
   [-Value] <string>
@@ -34,21 +36,25 @@ ConvertTo-Base64String
 Convert text to Base64 String:
 
 ```powershell
-/> ConvertFrom-Base64String "text"
+/> ConvertTo-Base64String -Value "text" -UrlSafe $true
 ```
 
 ```powershell
-/> echo "text" | decode64
+/> echo "text" | encode64
+```
+
+```powershell
+/> echo "text" | encode64 -UrlSafe $true
 ```
 
 Convert text from Base 64 String:
 
 ```powershell
-/> ConvertTo-Base64String
+/> ConvertFrom-Base64String "dABlAHgAdAA="
 ```
 
 ```powershell
-/> echo "text" | encode64
+/> echo "dABlAHgAdAA" | decode64
 ```
 
 ## Instalation
@@ -75,6 +81,14 @@ Import-Module Base64String
 
 
 ## Changelog
+
+### [v1.1.0] Spep 17, 2019
+
+* Added support url safe Base64 strings
+
+```powershell
+ConvertTo-Base64String -Value $text -UrlSafe $true
+```
 
 ### [v1.0.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.10.0) Spep 12, 2019
 
