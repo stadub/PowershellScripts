@@ -62,8 +62,7 @@ finally {
      $client.dispose()
      Unregister-Event -SourceIdentifier ModuleDownload
      Unregister-Event -SourceIdentifier ModuleDownloadCompleted
-     
- 
+}
 #avoid errors on already existing file
  try {
     Unblock-File -Path "${tempFile}.zip";
