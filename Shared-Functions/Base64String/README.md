@@ -79,10 +79,13 @@ Module import:
 Import-Module Base64String
 ```
 
-
 ## Changelog
 
-### [v1.1.0] Spep 17, 2019
+### [v1.2.0] Oct 8, 2019
+
+* fix decidong ''1'' ending text
+
+### [v1.1.0] Spet 17, 2019
 
 * Added support url safe Base64 strings
 

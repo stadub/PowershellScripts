@@ -59,8 +59,16 @@ Function ConvertFrom-Base64String {
         $EncodedValue += '='
     }
 
-    $bytes = [System.Convert]::FromBase64String($EncodedValue)
+    try { 
+        $bytes = [System.Convert]::FromBase64String($EncodedValue)
+     
+    }
+    catch {
+        $EncodedValue += '=='
+        $bytes = [System.Convert]::FromBase64String($EncodedValue)
+    }
+
     $decodedText = [System.Text.Encoding]::Unicode.GetString($bytes)
     return  $decodedText
     
-    }
+}

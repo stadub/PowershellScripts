@@ -2,7 +2,7 @@
 
 @{
 
-    ModuleVersion = '1.1.0'
+    ModuleVersion = '1.2.0'
         
     # ID used to uniquely identify this module
     GUID = 'e7bfdc17-9739-4bce-80f3-8eb90d7bc836'
@@ -54,7 +54,7 @@
     
             # ReleaseNotes of this module
             ReleaseNotes = '
-                * Add url safe base 64 endcodding
+                * fix decidong ''1'' ending text
             '
     
         }
