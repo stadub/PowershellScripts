@@ -11,8 +11,8 @@ Value to convert
 
 .EXAMPLE
 
-        ConvertTo-Base64String "text"
-        echo "text" | encode64 
+        ConvertFrom-Base64String "dABlAHgAdAA="
+        echo "dABlAHgAdAA=" | decode64 
 #>
 
 Function ConvertTo-Base64String {
