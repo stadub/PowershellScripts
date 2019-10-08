@@ -58,7 +58,7 @@ catch [System.Net.WebException]
 {  
     Write-Host("Cannot download $url")  
 } 
-finally { 
+finally {
      $client.dispose()
      Unregister-Event -SourceIdentifier ModuleDownload
      Unregister-Event -SourceIdentifier ModuleDownloadCompleted
