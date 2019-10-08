@@ -48,29 +48,35 @@ try {
 }
 catch [System.Net.WebException]  
 {  
-Write-Host("Cannot download $url")  
+    Write-Host("Cannot download $url")  
 } 
-  finally { 
+finally { 
      $client.dispose()
      Unregister-Event -SourceIdentifier ModuleDownload
      Unregister-Event -SourceIdentifier ModuleDownloadCompleted
      
+ 
+#avoid errors on already existing file
+ try {
+    Unblock-File -Path "${tempFile}.zip";
+
+    Write-Progress -Activity "Module Installation"  -Status "Unpacking Module" -PercentComplete 0
+
+    Add-Type -AssemblyName System.IO.Compression.FileSystem;
+    [System.IO.Compression.ZipFile]::ExtractToDirectory("${tempFile}.zip", "${tempFile}");
  }
-
-Unblock-File -Path "${tempFile}.zip";
-
-
-Write-Progress -Activity "Module Installation"  -Status "Unpacking Module" -PercentComplete 0
-
-Add-Type -AssemblyName System.IO.Compression.FileSystem;
-[System.IO.Compression.ZipFile]::ExtractToDirectory("${tempFile}.zip", "${tempFile}");
+ catch {  }
 
 Write-Progress -Activity "Module Installation"  -Status "Unpacking Module" -PercentComplete 40
 
 Write-Progress -Activity "Module Installation"  -Status "Copy Module to PowershellModules folder" -PercentComplete 50
-Move-Item -Path "${tempFile}\$RepoName-master\$moduleToLoad" -Destination "$ProfileModulePath";
+Move-Item -Path "${tempFile}\$RepoName-master\$moduleToLoad" -Destination "$ProfileModulePath"
 Write-Progress -Activity "Module Installation"  -Status "Copy Module to PowershellModules folder" -PercentComplete 60
 
 Write-Progress -Activity "Module Installation"  -Status "Finishing Installation and Cleanup " -PercentComplete 80
 Remove-Item "${tempFile}*" -Recurse -ErrorAction SilentlyContinue;
 Write-Progress -Activity "Module Installation"  -Status "Module installed sucessaful "
+
+Write-Host "Module installation complete"
+
+Write-Host "Use ''Import-Module $module'' to start using module"
