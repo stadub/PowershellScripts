@@ -21,19 +21,30 @@ $file =  "${tempFile}.zip"
 
 try {
 
-    Register-ObjectEvent $client DownloadProgressChanged -action {     
- 
-         Write-Progress -Activity "Module Installation" -Status `
+     $progressEventArgs = @{
+        InputObject = $client
+        EventName = 'DownloadProgressChanged'
+        SourceIdentifier = 'ModuleDownload'
+        Action = {
+            
+            Write-Progress -Activity "Module Installation" -Status `
              ("Downloading Module: {0} of {1}" -f $eventargs.BytesReceived, $eventargs.TotalBytesToReceive) `
-             -PercentComplete $eventargs.ProgressPercentage    
-     }
- 
-     Register-ObjectEvent $client DownloadFileCompleted -SourceIdentifier Finished
+             -PercentComplete $eventargs.ProgressPercentage 
+        }
+    }
+
+    $completeEventArgs = @{
+        InputObject = $client
+        EventName = 'DownloadFileCompleted'
+        SourceIdentifier = 'ModuleDownloadCompleted'
+    }
+
+     Register-ObjectEvent @progressEventArgs
+     Register-ObjectEvent @completeEventArgs
  
      $client.DownloadFileAsync($url, $file)
- 
-     # optionally wait, but you can break out and it will still write progress
-     Wait-Event -SourceIdentifier Finished
+
+     Wait-Event -SourceIdentifier ModuleDownloadCompleted
 }
 catch [System.Net.WebException]  
 {  
@@ -41,6 +52,9 @@ Write-Host("Cannot download $url")
 } 
   finally { 
      $client.dispose()
+     Unregister-Event -SourceIdentifier ModuleDownload
+     Unregister-Event -SourceIdentifier ModuleDownloadCompleted
+     
  }
 
 Unblock-File -Path "${tempFile}.zip";
