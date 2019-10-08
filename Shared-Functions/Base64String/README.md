@@ -85,7 +85,7 @@ Import-Module Base64String
 
 * fix decidong ''1'' ending text
 
-### [v1.1.0] Spet 17, 2019
+### [v1.1.0] Sept 17, 2019
 
 * Added support url safe Base64 strings
 
@@ -93,7 +93,7 @@ Import-Module Base64String
 ConvertTo-Base64String -Value $text -UrlSafe $true
 ```
 
-### [v1.0.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.10.0) Spep 12, 2019
+### [v1.0.0] Sept 12, 2019
 
 * Created functions
 
