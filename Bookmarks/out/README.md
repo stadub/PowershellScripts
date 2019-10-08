@@ -120,7 +120,6 @@ Clear bookmarks:
   *Update icon.
   *Remove extra shared functions
 
-
 ### [v1.1.3](https://github.com/stadub/PowershellScripts/releases/tag/v0.2.0)
 
 * Add versioning to Markdown page.
@@ -142,7 +141,6 @@ Clear bookmarks:
 
 >$pwd |  Add-PSBookmark -Name "ThisDirectory"
 >"SourcesDir" |  Open-PSBookmark [ bo ]
-
 
 ### [v1.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.1.0)
 
