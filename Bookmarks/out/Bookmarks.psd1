@@ -72,7 +72,14 @@ Full documentation at the Github: https://github.com/stadub/PowershellScripts/tr
 RootModule = "Bookmarks.psm1"
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @('*')
+FunctionsToExport = @('Add-PSBookmark',
+'Remove-PSBookmark',
+'Remove-AllPSBookmarks',
+'Open-PSBookmark',
+'Restore-PSBookmarks',
+'Save-PSBookmarks',
+'Get-PSBookmarks',
+'Update-PSBookmark ')
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
