@@ -3,10 +3,10 @@
 [![PowerShell 3](https://dev.azure.com/Stadub-Gh/PowershellScripts/_apis/build/status/SharedFunctions?branchName=master)](https://dev.azure.com/Stadub-Gh/PowershellScripts/_build/latest?definitionId=6&branchName=master)
 [![PowerShell 4, 5 & Core on Windows build](https://ci.appveyor.com/api/projects/status/7nunpf138bmp7ogf/branch/master?svg=true)](https://ci.appveyor.com/project/stadub/powershellscripts-v9ncj/branch/master)
 [![Linux & MacOS build](https://img.shields.io/travis/stadub/PowershellScripts/master.svg?label=linux/macos+build)](https://travis-ci.org/stadub/PowershellScripts)
-[![latest version](https://img.shields.io/powershellgallery/v/Base64String.svg?label=latest+version)](https://www.powershellgallery.com/packages/Base64String/)
-[![downloads](https://img.shields.io/powershellgallery/dt/Base64String.svg?label=downloads)](https://www.powershellgallery.com/packages/Base64String)
+[![latest version](https://img.shields.io/powershellgallery/v/Pipe.svg?label=latest+version)](https://www.powershellgallery.com/packages/Pipe/)
+[![downloads](https://img.shields.io/powershellgallery/dt/Pipe.svg?label=downloads)](https://www.powershellgallery.com/packages/Pipe)
 <!-- [Documentation](https://powershellscripts.readthedocs.io/en/latest/) -->
-[![https://www.powershellgallery.com/packages/Base64String/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Base64String/)
+[![https://www.powershellgallery.com/packages/Pipe/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Pipe/)
 ---------------------
 
 <!-- ![ConsoleDemo](https://github.com/stadub/PowershellScripts/raw/master/Shared-Functions/Pipe/Assets/demo.gif) -->
