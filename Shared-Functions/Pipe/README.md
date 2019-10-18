@@ -1,4 +1,4 @@
-# Base64String - Convert text from/to Base 64 String
+# Pipe - Bunch Pipe filtering functions
 
 [![PowerShell 3](https://dev.azure.com/Stadub-Gh/PowershellScripts/_apis/build/status/SharedFunctions?branchName=master)](https://dev.azure.com/Stadub-Gh/PowershellScripts/_build/latest?definitionId=6&branchName=master)
 [![PowerShell 4, 5 & Core on Windows build](https://ci.appveyor.com/api/projects/status/7nunpf138bmp7ogf/branch/master?svg=true)](https://ci.appveyor.com/project/stadub/powershellscripts-v9ncj/branch/master)
@@ -9,102 +9,142 @@
 [![https://www.powershellgallery.com/packages/Base64String/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Base64String/)
 ---------------------
 
-![ConsoleDemo](https://github.com/stadub/PowershellScripts/raw/master/Shared-Functions/Base64String/Assets/demo.gif)
+<!-- ![ConsoleDemo](https://github.com/stadub/PowershellScripts/raw/master/Shared-Functions/Pipe/Assets/demo.gif) -->
 
-## Commands
+## 📘 Commands
 
 ```powershell
-ConvertFrom-Base64String
-  [-EncodedValue] <string>
-  [bool]$UrlSafe (default- $false) - Set to produce url safe string
+ | FilterType - Filter by element type
+   [-Type] <Type>
+   [-Strict] (default- $true) - $true - filter by exact type, $false - any assigname type
 
-
-ConvertTo-Base64String
-  [-Value] <string>
+ | FilterType - Filter by element type name
+   [-TypeName] <string> Type name
+   [-Strict] (default- $true) - $true - filter by exact type, $false - 'like' comparision used
 
 ```
 
-## Aliases
+```powershell
+ | First - Return only the first element of pipe
+```
+
+```powershell
+ | Last - Return only the last element of pipe
+```
+
+```powershell
+ | Skip - Skip N elements
+   [-Count] <int>
+```
+
+```powershell
+ | Suppress - supress output
+```
+
+```powershell
+ | Take - Return only N elements from pipe
+   [-Count] <int>
+```
+
+<!-- ## ⚡ Aliases
 
 | Cmdlet           | Alias |
 | -----------------|:-----:|
 | ConvertTo-Base64String   | encode64   |
-| ConvertFrom-Base64String | decode64    |
+| ConvertFrom-Base64String | decode64    | -->
 
-## Usage
+## 📃 Usage
 
-Convert text to Base64 String:
-
-```powershell
-/> ConvertTo-Base64String -Value "text" -UrlSafe $true
-```
+Return only 2 file names from directory:
 
 ```powershell
-/> echo "text" | encode64
+/> ls | Take -Count 2
 ```
+
+Skip 3 lins and return only the next 2:
 
 ```powershell
-/> echo "text" | encode64 -UrlSafe $true
+/> ping 8.8.8.8 | Skip -Count 8 | Take -Count 2
 ```
 
-Convert text from Base 64 String:
+Suppress command output:
 
 ```powershell
-/> ConvertFrom-Base64String "dABlAHgAdAA="
+/> cp a b | Suppress
 ```
+
+Rerurn only the first pipe item
 
 ```powershell
-/> echo "dABlAHgAdAA" | decode64
+/> cat C:\Windows\win.ini | First
 ```
 
-## Instalation
+Rerurn the only last pipe item
+
+```powershell
+/> cat cat C:\Windows\system.ini | Last
+```
+
+Filter by Type Name
+
+```powershell
+/> "a", 3, 5 | FilterType -TypeName "string"
+
+/>  "a", 3, 5 | FilterType -TypeName "*str*" -Strict  $false
+```
+
+Filter by pipe item type
+
+```powershell
+/> ls | FilterType -Type $([System.IO.FileSystemInfo]) -Strict  $false
+
+/> ls | FilterType -Type $([System.IO.DirectoryInfo])
+```
+
+## 🔨 Instalation
 
 Powershell Gallery:
 
 `PowerShellGet` Installation :
 
 ```powershell
-Install-Module -Name Base64String
+Install-Module -Name Pipe
 ```
 
 Direct download instalation:
 
 ```powershell
-iex ('$module="Shared-Functions/Base64String"'+(new-object net.webclient).DownloadString('https://raw.githubusercontent.com/stadub/PowershellScripts/master/install.ps1'))
+iex ('$module="Shared-Functions/Pipe"'+(new-object net.webclient).DownloadString('https://raw.githubusercontent.com/stadub/PowershellScripts/master/install.ps1'))
 ```
 
 Module import:
 
 ```powershell
-Import-Module Base64String
+Import-Module Pipe
 ```
 
+## 📈 Changelog
 
-## Changelog
+### [v1.0.0] Oct 17, 2019
 
-### [v1.1.0] Sept 17, 2019
-
-* Added support url safe Base64 strings
+* Create a filters module
 
 ```powershell
-ConvertTo-Base64String -Value $text -UrlSafe $true
+ | FilterType - Filter by element type
+
+ | FilterType - Filter by element type name
+
+ | First - Return only the first element of pipe
+
+ | Last - Return only the last element of pipe
+
+ | Skip - Skip N elements
+
+ | Suppress - supress output
+
+ | Take - Return only N elements from pipe
 ```
 
-### [v1.0.0] Sept 12, 2019
-
-* Created functions
-
-```powershell
-ConvertFrom-Base64String
-  [-EncodedValue] <string>
-
-ConvertTo-Base64String
-  [-Value] <string>
-
-```
-
-* Created unit tests
-
-### Suggestions and feedback
+### 📬 Suggestions and feedback
 
 If you have any idea or suggestion - please add a github issue.
