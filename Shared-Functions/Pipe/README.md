@@ -14,11 +14,11 @@
 ## 📘 Commands
 
 ```powershell
-Where-Type - Filter by element type
+Limit-Type - Filter by element type
    [-Type] <Type>
    [-Strict] (default- $true) - $true - filter by exact type, $false - any assigname type
 
-Where-Type - Filter by element type name
+Limit-Type - Filter by element type name
    [-TypeName] <string> Type name
    [-Strict] (default- $true) - $true - filter by exact type, $false - 'like' comparision used
 
@@ -48,14 +48,16 @@ Limit-Items - Return only N elements from pipe
 
 ## ⚡ Aliases
 
-| Filter        |  Alias   |
-| --------------|:--------:|
-|  Skip-Items   | skip     |
-|  Where-Type   | wtype    |
-|  Limit-Items  | take     |
-|  Limit-First  | first    |
-|  Limit-Last   | last     |
-|  Hide-Out     | suppress |
+| Filter        |  Alias      |
+| --------------|:-----------:|
+|  Skip-Items   | skip        |
+|  Limit-Type   | wtype       |
+|  Limit-Type   | filter-type |
+|  Limit-Type   | where-type  |
+|  Limit-Items  | take        |
+|  Limit-First  | first       |
+|  Limit-Last   | last        |
+|  Hide-Out     | suppress    |
 
 ## 📃 Usage
 
@@ -92,7 +94,7 @@ Rerurn the only last pipe item
 Filter by Type Name
 
 ```powershell
-/> "a", 3, 5 | Where-Type -TypeName "string"
+/> "a", 3, 5 | Limit-Type -TypeName "string"
 
 />  "a", 3, 5 | Where-Type -TypeName "*str*" -Strict  $false
 ```
@@ -100,9 +102,9 @@ Filter by Type Name
 Filter by pipe item type
 
 ```powershell
-/> ls | Where-Type -Type $([System.IO.FileSystemInfo]) -Strict  $false
+/> ls | Limit-Type -Type $([System.IO.FileSystemInfo]) -Strict  $false
 
-/> ls | Where-Type -Type $([System.IO.DirectoryInfo])
+/> ls | wtype -Type $([System.IO.DirectoryInfo])
 ```
 
 ## 🔨 Instalation
