@@ -20,14 +20,14 @@
     Description = 'Powershell Pipe filtering functions.
        Full documentation at the Github: https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Pipe
     '
-    NestedModules = @('Limit-First.ps1','Limit-Last.ps1', 'Hide-Out.ps1', 'Limit-Items.ps1', 'Where-Type.ps1', 'Skip-Items.ps1', 'Aliases.ps1')
+    NestedModules = @('Limit-First.ps1','Limit-Last.ps1', 'Hide-Out.ps1', 'Limit-Items.ps1', 'Limit-Type.ps1', 'Skip-Items.ps1', 'Aliases.ps1')
     #RootModule = "Base64String.psm1"
     
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
     FunctionsToExport = @('*')
     
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-    CmdletsToExport = @('Limit-First', 'Limit-Last', 'Hide-Out', 'Limit-Items', 'Where-Type', 'Skip-Items')
+    CmdletsToExport = @('Limit-First', 'Limit-Last', 'Hide-Out', 'Limit-Items', 'Limit-Type', 'Skip-Items')
     
     # Variables to export from this module
     VariablesToExport = '*'
@@ -54,7 +54,14 @@
     
             # ReleaseNotes of this module
             ReleaseNotes = '
-                * Add url safe base 64 endcodding
+                * Add filters for 
+                | Where-Type - Filter by element type
+                | Where-Type - Filter by element type name               
+                | First - Return only the first element of pipe               
+                | Last - Return only the last element of pipe               
+                | Skip-Items - Skip N elements               
+                | Hide-Out - supress output               
+                | Limit-Items - Return only N elements from pipe
             '
     
         }
