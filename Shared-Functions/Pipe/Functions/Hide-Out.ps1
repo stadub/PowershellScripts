@@ -7,13 +7,13 @@ Snuze the pipe out
 One of the options to avoid comman output
 
 .EXAMPLE
-cp c:\Windows d:\windows | Suppress
+cp c:\Windows d:\windows | Hide-Out
 
 .NOTES
 General notes
 #>
 
-filter Suppress(){
+filter Hide-Out(){
     return
 }
 

@@ -6,11 +6,11 @@ Return only the last element
 Skip all pipe elemants till last
 
 .EXAMPLE
-ls | Last
+ls | Limit-Last
 
 #>
 
-filter Last {
+filter Limit-Last {
     BEGIN
     {
         $current=$null

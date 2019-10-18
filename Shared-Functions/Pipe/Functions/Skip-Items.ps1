@@ -11,11 +11,11 @@ Return only the N'ths element from pipe
 Number of elements to skip
 
 .EXAMPLE
-ls | Skip -Count 3 | Take -Count 2
+ls | Skip-Items -Count 3 | Take -Count 2
 
 #>
 
-filter Skip {
+filter Skip-Items {
     param (
         [int]$Count
     )

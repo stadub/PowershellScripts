@@ -14,12 +14,12 @@ otherwise check the type decedants
 
 .EXAMPLE
 
- ls | FilterType -Type [FileSystemInfo] -Strict $false
- "a", 3, 5 | FilterType -TypeName "string" 
- Import-FsStore "def" | FilterType -TypeName "ConcurrentDictionary```2[string,object]"
+ ls | Where-Type -Type [FileSystemInfo] -Strict $false
+ "a", 3, 5 | Where-Type -TypeName "string" 
+ Import-FsStore "def" | Where-Type -TypeName "ConcurrentDictionary```2[string,object]"
 #>
 
-filter FilterType {
+filter Where-Type {
     param (
  
      #[Parameter(Position = 0, ParameterSetName = 'Type')]
@@ -79,3 +79,6 @@ filter FilterType {
          }
     }
  }
+
+
+ "a", 3, 5 |  Where-Type -TypeName "string"

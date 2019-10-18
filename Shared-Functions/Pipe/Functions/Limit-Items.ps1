@@ -16,7 +16,7 @@ ls | Skip -Count 3 | Take -Count 2
  
  #>
  
- filter Take {
+ filter Limit-Items {
     param (
         [int]$Count
     )

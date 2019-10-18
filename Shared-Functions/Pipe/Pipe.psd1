@@ -20,14 +20,14 @@
     Description = 'Powershell Pipe filtering functions.
        Full documentation at the Github: https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Pipe
     '
-    NestedModules = @('First.ps1','Last.ps1', 'Suppress.ps1', 'Take.ps1', 'FilterType.ps1')
+    NestedModules = @('Limit-First.ps1','Limit-Last.ps1', 'Hide-Out.ps1', 'Limit-Items.ps1', 'Where-Type.ps1', 'Skip-Items.ps1', 'Aliases.ps1')
     #RootModule = "Base64String.psm1"
     
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
     FunctionsToExport = @('*')
     
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-    CmdletsToExport = @('First', 'Last', 'Suppress', 'Take', 'FilterType')
+    CmdletsToExport = @('Limit-First', 'Limit-Last', 'Hide-Out', 'Limit-Items', 'Where-Type', 'Skip-Items')
     
     # Variables to export from this module
     VariablesToExport = '*'

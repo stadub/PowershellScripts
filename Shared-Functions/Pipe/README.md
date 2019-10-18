@@ -14,91 +14,95 @@
 ## 📘 Commands
 
 ```powershell
- | FilterType - Filter by element type
+Where-Type - Filter by element type
    [-Type] <Type>
    [-Strict] (default- $true) - $true - filter by exact type, $false - any assigname type
 
- | FilterType - Filter by element type name
+Where-Type - Filter by element type name
    [-TypeName] <string> Type name
    [-Strict] (default- $true) - $true - filter by exact type, $false - 'like' comparision used
 
 ```
 
 ```powershell
- | First - Return only the first element of pipe
+Limit-First - Return only the first element of pipe
 ```
 
 ```powershell
- | Last - Return only the last element of pipe
+Limit-Last - Return only the last element of pipe
 ```
 
 ```powershell
- | Skip - Skip N elements
+Skip-Items - Skip N elements
    [-Count] <int>
 ```
 
 ```powershell
- | Suppress - supress output
+Hide-Out - supress output
 ```
 
 ```powershell
- | Take - Return only N elements from pipe
+Limit-Items - Return only N elements from pipe
    [-Count] <int>
 ```
 
-<!-- ## ⚡ Aliases
+## ⚡ Aliases
 
-| Cmdlet           | Alias |
-| -----------------|:-----:|
-| ConvertTo-Base64String   | encode64   |
-| ConvertFrom-Base64String | decode64    | -->
+| Filter        |  Alias   |
+| --------------|:--------:|
+|  Skip-Items   | skip     |
+|  Where-Type   | wtype    |
+|  Limit-Items  | take     |
+|  Limit-First  | first    |
+|  Limit-Last   | last     |
+|  Hide-Out     | suppress |
 
 ## 📃 Usage
 
 Return only 2 file names from directory:
 
 ```powershell
-/> ls | Take -Count 2
+/> ls | take -Count 2
 ```
 
 Skip 3 lins and return only the next 2:
 
 ```powershell
-/> ping 8.8.8.8 | Skip -Count 8 | Take -Count 2
+/> ping 8.8.8.8 | Skip-Items -Count 8 | Limit-Items -Count 2
 ```
 
 Suppress command output:
 
 ```powershell
-/> cp a b | Suppress
+/> cp a b | Hide-Out
 ```
 
 Rerurn only the first pipe item
 
 ```powershell
-/> cat C:\Windows\win.ini | First
+/> cat C:\Windows\win.ini | Limit-First
 ```
 
 Rerurn the only last pipe item
 
 ```powershell
-/> cat cat C:\Windows\system.ini | Last
+/> cat cat C:\Windows\system.ini | Limit-Last
 ```
 
 Filter by Type Name
 
 ```powershell
-/> "a", 3, 5 | FilterType -TypeName "string"
+/> "a", 3, 5 | Where-Type -TypeName "string"
 
-/>  "a", 3, 5 | FilterType -TypeName "*str*" -Strict  $false
+/>  "a", 3, 5 | Where-Type -TypeName "*str*" -Strict  $false
 ```
 
 Filter by pipe item type
 
 ```powershell
-/> ls | FilterType -Type $([System.IO.FileSystemInfo]) -Strict  $false
+/> ls | Where-Type -Type $([System.IO.FileSystemInfo]) -Strict  $false
 
-/> ls | FilterType -Type $([System.IO.DirectoryInfo])
+/> ls | Where-Type -Type $([System.IO.DirectoryInfo])
 ```
 
 ## 🔨 Instalation
@@ -130,19 +134,19 @@ Import-Module Pipe
 * Create a filters module
 
 ```powershell
- | FilterType - Filter by element type
+ | Where-Type - Filter by element type
 
- | FilterType - Filter by element type name
+ | Where-Type - Filter by element type name
 
- | First - Return only the first element of pipe
+ | Limit-First - Return only the first element of pipe
 
- | Last - Return only the last element of pipe
+ | Limit-Last - Return only the last element of pipe
 
- | Skip - Skip N elements
+ | Skip-Items - Skip N elements
 
- | Suppress - supress output
+ | Hide-Out - supress output
 
- | Take - Return only N elements from pipe
+ | Limit-Items - Return only N elements from pipe
 ```
 
 ### 📬 Suggestions and feedback

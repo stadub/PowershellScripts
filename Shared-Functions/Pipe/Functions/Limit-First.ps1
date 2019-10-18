@@ -6,11 +6,11 @@ Return First Element
 Return only the first element from the pipe
 
 .EXAMPLE
-ls | First
+ls | Limit-First
 
 #>
 
-filter First {
+filter Limit-First {
     $_
     Break
 }
