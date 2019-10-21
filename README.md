@@ -20,7 +20,7 @@ ConvertTo-Base64String
 
 ```
 
-[👉 Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Base64String)
+[👉🏿 Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Base64String)
 
 ---------------------
 
@@ -52,7 +52,7 @@ Limit-Items - Return only N elements from pipe
    [-Count] <int>
 ```
 
-[👉 Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Pipe)
+[👉🏿 Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Pipe)
 
 ---------------------
 
@@ -87,7 +87,7 @@ Update-PSBookmark  - Update folder location in the bookmarks list
   [-Path] <string> (Optional)
 ```
 
-[👉 Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks)
+[👉🏿 Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks)
 
 ---------------------
 
@@ -136,7 +136,7 @@ Test-ZipFileContent - Perform zip file check
 
 ```
 
-[👉 Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/7Zip)
+[👉🏿 Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/7Zip)
 
 ---------------------
 
@@ -159,7 +159,7 @@ Get-Currencies - Supported currencies list
 Remove-CurrencyApiKey- Clean key
 ```
 
-[👉 Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/Currency-Conv)
+[👉🏿 Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/Currency-Conv)
 
 ---------------------
 
@@ -179,7 +179,7 @@ Invoke-FolderEncode - Encode folder
   [-SrcFolder] <string> (Optional)
 ```
 
-[👉 Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/FolderEncoder)
+[👉🏿 Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/FolderEncoder)
 
 ---------------------
 
