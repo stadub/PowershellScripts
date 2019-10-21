@@ -11,7 +11,7 @@
 
 ![ConsoleDemo](https://github.com/stadub/PowershellScripts/raw/master/Shared-Functions/Base64String/Assets/demo.gif)
 
-## Commands
+## 📘 Commands
 
 ```powershell
 ConvertFrom-Base64String
@@ -24,14 +24,14 @@ ConvertTo-Base64String
 
 ```
 
-## Aliases
+## ⚡ Aliases
 
 | Cmdlet           | Alias |
 | -----------------|:-----:|
 | ConvertTo-Base64String   | encode64   |
 | ConvertFrom-Base64String | decode64    |
 
-## Usage
+## 📃 Usage
 
 Convert text to Base64 String:
 
@@ -57,7 +57,7 @@ Convert text from Base 64 String:
 /> echo "dABlAHgAdAA" | decode64
 ```
 
-## Instalation
+## 🔨 Instalation
 
 Powershell Gallery:
 
@@ -79,8 +79,9 @@ Module import:
 Import-Module Base64String
 ```
 
+### [v1.2.0] Oct 8, 2019
 
-## Changelog
+* fix decidong ''1'' ending text
 
 ### [v1.1.0] Sept 17, 2019
 
@@ -105,6 +106,6 @@ ConvertTo-Base64String
 
 * Created unit tests
 
-### Suggestions and feedback
+## 📬 Suggestions and feedback
 
 If you have any idea or suggestion - please add a github issue.

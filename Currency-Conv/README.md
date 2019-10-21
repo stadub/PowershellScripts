@@ -11,7 +11,7 @@
 
 ![ConsoleDemo](https://raw.githubusercontent.com/stadub/PowershellScripts/master/Currency-Conv/Assets/demo.gif)
 
-## Instalation
+## 🔨 Instalation
 
 Powershell Gallery:
 
@@ -35,7 +35,7 @@ Module import:
 Import-Module Currency-Conv
 ```
 
-## Commands
+## 📘 Commands
 
 ```powershell
 Get-ExchangeRate - Get exchange rate for amount
@@ -50,7 +50,7 @@ Get-Currencies - Supported currencies list
 Remove-CurrencyApiKey- Clean key
 ```
 
-## Aliases
+## ⚡ Aliases
 
 | Cmdlet           | Alias |
 | -----------------|:-----:|
@@ -69,7 +69,7 @@ Default values:
     $global:CurrencyConvCurrenciesCahcheLifetime = $([System.DateTimeOffset]::Now.AddHours(15.0))
 ```
 
-## Usage
+## 📃 Usage
 
 Currency exchange rates:
 
@@ -111,7 +111,7 @@ Remove currconv.com api key fromthe system:
 /> Remove-CurrencyApiKey
 ```
 
-## Changelog
+## 📈 Changelog
 
 ### [v1.5.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.9.5) Spet 9, 2019
 
@@ -139,7 +139,7 @@ Remove-CurrencyApi-Key- Clean key
 
 * Create tests
 
-## Motivation
+## 💲 Motivation
 
 The modules are created and actively maintained during evenings and weekends for my own needs.
 If it's useful for you too, that's great. I don't demand anything in return.
@@ -152,6 +152,8 @@ a coffee or a beer is always appreciated. Thank you very much in advance.
 
 <!--   By Paypal [![PayPal.me](https://img.shields.io/badge/PayPal-me-blue.svg?maxAge=2592000)](https://www.paypal.me/dima.by)
  -->
+
+## 📬 Suggestions and feedback
 
 If you have any idea or suggestion - please add a github issue.
 

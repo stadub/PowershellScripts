@@ -10,7 +10,7 @@
 
 ![ConsoleDemo](https://raw.githubusercontent.com/stadub/PowershellScripts/master/Bookmarks/Assets/demo.gif)
 
-## Instalation
+## 🔨 Instalation
 
 Powershell Gallery:
 
@@ -34,8 +34,7 @@ Module import:
 Import-Module Bookmarks
 ```
 
-# Commands
-
+## 📘 Commands
 
 ```powershell
 Add-PSBookmark  - Add folder to the bookmarks list
@@ -59,7 +58,7 @@ Update-PSBookmark  - Update folder location in the bookmarks list
   [-Path] <string> (Optional)
 ```
 
-## Aliases
+## ⚡ Aliases
 
 | Cmdlet                  | Alias  |
 | ------------------------|:------:|
@@ -70,7 +69,7 @@ Update-PSBookmark  - Update folder location in the bookmarks list
 | Remove-AllPSBookmarks   | bcl    |
 | Update-PSBookmark       | bu     |
 
-## Usage
+## 📃 Usage
 
 Add bookmark:
 
@@ -108,7 +107,7 @@ Clear bookmarks:
 />Remove-AllPSBookmarks [ bcl ]
 ```
 
-## Changelog
+## 📈 Changelog
 
 ### [v2.1.5](https://github.com/stadub/PowershellScripts/tree/Bookmarks-Release-2.1.5)
 
@@ -121,7 +120,6 @@ Clear bookmarks:
   *Change test environment to  StrictMode=Latest
   *Update icon.
   *Remove extra shared functions
-
 
 ### [v1.1.3](https://github.com/stadub/PowershellScripts/releases/tag/v0.2.0)
 
@@ -144,7 +142,6 @@ Clear bookmarks:
 
 >$pwd |  Add-PSBookmark -Name "ThisDirectory"
 >"SourcesDir" |  Open-PSBookmark [ bo ]
-
 
 ### [v1.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.1.0)
 
@@ -171,7 +168,7 @@ Save-PSBookmarkk - Save bookmarks to file
 
 ```
 
-## Donate
+## 💲 Donate
 
 The modules are created and actively maintained during evenings and weekends for my own needs.
 If it's useful for you too, that's great. I don't demand anything in return.
@@ -184,6 +181,8 @@ a coffee or a beer is always appreciated. Thank you very much in advance.
 
 <!--   By Paypal [![PayPal.me](https://img.shields.io/badge/PayPal-me-blue.svg?maxAge=2592000)](https://www.paypal.me/dima.by)
  -->
+
+## 📬 Suggestions and feedback
 
 If you have any idea or suggestion - please add a github issue.
 

@@ -1,7 +1,6 @@
-# 7zip-Archive - 7zip utility warpper
+# 7zip-Archive - 7zip archiver ps1 wrapper
 
-Download 7Zip utility from internet and use own bin floder
-
+ 
 [![PowerShell 3](https://dev.azure.com/Stadub-Gh/PowershellScripts/_apis/build/status/7Zip?branchName=master)](https://dev.azure.com/Stadub-Gh/PowershellScripts/_build/latest?definitionId=4&branchName=master)
 [![PowerShell 4, 5 & Core on Windows build](https://ci.appveyor.com/api/projects/status/jr9waysnisfyxpj1?svg=true)](https://ci.appveyor.com/project/stadub/powershellscripts-yvvt0)
 <!-- [![Linux & MacOS build](https://img.shields.io/travis/stadub/PowershellScripts/master.svg?label=linux/macos+build)](https://travis-ci.org/stadub/PowershellScripts) -->
@@ -12,7 +11,7 @@ Download 7Zip utility from internet and use own bin floder
 
 ![ConsoleDemo](https://raw.githubusercontent.com/stadub/PowershellScripts/master/7Zip/Assets/demo.gif)
 
-## Instalation
+## 🔨 Instalation
 
 Powershell Gallery:
 
@@ -36,7 +35,7 @@ Module import:
 Import-Module 7zip-Archive
 ```
 
-## Commands
+## 📘 Commands
 
 ```powershell
 
@@ -78,7 +77,7 @@ Test-ZipFileContent - Perform zip file check
 
 ```
 
-## Aliases
+## ⚡ Aliases
 
 | Cmdlet               | Alias  |
 | ---------------------|:------:|
@@ -89,7 +88,7 @@ Test-ZipFileContent - Perform zip file check
 | Test-ZipFileContent  | szt    |
 | Get-ZipFileContent   | sz     |
 
-## Usage
+## 📃 Usage
 
 ### Create new 7zip archive from file
 
@@ -163,7 +162,6 @@ Test-ZipFileContent - Perform zip file check
 /> ./encodedFile.7z |  Remove-ZipFileContent  -File 'file.txt' -Password 'pass'
 ```
 
-
 ### Perform 7Zip arhive integrity check
 
 ```powershell
@@ -178,7 +176,7 @@ Test-ZipFileContent - Perform zip file check
 /> ([PSCustomObject]@{File='file.txt',  Archive='File.7z', Password="pass"} | Test-ZipFileContent -Archive 'File.7z'
 ```
 
-## Changelog
+## 📈 Changelog
 
 ### [v1.1.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.9.5)  Spet 9, 2019
 
@@ -210,7 +208,7 @@ Test-ZipFileContent - Perform zip file check
 * Module `7zip` adding aliazes and tests
 * `7zip` moduel add readme file, icon and build def
 
-## Donate
+## 💲 Donate
 
 The modules are created and actively maintained during evenings and weekends for my own needs.
 If it's useful for you too, that's great. I don't demand anything in return.
@@ -223,6 +221,8 @@ a coffee or a beer is always appreciated. Thank you very much in advance.
 
 <!--   By Paypal [![PayPal.me](https://img.shields.io/badge/PayPal-me-blue.svg?maxAge=2592000)](https://www.paypal.me/dima.by)
  -->
+
+## 📬 Suggestions and feedback
 
 If you have any idea or suggestion - please add a github issue.
 
