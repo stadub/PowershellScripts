@@ -16,7 +16,7 @@
 ```powershell
 ConvertFrom-Base64String
   [-EncodedValue] <string>
-  [bool]$UrlSafe (default- $false) - Set to produce url safe string
+  [-UrlSafe] <bool>  (default- $false) - Set to produce url safe string
 
 
 ConvertTo-Base64String

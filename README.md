@@ -6,37 +6,55 @@
 
 ### Base64String - Convert text from/to Base 64 String
 
-[![PowerShell 3](https://dev.azure.com/Stadub-Gh/PowershellScripts/_apis/build/status/SharedFunctions?branchName=master)](https://dev.azure.com/Stadub-Gh/PowershellScripts/_build/latest?definitionId=6&branchName=master)
-[![PowerShell 4, 5 & Core on Windows build](https://ci.appveyor.com/api/projects/status/7nunpf138bmp7ogf/branch/master?svg=true)](https://ci.appveyor.com/project/stadub/powershellscripts-v9ncj/branch/master)
-[![Linux & MacOS build](https://img.shields.io/travis/stadub/PowershellScripts/master.svg?label=linux/macos+build)](https://travis-ci.org/stadub/PowershellScripts)
-[![latest version](https://img.shields.io/powershellgallery/v/Base64String.svg?label=latest+version)](https://www.powershellgallery.com/packages/Base64String/)
-[![downloads](https://img.shields.io/powershellgallery/dt/Base64String.svg?label=downloads)](https://www.powershellgallery.com/packages/Base64String)
-<!-- [Documentation](https://powershellscripts.readthedocs.io/en/latest/) -->
-[![https://www.powershellgallery.com/packages/Base64String/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Base64String/)
+ [![Base64String](https://raw.githubusercontent.com/stadub/PowershellScripts/master/Shared-Functions/Base64String/Assets/Icon.ico) Base64String](https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Base64String)
 
-Powershell Gallery:
+[![https://www.powershellgallery.com/packages/Base64String/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Base64String)
+[![https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Base64String/](https://img.shields.io/badge/Base64String-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Base64String)
 
-[![https://www.powershellgallery.com/packages/Base64String/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Base64String/)
+```powershell
+ConvertFrom-Base64String
+  [-EncodedValue] <string>
+  [bool]$UrlSafe (default- $false) - Set to produce url safe string
 
-Full documentation and code:
 
-[![https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Base64String/](https://img.shields.io/badge/Base64String-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Base64String/)
-[Base64String](https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Base64String)
+ConvertTo-Base64String
+  [-Value] <string>
+
+```
+
+[Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Base64String)
 
 ### Pipe - Powershell Pipe filtering functions
 
-[![PowerShell 3](https://dev.azure.com/Stadub-Gh/PowershellScripts/_apis/build/status/SharedFunctions?branchName=master)](https://dev.azure.com/Stadub-Gh/PowershellScripts/_build/latest?definitionId=6&branchName=master)
-[![PowerShell 4, 5 & Core on Windows build](https://ci.appveyor.com/api/projects/status/7nunpf138bmp7ogf/branch/master?svg=true)](https://ci.appveyor.com/project/stadub/powershellscripts-v9ncj/branch/master)
-[![Linux & MacOS build](https://img.shields.io/travis/stadub/PowershellScripts/master.svg?label=linux/macos+build)](https://travis-ci.org/stadub/PowershellScripts)
-[![latest version](https://img.shields.io/powershellgallery/v/Pipe.svg?label=latest+version)](https://www.powershellgallery.com/packages/Pipe/)
-[![downloads](https://img.shields.io/powershellgallery/dt/Pipe.svg?label=downloads)](https://www.powershellgallery.com/packages/Pipe)
-<!-- [Documentation](https://powershellscripts.readthedocs.io/en/latest/) -->
-[![https://www.powershellgallery.com/packages/Pipe/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Pipe/)
+ [![Pipe](https://raw.githubusercontent.com/stadub/PowershellScripts/master/Shared-Functions/Pipe/Assets/Icon.ico) Pipe](https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Pipe)
 
-Full documentation and code:
+[![https://www.powershellgallery.com/packages/Pipe/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Pipe)
+[![https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Base64String/](https://img.shields.io/badge/Pipe-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Pipe)
 
-[![https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Pipe/](https://img.shields.io/badge/Base64String-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Pipe/)
-[Base64String](https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Pipe)
+```powershell
+Limit-Type - Filter by element type
+   [-Type] <Type>
+   [-Strict] (default- $true) - $true - filter by exact type, $false - any assigname type
+```powershell
+
+Limit-Type - Filter by element type name
+   [-TypeName] <string> Type name
+   [-Strict] (default- $true) - $true - filter by exact type, $false - 'like' comparision used
+
+Limit-First - Return only the first element of pipe
+
+Limit-Last - Return only the last element of pipe
+
+Skip-Items - Skip N elements
+   [-Count] <int>
+
+Hide-Out - supress output
+
+Limit-Items - Return only N elements from pipe
+   [-Count] <int>
+```
+
+[Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Pipe)
 
 ---------------------
 
@@ -44,59 +62,109 @@ Full documentation and code:
 
 ### Bookmarks - Directory bookmarks
 
-[![PowerShell 3](https://Stadub-Gh.visualstudio.com/PowershellScripts/_apis/build/status/Bookmarks?branchName=master)](https://Stadub-Gh.visualstudio.com/PowershellScripts/_build/latest?definitionId=3?branchName=master)
-[![PowerShell 4, 5 & Core on Windows build](https://ci.appveyor.com/api/projects/status/7tmg8wy30ipanjsd?svg=true)](https://ci.appveyor.com/project/stadub/powershellscripts)
-[![Linux & MacOS build](https://img.shields.io/travis/stadub/PowershellScripts/master.svg?label=linux/macos+build)](https://travis-ci.org/stadub/PowershellScripts)
-[![latest version](https://img.shields.io/powershellgallery/v/Bookmarks.svg?label=latest+version)](https://www.powershellgallery.com/packages/Bookmarks/)
-[![downloads](https://img.shields.io/powershellgallery/dt/Bookmarks.svg?label=downloads)](https://www.powershellgallery.com/packages/Bookmarks)
+ [![Bookmarks](https://raw.githubusercontent.com/stadub/PowershellScripts/master/Bookmarks/Assets/Icon.ico) Bookmarks](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks)
 
-[![https://www.powershellgallery.com/packages/Bookmarks/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Bookmarks/)
+[![https://www.powershellgallery.com/packages/Bookmarks/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Bookmarks)
+[![https://github.com/stadub/PowershellScripts/tree/master/Bookmarks/](https://img.shields.io/badge/Bookmarks-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks)
 
-Powershell Gallery:
+```powershell
+Add-PSBookmark  - Add folder to the bookmarks list
+  [-Name] <string>
+  [-Path] <string> (Optional)
 
-[![https://www.powershellgallery.com/packages/Bookmarks/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Bookmarks/)
+Remove-PSBookmark - Remove bookmark from the list
+  [-Bookmark] <string>
 
-Full documentation and code:
+Open-PSBookmark - Navigate to bookmark
+  [-Bookmark] <string>
 
-[![https://github.com/stadub/PowershellScripts/tree/master/Bookmarks/](https://img.shields.io/badge/Bookmarks-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks/)
-[Bookmarks](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks)
+Get-PSBookmarks - List bookmarks
+
+Save-PSBookmarkk - Save bookmarks to file
+
+Remove-AllPSBookmarks - Clear bookmarks list
+
+Update-PSBookmark  - Update folder location in the bookmarks list
+  [-Name] <string>
+  [-Path] <string> (Optional)
+```
+
+[Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks)
 
 ---------------------
 
 ### 7zip-Archive - 7zip utility powershell wrapper
 
-[![PowerShell 3](https://dev.azure.com/Stadub-Gh/PowershellScripts/_apis/build/status/7Zip?branchName=master)](https://dev.azure.com/Stadub-Gh/PowershellScripts/_build/latest?definitionId=4&branchName=master)
-[![PowerShell 4, 5 & Core on Windows build](https://ci.appveyor.com/api/projects/status/jr9waysnisfyxpj1?svg=true)](https://ci.appveyor.com/project/stadub/powershellscripts-yvvt0)
-[![latest version](https://img.shields.io/powershellgallery/v/7zip-Archive.svg?label=latest+version)](https://www.powershellgallery.com/packages/7zip-Archive)
-[![downloads](https://img.shields.io/powershellgallery/dt/7zip-Archive.svg?label=downloads)](https://www.powershellgallery.com/packages/7zip-Archive)
+ [![7Zip](https://raw.githubusercontent.com/stadub/PowershellScripts/master/7Zip/Assets/Icon.ico) 7Zip](https://github.com/stadub/PowershellScripts/tree/master/7Zip)
 
-Powershell Gallery:
-
-[![https://www.powershellgallery.com/packages/7zip-Archive/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/7zip-Archive/)
-
-Detailed and code:
-
+[![https://www.powershellgallery.com/packages/7Zip/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/7Zip)
 [![https://github.com/stadub/PowershellScripts/tree/master/7Zip/](https://img.shields.io/badge/7Zip-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/7Zip)
-[7Zip](https://github.com/stadub/PowershellScripts/tree/master/7Zip)
+
+```powershell
+
+New-ZipFile - Create new archive
+  [-Archive] <string>
+  [-Files] <string[]>
+  [-Compression] (Optional) {Store, Fastest, Fast, Normal, Maximum, Ultra}
+  [-Password] <string> (Optional)
+  [-SplitSize] <string> (Optional)
+  [-SplitSizeFactor] (Optional) {Byte, Kilobyte, Megabyte, Gigabytes}
+  [-UpdateMode] (Optional) {Add, Update, Freshen, Sync}
+
+Get-ZipFileContent - Extract archive new archive
+  [-Archive] <string>
+  [-FileName] <string> (Optional) - Extrct single file
+  [-Password] <string> (Optional)
+  [-Force] <Boolean> (Optional) - Overwrite existing file
+  [-OutputPath] <string> (Optional) - folder to extract
+
+Read-ZipFile  - List 7zip file content
+  [-Archive] <string>
+  [-Password] <string> (Optional)
+
+Add-ZipFileContent - Add file to archive
+  [-Archive] <string>
+  [-File] <string>
+  [-Password] <string> (Optional)
+
+Remove-ZipFileContent - Remove file from archive
+  [-Archive] <string>
+  [-File] <string>
+  [-Password] <string> (Optional)
+
+
+Test-ZipFileContent - Perform zip file check
+  [-Archive] <string>
+  [-File] <string> (Optional)
+  [-Password] <string> (Optional)
+
+```
+
+[Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/7Zip)
 
 ---------------------
 
 ### Currency-Conv - Currecny converter
 
-[![PowerShell 3](https://dev.azure.com/Stadub-Gh/PowershellScripts/_apis/build/status/Currency-Conv?branchName=master)](https://dev.azure.com/Stadub-Gh/PowershellScripts/_build/latest?definitionId=5&branchName=master)
-[![PowerShell 4, 5 & Core on Windows build](https://ci.appveyor.com/api/projects/status/7tmg8wy30ipanjsd?svg=true)](https://ci.appveyor.com/project/stadub/powershellscripts)
-[![Linux & MacOS build](https://img.shields.io/travis/stadub/PowershellScripts/master.svg?label=linux/macos+build)](https://travis-ci.org/stadub/PowershellScripts)
-[![latest version](https://img.shields.io/powershellgallery/v/Currency-Conv.svg?label=latest+version)](https://www.powershellgallery.com/packages/Currency-Conv/)
-[![downloads](https://img.shields.io/powershellgallery/dt/Currency-Conv.svg?label=downloads)](https://www.powershellgallery.com/packages/Currency-Conv)
+ [![Currency-Conv](https://raw.githubusercontent.com/stadub/PowershellScripts/master/Currency-Conv/Assets/Icon.ico) Currency-Conv](https://github.com/stadub/PowershellScripts/tree/master/Currency-Conv)
 
-Powershell Gallery:
-
-[![https://www.powershellgallery.com/packages/Currency-Conv/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Currency-Conv/)
-
-Detailed and code:
-
+[![https://www.powershellgallery.com/packages/Currency-Conv/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Currency-Conv)
 [![https://github.com/stadub/PowershellScripts/tree/master/Currency-Conv/](https://img.shields.io/badge/Currency-Conv-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/Currency-Conv)
-[Currency-Conv](https://github.com/stadub/PowershellScripts/tree/master/Currency-Conv)
+
+```powershell
+Get-ExchangeRate - Get exchange rate for amount
+  [-From] <string>
+  [-To] <string> (Optional "USD")
+  [-Amount] <integer> (Optional 1.0)
+
+Get-Countries -Countries list with currencies
+
+Get-Currencies - Supported currencies list
+
+Remove-CurrencyApiKey- Clean key
+```
+
+[Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/Currency-Conv)
 
 ---------------------
 
@@ -106,18 +174,18 @@ Used as backups encoding solution.
 
 Encoding performed with 7z password protection
 
-[![PowerShell 3](https://Stadub-Gh.visualstudio.com/PowershellScripts/_apis/build/status/Bookmarks?branchName=master)](https://Stadub-Gh.visualstudio.com/PowershellScripts/_build/latest?definitionId=3?branchName=master)
-[![PowerShell 4, 5 & Core on Windows build](https://ci.appveyor.com/api/projects/status/7tmg8wy30ipanjsd?svg=true)](https://ci.appveyor.com/project/stadub/powershellscripts)
-[![Linux & MacOS build](https://img.shields.io/travis/stadub/PowershellScripts/master.svg?label=linux/macos+build)](https://travis-ci.org/stadub/PowershellScripts)
-[![latest version](https://img.shields.io/powershellgallery/v/FolderEncoder.svg?label=latest+version)](https://www.powershellgallery.com/packages/FolderEncoder/)
-[![downloads](https://img.shields.io/powershellgallery/dt/FolderEncoder.svg?label=download)](https://www.powershellgallery.com/packages/FolderEncoder)
+ [![FolderEncoder](https://raw.githubusercontent.com/stadub/PowershellScripts/master/FolderEncoder/Assets/Icon.ico) FolderEncoder](https://github.com/stadub/PowershellScripts/tree/master/FolderEncoder)
 
- [![https://www.powershellgallery.com/packages/FolderEncoder/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/FolderEncoder/2.0.0)
-
-Detailed and code:
-
+[![https://www.powershellgallery.com/packages/FolderEncoder/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/FolderEncoder)
 [![https://github.com/stadub/PowershellScripts/tree/master/FolderEncoder/](https://img.shields.io/badge/FolderEncoder-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/FolderEncoder)
-[FolderEncoder](https://github.com/stadub/PowershellScripts/tree/master/FolderEncoder)
+
+```powershell
+Invoke-FolderEncode - Encode folder
+  [-DestFolder] <string>
+  [-SrcFolder] <string> (Optional)
+```
+
+[Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/FolderEncoder)
 
 ---------------------
 
