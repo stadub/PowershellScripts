@@ -24,6 +24,8 @@ ConvertTo-Base64String
 
 [Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Base64String)
 
+---------------------
+
 ### Pipe - Powershell Pipe filtering functions
 
 [![https://www.powershellgallery.com/packages/Pipe/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Pipe)
@@ -59,6 +61,8 @@ Limit-Items - Return only N elements from pipe
 ---------------------
 
 ## Powershell Modules
+
+---------------------
 
 ### Bookmarks - Directory bookmarks
 
