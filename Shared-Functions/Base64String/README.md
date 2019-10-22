@@ -11,6 +11,13 @@
 
 ![ConsoleDemo](https://github.com/stadub/PowershellScripts/raw/master/Shared-Functions/Base64String/Assets/demo.gif)
 
+## ⚡ Aliases
+
+| Cmdlet           | Alias |
+| -----------------|:-----:|
+| ConvertTo-Base64String   | encode64   |
+| ConvertFrom-Base64String | decode64   |
+
 ## 📘 Commands
 
 ```powershell
@@ -23,13 +30,6 @@ ConvertTo-Base64String
   [-Value] <string>
 
 ```
-
-## ⚡ Aliases
-
-| Cmdlet           | Alias |
-| -----------------|:-----:|
-| ConvertTo-Base64String   | encode64   |
-| ConvertFrom-Base64String | decode64    |
 
 ## 📃 Usage
 

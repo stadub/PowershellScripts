@@ -11,29 +11,16 @@
 
 ![ConsoleDemo](https://raw.githubusercontent.com/stadub/PowershellScripts/master/7Zip/Assets/demo.gif)
 
-## 🔨 Instalation
+## ⚡ Aliases
 
-Powershell Gallery:
-
-[![https://www.powershellgallery.com/packages/7zip-Archive/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/7zip-Archive/)
-
-`PowerShellGet` Installation :
-
-```powershell
-Install-Module -Name 7zip-Archive
-```
-
-Direct download instalation:
-
-```powershell
-iex ('$module="7Zip"'+(new-object net.webclient).DownloadString('https://raw.githubusercontent.com/stadub/PowershellScripts/master/install.ps1'))
-```
-
-Module import:
-
-```powershell
-Import-Module 7zip-Archive
-```
+| Cmdlet               | Alias  |
+| ---------------------|:------:|
+| New-ZipFile          | szc    |
+| Read-ZipFile         | szr    |
+| Add-ZipFileContent   | sza    |
+| Remove-ZipFileContent| szrm   |
+| Test-ZipFileContent  | szt    |
+| Get-ZipFileContent   | sz     |
 
 ## 📘 Commands
 
@@ -76,17 +63,6 @@ Test-ZipFileContent - Perform zip file check
   [-Password] <string> (Optional)
 
 ```
-
-## ⚡ Aliases
-
-| Cmdlet               | Alias  |
-| ---------------------|:------:|
-| New-ZipFile          | szc    |
-| Read-ZipFile         | szr    |
-| Add-ZipFileContent   | sza    |
-| Remove-ZipFileContent| szrm   |
-| Test-ZipFileContent  | szt    |
-| Get-ZipFileContent   | sz     |
 
 ## 📃 Usage
 
@@ -174,6 +150,30 @@ Test-ZipFileContent - Perform zip file check
 
 ```powershell
 /> ([PSCustomObject]@{File='file.txt',  Archive='File.7z', Password="pass"} | Test-ZipFileContent -Archive 'File.7z'
+```
+
+## 🔨 Instalation
+
+Powershell Gallery:
+
+[![https://www.powershellgallery.com/packages/7zip-Archive/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/7zip-Archive/)
+
+`PowerShellGet` Installation :
+
+```powershell
+Install-Module -Name 7zip-Archive
+```
+
+Direct download instalation:
+
+```powershell
+iex ('$module="7Zip"'+(new-object net.webclient).DownloadString('https://raw.githubusercontent.com/stadub/PowershellScripts/master/install.ps1'))
+```
+
+Module import:
+
+```powershell
+Import-Module 7zip-Archive
 ```
 
 ## 📈 Changelog

@@ -10,29 +10,16 @@
 
 ![ConsoleDemo](https://raw.githubusercontent.com/stadub/PowershellScripts/master/Bookmarks/Assets/demo.gif)
 
-## 🔨 Instalation
+## ⚡ Aliases
 
-Powershell Gallery:
-
-[![https://www.powershellgallery.com/packages/Bookmarks/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Bookmarks/)
-
-`PowerShellGet` Installation :
-
-```powershell
-Install-Module -Name Bookmarks
-```
-
-Direct download instalation:
-
-```powershell
-iex ('$module="Bookmarks"'+(new-object net.webclient).DownloadString('https://raw.githubusercontent.com/stadub/PowershellScripts/master/install.ps1'))
-```
-
-Module import:
-
-```powershell
-Import-Module Bookmarks
-```
+| Cmdlet                  | Alias  |
+| ------------------------|:------:|
+| Add-PSBookmark          | ba     |
+| Remove-PSBookmark       | br     |
+| Open-PSBookmark         | bo     |
+| Get-PSBookmarks         | bv | bl|
+| Remove-AllPSBookmarks   | bcl    |
+| Update-PSBookmark       | bu     |
 
 ## 📘 Commands
 
@@ -57,17 +44,6 @@ Update-PSBookmark  - Update folder location in the bookmarks list
   [-Name] <string>
   [-Path] <string> (Optional)
 ```
-
-## ⚡ Aliases
-
-| Cmdlet                  | Alias  |
-| ------------------------|:------:|
-| Add-PSBookmark          | ba     |
-| Remove-PSBookmark       | br     |
-| Open-PSBookmark         | bo     |
-| Get-PSBookmarks         | bv | bl|
-| Remove-AllPSBookmarks   | bcl    |
-| Update-PSBookmark       | bu     |
 
 ## 📃 Usage
 
@@ -105,6 +81,30 @@ Clear bookmarks:
 
 ```powershell
 />Remove-AllPSBookmarks [ bcl ]
+```
+
+## 🔨 Instalation
+
+Powershell Gallery:
+
+[![https://www.powershellgallery.com/packages/Bookmarks/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Bookmarks/)
+
+`PowerShellGet` Installation :
+
+```powershell
+Install-Module -Name Bookmarks
+```
+
+Direct download instalation:
+
+```powershell
+iex ('$module="Bookmarks"'+(new-object net.webclient).DownloadString('https://raw.githubusercontent.com/stadub/PowershellScripts/master/install.ps1'))
+```
+
+Module import:
+
+```powershell
+Import-Module Bookmarks
 ```
 
 ## 📈 Changelog

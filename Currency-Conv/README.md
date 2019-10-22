@@ -11,29 +11,13 @@
 
 ![ConsoleDemo](https://raw.githubusercontent.com/stadub/PowershellScripts/master/Currency-Conv/Assets/demo.gif)
 
-## 🔨 Instalation
 
-Powershell Gallery:
+## ⚡ Aliases
 
-[![https://www.powershellgallery.com/packages/Currency-Conv/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Currency-Conv/)
-
-`PowerShellGet` Installation :
-
-```powershell
-Install-Module -Name Currency-Conv
-```
-
-Direct download instalation:
-
-```powershell
-iex ('$module="Currency-Conv"'+(new-object net.webclient).DownloadString('https://raw.githubusercontent.com/stadub/PowershellScripts/master/install.ps1'))
-```
-
-Module import:
-
-```powershell
-Import-Module Currency-Conv
-```
+| Cmdlet           | Alias |
+| -----------------|:-----:|
+| Get-Currencies   | gxc   |
+| Get-ExchangeRate | xe    |
 
 ## 📘 Commands
 
@@ -49,13 +33,6 @@ Get-Currencies - Supported currencies list
 
 Remove-CurrencyApiKey- Clean key
 ```
-
-## ⚡ Aliases
-
-| Cmdlet           | Alias |
-| -----------------|:-----:|
-| Get-Currencies   | gxc   |
-| Get-ExchangeRate | xe    |
 
 ## Cache Timeouts
 
@@ -109,6 +86,30 @@ Remove currconv.com api key fromthe system:
 
 ```powershell
 /> Remove-CurrencyApiKey
+```
+
+## 🔨 Instalation
+
+Powershell Gallery:
+
+[![https://www.powershellgallery.com/packages/Currency-Conv/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Currency-Conv/)
+
+`PowerShellGet` Installation :
+
+```powershell
+Install-Module -Name Currency-Conv
+```
+
+Direct download instalation:
+
+```powershell
+iex ('$module="Currency-Conv"'+(new-object net.webclient).DownloadString('https://raw.githubusercontent.com/stadub/PowershellScripts/master/install.ps1'))
+```
+
+Module import:
+
+```powershell
+Import-Module Currency-Conv
 ```
 
 ## 📈 Changelog

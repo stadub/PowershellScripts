@@ -11,6 +11,19 @@
 
 <!-- ![ConsoleDemo](https://github.com/stadub/PowershellScripts/raw/master/Shared-Functions/Pipe/Assets/demo.gif) -->
 
+## ⚡ Aliases
+
+| Filter        |  Alias      |
+| --------------|:-----------:|
+|  Skip-Items   | skip        |
+|  Limit-Type   | wtype       |
+|  Limit-Type   | filter-type |
+|  Limit-Type   | where-type  |
+|  Limit-Items  | take        |
+|  Limit-First  | first       |
+|  Limit-Last   | last        |
+|  Hide-Out     | suppress    |
+
 ## 📘 Commands
 
 ```powershell
@@ -45,19 +58,6 @@ Hide-Out - supress output
 Limit-Items - Return only N elements from pipe
    [-Count] <int>
 ```
-
-## ⚡ Aliases
-
-| Filter        |  Alias      |
-| --------------|:-----------:|
-|  Skip-Items   | skip        |
-|  Limit-Type   | wtype       |
-|  Limit-Type   | filter-type |
-|  Limit-Type   | where-type  |
-|  Limit-Items  | take        |
-|  Limit-First  | first       |
-|  Limit-Last   | last        |
-|  Hide-Out     | suppress    |
 
 ## 📃 Usage
 
