@@ -4,7 +4,7 @@
 
 ## Powershell Micro Modules
 
-### [![Base64String](https://raw.githubusercontent.com/stadub/PowershellScripts/master/Shared-Functions/Base64String/Assets/Icon.Small.png)] Base64String - Convert text from/to Base 64 String
+### [![Base64String](https://raw.githubusercontent.com/stadub/PowershellScripts/master/Shared-Functions/Base64String/Assets/Icon.Small.png)](https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Base64String) Base64String - Convert text from/to Base 64 String
 
 [![https://www.powershellgallery.com/packages/Base64String/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Base64String)
 [![https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Base64String/](https://img.shields.io/badge/Base64String-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Base64String)
@@ -12,7 +12,7 @@
 ```powershell
 ConvertFrom-Base64String
   [-EncodedValue] <string>
-  [bool]$UrlSafe (default- $false) - Set to produce url safe string
+  [-UrlSafe] <bool>  (default- $false) - Set to produce url safe string
 
 
 ConvertTo-Base64String
@@ -20,11 +20,11 @@ ConvertTo-Base64String
 
 ```
 
-[Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Base64String)
+[👉🏿 Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Base64String)
 
 ---------------------
 
-### [![Pipe](https://raw.githubusercontent.com/stadub/PowershellScripts/master/Shared-Functions/Pipe/Assets/Icon.Small.png)] Pipe - Powershell Pipe filtering functions
+### [![Pipe](https://raw.githubusercontent.com/stadub/PowershellScripts/master/Shared-Functions/Pipe/Assets/Icon.Small.png)](https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Pipe) Pipe - Powershell Pipe filtering functions
 
 [![https://www.powershellgallery.com/packages/Pipe/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Pipe)
 [![https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Base64String/](https://img.shields.io/badge/Pipe-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Pipe)
@@ -52,7 +52,7 @@ Limit-Items - Return only N elements from pipe
    [-Count] <int>
 ```
 
-[Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Pipe)
+[👉🏿 Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Pipe)
 
 ---------------------
 
@@ -60,7 +60,7 @@ Limit-Items - Return only N elements from pipe
 
 ---------------------
 
-### [![Bookmarks](https://raw.githubusercontent.com/stadub/PowershellScripts/master/Bookmarks/Assets/Icon.Small.png)]  Bookmarks - Directory bookmarks
+### [![Bookmarks](https://raw.githubusercontent.com/stadub/PowershellScripts/master/Bookmarks/Assets/Icon.Small.png)](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks)  Bookmarks - Directory bookmarks
 
 [![https://www.powershellgallery.com/packages/Bookmarks/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Bookmarks)
 [![https://github.com/stadub/PowershellScripts/tree/master/Bookmarks/](https://img.shields.io/badge/Bookmarks-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks)
@@ -87,11 +87,11 @@ Update-PSBookmark  - Update folder location in the bookmarks list
   [-Path] <string> (Optional)
 ```
 
-[Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks)
+[👉🏿 Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/Bookmarks)
 
 ---------------------
 
-### [![7Zip](https://raw.githubusercontent.com/stadub/PowershellScripts/master/7Zip/Assets/Icon.Small.png)] 7zip-Archive - 7zip utility powershell wrapper
+### [![7Zip](https://raw.githubusercontent.com/stadub/PowershellScripts/master/7Zip/Assets/Icon.Small.png)](https://github.com/stadub/PowershellScripts/tree/master/7Zip) 7zip-Archive - 7zip utility powershell wrapper
 
 [![https://www.powershellgallery.com/packages/7zip-Archive/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/7zip-Archive)
 [![https://github.com/stadub/PowershellScripts/tree/master/7Zip/](https://img.shields.io/badge/7Zip-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/7Zip)
@@ -136,11 +136,11 @@ Test-ZipFileContent - Perform zip file check
 
 ```
 
-[Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/7Zip)
+[👉🏿 Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/7Zip)
 
 ---------------------
 
-### [![Currency-Conv](https://raw.githubusercontent.com/stadub/PowershellScripts/master/Currency-Conv/Assets/Icon.Small.png)] Currency-Conv - Currecny converter
+### [![Currency-Conv](https://raw.githubusercontent.com/stadub/PowershellScripts/master/Currency-Conv/Assets/Icon.Small.png)](https://github.com/stadub/PowershellScripts/tree/master/Currency-Conv) Currency-Conv - Currecny converter
 
 [![https://www.powershellgallery.com/packages/Currency-Conv/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Currency-Conv)
 [![https://github.com/stadub/PowershellScripts/tree/master/Currency-Conv/](https://img.shields.io/badge/CurrencyConv-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/Currency-Conv)
@@ -159,11 +159,11 @@ Get-Currencies - Supported currencies list
 Remove-CurrencyApiKey- Clean key
 ```
 
-[Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/Currency-Conv)
+[👉🏿 Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/Currency-Conv)
 
 ---------------------
 
-### [![FolderEncoder](https://raw.githubusercontent.com/stadub/PowershellScripts/master/FolderEncoder/Assets/Icon.Small.png)] Invoke-FolderEncode - Encode files from a folder for(for example) uploading to the cloud
+### [![FolderEncoder](https://raw.githubusercontent.com/stadub/PowershellScripts/master/FolderEncoder/Assets/Icon.Small.png)](https://github.com/stadub/PowershellScripts/tree/master/FolderEncoder) Invoke-FolderEncode - Encode files from a folder for(for example) uploading to the cloud
 
 Used as backups encoding solution.
 
@@ -179,7 +179,7 @@ Invoke-FolderEncode - Encode folder
   [-SrcFolder] <string> (Optional)
 ```
 
-[Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/FolderEncoder)
+[👉🏿 Full documentation and code](https://github.com/stadub/PowershellScripts/tree/master/FolderEncoder)
 
 ---------------------
 
