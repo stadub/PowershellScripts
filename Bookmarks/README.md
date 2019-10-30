@@ -109,6 +109,10 @@ Import-Module Bookmarks
 
 ## 📈 Changelog
 
+### [v2.2.0]
+
+*Fix Multisession sync(bookamrks was different for different console windows)
+
 ### [v2.1.5](https://github.com/stadub/PowershellScripts/tree/Bookmarks-Release-2.1.5)
 
 *Add update checker

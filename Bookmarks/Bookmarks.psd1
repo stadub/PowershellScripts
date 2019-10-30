@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.1.5'
+ModuleVersion = '2.2.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -72,7 +72,13 @@ Full documentation at the Github: https://github.com/stadub/PowershellScripts/tr
 RootModule = "Bookmarks.psm1"
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @('*')
+FunctionsToExport = @('Add-PSBookmark',
+'Remove-PSBookmark',
+'Remove-AllPSBookmarks',
+'Open-PSBookmark',
+'Get-PSBookmarks',
+'Update-PSBookmark ')
+
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
 CmdletsToExport = @()
@@ -111,12 +117,7 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '
-        Change %userData% detection logic.        
-        Move initation logic to Loader.psm1
-        Change test environment to  StrictMode=Latest
-        Update icon.
-        Remove extra shared functions
-        Add update checker
+        *Fix Multisession sync(bookamrks was different for different console windows)
         '
 
     } # End of PSData hashtable
