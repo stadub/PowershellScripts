@@ -78,8 +78,6 @@ Open-PSBookmark - Navigate to bookmark
 
 Get-PSBookmarks - List bookmarks
 
-Save-PSBookmarkk - Save bookmarks to file
-
 Remove-AllPSBookmarks - Clear bookmarks list
 
 Update-PSBookmark  - Update folder location in the bookmarks list
