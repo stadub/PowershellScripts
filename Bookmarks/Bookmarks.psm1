@@ -2,7 +2,7 @@
 
 . $PSScriptRoot\Functions.ps1
 
-CheckPsGalleryUpdate Bookmarks "2.1.5"
+CheckPsGalleryUpdate Bookmarks "2.2.0"
 
 _Initalize
 

@@ -12,7 +12,7 @@
 # RootModule = ''
 
 # Version number of this module.
-ModuleVersion = '2.1.5'
+ModuleVersion = '2.2.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -76,8 +76,6 @@ FunctionsToExport = @('Add-PSBookmark',
 'Remove-PSBookmark',
 'Remove-AllPSBookmarks',
 'Open-PSBookmark',
-'Restore-PSBookmarks',
-'Save-PSBookmarks',
 'Get-PSBookmarks',
 'Update-PSBookmark ')
 
@@ -119,12 +117,7 @@ PrivateData = @{
 
         # ReleaseNotes of this module
         ReleaseNotes = '
-        Change %userData% detection logic.        
-        Move initation logic to Loader.psm1
-        Change test environment to  StrictMode=Latest
-        Update icon.
-        Remove extra shared functions
-        Add update checker
+        *Fix Multisession sync(bookamrks was different for different console windows)
         '
 
     } # End of PSData hashtable
