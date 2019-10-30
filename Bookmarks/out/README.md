@@ -34,7 +34,8 @@ Module import:
 Import-Module Bookmarks
 ```
 
-## Commands
+# Commands
+
 
 ```powershell
 Add-PSBookmark  - Add folder to the bookmarks list
@@ -67,6 +68,7 @@ Update-PSBookmark  - Update folder location in the bookmarks list
 | Open-PSBookmark         | bo     |
 | Get-PSBookmarks         | bv | bl|
 | Remove-AllPSBookmarks   | bcl    |
+| Update-PSBookmark       | bu     |
 
 ## Usage
 
@@ -108,13 +110,17 @@ Clear bookmarks:
 
 ## Changelog
 
+### [v2.2.0]
+
+*Fix Multisession sync(bookamrks was different for different console windows)
+
 ### [v2.1.5](https://github.com/stadub/PowershellScripts/tree/Bookmarks-Release-2.1.5)
 
 *Add update checker
 
 ### [v2.1.0](https://github.com/stadub/PowershellScripts/tree/Bookmarks-Release-2.1)
 
-  *Change %userData% detection logic.        
+  *Change %userData% detection logic.
   *Move initation logic to Loader.psm1
   *Change test environment to  StrictMode=Latest
   *Update icon.
@@ -141,6 +147,7 @@ Clear bookmarks:
 
 >$pwd |  Add-PSBookmark -Name "ThisDirectory"
 >"SourcesDir" |  Open-PSBookmark [ bo ]
+
 
 ### [v1.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.1.0)
 

@@ -1,10 +1,6 @@
 
 function _Initalize() {
-    
-    $script:_marks = @{ }
     $script:_marksPath = Get-ProfileDataFile bookmarks "Bookmarks"
-
-    Restore-PSBookmarks
 }
 
 
@@ -42,14 +38,14 @@ function Add-PSBookmark () {
         $dir = (Get-Location).Path
 	}
 
-    Restore-PSBookmarks
+    $_marks = Import-PSBookmarks
 
     if( $_marks.ContainsKey("$Name") ){
         throw "Folder bookmark ''$Name'' already exist"
     }
 
     $_marks["$Name"] = $dir
-	Save-PSBookmarks
+	Save-PSBookmarks $_marks
 	Write-Output ("Location '{1}' saved to bookmark '{0}'" -f $Name, $dir) 	
 }
 
@@ -80,15 +76,16 @@ function Remove-PSBookmark () {
         $Name
     )
 
-	Restore-PSBookmarks
+    $_marks = Import-PSBookmarks
+
     $_marks.Remove($Name)
-	Save-PSBookmarks
+	Save-PSBookmarks $_marks
 	Write-Output ("Location '{0}' removed from bookmarks" -f $Name) 	
 }
 
 function Remove-AllPSBookmarks {
-    $_marks.Clone() | ForEach-Object{$_.keys} | ForEach-Object{$_marks.remove($_)}
-    Save-PSBookmarks
+    $_marks = @{ }
+    Save-PSBookmarks $_marks
 }
 
 <#
@@ -116,16 +113,23 @@ function Open-PSBookmark() {
     )]
     $Name
     )
+    $_marks = Import-PSBookmarks
     Set-Location $_marks["$Name"]
 }
 
-function Restore-PSBookmarks {
+function Import-PSBookmarks {
+    $_marks = @{ }
 	if (test-path "$script:_marksPath" -PathType leaf) {
 		Import-Csv  $script:_marksPath | ForEach-Object { $_marks[$_.key] = $_.value }
-	}
+    }
+    return $_marks
 }
+
 function Save-PSBookmarks {
-    $_marks.getenumerator() | export-csv "$_marksPath" -notype
+    param (
+        $marks
+    )    
+    $marks.getenumerator() | export-csv "$_marksPath" -notype
 }
 
 
@@ -141,7 +145,7 @@ function Save-PSBookmarks {
    ./Get-PSBookmarks [ bl ] [bv]
 #>
 function Get-PSBookmarks {
-    Restore-PSBookmarks
+    $_marks = Import-PSBookmarks
     $_marks.Clone()
 }
 
@@ -179,15 +183,15 @@ function Update-PSBookmark () {
     )
     if ( Test-Empty $dir ) {
         $dir = (Get-Location).Path
-	}
-
-    Restore-PSBookmarks
+    }
     
+    $_marks = Import-PSBookmarks
+
     if( -not  $_marks.ContainsKey("$Name") ){
         throw "Folder bookmark ''$Name'' doesn't exist"
     }
 
     $_marks["$Name"] = $dir
-	Save-PSBookmarks
+	Save-PSBookmarks $_marks
 	Write-Output ("The bookmark {0} updated with location '{1}'" -f $Name, $dir) 	
 }
