@@ -92,8 +92,9 @@ Update-PSBookmark  - Update folder location in the bookmarks list
 
 ### [![7Zip](https://raw.githubusercontent.com/stadub/PowershellScripts/master/7Zip/Assets/Icon.Small.png)](https://github.com/stadub/PowershellScripts/tree/master/7Zip) 7zip-Archive - 7zip utility powershell wrapper
 
-[![https://www.powershellgallery.com/packages/7zip-Archive/](https://img.shields.io/badge/dynamic/xml?label=Download%20From%20PowerShell%20Gallery&query=%2F%2F%2A%5Blocal-name%28%29%3D%27DownloadCount%27%5D&url=https%3A%2F%2Fwww.powershellgallery.com%2Fapi%2Fv2%2FPackages%28%29%3F%24filter%3DId%2520eq%2520%25277zip-Archive%2527%2520and%2520IsLatestVersion%2520eq%2520true%26%24select%3DDownloadCount&logo=powershell)
-[![https://github.com/stadub/PowershellScripts/tree/master/7Zip/](https://img.shields.io/badge/7Zip-GitHub%20Repository-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/7Zip)
+[![https://www.powershellgallery.com/packages/7zip-Archive/](https://img.shields.io/badge/dynamic/xml?label=Download%20From%20PowerShell%20Gallery&query=%2F%2F%2A%5Blocal-name%28%29%3D%27DownloadCount%27%5D&url=https%3A%2F%2Fwww.powershellgallery.com%2Fapi%2Fv2%2FPackages%28%29%3F%24filter%3DId%2520eq%2520%25277zip-Archive%2527%2520and%2520IsLatestVersion%2520eq%2520true%26%24select%3DDownloadCount&logo=powershell)](https://www.powershellgallery.com/packages/7zip-Archive)
+[![https://github.com/stadub/PowershellScripts/tree/master/7Zip/](https://img.shields.io/badge/7Zip-repo-blue.svg?style=flat&logo=github&logoWidth=40)](https://github.com/stadub/PowershellScripts/tree/master/7Zip)
+
 
 ```powershell
 
