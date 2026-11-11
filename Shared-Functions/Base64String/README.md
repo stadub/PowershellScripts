@@ -102,10 +102,12 @@ Import-Module Base64String
 
 * Add explicit UTF8, BigEndianUnicode, UTF32 and ASCII encoding options while
   preserving the default UTF-16 little-endian behavior.
-* Correct standard and URL-safe Base64 padding validation; reject malformed input.
+* Correct standard and URL-safe Base64 padding validation consistently on
+  .NET Framework and modern .NET; reject malformed input.
 * Support empty strings and per-item pipeline conversion, preserving existing aliases.
-* Include 31 regression cases for encoding interoperability and issue #22.
+* Include 34 regression cases for encoding interoperability and issue #22.
 * Rebuild the reviewed release package reproducibly from matching source files.
+* Include the explicitly selected module-local WTFPL license.
 
 
 ### [v1.2.0] Oct 8, 2019

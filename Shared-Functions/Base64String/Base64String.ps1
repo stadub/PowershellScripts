@@ -74,6 +74,12 @@ Function ConvertFrom-Base64String {
                 3 { $normalized += '=' }
             }
         }
+        # .NET Framework accepts some over-padded input (for example Zm8==)
+        # that modern .NET rejects. Validate padding shape before either runtime.
+        if ($normalized.Contains('=') -and
+            ($normalized.Length % 4 -ne 0 -or $normalized -cnotmatch '^[A-Za-z0-9+/]+={1,2}$')) {
+            throw (New-Object System.FormatException -ArgumentList 'Invalid Base64 length or padding.')
+        }
         try {
             $bytes = [System.Convert]::FromBase64String($normalized)
         }

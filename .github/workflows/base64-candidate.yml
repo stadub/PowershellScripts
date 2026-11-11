@@ -9,9 +9,9 @@ permissions:
 jobs:
   candidate:
     # Pin the reusable workflow to a commit so candidate checks cannot change unexpectedly.
-    uses: stadub/PowershellScripts/.github/workflows/validate-release-candidate.yml@a17b6e2fb9d22b2763ea7f7d05e84aa137dcadb7
+    uses: stadub/PowershellScripts/.github/workflows/validate-release-candidate.yml@48556064087652ae6fc24d6255a117486b9b13f9
     with:
       module: Base64String
       version: '1.3.0'
       source_sha: ${{ github.event.pull_request.head.sha || github.sha }}
-      automation_sha: a17b6e2fb9d22b2763ea7f7d05e84aa137dcadb7
+      automation_sha: 48556064087652ae6fc24d6255a117486b9b13f9

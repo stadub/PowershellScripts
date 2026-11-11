@@ -55,7 +55,7 @@
             # ReleaseNotes of this module
             ReleaseNotes = '
                 * Add explicit text encoding options while preserving Unicode defaults.
-                * Correct standard and URL-safe Base64 padding validation.
+                * Correct Base64 padding validation on .NET Framework and modern .NET.
                 * Support empty strings and per-item pipeline conversion.
                 * Include encoding compatibility regressions for issue #22.
             '
@@ -71,5 +71,3 @@
     # DefaultCommandPrefix = ''
     
     }
-    
-    
