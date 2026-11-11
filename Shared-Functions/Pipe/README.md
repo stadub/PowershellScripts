@@ -153,3 +153,12 @@ Import-Module Pipe
 ### 📬 Suggestions and feedback
 
 If you have any idea or suggestion - please add a github issue.
+
+## Source layout and validation
+
+Import `Pipe.psd1` from the source directory. `Pipe.psm1` loads the six filters
+from `Functions/` and exports their aliases. `wtype`, `filter-type`, and
+`where-type` all resolve to `Limit-Type`; historical example scripts are not loaded.
+Run `Invoke-Pester ./Pipe.Tests.ps1` with Pester 4.10.1 to validate the real source
+manifest, imports, exports, aliases, and filtering. Release `out/` packages are
+reviewed separately and are unchanged by this source fix.
