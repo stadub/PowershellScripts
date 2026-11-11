@@ -37,10 +37,39 @@ It never checks out a development ref for publishing. The routes are:
 | Module | Release branch | Package directory |
 | --- | --- | --- |
 | Bookmarks | Bookmarks/release/latest | Bookmarks/out |
-| 7zip-Archive | 7-Zip/release/1.1 | 7Zip |
-| Currency-Conv | Currency-Conv/release/1.5 | Currency-Conv |
+| 7zip-Archive | 7-Zip/release/latest | 7Zip |
+| Currency-Conv | Currency-Conv/release/latest | Currency-Conv |
 | Base64String | base64String/release/latest | Shared-Functions/Base64String/out |
 | Pipe | Pipe/release/latest | Shared-Functions/Pipe/out |
+
+The user requested the two numbered release sources be changed to `latest`.
+Live inspection found **no** `7-Zip/release/latest` or `Currency-Conv/release/latest`
+branch. An owner must establish reviewed snapshots there before those modules can
+deploy; the workflow fails closed if either ref is missing. Existing numbered
+branches remain historical baselines, not fallback publication sources.
+
+`PackagePath` describes repository layout inside the selected release snapshot.
+Base64String and Pipe live under Shared-Functions and have flat out/ packages.
+Bookmarks also has out/. The reviewed numbered 7Zip and Currency-Conv snapshots
+instead use their module directories as the package roots. Their new latest
+snapshots must preserve that reviewed layout or update the configuration alongside
+a separately reviewed packaging change. A branch named latest does not imply a
+directory named latest, nor does it make a development checkout publishable.
+
+`GallerySecret = 'PSGALLERY_API_KEY'` is the secret's **name**, not its value. To set
+it up, the owner opens repository Settings -> Environments -> powershell-gallery
+-> Environment secrets -> Add environment secret, enters that name and securely
+supplies the Gallery API key. Preserve master-only deployment restrictions and
+configure independent reviewers as described below. Live reinspection still found
+zero secrets. The key must authorize the selected module's Gallery account.
+
+After integration into master and preparation of a tested release snapshot, open
+Actions -> Tested release and protected Gallery deployment -> Run workflow. Select
+master, module, version and full reviewed release SHA. Start with dry_run=true and
+create_release=false. Inspect the resulting package/tests, optionally create the
+GitHub release with create_release=true while retaining dry_run=true, and only
+when actual deployment is authorized choose dry_run=false and approve its protected
+environment. Configuring a secret does not itself trigger a deployment.
 
 `dry_run=true` (default) prevents Gallery publication and issue completion.
 `create_release=false` (default) also prevents GitHub release creation. A release-only

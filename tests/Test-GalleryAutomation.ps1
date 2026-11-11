@@ -19,8 +19,8 @@ try {
     $env:GITHUB_STEP_SUMMARY = ''
     $expectedConfigs = @{
         Bookmarks = @('Bookmarks/release/latest', 'Bookmarks/out', 'Bookmarks.psd1', 'Stadub', 'PSGALLERY_API_KEY')
-        '7zip-Archive' = @('7-Zip/release/1.1', '7Zip', '7zip-Archive.psd1', 'Stadub', 'PSGALLERY_API_KEY')
-        'Currency-Conv' = @('Currency-Conv/release/1.5', 'Currency-Conv', 'Currency-Conv.psd1', 'Stadub', 'PSGALLERY_API_KEY')
+        '7zip-Archive' = @('7-Zip/release/latest', '7Zip', '7zip-Archive.psd1', 'Stadub', 'PSGALLERY_API_KEY')
+        'Currency-Conv' = @('Currency-Conv/release/latest', 'Currency-Conv', 'Currency-Conv.psd1', 'Stadub', 'PSGALLERY_API_KEY')
         Base64String = @('base64String/release/latest', 'Shared-Functions/Base64String/out', 'Base64String.psd1', 'MiniModules', 'PSGALLERY_API_KEY')
         Pipe = @('Pipe/release/latest', 'Shared-Functions/Pipe/out', 'Pipe.psd1', 'MiniModules', 'PSGALLERY_API_KEY')
     }
