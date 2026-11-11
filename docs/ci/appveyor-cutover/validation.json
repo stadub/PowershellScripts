@@ -1,0 +1,12 @@
+{
+  "before_captured_at": "2026-11-11T17:08:40.109122+00:00",
+  "after_captured_at": "2026-11-11T17:12:31.833014+00:00",
+  "changed_query_results": [],
+  "live_setting_mutations": [],
+  "required_appveyor_contexts": [],
+  "appveyor_repository_webhooks": [],
+  "gallery_policy_preserved": true,
+  "appveyor_trigger_removal_verified": false,
+  "limitation": "AppVeyor authenticated access unavailable; GitHub credential cannot enumerate app installations.",
+  "replacement_check_required": false
+}

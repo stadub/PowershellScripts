@@ -1,0 +1,56 @@
+[
+  {
+    "url": "https://ci.appveyor.com/api/projects/stadub/powershellscripts-v9ncj",
+    "project": {
+      "projectId": 610315,
+      "accountName": "stadub",
+      "name": "SharedFunctions",
+      "slug": "powershellscripts-v9ncj",
+      "repositoryType": "gitHub",
+      "repositoryScm": "git",
+      "repositoryName": "stadub/PowershellScripts",
+      "repositoryBranch": "master",
+      "isPrivate": false,
+      "skipBranchesWithoutAppveyorYml": false,
+      "enableProjectBadge": null,
+      "created": "2019-09-12T10:41:53.5680299+00:00",
+      "updated": "2019-09-12T10:42:22.0249112+00:00"
+    },
+    "latest_build": {
+      "buildId": 55069590,
+      "buildNumber": 109,
+      "status": "starting",
+      "branch": "base64tring/develop",
+      "commitId": "4d2e1c86e8083202f74b9b31c48447c0cd82808e",
+      "started": null,
+      "finished": null
+    }
+  },
+  {
+    "url": "https://ci.appveyor.com/api/projects/stadub/powershellscripts-7m2fk",
+    "project": {
+      "projectId": 607412,
+      "accountName": "stadub",
+      "name": "Currency-Conv",
+      "slug": "powershellscripts-7m2fk",
+      "repositoryType": "gitHub",
+      "repositoryScm": "git",
+      "repositoryName": "stadub/PowershellScripts",
+      "repositoryBranch": "master",
+      "isPrivate": false,
+      "skipBranchesWithoutAppveyorYml": false,
+      "enableProjectBadge": null,
+      "created": "2019-09-02T20:46:13.6430784+00:00",
+      "updated": "2019-09-02T20:46:56.3243489+00:00"
+    },
+    "latest_build": {
+      "buildId": 55069589,
+      "buildNumber": 135,
+      "status": "failed",
+      "branch": "base64tring/develop",
+      "commitId": "4d2e1c86e8083202f74b9b31c48447c0cd82808e",
+      "started": "2026-11-11T17:08:55.7025877+00:00",
+      "finished": "2026-11-11T17:09:40.8073138+00:00"
+    }
+  }
+]
