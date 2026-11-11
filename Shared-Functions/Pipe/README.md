@@ -1,4 +1,4 @@
-# Pipe - Powershell Pipe filtering functions
+# Pipe - Bunch Pipe filtering functions
 
 [![PowerShell 3](https://dev.azure.com/Stadub-Gh/PowershellScripts/_apis/build/status/SharedFunctions?branchName=master)](https://dev.azure.com/Stadub-Gh/PowershellScripts/_build/latest?definitionId=6&branchName=master)
 [![Linux & MacOS build](https://img.shields.io/travis/stadub/PowershellScripts/master.svg?label=linux/macos+build)](https://travis-ci.org/stadub/PowershellScripts)
@@ -9,19 +9,6 @@
 ---------------------
 
 <!-- ![ConsoleDemo](https://github.com/stadub/PowershellScripts/raw/master/Shared-Functions/Pipe/Assets/demo.gif) -->
-
-## ⚡ Aliases
-
-| Filter        |  Alias      |
-| --------------|:-----------:|
-|  Skip-Items   | skip        |
-|  Limit-Type   | wtype       |
-|  Limit-Type   | filter-type |
-|  Limit-Type   | where-type  |
-|  Limit-Items  | take        |
-|  Limit-First  | first       |
-|  Limit-Last   | last        |
-|  Hide-Out     | suppress    |
 
 ## 📘 Commands
 
@@ -57,6 +44,19 @@ Hide-Out - supress output
 Limit-Items - Return only N elements from pipe
    [-Count] <int>
 ```
+
+## ⚡ Aliases
+
+| Filter        |  Alias      |
+| --------------|:-----------:|
+|  Skip-Items   | skip        |
+|  Limit-Type   | wtype       |
+|  Limit-Type   | filter-type |
+|  Limit-Type   | where-type  |
+|  Limit-Items  | take        |
+|  Limit-First  | first       |
+|  Limit-Last   | last        |
+|  Hide-Out     | suppress    |
 
 ## 📃 Usage
 
@@ -153,3 +153,12 @@ Import-Module Pipe
 ### 📬 Suggestions and feedback
 
 If you have any idea or suggestion - please add a github issue.
+
+## Source layout and validation
+
+Import `Pipe.psd1` from the source directory. `Pipe.psm1` loads the six filters
+from `Functions/` and exports their aliases. `wtype`, `filter-type`, and
+`where-type` all resolve to `Limit-Type`; historical example scripts are not loaded.
+Run `Invoke-Pester ./Pipe.Tests.ps1` with Pester 4.10.1 to validate the real source
+manifest, imports, exports, aliases, and filtering. Release `out/` packages are
+reviewed separately and are unchanged by this source fix.

@@ -54,9 +54,9 @@ function _Initalize() {
         Get-Content -Path $baseUrlFile | ForEach-Object{ $script:baseUrl= $_}
     }
 
-    $global:CurrencyConvExchangeRateCahcheLifetime = $([System.DateTimeOffset]::Now.AddSeconds(60.0))
-    $global:CurrencyConvCountriesCahcheLifetime = $([System.DateTimeOffset]::Now.AddHours(15.0))
-    $global:CurrencyConvCurrenciesCahcheLifetime = $([System.DateTimeOffset]::Now.AddHours(15.0))
+    $global:CurrencyConvExchangeRateCahcheLifetime = $([System.TimeSpan]::FromSeconds(60.0))
+    $global:CurrencyConvCountriesCahcheLifetime = $([System.TimeSpan]::FromHours(15.0))
+    $global:CurrencyConvCurrenciesCahcheLifetime = $([System.TimeSpan]::FromHours(15.0))
 }
 
 function LicenseTypePrompt {
@@ -91,7 +91,7 @@ function PerformWebRequest {
 
     $url= "${baseUrl}/api/v7/${func}?q=${arg}&apiKey=${apiKey}" 
     Write-Debug "Performing web request to ${url}"
-    $result= Invoke-WebRequest -Uri  ${url} | ConvertFrom-Json 
+    $result= Invoke-WebRequest -Uri ${url} -ErrorAction Stop | ConvertFrom-Json
 
     return $result
 	
@@ -231,20 +231,37 @@ function Get-Currencies {
 function PerformCahcedWebRequest  {
     param (
         [string]$func,
-        [System.DateTimeOffset] $cacheExpirity,
-		[string]$arg='a'
+        $cacheExpirity,
+        [string]$arg='a'
     )
 
-    if( -not $script:currenciesCache.Contains($func+$arg)){
-
-        $result = PerformWebRequest $func $arg
-
-        $script:currenciesCache.Add($func+$arg, $result, $cacheExpirity)
+    # Include a separator so endpoint/argument boundaries cannot collide.
+    $key = $func + ':' + $arg
+    $cached = $script:currenciesCache.Get($key)
+    if ($null -ne $cached) {
+        return $cached
     }
 
+    $result = PerformWebRequest $func $arg
+    if ($null -eq $result -or $null -eq $result.PSObject.Properties['results'] -or
+        $null -eq $result.results) {
+        throw "Currency API response did not contain results."
+    }
 
-    return  $script:currenciesCache.Get( $func+$arg)
+    # A duration starts after a successful request, independently for each key.
+    # Retain support for legacy absolute DateTimeOffset configuration.
+    $now = Get-Date
+    if ($cacheExpirity -is [System.TimeSpan]) {
+        $expiresAt = ([System.DateTimeOffset]$now).Add($cacheExpirity)
+    } else {
+        $expiresAt = [System.DateTimeOffset]$cacheExpirity
+    }
+    if ($expiresAt -gt [System.DateTimeOffset]$now) {
+        $null = $script:currenciesCache.Add($key, $result, $expiresAt)
+    }
 
+    # Return the fetched response even when caching is disabled or already expired.
+    return $result
 }
 
 #Get-Currencies | Where-Object {$_.id -eq "BYN"} 

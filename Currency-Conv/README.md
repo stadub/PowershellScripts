@@ -10,15 +10,31 @@
 
 ![ConsoleDemo](https://raw.githubusercontent.com/stadub/PowershellScripts/master/Currency-Conv/Assets/demo.gif)
 
+## Instalation
 
-## ⚡ Aliases
+Powershell Gallery:
 
-| Cmdlet           | Alias |
-| -----------------|:-----:|
-| Get-Currencies   | gxc   |
-| Get-ExchangeRate | xe    |
+[![https://www.powershellgallery.com/packages/Currency-Conv/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Currency-Conv/)
 
-## 📘 Commands
+`PowerShellGet` Installation :
+
+```powershell
+Install-Module -Name Currency-Conv
+```
+
+Direct download instalation:
+
+```powershell
+iex ('$module="Currency-Conv"'+(new-object net.webclient).DownloadString('https://raw.githubusercontent.com/stadub/PowershellScripts/master/install.ps1'))
+```
+
+Module import:
+
+```powershell
+Import-Module Currency-Conv
+```
+
+## Commands
 
 ```powershell
 Get-ExchangeRate - Get exchange rate for amount
@@ -33,19 +49,44 @@ Get-Currencies - Supported currencies list
 Remove-CurrencyApiKey- Clean key
 ```
 
+## Aliases
+
+| Cmdlet           | Alias |
+| -----------------|:-----:|
+| Get-Currencies   | gxc   |
+| Get-ExchangeRate | xe    |
+
 ## Cache Timeouts
 
-Default cache timeouts are stored in global variables so it can be changed to meet your needs.
+Cache settings are durations (`TimeSpan`), measured from each successful response.
+Exchange rates are cached for 60 seconds per currency pair; countries and currencies
+are cached independently for 15 hours. Hits do not extend the lifetime. The first
+request at or after expiry refreshes that key, and subsequent requests use the new
+response. Failed requests and responses without `results` are not cached; the next
+request retries, while other cached keys remain available.
 
-Default values:
+After importing the module, change the global settings as needed (the historical
+`Cahche` spelling is retained):
 
 ```powershell
-    $global:CurrencyConvExchangeRateCahcheLifetime = $([System.DateTimeOffset]::Now.AddSeconds(60.0))
-    $global:CurrencyConvCountriesCahcheLifetime = $([System.DateTimeOffset]::Now.AddHours(15.0))
-    $global:CurrencyConvCurrenciesCahcheLifetime = $([System.DateTimeOffset]::Now.AddHours(15.0))
+$global:CurrencyConvExchangeRateCahcheLifetime = [TimeSpan]::FromSeconds(60)
+$global:CurrencyConvCountriesCahcheLifetime = [TimeSpan]::FromHours(15)
+$global:CurrencyConvCurrenciesCahcheLifetime = [TimeSpan]::FromHours(15)
 ```
 
-## 📃 Usage
+Changes apply to newly fetched entries; existing entries retain their expiry.
+A zero or negative duration disables storage of new responses. A fresh import
+(or `Import-Module -Force`) initializes the default settings again.
+
+Compatibility: these variables previously contained fixed `DateTimeOffset`
+deadlines calculated at import. Absolute timestamps are still accepted, but only
+cache responses until that deadline; after it passes, requests return fresh data
+without caching. Replace old `DateTimeOffset.Now.Add...` configuration with the
+`TimeSpan` examples above for recurring cache lifetimes. Public cmdlets, aliases,
+and API-key storage are unchanged. Cache entries are in memory only, and concurrent
+misses are not coalesced into a single request.
+
+## Usage
 
 Currency exchange rates:
 
@@ -87,36 +128,12 @@ Remove currconv.com api key fromthe system:
 /> Remove-CurrencyApiKey
 ```
 
-## 🔨 Instalation
-
-Powershell Gallery:
-
-[![https://www.powershellgallery.com/packages/Currency-Conv/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/Currency-Conv/)
-
-`PowerShellGet` Installation :
-
-```powershell
-Install-Module -Name Currency-Conv
-```
-
-Direct download instalation:
-
-```powershell
-iex ('$module="Currency-Conv"'+(new-object net.webclient).DownloadString('https://raw.githubusercontent.com/stadub/PowershellScripts/master/install.ps1'))
-```
-
-Module import:
-
-```powershell
-Import-Module Currency-Conv
-```
-
-## 📈 Changelog
+## Changelog
 
 ### [v1.5.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.9.5) Spet 9, 2019
 
-* Add Request cache #12
-* Add ability to change cache timeount #12
+* Add Request cache
+* Add ability to change cache timeount
 
 * Rename `Remove-CurrencyApi-Key` to `Remove-CurrencyApiKey` to be ps1 cmdlet name restrictions compliant
 
@@ -139,7 +156,7 @@ Remove-CurrencyApi-Key- Clean key
 
 * Create tests
 
-## 💲 Motivation
+## Motivation
 
 The modules are created and actively maintained during evenings and weekends for my own needs.
 If it's useful for you too, that's great. I don't demand anything in return.
@@ -152,8 +169,6 @@ a coffee or a beer is always appreciated. Thank you very much in advance.
 
 <!--   By Paypal [![PayPal.me](https://img.shields.io/badge/PayPal-me-blue.svg?maxAge=2592000)](https://www.paypal.me/dima.by)
  -->
-
-## 📬 Suggestions and feedback
 
 If you have any idea or suggestion - please add a github issue.
 

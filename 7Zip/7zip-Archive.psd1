@@ -31,7 +31,7 @@
     
     # Description of the functionality provided by this module
     Description = '7zip utility wrapper.
-    Use own copy of 7 zip utility and can download it from internet
+    Uses an installed 7-Zip command-line runtime on Windows, Linux or macOS
     Full documentation at the Github: https://github.com/stadub/PowershellScripts/tree/master/7Zip
     '
     
@@ -122,7 +122,7 @@
     } # End of PrivateData hashtable
     
     # HelpInfo URI of this module
-    HelpInfoURI = 'https://github.com/stadub/PowershellScripts/blob/master/7Zip/README.md'
+    # No updatable-help endpoint is published; use Get-Help and ProjectUri.
     
     # Default prefix for commands exported from this module. Override the default prefix using Import-Module -Prefix.
     # DefaultCommandPrefix = ''

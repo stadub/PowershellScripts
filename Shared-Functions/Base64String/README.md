@@ -10,27 +10,35 @@
 
 ![ConsoleDemo](https://github.com/stadub/PowershellScripts/raw/master/Shared-Functions/Base64String/Assets/demo.gif)
 
-## ⚡ Aliases
+## Commands
+
+```powershell
+ConvertTo-Base64String [-Value] <string> [[-UrlSafe] <bool>] [-Encoding <string>]
+ConvertFrom-Base64String [-EncodedValue] <string> [-Encoding <string>]
+```
+
+Both commands default to `Unicode` (UTF-16 little-endian), preserving existing
+output. Use `-Encoding UTF8` for UTF-8 services. Other supported values are
+`BigEndianUnicode` (UTF-16 big-endian), `UTF32` (little-endian), and `ASCII`.
+No byte order mark is added. Base64 does not identify its text encoding: choose
+the same encoding in both directions. Text conversion uses .NET's replacement
+fallback for characters or byte sequences that the chosen encoding cannot represent.
+
+`UrlSafe` belongs to the encoder: `$true` replaces `+` and `/` with `-` and `_`
+and removes padding. The decoder accepts either alphabet and padded or fully
+unpadded input automatically. Spaces, tabs, CR and LF are ignored; invalid
+characters, impossible lengths, misplaced or incomplete padding raise an error.
+Empty input produces an empty string. Each pipeline item is converted separately.
+The existing `ConvertTo-Base64String "text" $true` positional form is preserved.
+
+## Aliases
 
 | Cmdlet           | Alias |
 | -----------------|:-----:|
 | ConvertTo-Base64String   | encode64   |
-| ConvertFrom-Base64String | decode64   |
+| ConvertFrom-Base64String | decode64    |
 
-## 📘 Commands
-
-```powershell
-ConvertFrom-Base64String
-  [-EncodedValue] <string>
-  [-UrlSafe] <bool>  (default- $false) - Set to produce url safe string
-
-
-ConvertTo-Base64String
-  [-Value] <string>
-
-```
-
-## 📃 Usage
+## Usage
 
 Convert text to Base64 String:
 
@@ -56,7 +64,16 @@ Convert text from Base 64 String:
 /> echo "dABlAHgAdAA" | decode64
 ```
 
-## 🔨 Instalation
+UTF-8 interoperability (issue #22):
+
+```powershell
+$text = ".d_'+♂¢£"
+$encoded = ConvertTo-Base64String $text -Encoding UTF8
+$encoded # LmRfJyvimYLCosKj
+$encoded | ConvertFrom-Base64String -Encoding UTF8 # returns $text
+```
+
+## Instalation
 
 Powershell Gallery:
 
@@ -77,6 +94,8 @@ Module import:
 ```powershell
 Import-Module Base64String
 ```
+
+## Changelog
 
 ### [v1.2.0] Oct 8, 2019
 
@@ -105,6 +124,6 @@ ConvertTo-Base64String
 
 * Created unit tests
 
-## 📬 Suggestions and feedback
+### Suggestions and feedback
 
 If you have any idea or suggestion - please add a github issue.

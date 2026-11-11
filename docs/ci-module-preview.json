@@ -1,0 +1,94 @@
+[
+  {
+    "module": "Bookmarks",
+    "sourceSha": "8f122965e7fcc515ba6487901cc5860b6bc99a0a",
+    "paths": [
+      "Bookmarks/Aliases.ps1",
+      "Bookmarks/Bookmarks.Tests.ps1",
+      "Bookmarks/Bookmarks.psd1",
+      "Bookmarks/Bookmarks.psm1",
+      "Bookmarks/Functions.ps1",
+      "Bookmarks/README.md",
+      "Bookmarks/Shared-Functions.ps1",
+      "Bookmarks/UpdateCheck.Tests.ps1"
+    ]
+  },
+  {
+    "module": "Pipe",
+    "sourceSha": "ed386fb0c70539917fd90f629aee91d49c04ad37",
+    "paths": [
+      "Shared-Functions/Pipe/Aliases.ps1",
+      "Shared-Functions/Pipe/Functions/Hide-Out.ps1",
+      "Shared-Functions/Pipe/Functions/Limit-First.ps1",
+      "Shared-Functions/Pipe/Functions/Limit-Items.ps1",
+      "Shared-Functions/Pipe/Functions/Limit-Last.ps1",
+      "Shared-Functions/Pipe/Functions/Limit-Type.ps1",
+      "Shared-Functions/Pipe/Functions/Skip-Items.ps1",
+      "Shared-Functions/Pipe/Functions/Where-Type.ps1",
+      "Shared-Functions/Pipe/Pipe.Tests.ps1",
+      "Shared-Functions/Pipe/Pipe.psd1",
+      "Shared-Functions/Pipe/Pipe.psm1",
+      "Shared-Functions/Pipe/README.md"
+    ]
+  },
+  {
+    "module": "Currency-Conv",
+    "sourceSha": "91ec76d0dd2a2d1c74c3c2613cef9c9b12c2e0b6",
+    "paths": [
+      "Currency-Conv/Aliases.ps1",
+      "Currency-Conv/Currency-Conv.Tests.ps1",
+      "Currency-Conv/Currency-Conv.psd1",
+      "Currency-Conv/Currency-Conv.psm1",
+      "Currency-Conv/Functions.ps1",
+      "Currency-Conv/README.md",
+      "Currency-Conv/Shared-Functions.ps1"
+    ]
+  },
+  {
+    "module": "7zip-Archive",
+    "sourceSha": "06cabf8d6296cfe5ac5c806e66b0b81d8bf87339",
+    "paths": [
+      "7Zip/7Zip-Archive.Tests.ps1",
+      "7Zip/7zip-Archive.SmokeTests.ps1",
+      "7Zip/7zip-Archive.psd1",
+      "7Zip/7zip-Archive.psm1",
+      "7Zip/Aliases.ps1",
+      "7Zip/Functions.ps1",
+      "7Zip/README.md",
+      "7Zip/Shared-Functions.ps1"
+    ]
+  },
+  {
+    "module": "FolderEncoder",
+    "sourceSha": "f3175178e7a4ce19ab368cfa05e5ef0e6e78c002",
+    "paths": [
+      "FolderEncoder/FolderEncoder.Tests.ps1",
+      "FolderEncoder/FolderEncoder.psd1",
+      "FolderEncoder/Functions.ps1",
+      "FolderEncoder/README.md"
+    ]
+  },
+  {
+    "module": "Shell-Functions",
+    "sourceSha": "b31f26740aba6ed9d74a478de992a3f2f50b6dca",
+    "paths": [
+      "Shell-Functions/README.md",
+      "Shell-Functions/Shell-Alias.ps1",
+      "Shell-Functions/Shell-Function.Tests.ps1",
+      "Shell-Functions/Shell-Function.ps1",
+      "Shell-Functions/Shell-Function.psd1",
+      "Shell-Functions/Shell-Function.psm1"
+    ]
+  },
+  {
+    "module": "Base64String",
+    "sourceSha": "7eab2ac96dc04bbbfc78a54aeb817fe3cc9f25bd",
+    "paths": [
+      "Shared-Functions/Base64String/Aliases.ps1",
+      "Shared-Functions/Base64String/Base64String.Tests.ps1",
+      "Shared-Functions/Base64String/Base64String.ps1",
+      "Shared-Functions/Base64String/Base64String.psd1",
+      "Shared-Functions/Base64String/README.md"
+    ]
+  }
+]

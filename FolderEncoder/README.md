@@ -5,6 +5,7 @@ Used as backups encoding solution.
 Encoding performed with 7z password protection
 
 [![PowerShell 3](https://Stadub-Gh.visualstudio.com/PowershellScripts/_apis/build/status/Bookmarks?branchName=master)](https://Stadub-Gh.visualstudio.com/PowershellScripts/_build/latest?definitionId=3?branchName=master)
+[![PowerShell 4, 5 & Core on Windows build](https://ci.appveyor.com/api/projects/status/7tmg8wy30ipanjsd?svg=true)](https://ci.appveyor.com/project/stadub/powershellscripts)
 [![Linux & MacOS build](https://img.shields.io/travis/stadub/PowershellScripts/master.svg?label=linux/macos+build)](https://travis-ci.org/stadub/PowershellScripts)
 [![latest version](https://img.shields.io/powershellgallery/v/FolderEncoder.svg?label=latest+version)](https://www.powershellgallery.com/packages/FolderEncoder/)
 [![downloads](https://img.shields.io/powershellgallery/dt/FolderEncoder.svg?label=download)](https://www.powershellgallery.com/packages/FolderEncoder)
@@ -107,3 +108,12 @@ so if you found it useful you can Buy me a beer/cup of tea 😊.
 If you have any idea or suggestion - please add a github issue and I'll try to implement it as soon as possible😉
 
 <!-- https://www.contributor-covenant.org/version/1/4/code-of-conduct -->
+## Source import validation
+
+The missing Functions.ps1 is restored unchanged from the last repository version
+before its deletion in 4a336c7. The manifest now exports the documented
+Invoke-FolderEncode command. Importing the module does not invoke CheckUtils or
+encoding, download tools, prompt, or create key/archive files. CI checks manifest,
+import/export and parameter contracts only. The legacy encoder algorithm, external
+tools and archive roundtrip are unchanged and are not validated by these checks.
+There is no Gallery publication route or release package in this source repair.

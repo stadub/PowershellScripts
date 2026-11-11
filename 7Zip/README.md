@@ -1,6 +1,7 @@
-# 7zip-Archive - 7zip archiver ps1 wrapper
+# 7zip-Archive - 7zip utility warpper
 
- 
+Wraps an installed 7-Zip command-line runtime on Windows, Linux and macOS.
+
 [![PowerShell 3](https://dev.azure.com/Stadub-Gh/PowershellScripts/_apis/build/status/7Zip?branchName=master)](https://dev.azure.com/Stadub-Gh/PowershellScripts/_build/latest?definitionId=4&branchName=master)
 <!-- [![Linux & MacOS build](https://img.shields.io/travis/stadub/PowershellScripts/master.svg?label=linux/macos+build)](https://travis-ci.org/stadub/PowershellScripts) -->
 [![latest version](https://img.shields.io/powershellgallery/v/7zip-Archive.svg?label=latest+version)](https://www.powershellgallery.com/packages/7zip-Archive)
@@ -10,18 +11,85 @@
 
 ![ConsoleDemo](https://raw.githubusercontent.com/stadub/PowershellScripts/master/7Zip/Assets/demo.gif)
 
-## ⚡ Aliases
+## Instalation
 
-| Cmdlet               | Alias  |
-| ---------------------|:------:|
-| New-ZipFile          | szc    |
-| Read-ZipFile         | szr    |
-| Add-ZipFileContent   | sza    |
-| Remove-ZipFileContent| szrm   |
-| Test-ZipFileContent  | szt    |
-| Get-ZipFileContent   | sz     |
+Powershell Gallery:
 
-## 📘 Commands
+[![https://www.powershellgallery.com/packages/7zip-Archive/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/7zip-Archive/)
+
+`PowerShellGet` Installation :
+
+```powershell
+Install-Module -Name 7zip-Archive
+```
+
+Direct download instalation:
+
+```powershell
+iex ('$module="7Zip"'+(new-object net.webclient).DownloadString('https://raw.githubusercontent.com/stadub/PowershellScripts/master/install.ps1'))
+```
+
+Module import:
+
+```powershell
+Import-Module 7zip-Archive
+```
+
+## Runtime setup and compatibility
+
+Install a current runtime for your OS/architecture from the [official 7-Zip downloads](https://www.7-zip.org/download.html).
+The module never downloads or installs a runtime. Discovery runs when an archive
+command is invoked, so importing does not require 7-Zip to be installed.
+
+* Windows: searches PATH for `7z.exe`, `7zz.exe`, then `7za.exe`, followed by
+  `7-Zip/7z.exe` under native Program Files and Program Files (x86).
+* Linux/macOS: searches PATH for `7zz` (official standalone console), then `7z`,
+  then `7za`. Official Unix builds are supported; p7zip is not required.
+  Existing compatible `7z`/`7za` binaries still work, but their format support
+  depends on that runtime. The `p7zip` wrapper itself is not supported.
+* For a portable/custom install, set `SEVENZIP_PATH` to the full executable path,
+  without surrounding quotes. This overrides discovery; an invalid override fails
+  instead of silently selecting another runtime. On Unix the file must be executable.
+
+```powershell
+$env:SEVENZIP_PATH = 'C:\Program Files\7-Zip\7z.exe' # Windows example
+# $env:SEVENZIP_PATH = '/opt/7zip/7zz'            # Unix example
+```
+
+Keep the executable and any companion libraries together as supplied upstream.
+The old automatic 9.20 download and module-private cached runtime are no longer
+used. Existing private copies must be selected explicitly if still needed;
+upgrading to a maintained runtime is recommended. Missing tools produce setup
+instructions without network access. Archive cmdlets, aliases and switches are
+unchanged; paths and passwords containing spaces are passed as single arguments.
+The source already uses PowerShell 5 enum syntax: use Windows PowerShell 5.1 or
+PowerShell 7 on Windows, and PowerShell 7 on Unix.
+
+Help is available with `Get-Help New-ZipFile -Full` and this README. No updatable
+help package is published, so the manifest intentionally omits `HelpInfoURI`;
+`Update-Help` cannot download help for this module.
+
+## Local validation
+
+Run the offline unit suite with Pester 4.10.1:
+
+```powershell
+Invoke-Pester ./7Zip/7Zip-Archive.Tests.ps1
+```
+
+With an installed runtime, run the optional source smoke test:
+
+```powershell
+./7Zip/7zip-Archive.SmokeTests.ps1 -Executable '/opt/7zip/7zz'
+```
+
+The smoke test uses a fresh temporary directory and cleans it in `finally`.
+It exercises the archive implementation directly, bypassing the separate Gallery
+update check; it does not download a runtime. Local verification used PowerShell
+7.7.0 and official 7-Zip 26.06 on macOS; Windows/Linux discovery is covered by
+mocks, not actual platform execution. Release-package generation is separate.
+
+## Commands
 
 ```powershell
 
@@ -63,7 +131,18 @@ Test-ZipFileContent - Perform zip file check
 
 ```
 
-## 📃 Usage
+## Aliases
+
+| Cmdlet               | Alias  |
+| ---------------------|:------:|
+| New-ZipFile          | szc    |
+| Read-ZipFile         | szr    |
+| Add-ZipFileContent   | sza    |
+| Remove-ZipFileContent| szrm   |
+| Test-ZipFileContent  | szt    |
+| Get-ZipFileContent   | sz     |
+
+## Usage
 
 ### Create new 7zip archive from file
 
@@ -137,6 +216,7 @@ Test-ZipFileContent - Perform zip file check
 /> ./encodedFile.7z |  Remove-ZipFileContent  -File 'file.txt' -Password 'pass'
 ```
 
+
 ### Perform 7Zip arhive integrity check
 
 ```powershell
@@ -151,36 +231,13 @@ Test-ZipFileContent - Perform zip file check
 /> ([PSCustomObject]@{File='file.txt',  Archive='File.7z', Password="pass"} | Test-ZipFileContent -Archive 'File.7z'
 ```
 
-## 🔨 Instalation
+## Changelog
 
-Powershell Gallery:
-
-[![https://www.powershellgallery.com/packages/7zip-Archive/](https://img.shields.io/badge/PowerShell%20Gallery-download-blue.svg?style=popout&logo=powershell)](https://www.powershellgallery.com/packages/7zip-Archive/)
-
-`PowerShellGet` Installation :
-
-```powershell
-Install-Module -Name 7zip-Archive
-```
-
-Direct download instalation:
-
-```powershell
-iex ('$module="7Zip"'+(new-object net.webclient).DownloadString('https://raw.githubusercontent.com/stadub/PowershellScripts/master/install.ps1'))
-```
-
-Module import:
-
-```powershell
-Import-Module 7zip-Archive
-```
-
-## 📈 Changelog
 
 ### [v1.1.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.9.5)  Spet 9, 2019
 
-* Fix Remove-ZipFileContent returns Cannot validate argument on parameter 'FileName'. #14
-* Fix 7-zpi szc New-ZipFile alias is absent bug #14
+* Fix Remove-ZipFileContent error #15
+* Fix szc Allias #14
 * Add smoke tests
 
 ### [v1.0.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.4.0)
@@ -207,7 +264,7 @@ Import-Module 7zip-Archive
 * Module `7zip` adding aliazes and tests
 * `7zip` moduel add readme file, icon and build def
 
-## 💲 Donate
+## Donate
 
 The modules are created and actively maintained during evenings and weekends for my own needs.
 If it's useful for you too, that's great. I don't demand anything in return.
@@ -220,8 +277,6 @@ a coffee or a beer is always appreciated. Thank you very much in advance.
 
 <!--   By Paypal [![PayPal.me](https://img.shields.io/badge/PayPal-me-blue.svg?maxAge=2592000)](https://www.paypal.me/dima.by)
  -->
-
-## 📬 Suggestions and feedback
 
 If you have any idea or suggestion - please add a github issue.
 
