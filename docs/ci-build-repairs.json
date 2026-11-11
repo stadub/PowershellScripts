@@ -1,0 +1,200 @@
+{
+  "date": "2026-11-12",
+  "baselineRun": "https://github.com/stadub/PowershellScripts/actions/runs/43087475163",
+  "componentRepairs": [
+    {
+      "module": "Bookmarks",
+      "path": "Bookmarks",
+      "head": "fix/build-bookmarks",
+      "base": "Bookmarks/develop",
+      "tests": 26,
+      "sha": "8f122965e7fcc515ba6487901cc5860b6bc99a0a",
+      "number": 40,
+      "url": "https://github.com/stadub/PowershellScripts/pull/40",
+      "hostedRun": {
+        "conclusion": "success",
+        "databaseId": 43114997026,
+        "headSha": "8f122965e7fcc515ba6487901cc5860b6bc99a0a",
+        "status": "completed",
+        "url": "https://github.com/stadub/PowershellScripts/actions/runs/43114997026"
+      },
+      "hostedJobs": [
+        {
+          "name": "source / test (macos-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "source / test (windows-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "source / test (ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "module": "Pipe",
+      "path": "Shared-Functions/Pipe",
+      "head": "fix/build-pipe",
+      "base": "Pipe/develop",
+      "tests": 8,
+      "sha": "ed386fb0c70539917fd90f629aee91d49c04ad37",
+      "number": 41,
+      "url": "https://github.com/stadub/PowershellScripts/pull/41",
+      "hostedRun": {
+        "conclusion": "success",
+        "databaseId": 43115004981,
+        "headSha": "ed386fb0c70539917fd90f629aee91d49c04ad37",
+        "status": "completed",
+        "url": "https://github.com/stadub/PowershellScripts/actions/runs/43115004981"
+      },
+      "hostedJobs": [
+        {
+          "name": "source / test (windows-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "source / test (ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "source / test (macos-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "module": "Currency-Conv",
+      "path": "Currency-Conv",
+      "head": "fix/build-currency",
+      "base": "Currency-Conv/develop",
+      "tests": 15,
+      "sha": "91ec76d0dd2a2d1c74c3c2613cef9c9b12c2e0b6",
+      "number": 42,
+      "url": "https://github.com/stadub/PowershellScripts/pull/42",
+      "hostedRun": {
+        "conclusion": "success",
+        "databaseId": 43115009752,
+        "headSha": "91ec76d0dd2a2d1c74c3c2613cef9c9b12c2e0b6",
+        "status": "completed",
+        "url": "https://github.com/stadub/PowershellScripts/actions/runs/43115009752"
+      },
+      "hostedJobs": [
+        {
+          "name": "source / test (windows-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "source / test (macos-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "source / test (ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "module": "7zip-Archive",
+      "path": "7Zip",
+      "head": "fix/build-7zip",
+      "base": "7Zip/develop",
+      "tests": 19,
+      "sha": "06cabf8d6296cfe5ac5c806e66b0b81d8bf87339",
+      "number": 43,
+      "url": "https://github.com/stadub/PowershellScripts/pull/43",
+      "hostedRun": {
+        "conclusion": "success",
+        "databaseId": 43115017582,
+        "headSha": "06cabf8d6296cfe5ac5c806e66b0b81d8bf87339",
+        "status": "completed",
+        "url": "https://github.com/stadub/PowershellScripts/actions/runs/43115017582"
+      },
+      "hostedJobs": [
+        {
+          "name": "source / test (windows-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "module": "FolderEncoder",
+      "path": "FolderEncoder",
+      "head": "fix/build-folderencoder",
+      "base": "FolderEncoder/develop",
+      "tests": 3,
+      "sha": "f3175178e7a4ce19ab368cfa05e5ef0e6e78c002",
+      "number": 44,
+      "url": "https://github.com/stadub/PowershellScripts/pull/44",
+      "hostedRun": {
+        "conclusion": "success",
+        "databaseId": 43115021526,
+        "headSha": "f3175178e7a4ce19ab368cfa05e5ef0e6e78c002",
+        "status": "completed",
+        "url": "https://github.com/stadub/PowershellScripts/actions/runs/43115021526"
+      },
+      "hostedJobs": [
+        {
+          "name": "source / test (ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "source / test (macos-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "source / test (windows-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    {
+      "module": "Shell-Functions",
+      "path": "Shell-Functions",
+      "head": "fix/build-shell-functions",
+      "base": "Shell-Functions/develop",
+      "tests": 6,
+      "sha": "b31f26740aba6ed9d74a478de992a3f2f50b6dca",
+      "number": 45,
+      "url": "https://github.com/stadub/PowershellScripts/pull/45",
+      "hostedRun": {
+        "conclusion": "success",
+        "databaseId": 43115030061,
+        "headSha": "b31f26740aba6ed9d74a478de992a3f2f50b6dca",
+        "status": "completed",
+        "url": "https://github.com/stadub/PowershellScripts/actions/runs/43115030061"
+      },
+      "hostedJobs": [
+        {
+          "name": "source / test (windows-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "source / test (macos-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "source / test (ubuntu-latest)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ]
+}

@@ -8,17 +8,9 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $root = if ($SourceRoot) { (Resolve-Path $SourceRoot).Path } else { (Resolve-Path (Join-Path $PSScriptRoot '../..')).Path }
-$paths = @{
-    Bookmarks = 'Bookmarks'
-    '7zip-Archive' = '7Zip'
-    'Currency-Conv' = 'Currency-Conv'
-    Base64String = 'Shared-Functions/Base64String'
-    Pipe = 'Shared-Functions/Pipe'
-    FolderEncoder = 'FolderEncoder'
-    'Shell-Functions' = 'Shell-Functions'
-    Uninstall = '.'
-}
-$modulePath = Join-Path $root $paths[$Module]
+$config = & (Join-Path $PSScriptRoot 'Get-CiModuleConfig.ps1') -Module $Module
+$modulePath = Join-Path $root $config.SourcePath
+
 if (-not (Test-Path $modulePath -PathType Container)) {
     throw "Module directory missing on this branch: $modulePath"
 }

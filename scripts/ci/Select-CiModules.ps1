@@ -1,5 +1,5 @@
 [CmdletBinding()]
-param([Parameter(Mandatory)][string]$Branch)
+param([Parameter(Mandatory)][string]$Branch, [switch]$NoGitHubOutput)
 
 $ErrorActionPreference = 'Stop'
 $modules = switch -Regex ($Branch) {
@@ -27,5 +27,5 @@ $entries = @(
     }
 )
 $matrix = @{ include = $entries } | ConvertTo-Json -Depth 4 -Compress
-if ($env:GITHUB_OUTPUT) { "matrix=$matrix" >> $env:GITHUB_OUTPUT }
+if ($env:GITHUB_OUTPUT -and -not $NoGitHubOutput) { "matrix=$matrix" >> $env:GITHUB_OUTPUT }
 $matrix

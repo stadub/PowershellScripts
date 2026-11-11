@@ -244,7 +244,10 @@ existing directories are never deleted or overwritten by the helper.
 
 The user subsequently requested CI for all modules. Master, automation branches
 and unknown feature branches now select all eight modules (22 OS/module jobs).
-Module development branches and PR targets select their own module. Existing
+Module development branches and PR targets select their own module; changed source
+in another component adds its coverage. Repository-wide runs pin maintained
+development commits for unchanged modules and test changed modules at the proposal
+SHA. Every job records its source identity; see [build repairs and source selection](ci-build-repairs.md). Existing
 7zip-Archive runtime suites remain Windows-only; all other entries run pwsh on
 Windows, Linux and macOS. The release workflow's publication choices remain five.
 
@@ -362,6 +365,7 @@ Tools: `/tmp/ps-actions-tools/powershell/pwsh` 7.7.0, Pester 4.10.1 from
 /tmp/ps-actions-tools/actionlint/actionlint .github/workflows/*.yml
 # Run each test in a fresh PowerShell process (the tests mock commands offline).
 pwsh -NoProfile -NonInteractive -File tests/Test-CiSelection.ps1
+pwsh -NoProfile -NonInteractive -File tests/Test-CiSources.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-CiRunner.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-CiStructure.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-GalleryAutomation.ps1

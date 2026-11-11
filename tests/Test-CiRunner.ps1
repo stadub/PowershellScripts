@@ -17,6 +17,7 @@ function Assert-RunnerFailure {
 try {
     $ci = New-Item (Join-Path $fixture 'scripts/ci') -ItemType Directory -Force
     Copy-Item (Join-Path $PSScriptRoot '../scripts/ci/Invoke-ModuleTests.ps1') $ci
+    Copy-Item (Join-Path $PSScriptRoot '../scripts/ci/Get-CiModuleConfig.ps1') $ci
     $runner = Join-Path $ci 'Invoke-ModuleTests.ps1'
     $pester = New-Item (Join-Path $fixture 'modules/Pester/4.10.1') -ItemType Directory -Force
     @'
