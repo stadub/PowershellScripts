@@ -1,12 +1,14 @@
 # Project instructions
 
-## Review module branches before choosing a worktree base
+## Review component branches before choosing a worktree base
 
-This repository is a PowerShell module monorepo with per-module development and
-release branches. Do not assume `master` contains every module fix or that release
-branches contain only generated files.
+This repository is a PowerShell monorepo with eleven functional components: eight
+modules, a script tool, a script bundle, and shared infrastructure. Components have
+development branches; packaged modules may also have release branches. Do not
+assume `master` contains every module fix or that release branches contain only
+generated files.
 
-Before starting module work:
+Before starting component work:
 
 1. Check the working tree and live remote branch tips. Refresh remote refs when
    needed before comparing them.
@@ -27,20 +29,32 @@ Reviewed on 2026-11-11. Live remote tips matched the local remote-tracking refs;
 `master` was `b3968f6`. These are historical findings, not substitutes for checking
 the current remote state.
 
-| Module / source | Development / feature PR target | Reviewed release source | Findings |
+| Component / classification / source | Development / feature PR target | Reviewed release source | Findings |
 | --- | --- | --- | --- |
-| 7Zip (`7Zip/7zip-Archive.psd1`, Gallery: 7zip-Archive) | `7Zip/develop` | `7-Zip/release/1.1`; historical `7Zip/release/1.0` | Development recreated from release 1.1; module source matches reviewed master. |
-| Bookmarks (`Bookmarks/Bookmarks.psd1`) | `Bookmarks/develop` | `Bookmarks/release/latest`; historical `Bookmarks/release/v2.1` | Development source matches master 2.2.0; release output has different shared helpers. |
-| Currency-Conv (`Currency-Conv/Currency-Conv.psd1`) | `Currency-Conv/develop` | `Currency-Conv/release/1.5`; historical `Currency-Conv/release/1.0` | Development recreated from release 1.5; source matches reviewed master. |
-| Pipe (`Shared-Functions/Pipe/Pipe.psd1`) | `Pipe/develop` | `Pipe/release/latest` | Release output has functional packaging/alias changes absent from source. |
-| Base64String (`Shared-Functions/Base64String/Base64String.psd1`) | `base64tring/develop` | `base64String/release/latest` | Both retain 1.2.0 decoder changes absent from master; preserve the actual spelling `base64tring`. |
-| FolderEncoder (`FolderEncoder/FolderEncoder.psd1`) | `FolderEncoder/develop` | None; publication not configured | New development branch from master `b3968f6`; no module-specific release ref. |
-| Shell-Functions (`Shell-Functions/Shell-Function.psd1`) | `Shell-Functions/develop` | None; publication not configured | New development branch from master `b3968f6`; no module-specific release ref. |
-| Uninstall (`Uninstall.psm1`, standalone root module) | `Uninstall/develop` | None; publication not configured | New development branch from master `b3968f6`; no module-specific release ref. |
+| 7Zip — manifest module (`7Zip/7zip-Archive.psd1`, Gallery: 7zip-Archive) | `7Zip/develop` | `7-Zip/release/1.1`; historical `7Zip/release/1.0` | Development recreated from release 1.1; module source matches reviewed master. |
+| Bookmarks — manifest module (`Bookmarks/Bookmarks.psd1`) | `Bookmarks/develop` | `Bookmarks/release/latest`; historical `Bookmarks/release/v2.1` | Development source matches master 2.2.0; release output has different shared helpers. |
+| Currency-Conv — manifest module (`Currency-Conv/Currency-Conv.psd1`) | `Currency-Conv/develop` | `Currency-Conv/release/1.5`; historical `Currency-Conv/release/1.0` | Development recreated from release 1.5; source matches reviewed master. |
+| Pipe — manifest module (`Shared-Functions/Pipe/Pipe.psd1`) | `Pipe/develop` | `Pipe/release/latest` | Release output has functional packaging/alias changes absent from source. |
+| Base64String — manifest module (`Shared-Functions/Base64String/Base64String.psd1`) | `base64tring/develop` | `base64String/release/latest` | Both retain 1.2.0 decoder changes absent from master; preserve the actual spelling `base64tring`. |
+| FolderEncoder — manifest module (`FolderEncoder/FolderEncoder.psd1`) | `FolderEncoder/develop` | None; publication not configured | New development branch from master `b3968f6`; no module-specific release ref. |
+| Shell-Functions — manifest module (`Shell-Functions/Shell-Function.psd1`) | `Shell-Functions/develop` | None; publication not configured | New development branch from master `b3968f6`; no module-specific release ref. |
+| Uninstall — standalone module (`Uninstall.psm1`, standalone root module) | `Uninstall/develop` | None; publication not configured | New development branch from master `b3968f6`; no module-specific release ref. |
+| EXportGithub — script tool (`EXportGithub/EXportGithub.ps1`) | `EXportGithub/develop` | None; publication not configured | New development branch from master `b3968f6`; historical manifest removed in `01697f7`. |
+| Git-Functions — script bundle (`Git-Functions/Git-Function.ps1`, `Git-Alias.ps1`) | `Git-Functions/develop` | None; publication not configured | New development branch from master `b3968f6`; plain scripts and aliases. |
+| Shared-Functions — shared infrastructure (`Shared-Functions/Shared-Functions.ps1`, `ModuleLoader.ps1`) | `Shared-Functions/develop` | None; publication not configured | New development branch from master `b3968f6`; excludes the independently managed Base64String and Pipe modules. |
 
-The inventory includes manifest modules and standalone `.psm1` modules, excluding
-`out/` package duplicates. EXportGithub and Git-Functions contain plain scripts,
-so they have no module development branch. Shell-Functions is a manifest module
+The eleven-component inventory includes eight formal modules and three script or
+infrastructure components, excluding `out/` package duplicates. The latter three
+have development branches for source work without claiming packaged-module status.
+Root `install.ps1` and `App-Alias.ps1` are setup/configuration helpers maintained
+with repository-wide work on master; they have no separate component branches.
+Historical CurrencyConv, EncodeVia7z, Bookmarks.ps1, 7zip.psd1, and
+Shell-Function.psd1 names are predecessors, not additional independent components.
+EXportGithub's deleted manifest is historical; branch setup does not restore it.
+Shared infrastructure changes require separate reviewed ports to module helper
+copies; do not merge whole component branches to distribute helpers.
+
+Shell-Functions is a manifest module
 whose current manifest loads no implementation and exports no commands;
 FolderEncoder's manifest references a missing `Functions.ps1`. These existing
 limitations were found by static inspection, not fixed or runtime-tested here.
@@ -51,17 +65,24 @@ integrated master source (`b3968f6`) on 2026-11-11, not recovered deleted tips.
 Their module histories and all live release refs were reviewed; no newer
 module-specific source or release package was found. Source files are unchanged.
 
-The release policy is: feature/issue PR -> the module's development branch ->
-reviewed release snapshot/package -> PowerShell Gallery. Selectively port reviewed
+EXportGithub, Git-Functions, and Shared-Functions were newly branched from master
+`b3968f6` on 2026-11-11 after reviewing reachable history and live branch contents.
+No distinct newer source or component release branch was found for these paths.
+All eleven development tips carry the same inventory instructions; this follow-up
+changes only AGENTS.md on those branches and preserves existing module baselines.
+
+The release policy for configured packaged modules is: feature/issue PR ->
+module development branch -> reviewed release snapshot/package -> PowerShell Gallery. Selectively port reviewed
 module changes to the established release source, including version/release notes
 and package validation; never publish directly from a feature/development branch.
-For modules without a release branch, establish and review packaging separately
+For components without a release branch, establish and review packaging separately
 before configuring publication; do not invent release refs or deploy entries.
 
 Development branches do not imply automation support. The current CI migration
 and Gallery deployment configuration support only Bookmarks, 7zip-Archive,
-Currency-Conv, Base64String, and Pipe. FolderEncoder, Shell-Functions, and Uninstall
-are not configured for CI or Gallery publishing. Expanding that coverage requires
+Currency-Conv, Base64String, and Pipe. FolderEncoder, Shell-Functions, Uninstall,
+EXportGithub, Git-Functions, and Shared-Functions have no dedicated CI checks or
+Gallery publication configuration. Expanding that coverage requires
 separate work; this branch setup does not activate workflows or publish packages.
 
 ## Code and packaging concerns to verify
@@ -108,8 +129,8 @@ separate work; this branch setup does not activate workflows or publish packages
 
 ## Suggested worktrees
 
-Follow the per-module development workflow: branch feature and issue work from the
-module's development branch, and target that same branch for its pull request.
+Follow the per-component development workflow: branch feature and issue work from
+the component's development branch, and target that same branch for its pull request.
 Being behind `master` does not make a module development branch the wrong base.
 Bring in unrelated master changes only when needed and reviewed separately.
 
@@ -119,7 +140,7 @@ authorized recreating them. `Currency-Conv/develop` starts from
 `7-Zip/release/1.1` (`6f8e8f6`). Both include these instructions. These are new
 development branches, not recovered copies of an unknown deleted tip.
 
-Use `/develop` branches for module changes and issue PRs. Use `/release/` branches
+Use `/develop` branches for component changes and issue PRs. Use `/release/` branches
 for reviewed release snapshots/package output and Gallery publishing. Do not use
 a release branch as the default feature base just because development is missing.
 If a development branch is missing again, inspect history and release/source
@@ -137,6 +158,9 @@ do not automatically authorize creating worktrees or launching agents.
 | `bookmarks-review` | `origin/Bookmarks/develop` | Reconcile packaged helpers; check exports and session behavior. |
 | `7zip-maintenance` | `origin/7Zip/develop` | Address installed-runtime discovery (#23), Linux support (#25), and help metadata (#26). |
 | `currency-maintenance` | `origin/Currency-Conv/develop` | Repair cache expiration (#17). |
+| `exportgithub-maintenance` | `origin/EXportGithub/develop` | Maintain the script tool; no packaged-module or Gallery support implied. |
+| `git-functions-maintenance` | `origin/Git-Functions/develop` | Maintain the script bundle and aliases. |
+| `shared-functions-maintenance` | `origin/Shared-Functions/develop` | Maintain common helpers/loader; coordinate separate ports to module copies. |
 | `module-packaging` | `origin/master` | Restore reproducible packaging and validate source/package imports and installer behavior. |
 
 Use separate worktrees tracking `Bookmarks/release/latest`, `Pipe/release/latest`,
