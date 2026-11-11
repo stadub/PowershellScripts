@@ -1,0 +1,9 @@
+# Keep reviewed source and out/ package bytes identical on every CI platform.
+*.ps1 text eol=lf
+*.psm1 text eol=lf
+*.psd1 text eol=lf
+*.md text eol=lf
+LICENSE text eol=lf
+*.ico -text
+*.png -text
+*.gif -text
