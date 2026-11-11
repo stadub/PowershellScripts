@@ -230,3 +230,11 @@ a coffee or a beer is always appreciated. Thank you very much in advance.
 If you have any idea or suggestion - please add a github issue.
 
 <!-- https://www.contributor-covenant.org/version/1/4/code-of-conduct -->
+## Source regression checks
+
+Run `Invoke-Pester ./Bookmarks.Tests.ps1` with Pester 4.10.1. The suite uses real
+CSV files under Pester's TestDrive and covers save/reload, external session edits,
+add/update/remove/clear, pipeline paths, CSV punctuation, Unicode, and exports.
+It does not initialize or write the user's bookmark profile. The public update
+export is `Update-PSBookmark` (without trailing whitespace); storage helpers remain
+private. Startup/update-check work is maintained separately in #24/#27.
