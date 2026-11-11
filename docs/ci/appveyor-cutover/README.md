@@ -101,3 +101,32 @@ configuration, so it cannot verify that the integration has been removed.
 Sibling worktrees were inspected read-only. No workflow, source, package, or
 release artifact is changed by this cutover documentation branch. No packages
 were published and no statuses were posted.
+
+## Verified outcome
+
+`after.json` repeats the live GitHub audit; `validation.json` records comparison
+results. Every captured query result is identical before and after, including
+the four hooks, empty protection patterns/rulesets, empty workflow list, and
+Gallery master-only branch policy. JSON parsing, explicit assertions for absent
+AppVeyor requirements/hooks, and `git diff --check` passed. No runtime module
+tests are applicable to this documentation-only change.
+
+Exact live setting/integration changes: **none**. The GitHub required-check
+cleanup is already satisfied by the existing empty protection configuration;
+no CI requirement was disabled. Future PRs under the audited rules do not require
+either AppVeyor context. This is a configuration verification, not an observed
+future PR run or proof that external AppVeyor triggering has stopped. Historical
+and new externally posted failure statuses may still appear.
+
+The external integration removal is **incomplete due to unavailable AppVeyor
+authenticated access**. No repository selection, installation, project trigger,
+or OAuth grant was modified. The account administrator step above remains
+necessary; rerun the GitHub audit and inspect actual AppVeyor project trigger
+settings after it is completed.
+
+The existing release coordinator was notified through Orca orchestration
+(`msg_5e1a0754bea3`) with the access limitation, preservation of Gallery policy,
+and the dependency on verified hosted `CI status` runs. The existing Actions
+implementation and rollout documentation were read and respected; no new worker
+was launched. This branch is a local, reviewable audit/cutover record targeting
+master; it has not been pushed and no PR has been created.
