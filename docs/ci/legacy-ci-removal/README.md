@@ -79,8 +79,11 @@ results were **not deleted**. No statuses were rewritten to success, and no
 GitHub Actions runs, logs, artifacts or reports were deleted. There were no tracked
 NUnit/TRX/test-result files in this checkout to remove.
 
-A normal cleanup commit provides a new PR head; verify it has no newly posted
-Azure/AppVeyor checks or statuses. Other PRs with unchanged old head SHAs can still
+A normal cleanup commit provides a new PR head. The post-push read of cleanup SHA
+`ffbb518d50f0aa8668000db25bcf5085d0d09993` found only GitHub Actions check runs,
+zero Azure/AppVeyor check runs and zero commit statuses. This is a point-in-time
+observation; inaccessible vendor-side schedules cannot be verified. Other PRs
+with unchanged old head SHAs can still
 show their historical external results. Do not rewrite those branches solely to
 hide history. Check the actual replacement Actions results independently: six
 component repairs remain unmerged and maintained-baseline CI still reports their

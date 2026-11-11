@@ -164,5 +164,15 @@
       "https://docs.github.com/en/rest/checks",
       "https://docs.github.com/en/rest/commits/statuses"
     ]
+  },
+  "postRemovalCommitObservation": {
+    "sha": "ffbb518d50f0aa8668000db25bcf5085d0d09993",
+    "observedCheckApps": [
+      "github-actions"
+    ],
+    "observedExternalCheckRuns": 0,
+    "observedExternalStatuses": 0,
+    "masterShaUnchanged": "ff8210dad4b29e6d3e2ff66e3374d3a6acd272df",
+    "observation": "Point-in-time read after first push following both GitHub app removals; future external schedules cannot be verified without vendor access"
   }
 }
