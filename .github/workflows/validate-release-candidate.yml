@@ -11,6 +11,9 @@ on:
       source_sha:
         required: true
         type: string
+      require_committed_package:
+        type: boolean
+        default: true
       automation_sha:
         required: true
         type: string
@@ -60,12 +63,16 @@ jobs:
           MODULE: ${{ inputs.module }}
           VERSION: ${{ inputs.version }}
           SHA: ${{ inputs.source_sha }}
+          REQUIRE_PACKAGE: ${{ inputs.require_committed_package }}
         run: |
-          ./automation/scripts/gallery/Build-GalleryPackage.ps1 -Module $env:MODULE -SourceRoot ./source -OutputRoot ./stage -ExpectedVersion $env:VERSION
-          ./automation/scripts/gallery/Assert-SourcePackage.ps1 -Module $env:MODULE -SourceRoot ./source -PackageRoot ./stage
-          ./automation/scripts/gallery/Package-Evidence.ps1 -Module $env:MODULE -Version $env:VERSION -SourceSha $env:SHA -PackageRoot ./stage -EvidencePath ./stage/evidence.json
+          if ($env:REQUIRE_PACKAGE -eq 'true') {
+            ./automation/scripts/gallery/Build-GalleryPackage.ps1 -Module $env:MODULE -SourceRoot ./source -OutputRoot ./stage -ExpectedVersion $env:VERSION
+            ./automation/scripts/gallery/Assert-SourcePackage.ps1 -Module $env:MODULE -SourceRoot ./source -PackageRoot ./stage
+          }
           ./automation/scripts/gallery/New-ReleaseOutput.ps1 -Module $env:MODULE -SourceRoot ./source -OutputRoot ./generated -ExpectedVersion $env:VERSION
           ./automation/scripts/gallery/Build-GalleryPackage.ps1 -Module $env:MODULE -SourceRoot ./generated -OutputRoot ./reproduced -ExpectedVersion $env:VERSION
+          if ($env:REQUIRE_PACKAGE -ne 'true') { Copy-Item ./reproduced ./stage -Recurse }
+          ./automation/scripts/gallery/Package-Evidence.ps1 -Module $env:MODULE -Version $env:VERSION -SourceSha $env:SHA -PackageRoot ./stage -EvidencePath ./stage/evidence.json
           ./automation/scripts/gallery/Package-Evidence.ps1 -Module $env:MODULE -Version $env:VERSION -SourceSha $env:SHA -PackageRoot ./reproduced -EvidencePath ./stage/evidence.json -Verify
       - name: Test source and installed candidate
         if: ${{ matrix.shell == 'pwsh' && (inputs.module != '7zip-Archive' || matrix.os == 'windows-latest') }}
