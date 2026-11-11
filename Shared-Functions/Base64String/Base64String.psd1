@@ -2,7 +2,7 @@
 
 @{
 
-    ModuleVersion = '1.2.0'
+    ModuleVersion = '1.3.0'
         
     # ID used to uniquely identify this module
     GUID = 'e7bfdc17-9739-4bce-80f3-8eb90d7bc836'
@@ -54,7 +54,10 @@
     
             # ReleaseNotes of this module
             ReleaseNotes = '
-                * fix decidong ''1'' ending text
+                * Add explicit text encoding options while preserving Unicode defaults.
+                * Correct standard and URL-safe Base64 padding validation.
+                * Support empty strings and per-item pipeline conversion.
+                * Include encoding compatibility regressions for issue #22.
             '
     
         }
