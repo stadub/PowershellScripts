@@ -51,7 +51,8 @@ filter Get-SearchAndPrint() {
 
 filter Split-String() {
     Param ([string]$separator = $null)
-    $_.Split | select-string -pattern $separator
+    if ([string]::IsNullOrEmpty($separator)) { $_.Split() }
+    else { $_.Split([string[]]@($separator), [StringSplitOptions]::None) }
 }
 
 function Get-Batchfile ($file) {
@@ -107,10 +108,11 @@ function New-FileSystemLink {
         [string]$destanation = $((Get-Location).Path),
   
         [Parameter(Position = 2, ParameterSetName = 'Positional', Mandatory = $true)]
-        [ServerType]$type = [LinkType]::Symbolic 
+        [LinkType]$type = [LinkType]::Symbolic
   
     )
-    New-Item -Path $destanation -ItemType $type -Value $source
+    $itemType = @{ Symbolic = 'SymbolicLink'; Hard = 'HardLink'; Junction = 'Junction' }[$type.ToString()]
+    New-Item -Path $destanation -ItemType $itemType -Value $source
 }
 
 function Propmpt {
@@ -133,6 +135,6 @@ Set-Alias grep Get-SearchAndPrint
 Set-Alias cut Split-String
 Set-Alias VsVars32 Initialize-VisualStudioEnvieronment
 Set-Alias ga Get-CmdletAlias
-Set-Alias fl New-FileSystemLink
-Set-Alias pb Export-Module
+# Keep PowerShell's protected fl (Format-List) alias. Use ln or mklink instead.
+# Export-Module is not part of this module; do not create a dangling pb alias.
 

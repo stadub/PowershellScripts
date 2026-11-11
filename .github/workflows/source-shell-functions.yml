@@ -1,0 +1,15 @@
+name: Shell-Functions source checks
+on:
+  push:
+    branches: [fix/build-shell-functions]
+  pull_request:
+    branches: [Shell-Functions/develop]
+permissions:
+  contents: read
+jobs:
+  source:
+    uses: stadub/PowershellScripts/.github/workflows/validate-module-source.yml@d3fa5897213e3ff4e0d64897559bdfb516356512
+    with:
+      module: Shell-Functions
+      source_sha: ${{ github.event.pull_request.head.sha || github.sha }}
+      automation_sha: d3fa5897213e3ff4e0d64897559bdfb516356512
