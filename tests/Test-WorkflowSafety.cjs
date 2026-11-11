@@ -26,3 +26,11 @@ assert.ok(selector.includes('Get-ReleaseConfig.ps1'));
 assert.ok(selector.includes('config.GallerySecret') && selector.includes('config.GalleryAccount'));
 assert.ok(!selector.includes('secrets[') && !selector.includes('secrets.'));
 console.log('Credential safety: only selected configured account key reaches upload, with no fallback or dispatch override.');
+const candidateValidation = fs.readFileSync('.github/workflows/validate-release-candidate.yml','utf8');
+assert.ok(candidateValidation.includes('workflow_call:'));
+assert.match(candidateValidation,/permissions:\n  contents: read/);
+for (const forbidden of ['secrets.', 'secrets[', 'issues: write', 'contents: write', 'environment:', 'Publish-GalleryPackage.ps1', 'Complete-Issues']) {
+  assert.ok(!candidateValidation.includes(forbidden), `Candidate validation unexpectedly contains ${forbidden}`);
+}
+assert.ok(candidateValidation.includes('inputs.source_sha') && candidateValidation.includes('inputs.automation_sha'));
+console.log('Candidate validation is read-only, immutable-input-only, and cannot publish or complete issues.');
