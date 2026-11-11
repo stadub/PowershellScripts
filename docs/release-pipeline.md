@@ -10,7 +10,7 @@ worktree edit was performed while implementing this branch.
 `github-actions-ci` worktree and configuration/staging/preflight checks from the
 read-only `psgallery-deploy` worktree. The sibling files were uncommitted and have
 continued owner activity: merge this integrated implementation deliberately, not
-both its workflow and the sibling `publish-gallery.yml`. Preserve the five module
+both its workflow and the sibling `publish-gallery.yml`. Preserve the five publication
 routes and Gallery account ownership. The single environment secret interface is
 `PSGALLERY_API_KEY`; its owner must have publishing rights to the selected package
 (Stadub for Bookmarks/7zip-Archive/Currency-Conv; MiniModules for Base64String/Pipe).
@@ -59,9 +59,9 @@ and Bookmarks helper/manifest differences in their component release reviews.
 The same staged artifact is tested on Windows PowerShell 5.1 and pwsh on Windows,
 Linux and macOS (7zip-Archive runtime suites remain Windows-only). Tests use pinned
 Pester 4.10.1. Source suites run separately against an installed copy, imported by
-absolute manifest path; suite files never enter the publish payload. Pipe currently
-has manifest/import/export checks, not a functional Pester suite. CI retains the
-established five-module selection and does not add unrelated components.
+absolute manifest path; suite files never enter the publish payload. Pipe runs its source Pester suites when present, with manifest checks on older
+snapshots without suites. CI now covers all eight formal modules; this expansion
+does not add publication routes. See the coverage table below.
 
 Release tags are `<Module>-v<Version>` at the tested SHA, with `package.tar.gz` and
 `evidence.json` assets. No automatic closing keywords appear in release notes.
@@ -82,6 +82,43 @@ runs manifest/import/export and installed regression checks. Only Gallery-genera
 PSGetModuleInfo.xml is excluded from the comparison. A different visible package,
 missing version, download error, hash change, or failed regression blocks completion.
 The `gallery-verification` artifact and run log contain verification evidence.
+
+## CI coverage for all modules
+
+The user subsequently requested CI for all modules. Master, automation branches
+and unknown feature branches now select all eight modules (22 OS/module jobs).
+Module development branches and PR targets select their own module. Existing
+7zip-Archive runtime suites remain Windows-only; all other entries run pwsh on
+Windows, Linux and macOS. The release workflow's publication choices remain five.
+
+| Module | CI checks |
+| --- | --- |
+| Bookmarks | Existing source Pester suites |
+| 7zip-Archive | Existing source Pester suites, Windows |
+| Currency-Conv | Existing source Pester suites |
+| Base64String | Existing source Pester suites |
+| Pipe | Manifest validation and source Pester suites when available |
+| FolderEncoder | Parse source scripts/manifests, validate manifest, import, require exported commands; run source Pester suites when added |
+| Shell-Functions | Parse source scripts/manifests, validate manifest, import, require exported commands; run source Pester suites when added |
+| Uninstall | Parse/import standalone Uninstall.psm1, verify exported Uninstall-Application command and SoftwareName/Application parameter contract; run Uninstall*.Tests.ps1 when added |
+
+The three new modules currently have no functional Pester suites. Their checks
+produce NUnit-compatible structure reports on success and failure. Uninstall's
+smoke checks never invoke its command, access HKLM, start msiexec, or uninstall
+software. This checks its loadable public API, not Windows uninstall behavior.
+
+Local real-source checks: Uninstall passes on macOS pwsh 7.7.0; FolderEncoder fails
+because Functions.ps1 is missing; Shell-Functions fails because its manifest imports
+an empty module with no exported commands. These are pre-existing module defects,
+not successful test runs or allow-failure exceptions. They will block aggregate CI
+until repaired through the module development branches. No module implementation
+or manifest was modified as part of this expansion. The three development branch
+source trees still match this worktree's source at inspection.
+
+EXportGithub, Git-Functions and shared infrastructure are the other three inventory
+components, not formal modules. They do not get invented module entries. All-module
+CI still runs on their branches through the default routing. Gallery automation
+and issue-completion mappings are unchanged.
 
 ## Trusted issue completion
 
@@ -163,6 +200,7 @@ Tools: `/tmp/ps-actions-tools/powershell/pwsh` 7.7.0, Pester 4.10.1 from
 # Run each test in a fresh PowerShell process (the tests mock commands offline).
 pwsh -NoProfile -NonInteractive -File tests/Test-CiSelection.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-CiRunner.ps1
+pwsh -NoProfile -NonInteractive -File tests/Test-CiStructure.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-GalleryAutomation.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-ReleaseEvidence.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-GalleryVerification.ps1
@@ -171,7 +209,7 @@ node tests/Test-WorkflowSafety.cjs
 node tests/Test-ReleaseCreation.cjs
 ```
 
-All these checks passed locally. A temporary fixture extracted from the already
+All these automation contract checks passed locally. A temporary fixture extracted from the already
 committed fix, with its matching flat out/ copy, also passed source and installed
 regressions separately: **31 + 31**, macOS pwsh 7.7.0/Pester 4.10.1. This validates
 runner behavior, not an actual release branch, Gallery download, or Windows run.

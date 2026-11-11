@@ -9,6 +9,9 @@ $cases = @{
     '7-Zip/release/1.1' = '7zip-Archive'
     'Currency-Conv/develop' = 'Currency-Conv'
     'Currency-Conv/release/1.5' = 'Currency-Conv'
+    'FolderEncoder/develop' = 'FolderEncoder'
+    'Shell-Functions/develop' = 'Shell-Functions'
+    'Uninstall/develop' = 'Uninstall'
     'Pipe/develop' = 'Pipe'
     'Pipe/release/latest' = 'Pipe'
     'fix/base64-encoding' = 'Base64String'
@@ -16,9 +19,8 @@ $cases = @{
     'fix/update-check-startup' = 'Bookmarks'
     'fix/7zip-runtime-help' = '7zip-Archive'
 }
-$all = @('Bookmarks', '7zip-Archive', 'Currency-Conv', 'Base64String', 'Pipe')
+$all = @('Bookmarks', '7zip-Archive', 'Currency-Conv', 'Base64String', 'Pipe', 'FolderEncoder', 'Shell-Functions', 'Uninstall')
 foreach ($branch in @('master', 'ci/github-actions', 'fix/new-feature', 'feature/new-feature',
-    'FolderEncoder/develop', 'Shell-Functions/develop', 'Uninstall/develop',
     'EXportGithub/develop', 'Git-Functions/develop', 'Shared-Functions/develop')) {
     $cases[$branch] = $all
 }

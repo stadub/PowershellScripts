@@ -78,12 +78,18 @@ and package validation; never publish directly from a feature/development branch
 For components without a release branch, establish and review packaging separately
 before configuring publication; do not invent release refs or deploy entries.
 
-Development branches do not imply automation support. The current CI migration
-and Gallery deployment configuration support only Bookmarks, 7zip-Archive,
-Currency-Conv, Base64String, and Pipe. FolderEncoder, Shell-Functions, Uninstall,
-EXportGithub, Git-Functions, and Shared-Functions have no dedicated CI checks or
-Gallery publication configuration. Expanding that coverage requires
-separate work; this branch setup does not activate workflows or publish packages.
+CI now covers all eight formal modules: Bookmarks, 7zip-Archive, Currency-Conv,
+Base64String, Pipe, FolderEncoder, Shell-Functions, and Uninstall. The user explicitly
+authorized this expansion after the independent release-pipeline handoff. The three
+new entries run syntax, manifest (where present), import and export checks, and
+source Pester suites when available. Do not hide current FolderEncoder missing-file
+or Shell-Functions empty-export failures with allow-failure rules.
+
+Gallery publication remains limited to the original five configured packages.
+FolderEncoder, Shell-Functions and Uninstall have no reviewed release branches or
+publication configuration. EXportGithub, Git-Functions and shared infrastructure
+are script/infrastructure components rather than formal modules; they do not gain
+module or publishing entries from this CI expansion.
 
 ## Code and packaging concerns to verify
 

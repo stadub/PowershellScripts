@@ -8,7 +8,10 @@ $modules = switch -Regex ($Branch) {
     '^Currency-Conv/|^fix/currency-cache-expiry$' { 'Currency-Conv'; break }
     '^base64(tring|String)/|^fix/base64-encoding$' { 'Base64String'; break }
     '^Pipe/' { 'Pipe'; break }
-    default { 'Bookmarks', '7zip-Archive', 'Currency-Conv', 'Base64String', 'Pipe' }
+    '^FolderEncoder/' { 'FolderEncoder'; break }
+    '^Shell-Functions/' { 'Shell-Functions'; break }
+    '^Uninstall/' { 'Uninstall'; break }
+    default { 'Bookmarks', '7zip-Archive', 'Currency-Conv', 'Base64String', 'Pipe', 'FolderEncoder', 'Shell-Functions', 'Uninstall' }
 }
 $entries = @(
     foreach ($module in $modules) {

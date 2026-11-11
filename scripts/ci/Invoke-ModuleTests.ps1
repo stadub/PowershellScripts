@@ -1,7 +1,7 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory)]
-    [ValidateSet('Bookmarks', '7zip-Archive', 'Currency-Conv', 'Base64String', 'Pipe')]
+    [ValidateSet('Bookmarks', '7zip-Archive', 'Currency-Conv', 'Base64String', 'Pipe', 'FolderEncoder', 'Shell-Functions', 'Uninstall')]
     [string]$Module,
     [string]$SourceRoot
 )
@@ -14,10 +14,22 @@ $paths = @{
     'Currency-Conv' = 'Currency-Conv'
     Base64String = 'Shared-Functions/Base64String'
     Pipe = 'Shared-Functions/Pipe'
+    FolderEncoder = 'FolderEncoder'
+    'Shell-Functions' = 'Shell-Functions'
+    Uninstall = '.'
 }
 $modulePath = Join-Path $root $paths[$Module]
 if (-not (Test-Path $modulePath -PathType Container)) {
     throw "Module directory missing on this branch: $modulePath"
+}
+
+if ($Module -in 'FolderEncoder', 'Shell-Functions', 'Uninstall') {
+    & (Join-Path $PSScriptRoot 'Test-ModuleStructure.ps1') -Module $Module -SourceRoot $root
+    $suiteFilter = if ($Module -eq 'Uninstall') { 'Uninstall*.Tests.ps1' } else { '*.Tests.ps1' }
+    if (-not (Get-ChildItem -LiteralPath $modulePath -Filter $suiteFilter -File)) {
+        Write-Host "$Module structure/import checks passed; no functional Pester suite exists yet."
+        return
+    }
 }
 
 if ($Module -eq 'Pipe') {
@@ -27,7 +39,8 @@ if ($Module -eq 'Pipe') {
 }
 
 # Discover source suites beside the manifest, excluding packaged out/ copies.
-$testPaths = @(Get-ChildItem -LiteralPath $modulePath -Filter '*.Tests.ps1' -File |
+$suiteFilter = if ($Module -eq 'Uninstall') { 'Uninstall*.Tests.ps1' } else { '*.Tests.ps1' }
+$testPaths = @(Get-ChildItem -LiteralPath $modulePath -Filter $suiteFilter -File |
     Sort-Object Name | Select-Object -ExpandProperty FullName)
 if ($testPaths.Count -eq 0) { throw "No test files found for $Module" }
 
