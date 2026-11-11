@@ -1,0 +1,593 @@
+{
+  "captured_at": "2026-11-11T17:08:40.109122+00:00",
+  "phase": "before",
+  "note": "Read-only audit. Hook URLs reduced to host; no hook config, tokens, secrets or build environments saved.",
+  "queries": {
+    "identity": {
+      "endpoint": "user",
+      "exit_code": 0,
+      "data": "stadub"
+    },
+    "repository": {
+      "endpoint": "repos/stadub/PowershellScripts",
+      "exit_code": 0,
+      "data": {
+        "default_branch": "master",
+        "full_name": "stadub/PowershellScripts",
+        "permissions": {
+          "admin": true,
+          "maintain": true,
+          "pull": true,
+          "push": true,
+          "triage": true
+        }
+      }
+    },
+    "branches": {
+      "endpoint": "repos/stadub/PowershellScripts/branches?per_page=100",
+      "exit_code": 0,
+      "data": [
+        {
+          "name": "7-Zip/release/1.1",
+          "protected": false,
+          "sha": "6f8e8f6a8d7bf608af005a5d6f7afa166e70deed"
+        },
+        {
+          "name": "7Zip/develop",
+          "protected": false,
+          "sha": "fb290b2ff382fea45833d9a30adc5adebdff4f28"
+        },
+        {
+          "name": "7Zip/release/1.0",
+          "protected": false,
+          "sha": "78532d56207407a5bbd5610bbfb5e21c7c433d95"
+        },
+        {
+          "name": "Bookmarks/develop",
+          "protected": false,
+          "sha": "659dd26f7c66b814b47000af1ab367853971a8a3"
+        },
+        {
+          "name": "Bookmarks/release/latest",
+          "protected": false,
+          "sha": "209e4fe899ed3ec00ae1c1b528eb5afa87aef090"
+        },
+        {
+          "name": "Bookmarks/release/v2.1",
+          "protected": false,
+          "sha": "bb1eeba3b6e6814a6e209967723ac074d9b44d14"
+        },
+        {
+          "name": "Currency-Conv/develop",
+          "protected": false,
+          "sha": "ee872e2428b41aa0aa107be78d781bf2536e0545"
+        },
+        {
+          "name": "Currency-Conv/release/1.0",
+          "protected": false,
+          "sha": "bdc68711c2470805c29e99543aec5dbfecb125ca"
+        },
+        {
+          "name": "Currency-Conv/release/1.5",
+          "protected": false,
+          "sha": "372e316b6da9e418e870785ee6328e28899c0596"
+        },
+        {
+          "name": "EXportGithub/develop",
+          "protected": false,
+          "sha": "65837b79da26ca9bc956bcc6026e8b5e34305e17"
+        },
+        {
+          "name": "FolderEncoder/develop",
+          "protected": false,
+          "sha": "0515de02b0394e8818505aff1f9a1962492c380e"
+        },
+        {
+          "name": "Git-Functions/develop",
+          "protected": false,
+          "sha": "c79ee1c97268d1109171089f87f40ffbad09d9f7"
+        },
+        {
+          "name": "Pipe/develop",
+          "protected": false,
+          "sha": "ced51f0ad212cf43942d7f7b862b671acfa4cdca"
+        },
+        {
+          "name": "Pipe/release/latest",
+          "protected": false,
+          "sha": "77a84404379f6f2a9798e7ffc1d16ac6bd74770d"
+        },
+        {
+          "name": "Shared-Functions/develop",
+          "protected": false,
+          "sha": "c79ee1c97268d1109171089f87f40ffbad09d9f7"
+        },
+        {
+          "name": "Shell-Functions/develop",
+          "protected": false,
+          "sha": "0515de02b0394e8818505aff1f9a1962492c380e"
+        },
+        {
+          "name": "Uninstall/develop",
+          "protected": false,
+          "sha": "cb191cc44ec85174187958b994065f6452ae046f"
+        },
+        {
+          "name": "base64String/release/latest",
+          "protected": false,
+          "sha": "052b501de2762e10dd23267cce31c3bc84cf2d8c"
+        },
+        {
+          "name": "base64tring/develop",
+          "protected": false,
+          "sha": "4d2e1c86e8083202f74b9b31c48447c0cd82808e"
+        },
+        {
+          "name": "fix/base64-encoding",
+          "protected": false,
+          "sha": "5fe9e2344afacccd4cebe02f178d6eb8cd162d2f"
+        },
+        {
+          "name": "master",
+          "protected": false,
+          "sha": "b3968f6f850a4276aacbeae6eb5e311c2529369e"
+        }
+      ]
+    },
+    "rulesets": {
+      "endpoint": "repos/stadub/PowershellScripts/rulesets?includes_parents=true&per_page=100",
+      "exit_code": 0,
+      "data": []
+    },
+    "master_protection": {
+      "endpoint": "repos/stadub/PowershellScripts/branches/master/protection",
+      "exit_code": 1,
+      "data": {
+        "message": "Branch not protected",
+        "documentation_url": "https://docs.github.com/rest/branches/branch-protection#get-branch-protection",
+        "status": "404"
+      },
+      "error": "gh: Branch not protected (HTTP 404)"
+    },
+    "master_rules": {
+      "endpoint": "repos/stadub/PowershellScripts/rules/branches/master",
+      "exit_code": 0,
+      "data": []
+    },
+    "hooks": {
+      "endpoint": "repos/stadub/PowershellScripts/hooks?per_page=100",
+      "exit_code": 0,
+      "data": [
+        {
+          "active": true,
+          "created_at": "2019-02-01T01:14:09Z",
+          "events": [
+            "create",
+            "delete",
+            "issue_comment",
+            "member",
+            "public",
+            "pull_request",
+            "push",
+            "repository"
+          ],
+          "hook_host": "notify.travis-ci.org",
+          "id": 83155980,
+          "last_response": {
+            "code": 502,
+            "message": "failed to connect to host",
+            "status": "connection_error"
+          },
+          "name": "web",
+          "updated_at": "2019-02-01T01:14:09Z"
+        },
+        {
+          "active": true,
+          "created_at": "2019-04-23T12:12:17Z",
+          "events": [
+            "create",
+            "delete",
+            "pull_request",
+            "push"
+          ],
+          "hook_host": "readthedocs.org",
+          "id": 104335530,
+          "last_response": {
+            "code": 200,
+            "message": "OK",
+            "status": "active"
+          },
+          "name": "web",
+          "updated_at": "2019-04-23T12:12:17Z"
+        },
+        {
+          "active": true,
+          "created_at": "2019-08-02T04:42:27Z",
+          "events": [
+            "delete",
+            "public",
+            "pull_request",
+            "push",
+            "repository",
+            "status"
+          ],
+          "hook_host": "codecov.io",
+          "id": 128538950,
+          "last_response": {
+            "code": 403,
+            "message": "Invalid HTTP Response: 403",
+            "status": null
+          },
+          "name": "web",
+          "updated_at": "2019-08-02T04:42:27Z"
+        },
+        {
+          "active": true,
+          "created_at": "2019-08-02T04:45:33Z",
+          "events": [
+            "member",
+            "pull_request",
+            "push",
+            "repository",
+            "team_add"
+          ],
+          "hook_host": "www.codefactor.io",
+          "id": 128539623,
+          "last_response": {
+            "code": 200,
+            "message": "OK",
+            "status": "active"
+          },
+          "name": "web",
+          "updated_at": "2019-08-02T04:45:33Z"
+        }
+      ]
+    },
+    "workflows": {
+      "endpoint": "repos/stadub/PowershellScripts/actions/workflows",
+      "exit_code": 0,
+      "data": {
+        "total_count": 0,
+        "workflows": []
+      }
+    },
+    "environments": {
+      "endpoint": "repos/stadub/PowershellScripts/environments",
+      "exit_code": 0,
+      "data": [
+        {
+          "deployment_branch_policy": {
+            "custom_branch_policies": true,
+            "protected_branches": false
+          },
+          "name": "powershell-gallery",
+          "protection_rules": [
+            {
+              "id": 72085445,
+              "node_id": "GA_kwDOAm3r5M4ES-_F",
+              "type": "branch_policy"
+            }
+          ]
+        }
+      ]
+    },
+    "gallery_branch_policy": {
+      "endpoint": "repos/stadub/PowershellScripts/environments/powershell-gallery/deployment-branch-policies",
+      "exit_code": 0,
+      "data": {
+        "branch_policies": [
+          {
+            "id": 66315664,
+            "name": "master",
+            "node_id": "MDE2OkdhdGVCcmFuY2hQb2xpY3k2NjMxNTY2NA==",
+            "type": "branch"
+          }
+        ],
+        "total_count": 1
+      }
+    },
+    "pull_requests": {
+      "endpoint": "repos/stadub/PowershellScripts/pulls?state=all&per_page=100",
+      "exit_code": 0,
+      "data": [
+        {
+          "base": "base64tring/develop",
+          "head": "fix/base64-encoding",
+          "html_url": "https://github.com/stadub/PowershellScripts/pull/28",
+          "merged_at": "2026-11-11T17:01:35Z",
+          "number": 28,
+          "sha": "5fe9e2344afacccd4cebe02f178d6eb8cd162d2f",
+          "state": "closed",
+          "title": "Fix Base64 encoding compatibility and decoder padding"
+        },
+        {
+          "base": "master",
+          "head": "Bookmarks",
+          "html_url": "https://github.com/stadub/PowershellScripts/pull/21",
+          "merged_at": "2019-10-30T15:35:59Z",
+          "number": 21,
+          "sha": "852c9030cb861914bd34a4f48786e50d351ec5ca",
+          "state": "closed",
+          "title": "Bookmarks v2.2 rewrite bookmarks by different sessions fix & change verbs to approved"
+        },
+        {
+          "base": "master",
+          "head": "Pipe",
+          "html_url": "https://github.com/stadub/PowershellScripts/pull/20",
+          "merged_at": "2019-10-18T15:31:25Z",
+          "number": 20,
+          "sha": "6dc0ff96b1518e486076a09801ca34c3f1e19bc7",
+          "state": "closed",
+          "title": "Create Pipe micro module with filters"
+        },
+        {
+          "base": "master",
+          "head": "Bookmarks",
+          "html_url": "https://github.com/stadub/PowershellScripts/pull/19",
+          "merged_at": "2019-10-08T10:43:32Z",
+          "number": 19,
+          "sha": "80b012f8b906f3ca5b78c77bcaceed5e1b5d79fa",
+          "state": "closed",
+          "title": "bookmakrs: explicit functions definition"
+        },
+        {
+          "base": "master",
+          "head": "base64tring",
+          "html_url": "https://github.com/stadub/PowershellScripts/pull/18",
+          "merged_at": "2019-10-08T10:44:29Z",
+          "number": 18,
+          "sha": "ac8f1cae8629cc2b7fff193902698e2b0f7bc41e",
+          "state": "closed",
+          "title": "fix decoding '1' endian strings"
+        },
+        {
+          "base": "master",
+          "head": "7-Zip-Release-1.1",
+          "html_url": "https://github.com/stadub/PowershellScripts/pull/16",
+          "merged_at": "2019-09-09T08:13:05Z",
+          "number": 16,
+          "sha": "6f8e8f6a8d7bf608af005a5d6f7afa166e70deed",
+          "state": "closed",
+          "title": "7 zip release 1.1"
+        },
+        {
+          "base": "master",
+          "head": "Currency-Conv-Release-1.5",
+          "html_url": "https://github.com/stadub/PowershellScripts/pull/13",
+          "merged_at": "2019-09-09T07:04:25Z",
+          "number": 13,
+          "sha": "372e316b6da9e418e870785ee6328e28899c0596",
+          "state": "closed",
+          "title": "added requests  caching #11  and save ApiKey prompt"
+        },
+        {
+          "base": "master",
+          "head": "Currency-Conv-Release-1.0",
+          "html_url": "https://github.com/stadub/PowershellScripts/pull/10",
+          "merged_at": "2019-09-02T21:33:48Z",
+          "number": 10,
+          "sha": "bdc68711c2470805c29e99543aec5dbfecb125ca",
+          "state": "closed",
+          "title": "Currency conv release 1.0"
+        },
+        {
+          "base": "master",
+          "head": "Currency-Conv-Release-1.0",
+          "html_url": "https://github.com/stadub/PowershellScripts/pull/9",
+          "merged_at": "2019-09-02T21:00:17Z",
+          "number": 9,
+          "sha": "81832ce2588825afeb14acdc55e212b06aa65e65",
+          "state": "closed",
+          "title": "currency update readme: bages and changelog"
+        },
+        {
+          "base": "master",
+          "head": "Currency-Conv-Release-1.0",
+          "html_url": "https://github.com/stadub/PowershellScripts/pull/8",
+          "merged_at": "2019-09-02T20:41:55Z",
+          "number": 8,
+          "sha": "92e28893952ae683924ef149c36f5019bb450b95",
+          "state": "closed",
+          "title": "add tests; fix readme; add ci"
+        },
+        {
+          "base": "master",
+          "head": "7Zip-Release-1.0",
+          "html_url": "https://github.com/stadub/PowershellScripts/pull/7",
+          "merged_at": "2019-09-02T15:25:05Z",
+          "number": 7,
+          "sha": "78532d56207407a5bbd5610bbfb5e21c7c433d95",
+          "state": "closed",
+          "title": "7 zip release 1.0"
+        },
+        {
+          "base": "master",
+          "head": "7Zip-Release-1.0",
+          "html_url": "https://github.com/stadub/PowershellScripts/pull/6",
+          "merged_at": "2019-09-02T11:56:09Z",
+          "number": 6,
+          "sha": "e4342e8dcbb93acc081f7ad586370e7aa0a62f48",
+          "state": "closed",
+          "title": "fix unit tests on the `StrictMode Latest`"
+        },
+        {
+          "base": "master",
+          "head": "7Zip-Release-1.0",
+          "html_url": "https://github.com/stadub/PowershellScripts/pull/5",
+          "merged_at": "2019-09-02T10:18:54Z",
+          "number": 5,
+          "sha": "e3bf4e31425c24f9d76f704b908a48d17ec94408",
+          "state": "closed",
+          "title": "module update checker"
+        },
+        {
+          "base": "master",
+          "head": "7Zip-Release-1.0",
+          "html_url": "https://github.com/stadub/PowershellScripts/pull/4",
+          "merged_at": "2019-09-02T10:09:44Z",
+          "number": 4,
+          "sha": "8122e1618b4e54b703889a8072e16804429b8392",
+          "state": "closed",
+          "title": "7 zip release 1.0"
+        },
+        {
+          "base": "master",
+          "head": "Bookmarks-Release-2.1.5",
+          "html_url": "https://github.com/stadub/PowershellScripts/pull/3",
+          "merged_at": "2019-08-28T17:09:13Z",
+          "number": 3,
+          "sha": "0b010951f0282aa19a49220865daeaa4a68d1644",
+          "state": "closed",
+          "title": "fix tests for travis mac"
+        },
+        {
+          "base": "master",
+          "head": "Bookmarks-Release-2.1.5",
+          "html_url": "https://github.com/stadub/PowershellScripts/pull/2",
+          "merged_at": "2019-08-28T17:00:21Z",
+          "number": 2,
+          "sha": "3defbe24925920c9c0b509ef95f0ccfb8b3043ee",
+          "state": "closed",
+          "title": "update descritpion; add update-check; fix tests"
+        },
+        {
+          "base": "master",
+          "head": "Bookmarks-Release-2.1.5",
+          "html_url": "https://github.com/stadub/PowershellScripts/pull/1",
+          "merged_at": "2019-08-28T16:52:50Z",
+          "number": 1,
+          "sha": "bb1eeba3b6e6814a6e209967723ac074d9b44d14",
+          "state": "closed",
+          "title": "remove extra shared functions & loader"
+        }
+      ]
+    },
+    "pr28_status": {
+      "endpoint": "repos/stadub/PowershellScripts/commits/5fe9e2344afacccd4cebe02f178d6eb8cd162d2f/status",
+      "exit_code": 0,
+      "data": {
+        "sha": "5fe9e2344afacccd4cebe02f178d6eb8cd162d2f",
+        "state": "failure",
+        "statuses": [
+          {
+            "context": "continuous-integration/appveyor/pr",
+            "created_at": "2026-11-11T17:01:39Z",
+            "description": "AppVeyor build cancelled",
+            "id": 58651565644,
+            "state": "error",
+            "target_url": "https://ci.appveyor.com/project/stadub/powershellscripts-7m2fk/builds/55069584",
+            "updated_at": "2026-11-11T17:01:39Z"
+          },
+          {
+            "context": "continuous-integration/appveyor/branch",
+            "created_at": "2026-11-11T17:05:45Z",
+            "description": "AppVeyor build failed",
+            "id": 58651941196,
+            "state": "failure",
+            "target_url": "https://ci.appveyor.com/project/stadub/powershellscripts-v9ncj/builds/55069580",
+            "updated_at": "2026-11-11T17:05:45Z"
+          }
+        ],
+        "total_count": 2
+      }
+    },
+    "pr28_checks": {
+      "endpoint": "repos/stadub/PowershellScripts/commits/5fe9e2344afacccd4cebe02f178d6eb8cd162d2f/check-runs",
+      "exit_code": 0,
+      "data": {
+        "check_runs": [
+          {
+            "app": {
+              "id": 9426,
+              "slug": "azure-pipelines"
+            },
+            "conclusion": "neutral",
+            "details_url": "https://dev.azure.com/Stadub-Gh/a9169d90-6fec-420b-a370-fb9e1a573d16/_build/definition?definitionId=4",
+            "id": 130673979487,
+            "name": "7Zip",
+            "status": "completed"
+          },
+          {
+            "app": {
+              "id": 9426,
+              "slug": "azure-pipelines"
+            },
+            "conclusion": "neutral",
+            "details_url": "https://dev.azure.com/Stadub-Gh/a9169d90-6fec-420b-a370-fb9e1a573d16/_build/definition?definitionId=6",
+            "id": 130673978950,
+            "name": "SharedFunctions",
+            "status": "completed"
+          },
+          {
+            "app": {
+              "id": 9426,
+              "slug": "azure-pipelines"
+            },
+            "conclusion": "neutral",
+            "details_url": "https://dev.azure.com/Stadub-Gh/a9169d90-6fec-420b-a370-fb9e1a573d16/_build/definition?definitionId=5",
+            "id": 130673978325,
+            "name": "Currency-Conv",
+            "status": "completed"
+          },
+          {
+            "app": {
+              "id": 9426,
+              "slug": "azure-pipelines"
+            },
+            "conclusion": "neutral",
+            "details_url": "https://dev.azure.com/Stadub-Gh/a9169d90-6fec-420b-a370-fb9e1a573d16/_build/definition?definitionId=3",
+            "id": 130673978154,
+            "name": "Bookmarks",
+            "status": "completed"
+          }
+        ],
+        "total_count": 4
+      }
+    },
+    "master_status": {
+      "endpoint": "repos/stadub/PowershellScripts/commits/master/status",
+      "exit_code": 0,
+      "data": {
+        "sha": "b3968f6f850a4276aacbeae6eb5e311c2529369e",
+        "state": "pending",
+        "statuses": [],
+        "total_count": 0
+      }
+    },
+    "app_installation_access": {
+      "endpoint": "user/installations?per_page=100",
+      "exit_code": 1,
+      "data": {
+        "message": "You must authenticate with an access token authorized to a GitHub App in order to list installations",
+        "documentation_url": "https://docs.github.com/rest/apps/installations#list-app-installations-accessible-to-the-user-access-token",
+        "status": "403"
+      },
+      "error": "gh: You must authenticate with an access token authorized to a GitHub App in order to list installations (HTTP 403)"
+    },
+    "repository_installation_access": {
+      "endpoint": "repos/stadub/PowershellScripts/installation",
+      "exit_code": 1,
+      "data": {
+        "message": "A JSON web token could not be decoded",
+        "documentation_url": "https://docs.github.com/rest",
+        "status": "401"
+      },
+      "error": "gh: A JSON web token could not be decoded (HTTP 401)"
+    },
+    "protection_patterns": {
+      "exit_code": 0,
+      "data": {
+        "data": {
+          "repository": {
+            "branchProtectionRules": {
+              "nodes": [],
+              "pageInfo": {
+                "hasNextPage": false
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
