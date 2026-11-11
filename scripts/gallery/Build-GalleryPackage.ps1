@@ -31,7 +31,8 @@ Get-ChildItem $source -File | Where-Object {
     ($_.Extension -in $allowed -or $_.Name -eq 'LICENSE') -and $_.Name -notmatch '\.(Tests?|SmokeTests)\.ps1$'
 } | Copy-Item -Destination $destination
 $license = Join-Path $SourceRoot 'LICENSE'
-if (Test-Path $license -PathType Leaf) { Copy-Item $license (Join-Path $destination 'LICENSE') }
+if (-not (Test-Path (Join-Path $destination 'LICENSE') -PathType Leaf) -and
+    (Test-Path $license -PathType Leaf)) { Copy-Item $license (Join-Path $destination 'LICENSE') }
 Test-ModuleManifest (Join-Path $destination $config.Manifest) -ErrorAction Stop | Out-Null
 Write-Host "Validated $Module $ExpectedVersion in $destination"
 if ($env:GITHUB_STEP_SUMMARY) {

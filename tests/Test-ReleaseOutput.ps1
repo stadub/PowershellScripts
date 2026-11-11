@@ -22,6 +22,8 @@ try {
         'excluded fixture' | Set-Content "$modulePath/tests/Fixtures.ps1"
         'excluded tests' | Set-Content "$modulePath/Fixture.Tests.ps1"
         'excluded CI' | Set-Content "$modulePath/azure-pipelines.yml"
+        $expectedLicense = if ($name -eq 'Base64String') { 'explicit module license bytes' } else { 'canonical license bytes' }
+        if ($name -eq 'Base64String') { $expectedLicense | Set-Content "$modulePath/LICENSE" }
         'reviewed docs' | Set-Content "$modulePath/README.md"
         'icon bytes' | Set-Content "$modulePath/Assets/Icon.ico"
         foreach ($attempt in 1,2) {
@@ -33,9 +35,10 @@ try {
         foreach ($file in Get-ChildItem $first -File) {
             if ((Get-FileHash $file.FullName).Hash -ne (Get-FileHash (Join-Path $second $file.Name)).Hash) { throw 'Non-reproducible output bytes' }
         }
+        Copy-Item "$source/LICENSE" "$fixture/build-1/LICENSE" -Force
         & "$scripts/Build-GalleryPackage.ps1" -Module $name -SourceRoot "$fixture/build-1" -OutputRoot "$fixture/stage" -ExpectedVersion 1.3.0
         & "$scripts/Assert-SourcePackage.ps1" -Module $name -SourceRoot $source -PackageRoot "$fixture/stage"
-        if ((Get-Content "$fixture/stage/$name/LICENSE") -ne 'canonical license bytes') { throw 'Staging lost package license' }
+        if ((Get-Content "$fixture/stage/$name/LICENSE") -ne $expectedLicense) { throw 'Generation/staging lost selected package license' }
         Assert-OutputFailure { & "$scripts/New-ReleaseOutput.ps1" -Module $name -SourceRoot $source -OutputRoot "$fixture/build-1" -ExpectedVersion 1.3.0 } '*Output already exists*'
         if ((Get-Content "$modulePath/out/stale.ps1") -ne 'excluded stale artifact') { throw 'Generator modified existing source output' }
     }
@@ -46,5 +49,5 @@ try {
     Remove-Item "$modulePath/Commands.ps1", "$modulePath/Functions/Commands.ps1"
     Assert-OutputFailure { & "$scripts/New-ReleaseOutput.ps1" -Module Pipe -SourceRoot $source -OutputRoot "$fixture/missing" -ExpectedVersion 1.3.0 } '*Commands.ps1*'
     if (Test-Path (Join-Path "$fixture/missing" $config.PackagePath)) { throw 'Invalid package left behind' }
-    Write-Host 'Release output checks passed: all five routes, deterministic bytes, flattening, exclusions, license, no overwrite, version, ambiguity and missing dependencies.'
+    Write-Host 'Release output checks passed: all five routes, deterministic bytes, flattening, exclusions, module-license precedence, no overwrite, version, ambiguity and missing dependencies.'
 } finally { Remove-Item $fixture -Recurse -Force -ErrorAction SilentlyContinue }

@@ -37,11 +37,10 @@ try {
     }
     $icon = Join-Path $source 'Assets/Icon.ico'
     if (Test-Path $icon -PathType Leaf) { $files += Get-Item $icon }
-    # Repository license is the canonical license for these configured modules.
+    # An explicit module license takes precedence; the repository license is a fallback.
     $license = Join-Path $sourceRootPath 'LICENSE'
-    if (Test-Path $license -PathType Leaf) {
-        $files = @($files | Where-Object Name -ne 'LICENSE') + @(Get-Item $license)
-    }
+    if (-not (Test-Path (Join-Path $source 'LICENSE') -PathType Leaf) -and
+        (Test-Path $license -PathType Leaf)) { $files += Get-Item $license }
     $duplicates = @($files | Group-Object Name | Where-Object Count -gt 1)
     if ($duplicates.Count) { throw "Ambiguous flat package filenames: $($duplicates.Name -join ', ')" }
     foreach ($file in $files | Sort-Object Name) {
