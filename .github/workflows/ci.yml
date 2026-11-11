@@ -1,0 +1,84 @@
+name: PowerShell module validation
+
+on:
+  push:
+    branches: [master, '**/develop', '**/release/**', 'fix/**', 'ci/**']
+  pull_request:
+    branches: [master, '**/develop', '**/release/**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      matrix: ${{ steps.select.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - name: Test CI automation offline
+        shell: pwsh
+        run: |
+          ./tests/Test-CiSelection.ps1
+          ./tests/Test-CiRunner.ps1
+          ./tests/Test-GalleryAutomation.ps1
+          ./tests/Test-ReleaseEvidence.ps1
+          ./tests/Test-GalleryVerification.ps1
+          node ./tests/Test-IssueCompletion.cjs
+          if ($LASTEXITCODE -ne 0) { throw 'Issue completion tests failed' }
+          node ./tests/Test-WorkflowSafety.cjs
+          if ($LASTEXITCODE -ne 0) { throw 'Workflow safety tests failed' }
+          node ./tests/Test-ReleaseCreation.cjs
+          if ($LASTEXITCODE -ne 0) { throw 'Release creation tests failed' }
+      - id: select
+        name: Select module coverage
+        shell: pwsh
+        env:
+          TARGET_BRANCH: ${{ github.base_ref || github.ref_name }}
+        run: ./scripts/ci/Select-CiModules.ps1 -Branch $env:TARGET_BRANCH
+
+  test:
+    needs: plan
+    name: ${{ matrix.module }} / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - name: Run module checks
+        shell: pwsh
+        env:
+          MODULE: ${{ matrix.module }}
+        run: ./scripts/ci/Invoke-ModuleTests.ps1 -Module $env:MODULE
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: tests-${{ matrix.module }}-${{ matrix.os }}
+          path: TestResults/*.xml
+          if-no-files-found: ignore
+
+  status:
+    name: CI status
+    if: always()
+    needs: [plan, test]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Require successful planning and module checks
+        env:
+          PLAN_RESULT: ${{ needs.plan.result }}
+          TEST_RESULT: ${{ needs.test.result }}
+        run: test "$PLAN_RESULT" = success && test "$TEST_RESULT" = success

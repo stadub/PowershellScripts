@@ -1,0 +1,246 @@
+name: Tested release and protected Gallery deployment
+on:
+  workflow_dispatch:
+    inputs:
+      module:
+        description: Configured release module
+        type: choice
+        required: true
+        options: [Bookmarks, 7zip-Archive, Currency-Conv, Base64String, Pipe]
+      version:
+        description: Exact stable manifest version
+        type: string
+        required: true
+      source_sha:
+        description: Full reviewed commit SHA on the configured release branch
+        type: string
+        required: true
+      create_release:
+        description: Create or verify the versioned GitHub release (master only)
+        type: boolean
+        default: false
+      dry_run:
+        description: Skip Gallery upload and issue completion
+        type: boolean
+        default: true
+permissions:
+  contents: read
+concurrency:
+  group: release-gallery-${{ inputs.module }}
+  cancel-in-progress: false
+jobs:
+  package:
+    runs-on: windows-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          path: automation
+          persist-credentials: false
+      - name: Validate request
+        shell: pwsh
+        env:
+          SHA: ${{ inputs.source_sha }}
+          VERSION: ${{ inputs.version }}
+          MUTATE: ${{ inputs.create_release || !inputs.dry_run }}
+          REF: ${{ github.ref }}
+        run: |
+          if ($env:SHA -cnotmatch '^[0-9a-f]{40}$') { throw 'Full SHA required' }
+          if ($env:VERSION -notmatch '^\d+\.\d+\.\d+(\.\d+)?$') { throw 'Stable version required' }
+          if ($env:MUTATE -eq 'true' -and $env:REF -ne 'refs/heads/master') { throw 'Mutations require master' }
+      - uses: actions/checkout@v7.0.1
+        with:
+          ref: ${{ inputs.source_sha }}
+          path: source
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Require configured release ancestry and matching source/package
+        shell: pwsh
+        env:
+          MODULE: ${{ inputs.module }}
+          SHA: ${{ inputs.source_sha }}
+          VERSION: ${{ inputs.version }}
+        run: |
+          $config = ./automation/scripts/gallery/Get-ReleaseConfig.ps1 -Module $env:MODULE
+          git -C source merge-base --is-ancestor $env:SHA "origin/$($config.ReleaseBranch)"
+          if ($LASTEXITCODE -ne 0) { throw 'Snapshot is not on the configured release branch' }
+          ./automation/scripts/gallery/Build-GalleryPackage.ps1 -Module $env:MODULE -SourceRoot ./source -OutputRoot ./stage -ExpectedVersion $env:VERSION
+          ./automation/scripts/gallery/Assert-SourcePackage.ps1 -Module $env:MODULE -SourceRoot ./source -PackageRoot ./stage
+          ./automation/scripts/gallery/Package-Evidence.ps1 -Module $env:MODULE -Version $env:VERSION -SourceSha $env:SHA -PackageRoot ./stage -EvidencePath ./stage/evidence.json
+      - uses: actions/upload-artifact@v7.0.2
+        with:
+          name: gallery-package
+          path: stage/
+          if-no-files-found: error
+
+  test:
+    needs: package
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            shell: pwsh
+          - os: windows-latest
+            shell: powershell
+          - os: ubuntu-latest
+            shell: pwsh
+          - os: macos-latest
+            shell: pwsh
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          path: automation
+          persist-credentials: false
+      - uses: actions/checkout@v7.0.1
+        with:
+          ref: ${{ inputs.source_sha }}
+          path: source
+          persist-credentials: false
+      - uses: actions/download-artifact@v8.0.2
+        with:
+          name: gallery-package
+          path: stage
+      - name: Test source and installed package
+        if: ${{ matrix.shell == 'pwsh' && (inputs.module != '7zip-Archive' || matrix.os == 'windows-latest') }}
+        shell: pwsh
+        env:
+          MODULE: ${{ inputs.module }}
+          VERSION: ${{ inputs.version }}
+          SHA: ${{ inputs.source_sha }}
+        run: |
+          ./automation/scripts/gallery/Package-Evidence.ps1 -Module $env:MODULE -Version $env:VERSION -SourceSha $env:SHA -PackageRoot ./stage -EvidencePath ./stage/evidence.json -Verify
+          ./automation/scripts/gallery/Test-ReleasePackage.ps1 -Module $env:MODULE -SourceRoot ./source -PackageRoot ./stage -ExpectedVersion $env:VERSION
+      - name: Test source and installed package on Windows PowerShell 5.1
+        if: ${{ matrix.shell == 'powershell' }}
+        shell: powershell
+        env:
+          MODULE: ${{ inputs.module }}
+          VERSION: ${{ inputs.version }}
+          SHA: ${{ inputs.source_sha }}
+        run: |
+          ./automation/scripts/gallery/Package-Evidence.ps1 -Module $env:MODULE -Version $env:VERSION -SourceSha $env:SHA -PackageRoot ./stage -EvidencePath ./stage/evidence.json -Verify
+          ./automation/scripts/gallery/Test-ReleasePackage.ps1 -Module $env:MODULE -SourceRoot ./source -PackageRoot ./stage -ExpectedVersion $env:VERSION
+      - uses: actions/upload-artifact@v7.0.2
+        if: always()
+        with:
+          name: release-tests-${{ matrix.os }}-${{ matrix.shell }}
+          path: source/TestResults/*.xml
+          if-no-files-found: ignore
+
+  release:
+    needs: [package, test]
+    if: ${{ github.ref == 'refs/heads/master' && (inputs.create_release || !inputs.dry_run) }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@v8.0.2
+        with:
+          name: gallery-package
+          path: stage
+      - name: Create immutable version release or verify existing release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          MODULE: ${{ inputs.module }}
+          VERSION: ${{ inputs.version }}
+          SHA: ${{ inputs.source_sha }}
+        run: node scripts/gallery/Create-Release.cjs
+
+  publish:
+    needs: [package, test, release]
+    if: ${{ !inputs.dry_run && github.ref == 'refs/heads/master' }}
+    runs-on: windows-latest
+    timeout-minutes: 15
+    environment: powershell-gallery
+    outputs:
+      published: ${{ steps.upload.outputs.published }}
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/download-artifact@v8.0.2
+        with:
+          name: gallery-package
+          path: stage
+      - name: Publish tested package
+        id: upload
+        shell: pwsh
+        env:
+          PSGALLERY_API_KEY: ${{ secrets.PSGALLERY_API_KEY }}
+          MODULE: ${{ inputs.module }}
+          VERSION: ${{ inputs.version }}
+          SOURCE_SHA: ${{ inputs.source_sha }}
+        run: |
+          ./scripts/gallery/Package-Evidence.ps1 -Module $env:MODULE -Version $env:VERSION -SourceSha $env:SOURCE_SHA -PackageRoot ./stage -EvidencePath ./stage/evidence.json -Verify
+          ./scripts/gallery/Publish-GalleryPackage.ps1 -Module $env:MODULE -PackageRoot ./stage -ExpectedVersion $env:VERSION
+          'published=true' >> $env:GITHUB_OUTPUT
+
+  verify:
+    needs: publish
+    if: ${{ !inputs.dry_run && needs.publish.result == 'success' && needs.publish.outputs.published == 'true' }}
+    runs-on: windows-latest
+    timeout-minutes: 20
+    outputs:
+      verified: ${{ steps.verify.outputs.verified }}
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          path: automation
+          persist-credentials: false
+      - uses: actions/checkout@v7.0.1
+        with:
+          ref: ${{ inputs.source_sha }}
+          path: source
+          persist-credentials: false
+      - uses: actions/download-artifact@v8.0.2
+        with:
+          name: gallery-package
+          path: stage
+      - name: Verify exact Gallery bytes and installed behavior without credentials
+        id: verify
+        shell: pwsh
+        env:
+          MODULE: ${{ inputs.module }}
+          VERSION: ${{ inputs.version }}
+          SHA: ${{ inputs.source_sha }}
+        run: |
+          ./automation/scripts/gallery/Verify-GalleryPackage.ps1 -Module $env:MODULE -Version $env:VERSION -SourceSha $env:SHA -SourceRoot ./source -EvidencePath ./stage/evidence.json -OutputRoot ./download
+          Copy-Item ./stage/evidence.json ./verified.json
+          'verified=true' >> $env:GITHUB_OUTPUT
+      - uses: actions/upload-artifact@v7.0.2
+        with:
+          name: gallery-verification
+          path: verified.json
+          if-no-files-found: error
+
+  complete-issues:
+    needs: [publish, verify]
+    if: ${{ !inputs.dry_run && github.ref == 'refs/heads/master' && needs.publish.result == 'success' && needs.publish.outputs.published == 'true' && needs.verify.result == 'success' && needs.verify.outputs.verified == 'true' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/github-script@v8
+        env:
+          MODULE: ${{ inputs.module }}
+          VERSION: ${{ inputs.version }}
+          SHA: ${{ inputs.source_sha }}
+        with:
+          script: |
+            const {complete} = require('./scripts/gallery/Complete-Issues.cjs');
+            await complete({github, context,
+              mapping: require('./scripts/gallery/issue-map.json'),
+              identity: {repository: process.env.GITHUB_REPOSITORY, module: process.env.MODULE,
+                version: process.env.VERSION, sourceSha: process.env.SHA}});
