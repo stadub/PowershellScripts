@@ -124,6 +124,12 @@ or OAuth grant was modified. The account administrator step above remains
 necessary; rerun the GitHub audit and inspect actual AppVeyor project trigger
 settings after it is completed.
 
+The four tracked `appveyor.yml` files no longer request NUnit XML output or POST
+test results to `ci.appveyor.com/api/testresults/nunit`. Each still invokes
+Pester, so test execution remains configured while AppVeyor's test-result
+publishing is removed. This is a repository-side config change; it does not stop
+AppVeyor from triggering builds or erase previously published results.
+
 The existing release coordinator was notified through Orca orchestration
 (`msg_5e1a0754bea3`) with the access limitation, preservation of Gallery policy,
 and the dependency on verified hosted `CI status` runs. The existing Actions
