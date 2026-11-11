@@ -34,3 +34,9 @@ for (const forbidden of ['secrets.', 'secrets[', 'issues: write', 'contents: wri
 }
 assert.ok(candidateValidation.includes('inputs.source_sha') && candidateValidation.includes('inputs.automation_sha'));
 console.log('Candidate validation is read-only, immutable-input-only, and cannot publish or complete issues.');
+const moduleValidation = fs.readFileSync('.github/workflows/validate-module-source.yml','utf8');
+assert.match(moduleValidation,/permissions:\n  contents: read/);
+for (const forbidden of ['secrets.', 'secrets[', 'issues: write', 'contents: write', 'environment:', 'Publish-GalleryPackage.ps1']) assert.ok(!moduleValidation.includes(forbidden));
+assert.ok(moduleValidation.includes('inputs.source_sha') && moduleValidation.includes('inputs.automation_sha'));
+assert.ok(moduleValidation.includes('Invoke-ModuleTests.ps1'));
+console.log('Module source validation remains read-only and tests exact source commits.');
