@@ -1,0 +1,17 @@
+name: Base64String source compatibility
+on:
+  push:
+    branches: [fix/base64-windows-padding, base64tring/develop]
+  pull_request:
+    branches: [base64tring/develop]
+permissions:
+  contents: read
+jobs:
+  source:
+    uses: stadub/PowershellScripts/.github/workflows/validate-release-candidate.yml@c5413b357e91d185c0e6698f776d83bd02131921
+    with:
+      module: Base64String
+      version: '1.2.0'
+      source_sha: ${{ github.event.pull_request.head.sha || github.sha }}
+      automation_sha: c5413b357e91d185c0e6698f776d83bd02131921
+      require_committed_package: false
