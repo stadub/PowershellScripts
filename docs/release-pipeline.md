@@ -95,8 +95,9 @@ when deploying another module. The previous generic `PSGALLERY_API_KEY` environm
 secret is not read by this workflow and need not be configured.
 
 Preserve master-only deployment restrictions and configure independent reviewers
-as described below. The last environment inspection found zero secrets; no secret
-was created, read or changed during this task. Public owner lookup confirms the
+as described below. Metadata inspection on 2026-11-12 found both named secrets
+present (updated 2026-11-11); no secret value was accessed or changed by this task.
+Presence does not verify a key's validity. Public owner lookup confirms the
 mapping, not the identity or permissions of a secret's opaque API key. Gallery
 itself authenticates that key at upload. Publish-Module authenticates through the
 API key; a username or manifest Author field cannot switch accounts.
@@ -336,8 +337,8 @@ Do not bypass that guard or close manually without verifying deployment evidence
    including both Windows runtimes. Then optionally create the GitHub release with
    `create_release=true,dry_run=true` and review its snapshot/assets.
 4. Preserve `powershell-gallery` environment's custom deployment branch policy:
-   **master only**, branch type, no tag wildcard. Live inspection on 2026-11-11 found
-   one such policy, no reviewer rule, admin bypass enabled, and zero secrets.
+   **master only**, branch type, no tag wildcard. Live inspection on 2026-11-12 found
+   one such policy, no reviewer rule and admin bypass enabled.
    Do not treat master-only as independent reviewer approval. The owner should add
    required reviewers, prevent self-review and restrict admin bypass as available.
    This repository is public, so GitHub documents required-reviewer support here.
@@ -345,9 +346,10 @@ Do not bypass that guard or close manually without verifying deployment evidence
    (Free/Pro/Team support them only on public repos). A sole owner cannot provide
    an independent approval with self-review disabled; arrange a second trusted
    reviewer or document that organizational limitation before deployment.
-5. The owner must create **environment** secrets `PSGALLERY_API_KEY_STADUB` and
-   `PSGALLERY_API_KEY_MINIMODULES` using GitHub's settings UI or secure secret input;
-   never print/paste their values into code, logs, chat, issue comments or command
+5. Both **environment** secret names `PSGALLERY_API_KEY_STADUB` and
+   `PSGALLERY_API_KEY_MINIMODULES` are present as of 2026-11-12. The owner must verify
+   their account, package scope and expiry; rotate through settings or the helper if needed.
+   Never print/paste their values into code, logs, chat, issue comments or command
    arguments. Use each account's scoped Gallery key with appropriate package rights
    and expiry. Nothing here creates or changes secrets.
 6. Only an explicitly authorized deployment run should set `dry_run=false` on

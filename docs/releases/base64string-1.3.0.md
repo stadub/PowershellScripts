@@ -73,9 +73,10 @@ After production workflow integration, run `release-gallery.yml` from master wit
 
 This full production dry-run is still pending; the successful runs above are its
 credential-free source/package validation, not a simulated successful upload.
-Both Gallery account secrets were absent at final inspection. Configure them via
-the protected environment without revealing values; preserve its master-only branch
-policy and establish independent reviewer protection. Any actual publish remains
+Both Gallery account secret names were present at the 2026-11-12 metadata check;
+their opaque values, account rights and expiry remain unverified. Preserve the
+environment's master-only branch policy and establish independent reviewer protection.
+Any actual publish remains
 separately authorized and must verify exact Gallery package/version/content before
 issue completion. The trusted mapping in PR #31 targets only #22 for this version
 and SHA; #29 is deliberately excluded. A GitHub release, dry-run or merge never

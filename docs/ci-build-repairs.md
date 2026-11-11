@@ -77,8 +77,15 @@ candidate source files with automation. It does not promote source into master,
 module development branches or ci/release-pipeline. Its source ledger is
 `docs/ci-module-preview.json` on that branch. The initial combined run
 [43117606572](https://github.com/stadub/PowershellScripts/actions/runs/43117606572)
-passed all 22 module/OS jobs, planning and aggregate status. Hosted validation of
-the updated explicit source-selection workflow is recorded below after completion.
+passed all 22 module/OS jobs, planning and aggregate status.
+
+The final source-selection run [43120956188](https://github.com/stadub/PowershellScripts/actions/runs/43120956188)
+at `9f6273bf9198dec336f56fe565665a37f7c84758` also passed all 24 jobs. Downloaded
+artifacts independently confirm 22 source identities and 28 NUnit reports:
+295 Pester assertions plus 24 structural assertions, zero failures and zero skips.
+The seven changed modules use that exact review snapshot; Uninstall uses its pinned
+development SHA. The file ledger links the snapshot's module files to their
+component candidates. See [verified report hashes and source identities](ci-matrix-verified.json).
 
 Component PRs remain draft; passing CI is not merge approval. Until their reviewed
 changes land on the maintained development branches, aggregate monitoring correctly
@@ -86,6 +93,12 @@ continues to report those unfixed baselines. Review/approve the component PRs fi
 then rerun aggregate CI against the resulting maintained tips. No module behavior
 fixes were added to automation PR #31, and no source snapshot was substituted with
 a passing unreviewed branch in its maintained-baseline matrix.
+
+Specifically, [the maintained-baseline run at automation commit 06ee2de](https://github.com/stadub/PowershellScripts/actions/runs/43120912939)
+passes planning, Base64String and Uninstall (six module/OS jobs). Its remaining
+16 module/OS failures correspond to the six unmerged component repairs above;
+the aggregate status correctly fails. The successful combined run is evidence for
+those proposed repairs, not a claim that automation PR #31 is fully green.
 
 The already approved AppVeyor removal from master was synced into the automation
 branch; this task did not edit master. Legacy external AppVeyor/Azure service

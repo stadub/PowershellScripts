@@ -196,5 +196,24 @@
         }
       ]
     }
-  ]
+  ],
+  "finalCombinedRun": {
+    "url": "https://github.com/stadub/PowershellScripts/actions/runs/43120956188",
+    "sha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+    "conclusion": "success",
+    "moduleOsJobs": 22,
+    "pesterAssertions": 295,
+    "structureAssertions": 24,
+    "failures": 0,
+    "skipped": 0,
+    "evidence": "ci-matrix-verified.json"
+  },
+  "maintainedBaselineRun": {
+    "url": "https://github.com/stadub/PowershellScripts/actions/runs/43120912939",
+    "automationSha": "06ee2deb2bc11affb7dfa18f7b7098013964f479",
+    "conclusion": "failure",
+    "passingModuleOsJobs": 6,
+    "failingModuleOsJobs": 16,
+    "reason": "Six component repair drafts require review and integration into their development branches"
+  }
 }

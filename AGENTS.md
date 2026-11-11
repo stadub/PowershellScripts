@@ -215,8 +215,9 @@ stores distinct `PSGALLERY_API_KEY_STADUB` and `PSGALLERY_API_KEY_MINIMODULES`
 secrets. `Get-ReleaseConfig.ps1` maps Bookmarks, 7zip-Archive and Currency-Conv to
 Stadub, and Base64String and Pipe to MiniModules; usernames and secret names are
 public configuration. The workflow has no generic-key or other-account fallback.
-The environment has deployments restricted to master; both account keys still
-need to be configured by the owner. Never put that key in files or
+The environment has deployments restricted to master; both account secret names
+were present at the 2026-11-12 metadata check. Values/rights remain unverified.
+Never put a key in files or
 chat. Do not publish packages while implementing or testing this automation.
 
 Local validation used portable PowerShell 7.7.0 and actionlint 1.7.12. Module
@@ -259,6 +260,15 @@ use the repository license only as a fallback. Do not relicense other components
 The trusted completion entry maps only #22 to this exact version/SHA, still gated
 on actual successful Gallery publish and verification. No upload or issue closure
 has occurred; production workflow integration into master remains pending.
+
+CI source selection now pins each unchanged module's maintained development ref
+to a full SHA and records the identity with test artifacts. Component/release runs
+and changed module sources use the actual proposal snapshot; cross-component
+changes add coverage. Never substitute an unreviewed passing feature ref for a
+maintained baseline. Six component repair drafts #40–45 remain separate from this
+automation branch. Their review-only combined hosted matrix passes all 22 module/OS
+jobs; maintained baselines still fail until those repairs land. See
+docs/ci-build-repairs.md and docs/ci-matrix-verified.json for exact evidence.
 
 `scripts/gallery/Set-GalleryApiKey.ps1` is an owner-operated setup/rotation helper.
 It resolves account/secret names through Get-ReleaseConfig.ps1 and delegates hidden
