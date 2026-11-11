@@ -1,7 +1,0 @@
-version: 1.0.{build}
-build_script:
-- pwsh: >-
-    Install-Module -Name Pester -Force;
-    Import-Module Pester;
-    cd .\Bookmarks\;
-    Invoke-Pester;
