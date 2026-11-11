@@ -1,7 +1,6 @@
 # Currency-Conv - Currecny converter
 
 [![PowerShell 3](https://dev.azure.com/Stadub-Gh/PowershellScripts/_apis/build/status/Currency-Conv?branchName=master)](https://dev.azure.com/Stadub-Gh/PowershellScripts/_build/latest?definitionId=5&branchName=master)
-[![PowerShell 4, 5 & Core on Windows build](https://ci.appveyor.com/api/projects/status/7tmg8wy30ipanjsd?svg=true)](https://ci.appveyor.com/project/stadub/powershellscripts)
 [![Linux & MacOS build](https://img.shields.io/travis/stadub/PowershellScripts/master.svg?label=linux/macos+build)](https://travis-ci.org/stadub/PowershellScripts)
 [![latest version](https://img.shields.io/powershellgallery/v/Currency-Conv.svg?label=latest+version)](https://www.powershellgallery.com/packages/Currency-Conv/)
 [![downloads](https://img.shields.io/powershellgallery/dt/Currency-Conv.svg?label=downloads)](https://www.powershellgallery.com/packages/Currency-Conv)
