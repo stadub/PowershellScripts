@@ -234,3 +234,7 @@ actual successful Gallery publish and exact downloaded package verification.
 Completion mappings belong to trusted automation on master, keyed by repository,
 module, exact version and full release SHA; never derive them from dispatch issue
 numbers or release-branch code. See docs/release-pipeline.md for rollout blockers.
+
+All five Gallery package paths now follow `<module source directory>/out`, including
+`7Zip/out` and `Currency-Conv/out`. The configured latest release snapshots must
+contain reviewed output there; never fall back to publishing module source roots.

@@ -37,8 +37,8 @@ It never checks out a development ref for publishing. The routes are:
 | Module | Release branch | Package directory |
 | --- | --- | --- |
 | Bookmarks | Bookmarks/release/latest | Bookmarks/out |
-| 7zip-Archive | 7-Zip/release/latest | 7Zip |
-| Currency-Conv | Currency-Conv/release/latest | Currency-Conv |
+| 7zip-Archive | 7-Zip/release/latest | 7Zip/out |
+| Currency-Conv | Currency-Conv/release/latest | Currency-Conv/out |
 | Base64String | base64String/release/latest | Shared-Functions/Base64String/out |
 | Pipe | Pipe/release/latest | Shared-Functions/Pipe/out |
 
@@ -48,13 +48,17 @@ branch. An owner must establish reviewed snapshots there before those modules ca
 deploy; the workflow fails closed if either ref is missing. Existing numbered
 branches remain historical baselines, not fallback publication sources.
 
-`PackagePath` describes repository layout inside the selected release snapshot.
-Base64String and Pipe live under Shared-Functions and have flat out/ packages.
-Bookmarks also has out/. The reviewed numbered 7Zip and Currency-Conv snapshots
-instead use their module directories as the package roots. Their new latest
-snapshots must preserve that reviewed layout or update the configuration alongside
-a separately reviewed packaging change. A branch named latest does not imply a
-directory named latest, nor does it make a development checkout publishable.
+`PackagePath` follows one rule for every configured module:
+**<module source directory>/out** within the reviewed release snapshot. The nested
+Shared-Functions prefix remains part of Base64String's and Pipe's source layout.
+Staging never falls back to source files beside out/ when a package is missing.
+
+The historical numbered 7Zip and Currency-Conv snapshots used their module
+directories directly. Their new latest snapshots must instead contain reviewed
+`7Zip/out` and `Currency-Conv/out` packages with matching source/manifest bytes.
+Preparing those release snapshots remains a rollout prerequisite; this automation
+change does not generate or commit release artifacts into development source.
+A branch named latest does not imply a directory named latest.
 
 `GallerySecret = 'PSGALLERY_API_KEY'` is the secret's **name**, not its value. To set
 it up, the owner opens repository Settings -> Environments -> powershell-gallery

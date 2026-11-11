@@ -19,8 +19,8 @@ try {
     $env:GITHUB_STEP_SUMMARY = ''
     $expectedConfigs = @{
         Bookmarks = @('Bookmarks/release/latest', 'Bookmarks/out', 'Bookmarks.psd1', 'Stadub', 'PSGALLERY_API_KEY')
-        '7zip-Archive' = @('7-Zip/release/latest', '7Zip', '7zip-Archive.psd1', 'Stadub', 'PSGALLERY_API_KEY')
-        'Currency-Conv' = @('Currency-Conv/release/latest', 'Currency-Conv', 'Currency-Conv.psd1', 'Stadub', 'PSGALLERY_API_KEY')
+        '7zip-Archive' = @('7-Zip/release/latest', '7Zip/out', '7zip-Archive.psd1', 'Stadub', 'PSGALLERY_API_KEY')
+        'Currency-Conv' = @('Currency-Conv/release/latest', 'Currency-Conv/out', 'Currency-Conv.psd1', 'Stadub', 'PSGALLERY_API_KEY')
         Base64String = @('base64String/release/latest', 'Shared-Functions/Base64String/out', 'Base64String.psd1', 'MiniModules', 'PSGALLERY_API_KEY')
         Pipe = @('Pipe/release/latest', 'Shared-Functions/Pipe/out', 'Pipe.psd1', 'MiniModules', 'PSGALLERY_API_KEY')
     }
@@ -29,6 +29,20 @@ try {
         if ((@($config.ReleaseBranch, $config.PackagePath, $config.Manifest, $config.GalleryAccount, $config.GallerySecret) -join '|') -cne ($expectedConfigs[$name] -join '|')) {
             throw "Unexpected release configuration for $name"
         }
+    }
+    # Every module must stage out/, even when a source manifest exists beside it.
+    foreach ($name in $expectedConfigs.Keys) {
+        $config = & "$scripts/Get-ReleaseConfig.ps1" -Module $name
+        $layoutRoot = Join-Path $fixture "layout-$name"
+        $moduleSource = Join-Path $layoutRoot ($config.PackagePath -replace '/out$', '')
+        New-Item $moduleSource -ItemType Directory -Force | Out-Null
+        $fixtureManifest = "@{ ModuleVersion = '1.2.0'; GUID = 'fb5ca217-8826-4570-8241-10a37250331d'; Author = 'Test'; Description = 'Offline layout fixture' }"
+        $fixtureManifest | Set-Content (Join-Path $moduleSource $config.Manifest)
+        Assert-Throws { & "$scripts/Build-GalleryPackage.ps1" -Module $name -SourceRoot $layoutRoot -OutputRoot "$fixture/layout-stage-$name" -ExpectedVersion 1.2.0 } '*Release package is missing*'
+        $releaseOut = New-Item (Join-Path $layoutRoot $config.PackagePath) -ItemType Directory -Force
+        $fixtureManifest | Set-Content (Join-Path $releaseOut $config.Manifest)
+        & "$scripts/Build-GalleryPackage.ps1" -Module $name -SourceRoot $layoutRoot -OutputRoot "$fixture/layout-stage-$name" -ExpectedVersion 1.2.0
+        & "$scripts/Assert-SourcePackage.ps1" -Module $name -SourceRoot $layoutRoot -PackageRoot "$fixture/layout-stage-$name"
     }
     $source = Join-Path $fixture 'source'
     $package = Join-Path $source 'Shared-Functions/Base64String/out'
