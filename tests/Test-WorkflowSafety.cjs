@@ -40,3 +40,11 @@ for (const forbidden of ['secrets.', 'secrets[', 'issues: write', 'contents: wri
 assert.ok(moduleValidation.includes('inputs.source_sha') && moduleValidation.includes('inputs.automation_sha'));
 assert.ok(moduleValidation.includes('Invoke-ModuleTests.ps1'));
 console.log('Module source validation remains read-only and tests exact source commits.');
+
+const ciWorkflow = fs.readFileSync('.github/workflows/ci.yml','utf8');
+assert.ok(ciWorkflow.includes('Resolve-CiSources.ps1'));
+assert.ok(ciWorkflow.includes('ref: ${{ matrix.source_sha }}'));
+assert.ok(ciWorkflow.includes('-SourceRoot ./module-source'));
+assert.ok(ciWorkflow.includes('source-identity.json'));
+assert.ok(!ciWorkflow.includes('continue-on-error: true'));
+console.log('Aggregate CI tests and records exact selected source commits without allow-failure.');
