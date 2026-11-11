@@ -27,13 +27,42 @@ Reviewed on 2026-11-11. Live remote tips matched the local remote-tracking refs;
 `master` was `b3968f6`. These are historical findings, not substitutes for checking
 the current remote state.
 
-| Module | Remote branches | Findings relative to the reviewed master |
-| --- | --- | --- |
-| 7Zip | `7Zip/develop`, `7Zip/release/1.0`, `7-Zip/release/1.1` | Development recreated from release 1.1 plus these instructions. Release 1.1 module source matches the reviewed master; release 1.0 is older. |
-| Bookmarks | `Bookmarks/develop`, `Bookmarks/release/v2.1`, `Bookmarks/release/latest` | Development source matches master at 2.2.0. Release latest adds packaged output with different shared helpers. Version 2.1 is an older merged baseline. |
-| Currency-Conv | `Currency-Conv/develop`, `Currency-Conv/release/1.0`, `Currency-Conv/release/1.5` | Development recreated from release 1.5 plus these instructions. Release 1.5 module source matches the reviewed master; version 1.0 predates caching changes. |
-| Pipe | `Pipe/develop`, `Pipe/release/latest` | Development source matches master; documentation differs. Release output contains functional packaging and alias changes absent from source. |
-| Base64String | `base64tring/develop`, `base64String/release/latest` | Both contain version 1.2.0 decoder changes absent from master's 1.1.0. Their module source files match each other. Preserve the actual remote spelling `base64tring`. |
+| Module / source | Development / feature PR target | Reviewed release source | Findings |
+| --- | --- | --- | --- |
+| 7Zip (`7Zip/7zip-Archive.psd1`, Gallery: 7zip-Archive) | `7Zip/develop` | `7-Zip/release/1.1`; historical `7Zip/release/1.0` | Development recreated from release 1.1; module source matches reviewed master. |
+| Bookmarks (`Bookmarks/Bookmarks.psd1`) | `Bookmarks/develop` | `Bookmarks/release/latest`; historical `Bookmarks/release/v2.1` | Development source matches master 2.2.0; release output has different shared helpers. |
+| Currency-Conv (`Currency-Conv/Currency-Conv.psd1`) | `Currency-Conv/develop` | `Currency-Conv/release/1.5`; historical `Currency-Conv/release/1.0` | Development recreated from release 1.5; source matches reviewed master. |
+| Pipe (`Shared-Functions/Pipe/Pipe.psd1`) | `Pipe/develop` | `Pipe/release/latest` | Release output has functional packaging/alias changes absent from source. |
+| Base64String (`Shared-Functions/Base64String/Base64String.psd1`) | `base64tring/develop` | `base64String/release/latest` | Both retain 1.2.0 decoder changes absent from master; preserve the actual spelling `base64tring`. |
+| FolderEncoder (`FolderEncoder/FolderEncoder.psd1`) | `FolderEncoder/develop` | None; publication not configured | New development branch from master `b3968f6`; no module-specific release ref. |
+| Shell-Functions (`Shell-Functions/Shell-Function.psd1`) | `Shell-Functions/develop` | None; publication not configured | New development branch from master `b3968f6`; no module-specific release ref. |
+| Uninstall (`Uninstall.psm1`, standalone root module) | `Uninstall/develop` | None; publication not configured | New development branch from master `b3968f6`; no module-specific release ref. |
+
+The inventory includes manifest modules and standalone `.psm1` modules, excluding
+`out/` package duplicates. EXportGithub and Git-Functions contain plain scripts,
+so they have no module development branch. Shell-Functions is a manifest module
+whose current manifest loads no implementation and exports no commands;
+FolderEncoder's manifest references a missing `Functions.ps1`. These existing
+limitations were found by static inspection, not fixed or runtime-tested here.
+Uninstall exports `Uninstall-Application` and uses Windows registry/msiexec APIs.
+
+FolderEncoder, Shell-Functions, and Uninstall were newly branched from the latest
+integrated master source (`b3968f6`) on 2026-11-11, not recovered deleted tips.
+Their module histories and all live release refs were reviewed; no newer
+module-specific source or release package was found. Source files are unchanged.
+
+The release policy is: feature/issue PR -> the module's development branch ->
+reviewed release snapshot/package -> PowerShell Gallery. Selectively port reviewed
+module changes to the established release source, including version/release notes
+and package validation; never publish directly from a feature/development branch.
+For modules without a release branch, establish and review packaging separately
+before configuring publication; do not invent release refs or deploy entries.
+
+Development branches do not imply automation support. The current CI migration
+and Gallery deployment configuration support only Bookmarks, 7zip-Archive,
+Currency-Conv, Base64String, and Pipe. FolderEncoder, Shell-Functions, and Uninstall
+are not configured for CI or Gallery publishing. Expanding that coverage requires
+separate work; this branch setup does not activate workflows or publish packages.
 
 ## Code and packaging concerns to verify
 
