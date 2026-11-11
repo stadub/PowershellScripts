@@ -14,15 +14,23 @@
 ## Commands
 
 ```powershell
-ConvertFrom-Base64String
-  [-EncodedValue] <string>
-  [bool]$UrlSafe (default- $false) - Set to produce url safe string
-
-
-ConvertTo-Base64String
-  [-Value] <string>
-
+ConvertTo-Base64String [-Value] <string> [[-UrlSafe] <bool>] [-Encoding <string>]
+ConvertFrom-Base64String [-EncodedValue] <string> [-Encoding <string>]
 ```
+
+Both commands default to `Unicode` (UTF-16 little-endian), preserving existing
+output. Use `-Encoding UTF8` for UTF-8 services. Other supported values are
+`BigEndianUnicode` (UTF-16 big-endian), `UTF32` (little-endian), and `ASCII`.
+No byte order mark is added. Base64 does not identify its text encoding: choose
+the same encoding in both directions. Text conversion uses .NET's replacement
+fallback for characters or byte sequences that the chosen encoding cannot represent.
+
+`UrlSafe` belongs to the encoder: `$true` replaces `+` and `/` with `-` and `_`
+and removes padding. The decoder accepts either alphabet and padded or fully
+unpadded input automatically. Spaces, tabs, CR and LF are ignored; invalid
+characters, impossible lengths, misplaced or incomplete padding raise an error.
+Empty input produces an empty string. Each pipeline item is converted separately.
+The existing `ConvertTo-Base64String "text" $true` positional form is preserved.
 
 ## Aliases
 
@@ -57,6 +65,15 @@ Convert text from Base 64 String:
 /> echo "dABlAHgAdAA" | decode64
 ```
 
+UTF-8 interoperability (issue #22):
+
+```powershell
+$text = ".d_'+♂¢£"
+$encoded = ConvertTo-Base64String $text -Encoding UTF8
+$encoded # LmRfJyvimYLCosKj
+$encoded | ConvertFrom-Base64String -Encoding UTF8 # returns $text
+```
+
 ## Instalation
 
 Powershell Gallery:
@@ -81,11 +98,23 @@ Import-Module Base64String
 
 ## Changelog
 
+### [v1.3.0] Nov 11, 2026
+
+* Add explicit UTF8, BigEndianUnicode, UTF32 and ASCII encoding options while
+  preserving the default UTF-16 little-endian behavior.
+* Correct standard and URL-safe Base64 padding validation consistently on
+  .NET Framework and modern .NET; reject malformed input.
+* Support empty strings and per-item pipeline conversion, preserving existing aliases.
+* Include 34 regression cases for encoding interoperability and issue #22.
+* Rebuild the reviewed release package reproducibly from matching source files.
+* Include the explicitly selected module-local WTFPL license.
+
+
 ### [v1.2.0] Oct 8, 2019
 
 * fix decidong ''1'' ending text
 
-### [v1.1.0] Spet 17, 2019
+### [v1.1.0] Sept 17, 2019
 
 * Added support url safe Base64 strings
 
@@ -93,7 +122,7 @@ Import-Module Base64String
 ConvertTo-Base64String -Value $text -UrlSafe $true
 ```
 
-### [v1.0.0](https://github.com/stadub/PowershellScripts/releases/tag/v0.10.0) Spep 12, 2019
+### [v1.0.0] Sept 12, 2019
 
 * Created functions
 

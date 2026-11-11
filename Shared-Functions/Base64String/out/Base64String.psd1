@@ -2,7 +2,7 @@
 
 @{
 
-    ModuleVersion = '1.2.0'
+    ModuleVersion = '1.3.0'
         
     # ID used to uniquely identify this module
     GUID = 'e7bfdc17-9739-4bce-80f3-8eb90d7bc836'
@@ -44,7 +44,7 @@
             Tags = @('Base64String','Base64', 'encode','decode', 'encode64', 'decode64', 'encodeText')
     
             # A URL to the license for this module.
-            LicenseUri = 'http://opensource.org/licenses/MIT'
+            LicenseUri = 'http://www.wtfpl.net/txt/copying/'
     
             # A URL to the main website for this project.
             ProjectUri = 'https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Base64String'
@@ -54,7 +54,10 @@
     
             # ReleaseNotes of this module
             ReleaseNotes = '
-                * fix decidong ''1'' ending text
+                * Add explicit text encoding options while preserving Unicode defaults.
+                * Correct Base64 padding validation on .NET Framework and modern .NET.
+                * Support empty strings and per-item pipeline conversion.
+                * Include encoding compatibility regressions for issue #22.
             '
     
         }
@@ -68,5 +71,3 @@
     # DefaultCommandPrefix = ''
     
     }
-    
-    
