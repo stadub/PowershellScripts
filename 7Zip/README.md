@@ -1,7 +1,6 @@
 # 7zip-Archive - 7zip archiver ps1 wrapper
 
  
-[![PowerShell 3](https://dev.azure.com/Stadub-Gh/PowershellScripts/_apis/build/status/7Zip?branchName=master)](https://dev.azure.com/Stadub-Gh/PowershellScripts/_build/latest?definitionId=4&branchName=master)
 <!-- [![Linux & MacOS build](https://img.shields.io/travis/stadub/PowershellScripts/master.svg?label=linux/macos+build)](https://travis-ci.org/stadub/PowershellScripts) -->
 [![latest version](https://img.shields.io/powershellgallery/v/7zip-Archive.svg?label=latest+version)](https://www.powershellgallery.com/packages/7zip-Archive)
 [![downloads](https://img.shields.io/powershellgallery/dt/7zip-Archive.svg?label=downloads)](https://www.powershellgallery.com/packages/7zip-Archive)

@@ -1,0 +1,168 @@
+{
+  "date": "2026-11-12",
+  "repository": "stadub/PowershellScripts",
+  "pipelinesBefore": [
+    {
+      "id": 3,
+      "name": "Bookmarks",
+      "queueStatus": "enabled",
+      "repository": "stadub/PowershellScripts",
+      "repositoryType": "GitHub",
+      "yamlPath": "/Bookmarks/azure-pipelines.yml",
+      "triggerTypes": [
+        "continuousIntegration",
+        "pullRequest"
+      ]
+    },
+    {
+      "id": 4,
+      "name": "7Zip",
+      "queueStatus": "enabled",
+      "repository": "stadub/PowershellScripts",
+      "repositoryType": "GitHub",
+      "yamlPath": "/7Zip/azure-pipelines.yml",
+      "triggerTypes": [
+        "continuousIntegration",
+        "pullRequest"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Currency-Conv",
+      "queueStatus": "enabled",
+      "repository": "stadub/PowershellScripts",
+      "repositoryType": "GitHub",
+      "yamlPath": "/Currency-Conv/azure-pipelines.yml",
+      "triggerTypes": [
+        "continuousIntegration",
+        "pullRequest"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "SharedFunctions",
+      "queueStatus": "enabled",
+      "repository": "stadub/PowershellScripts",
+      "repositoryType": "GitHub",
+      "yamlPath": "azure-pipelines.yml",
+      "triggerTypes": [
+        "continuousIntegration",
+        "pullRequest"
+      ]
+    }
+  ],
+  "removedYaml": [
+    "azure-pipelines.yml",
+    "7Zip/azure-pipelines.yml",
+    "Bookmarks/azure-pipelines.yml",
+    "Currency-Conv/azure-pipelines.yml"
+  ],
+  "removedBadgeFrom": [
+    "7Zip/README.md",
+    "Bookmarks/README.md",
+    "Currency-Conv/README.md",
+    "FolderEncoder/README.md",
+    "Shared-Functions/Base64String/README.md",
+    "Shared-Functions/Pipe/README.md",
+    "Bookmarks/out/README.md"
+  ],
+  "hooksBefore": [
+    {
+      "id": 104335530,
+      "name": "web",
+      "active": true,
+      "host": "readthedocs.org"
+    },
+    {
+      "id": 128539623,
+      "name": "web",
+      "active": true,
+      "host": "www.codefactor.io"
+    }
+  ],
+  "externalChange": "Azure Pipelines installation1179244 and AppVeyor installation1178482 uninstalled after verifying each selected only stadub/PowershellScripts",
+  "historicalChecks": "Preserved; no synthetic status success or result deletion",
+  "githubAppsBefore": [
+    "AppVeyor",
+    "Azure Pipelines",
+    "Codecov",
+    "GitHub Learning Lab",
+    "Vercel"
+  ],
+  "githubAppsAfter": [
+    "Codecov",
+    "GitHub Learning Lab",
+    "Vercel"
+  ],
+  "singleRepositoryConfirmation": "Each uninstall confirmation explicitly identified 1 repository",
+  "removedAppveyorBadgeFrom": [
+    "Bookmarks/out/README.md"
+  ],
+  "remainingExternalAccess": "Owner reports no Azure DevOps or AppVeyor access; internal definitions, service connections and build history not changed",
+  "appveyorProjectsAfterDisconnect": [
+    {
+      "projectId": 584025,
+      "accountName": "stadub",
+      "name": "Bookmarks",
+      "slug": "powershellscripts",
+      "repositoryName": "stadub/PowershellScripts",
+      "repositoryType": "gitHub",
+      "skipBranchesWithoutAppveyorYml": false,
+      "isDisabled": null
+    },
+    {
+      "projectId": 610315,
+      "accountName": "stadub",
+      "name": "SharedFunctions",
+      "slug": "powershellscripts-v9ncj",
+      "repositoryName": "stadub/PowershellScripts",
+      "repositoryType": "gitHub",
+      "skipBranchesWithoutAppveyorYml": false,
+      "isDisabled": null
+    },
+    {
+      "projectId": 607412,
+      "accountName": "stadub",
+      "name": "Currency-Conv",
+      "slug": "powershellscripts-7m2fk",
+      "repositoryName": "stadub/PowershellScripts",
+      "repositoryType": "gitHub",
+      "skipBranchesWithoutAppveyorYml": false,
+      "isDisabled": null
+    },
+    {
+      "projectId": 607276,
+      "accountName": "stadub",
+      "name": "7Zip",
+      "slug": "powershellscripts-yvvt0",
+      "repositoryName": "stadub/PowershellScripts",
+      "repositoryType": "gitHub",
+      "skipBranchesWithoutAppveyorYml": false,
+      "isDisabled": null
+    }
+  ],
+  "hooksAfter": [
+    {
+      "id": 104335530,
+      "name": "web",
+      "active": true,
+      "host": "readthedocs.org"
+    },
+    {
+      "id": 128539623,
+      "name": "web",
+      "active": true,
+      "host": "www.codefactor.io"
+    }
+  ],
+  "resultRemoval": {
+    "supportedDeleteEndpoint": false,
+    "externalHistoricalChecksDeleted": false,
+    "actionsRunsOrArtifactsDeleted": false,
+    "syntheticStatusesPosted": false,
+    "docs": [
+      "https://docs.github.com/en/rest/checks",
+      "https://docs.github.com/en/rest/commits/statuses"
+    ]
+  }
+}

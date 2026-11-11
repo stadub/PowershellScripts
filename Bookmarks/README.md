@@ -1,6 +1,5 @@
 # Bookmarks - Directory bookmarks
 
-[![PowerShell 3](https://Stadub-Gh.visualstudio.com/PowershellScripts/_apis/build/status/Bookmarks?branchName=master)](https://Stadub-Gh.visualstudio.com/PowershellScripts/_build/latest?definitionId=3?branchName=master)
 [![Linux & MacOS build](https://img.shields.io/travis/stadub/PowershellScripts/master.svg?label=linux/macos+build)](https://travis-ci.org/stadub/PowershellScripts)
 [![latest version](https://img.shields.io/powershellgallery/v/Bookmarks.svg?label=latest+version)](https://www.powershellgallery.com/packages/Bookmarks/)
 [![downloads](https://img.shields.io/powershellgallery/dt/Bookmarks.svg?label=downloads)](https://www.powershellgallery.com/packages/Bookmarks)

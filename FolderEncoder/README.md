@@ -4,7 +4,6 @@ Used as backups encoding solution.
 
 Encoding performed with 7z password protection
 
-[![PowerShell 3](https://Stadub-Gh.visualstudio.com/PowershellScripts/_apis/build/status/Bookmarks?branchName=master)](https://Stadub-Gh.visualstudio.com/PowershellScripts/_build/latest?definitionId=3?branchName=master)
 [![Linux & MacOS build](https://img.shields.io/travis/stadub/PowershellScripts/master.svg?label=linux/macos+build)](https://travis-ci.org/stadub/PowershellScripts)
 [![latest version](https://img.shields.io/powershellgallery/v/FolderEncoder.svg?label=latest+version)](https://www.powershellgallery.com/packages/FolderEncoder/)
 [![downloads](https://img.shields.io/powershellgallery/dt/FolderEncoder.svg?label=download)](https://www.powershellgallery.com/packages/FolderEncoder)

@@ -275,3 +275,12 @@ It resolves account/secret names through Get-ReleaseConfig.ps1 and delegates hid
 key entry/encryption to gh. Never pass keys in arguments, files, environment values
 or chat. -WhatIf performs no network or update. It is not called by deployment
 workflows; implementation/tests use mocked gh and must not change live secrets.
+
+On 2026-11-12 the owner explicitly authorized Azure DevOps and AppVeyor removal.
+Both GitHub app installations were uninstalled after verifying each selected only
+stadub/PowershellScripts (one repository each). This branch removes remaining Azure
+YAML and obsolete status badges; approved AppVeyor YAML removal is preserved.
+The owner has no external service access. Internal definitions/history remain;
+GitHub has no supported individual deletion for their old check/status results.
+Preserve historical evidence and replacement Actions results. See
+docs/ci/legacy-ci-removal/README.md for exact scope and limitations.

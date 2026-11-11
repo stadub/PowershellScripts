@@ -19,15 +19,13 @@ protected environment secrets. The selected key alone is passed to the upload
 process as `PSGALLERY_API_KEY`. Do not merge a duplicate sibling publishing workflow.
 
 
-Retain the sibling CI owner's README/badge changes and legacy YAML deletions as a
-separate reviewed cutover. This branch intentionally does not delete them. The
-AppVeyor audit reports no required branch contexts, rulesets, or AppVeyor webhooks;
-historical failed statuses on PR #28 are not required checks. External AppVeyor
-projects 610315 SharedFunctions (`powershellscripts-v9ncj`) and 607412 Currency-Conv
-(`powershellscripts-7m2fk`) still point here and have `skipBranchesWithoutAppveyorYml`
-false. The audit lacked AppVeyor login/token and GitHub app-installation enumeration
-access. An owner must disable those external triggers; see that owner's
-`docs/ci/appveyor-cutover`. Do not claim YAML deletion disables external services.
+The owner subsequently explicitly authorized removing Azure DevOps and AppVeyor.
+Both GitHub app installations were removed after verifying each selected only this
+repository. This branch removes the four remaining Azure YAML definitions and
+obsolete Azure/AppVeyor badges; the approved AppVeyor YAML deletion is preserved.
+The owner lacks external service access, so internal definitions/history remain.
+GitHub provides no supported individual deletion for their historical check/status
+results. See [exact removal and limitations](ci/legacy-ci-removal/README.md).
 Only require `CI status` after a real hosted run succeeds on each maintained branch.
 
 ## Inputs and behavior

@@ -102,8 +102,11 @@ those proposed repairs, not a claim that automation PR #31 is fully green.
 
 The already approved AppVeyor removal from master was synced into the automation
 branch; this task did not edit master. Legacy external AppVeyor/Azure service
-statuses are distinct from GitHub Actions and may still require owner-side cutover
-access. This work neither re-enables old YAML nor hides such statuses.
+statuses are distinct from GitHub Actions. The owner subsequently authorized
+[repository-side service removal](ci/legacy-ci-removal/README.md): both single-repo
+GitHub app installations are removed, with YAML/badge cleanup in this branch.
+Historical results remain because GitHub has no supported deletion operation;
+external definitions/history remain inaccessible. No results were masked as success.
 
 No release out/ package, Gallery routing, environment restriction, secret or issue
 completion was changed by these source repairs. Base64String 1.3.0 release evidence
