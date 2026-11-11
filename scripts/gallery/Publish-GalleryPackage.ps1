@@ -7,6 +7,9 @@ param(
 
 $ErrorActionPreference = 'Stop'
 $config = & (Join-Path $PSScriptRoot 'Get-ReleaseConfig.ps1') -Module $Module
+if ($env:PSGALLERY_ACCOUNT -cne $config.GalleryAccount) {
+    throw "Gallery account mismatch: $Module requires $($config.GalleryAccount). Select its configured credential route."
+}
 $package = Join-Path (Resolve-Path $PackageRoot).Path $Module
 $metadata = Import-PowerShellDataFile (Join-Path $package $config.Manifest)
 if ([version]$metadata.ModuleVersion -ne $ExpectedVersion) {

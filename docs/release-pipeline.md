@@ -11,10 +11,11 @@ worktree edit was performed while implementing this branch.
 read-only `psgallery-deploy` worktree. The sibling files were uncommitted and have
 continued owner activity: merge this integrated implementation deliberately, not
 both its workflow and the sibling `publish-gallery.yml`. Preserve the five publication
-routes and Gallery account ownership. The single environment secret interface is
-`PSGALLERY_API_KEY`; its owner must have publishing rights to the selected package
-(Stadub for Bookmarks/7zip-Archive/Currency-Conv; MiniModules for Base64String/Pipe).
-Do not install a second publishing workflow using different secret names.
+routes and Gallery account ownership. Public usernames and the module-to-account
+mapping live in `scripts/gallery/Get-ReleaseConfig.ps1`; API keys live in separate
+protected environment secrets. The selected key alone is passed to the upload
+process as `PSGALLERY_API_KEY`. Do not merge a duplicate sibling publishing workflow.
+
 
 Retain the sibling CI owner's README/badge changes and legacy YAML deletions as a
 separate reviewed cutover. This branch intentionally does not delete them. The
@@ -60,12 +61,45 @@ Preparing those release snapshots remains a rollout prerequisite; this automatio
 change does not generate or commit release artifacts into development source.
 A branch named latest does not imply a directory named latest.
 
-`GallerySecret = 'PSGALLERY_API_KEY'` is the secret's **name**, not its value. To set
-it up, the owner opens repository Settings -> Environments -> powershell-gallery
--> Environment secrets -> Add environment secret, enters that name and securely
-supplies the Gallery API key. Preserve master-only deployment restrictions and
-configure independent reviewers as described below. Live reinspection still found
-zero secrets. The key must authorize the selected module's Gallery account.
+### Gallery accounts and credential setup
+
+Live public package pages checked on 2026-11-11 list these **Owners**, rather than
+relying on the module manifest's Author field:
+
+| Module | Gallery owner / configured deployment account | Environment secret |
+| --- | --- | --- |
+| [Bookmarks](https://www.powershellgallery.com/packages/Bookmarks/3.0.1) | Stadub | PSGALLERY_API_KEY_STADUB |
+| [7zip-Archive](https://www.powershellgallery.com/packages/7zip-Archive/1.1.0) | Stadub | PSGALLERY_API_KEY_STADUB |
+| [Currency-Conv](https://www.powershellgallery.com/packages/Currency-Conv/1.0.2) | Stadub | PSGALLERY_API_KEY_STADUB |
+| [Base64String](https://www.powershellgallery.com/packages/Base64String/1.2.0) | MiniModules | PSGALLERY_API_KEY_MINIMODULES |
+| [Pipe](https://www.powershellgallery.com/packages/Pipe/1.0.0) | MiniModules | PSGALLERY_API_KEY_MINIMODULES |
+
+Usernames are public configuration, not secrets. Each module names its
+`GalleryAccount`; the account-to-secret-name table in the same script supplies
+`GallerySecret`. Neither account nor secret name is a dispatch input. A trusted,
+credential-free step resolves the module's account and secret name, and the upload
+step uses `secrets[steps.account.outputs.secret]`. It receives only that key as
+`PSGALLERY_API_KEY` and the configured username as `PSGALLERY_ACCOUNT`. The helper
+rejects an absent/mismatched username or absent key; there is no generic-key or
+other-account fallback. Reviewable job summaries record account/secret **names**,
+never values. Dry-runs and non-upload steps never receive either API key.
+
+The owner opens repository Settings -> Environments -> powershell-gallery ->
+Environment secrets -> Add environment secret and creates both named secrets,
+using a Gallery key generated while signed into the corresponding account. Scope
+the Stadub key to its three packages and the MiniModules key to its two packages,
+with suitable push/update permissions and expiry. Do not replace one account's key
+when deploying another module. The previous generic `PSGALLERY_API_KEY` environment
+secret is not read by this workflow and need not be configured.
+
+Preserve master-only deployment restrictions and configure independent reviewers
+as described below. The last environment inspection found zero secrets; no secret
+was created, read or changed during this task. Public owner lookup confirms the
+mapping, not the identity or permissions of a secret's opaque API key. Gallery
+itself authenticates that key at upload. Publish-Module authenticates through the
+API key; a username or manifest Author field cannot switch accounts.
+See [Microsoft's ownership rules](https://learn.microsoft.com/en-us/powershell/gallery/how-to/publishing-packages/managing-package-owners?view=powershellget-3.x)
+and [scoped API key setup](https://learn.microsoft.com/en-us/powershell/gallery/how-to/managing-profile/creating-apikeys?view=powershellget-3.x).
 
 After integration into master and preparation of a tested release snapshot, open
 Actions -> Tested release and protected Gallery deployment -> Run workflow. Select
@@ -213,10 +247,11 @@ Do not bypass that guard or close manually without verifying deployment evidence
    (Free/Pro/Team support them only on public repos). A sole owner cannot provide
    an independent approval with self-review disabled; arrange a second trusted
    reviewer or document that organizational limitation before deployment.
-5. The owner must create **environment** secret `PSGALLERY_API_KEY` using GitHub's
-   settings UI or secure secret input; never print/paste it into code, logs, chat,
-   issue comments or command arguments. Use a scoped Gallery key with appropriate
-   package/account rights and expiry. Nothing here creates or changes secrets.
+5. The owner must create **environment** secrets `PSGALLERY_API_KEY_STADUB` and
+   `PSGALLERY_API_KEY_MINIMODULES` using GitHub's settings UI or secure secret input;
+   never print/paste their values into code, logs, chat, issue comments or command
+   arguments. Use each account's scoped Gallery key with appropriate package rights
+   and expiry. Nothing here creates or changes secrets.
 6. Only an explicitly authorized deployment run should set `dry_run=false` on
    master. Approve its environment after reviewing run SHA, version and hashes.
    Confirm Gallery verification and mapped issue evidence afterward. This task

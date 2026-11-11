@@ -3,6 +3,7 @@ $ErrorActionPreference = 'Stop'
 $scripts = Join-Path $PSScriptRoot '../scripts/gallery'
 $fixture = Join-Path ([IO.Path]::GetTempPath()) ([guid]::NewGuid().ToString())
 $oldKey = $env:PSGALLERY_API_KEY
+$oldAccount = $env:PSGALLERY_ACCOUNT
 $oldMarker = $env:GALLERY_TEST_MARKER
 $oldMode = $env:GALLERY_TEST_MODE
 $oldSummary = $env:GITHUB_STEP_SUMMARY
@@ -18,11 +19,11 @@ try {
     # Keep offline fixture runs out of any enclosing Actions job summary.
     $env:GITHUB_STEP_SUMMARY = ''
     $expectedConfigs = @{
-        Bookmarks = @('Bookmarks/release/latest', 'Bookmarks/out', 'Bookmarks.psd1', 'Stadub', 'PSGALLERY_API_KEY')
-        '7zip-Archive' = @('7-Zip/release/latest', '7Zip/out', '7zip-Archive.psd1', 'Stadub', 'PSGALLERY_API_KEY')
-        'Currency-Conv' = @('Currency-Conv/release/latest', 'Currency-Conv/out', 'Currency-Conv.psd1', 'Stadub', 'PSGALLERY_API_KEY')
-        Base64String = @('base64String/release/latest', 'Shared-Functions/Base64String/out', 'Base64String.psd1', 'MiniModules', 'PSGALLERY_API_KEY')
-        Pipe = @('Pipe/release/latest', 'Shared-Functions/Pipe/out', 'Pipe.psd1', 'MiniModules', 'PSGALLERY_API_KEY')
+        Bookmarks = @('Bookmarks/release/latest', 'Bookmarks/out', 'Bookmarks.psd1', 'Stadub', 'PSGALLERY_API_KEY_STADUB')
+        '7zip-Archive' = @('7-Zip/release/latest', '7Zip/out', '7zip-Archive.psd1', 'Stadub', 'PSGALLERY_API_KEY_STADUB')
+        'Currency-Conv' = @('Currency-Conv/release/latest', 'Currency-Conv/out', 'Currency-Conv.psd1', 'Stadub', 'PSGALLERY_API_KEY_STADUB')
+        Base64String = @('base64String/release/latest', 'Shared-Functions/Base64String/out', 'Base64String.psd1', 'MiniModules', 'PSGALLERY_API_KEY_MINIMODULES')
+        Pipe = @('Pipe/release/latest', 'Shared-Functions/Pipe/out', 'Pipe.psd1', 'MiniModules', 'PSGALLERY_API_KEY_MINIMODULES')
     }
     foreach ($name in $expectedConfigs.Keys) {
         $config = & "$scripts/Get-ReleaseConfig.ps1" -Module $name
@@ -90,10 +91,11 @@ try {
     }
     function global:Publish-Module {
         param($Path, $Repository, $NuGetApiKey, $ErrorAction)
-        if ($NuGetApiKey -ne 'offline-test-key') { throw 'Unexpected test key' }
+        if ($NuGetApiKey -cne "offline-key-$env:PSGALLERY_ACCOUNT") { throw 'Unexpected test key' }
         $Path | Set-Content $env:GALLERY_TEST_MARKER
     }
     $env:GALLERY_TEST_MARKER = Join-Path $fixture 'published.txt'
+    $env:PSGALLERY_ACCOUNT = 'MiniModules'
     Assert-Throws { & "$scripts/Publish-GalleryPackage.ps1" -Module Base64String -PackageRoot $stage -ExpectedVersion 1.3.0 } '*Artifact version*'
     $prereleaseManifest | Set-Content $manifest
     Assert-Throws { & "$scripts/Publish-GalleryPackage.ps1" -Module Base64String -PackageRoot $stage -ExpectedVersion 1.2.0 } '*stable manifest versions only*'
@@ -103,12 +105,14 @@ try {
     # fixtures contain no module code and the Gallery commands remain mocked.
     foreach ($name in $expectedConfigs.Keys) {
         $config = & "$scripts/Get-ReleaseConfig.ps1" -Module $name
+        $env:PSGALLERY_ACCOUNT = $config.GalleryAccount
         $accountPackage = Join-Path "$fixture/accounts" $name
         New-Item $accountPackage -ItemType Directory -Force | Out-Null
         "@{ ModuleVersion = '1.2.0'; GUID = 'fb5ca217-8826-4570-8241-10a37250331d'; Author = 'Test'; Description = 'Offline fixture' }" | Set-Content (Join-Path $accountPackage $config.Manifest)
         Assert-Throws { & "$scripts/Publish-GalleryPackage.ps1" -Module $name -PackageRoot "$fixture/accounts" -ExpectedVersion 1.2.0 } "*Configure the $($config.GallerySecret) secret for $($config.GalleryAccount)*"
     }
-    $env:PSGALLERY_API_KEY = 'offline-test-key'
+    $env:PSGALLERY_ACCOUNT = 'MiniModules'
+    $env:PSGALLERY_API_KEY = 'offline-key-MiniModules'
     $env:GALLERY_TEST_MODE = 'duplicate'
     Assert-Throws { & "$scripts/Publish-GalleryPackage.ps1" -Module Base64String -PackageRoot $stage -ExpectedVersion 1.2.0 } '*Gallery already has*'
     $env:GALLERY_TEST_MODE = 'newer'
@@ -124,10 +128,25 @@ try {
         if (-not (Test-Path $env:GALLERY_TEST_MARKER)) { throw 'Expected mocked publish call' }
         Remove-Item $env:GALLERY_TEST_MARKER
     }
+    # Both accounts and all five modules: verify selected-key use and reject
+    # mismatched/missing account routes even if a nonempty key is supplied.
+    $env:GALLERY_TEST_MODE = 'upgrade'
+    foreach ($name in $expectedConfigs.Keys) {
+        $config = & "$scripts/Get-ReleaseConfig.ps1" -Module $name
+        $env:PSGALLERY_API_KEY = "offline-key-$($config.GalleryAccount)"
+        $env:PSGALLERY_ACCOUNT = 'wrong-account'
+        Assert-Throws { & "$scripts/Publish-GalleryPackage.ps1" -Module $name -PackageRoot "$fixture/accounts" -ExpectedVersion 1.2.0 } '*Gallery account mismatch*'
+        if (Test-Path $env:GALLERY_TEST_MARKER) { throw 'Published despite incorrect account routing' }
+        $env:PSGALLERY_ACCOUNT = $config.GalleryAccount
+        & "$scripts/Publish-GalleryPackage.ps1" -Module $name -PackageRoot "$fixture/accounts" -ExpectedVersion 1.2.0
+        if ((Get-Content $env:GALLERY_TEST_MARKER) -notlike "*$name") { throw 'Wrong package selected for account' }
+        Remove-Item $env:GALLERY_TEST_MARKER
+    }
     Write-Host 'Offline packaging and publishing checks passed.'
 } finally {
     Remove-Item function:global:Find-Module, function:global:Publish-Module -ErrorAction SilentlyContinue
     $env:PSGALLERY_API_KEY = $oldKey
+    $env:PSGALLERY_ACCOUNT = $oldAccount
     $env:GALLERY_TEST_MARKER = $oldMarker
     $env:GALLERY_TEST_MODE = $oldMode
     $env:GITHUB_STEP_SUMMARY = $oldSummary

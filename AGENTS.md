@@ -210,9 +210,13 @@ The user requested separate worktrees for CI migration and publishing:
 Keep these changes in their separate worktrees. Do not extend the superseded
 Azure filter edits in issue worktrees. CI is read-only and receives no Gallery
 secret. Publishing defaults to dry-run and only the actual publish job receives
-`PSGALLERY_API_KEY` from the `powershell-gallery` GitHub environment. That
-environment has been created with deployments restricted to master; the API-key
-secret still needs to be configured by the owner. Never put that key in files or
+the selected API key as `PSGALLERY_API_KEY`. The `powershell-gallery` environment
+stores distinct `PSGALLERY_API_KEY_STADUB` and `PSGALLERY_API_KEY_MINIMODULES`
+secrets. `Get-ReleaseConfig.ps1` maps Bookmarks, 7zip-Archive and Currency-Conv to
+Stadub, and Base64String and Pipe to MiniModules; usernames and secret names are
+public configuration. The workflow has no generic-key or other-account fallback.
+The environment has deployments restricted to master; both account keys still
+need to be configured by the owner. Never put that key in files or
 chat. Do not publish packages while implementing or testing this automation.
 
 Local validation used portable PowerShell 7.7.0 and actionlint 1.7.12. Module

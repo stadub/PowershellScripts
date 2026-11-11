@@ -169,11 +169,22 @@ jobs:
         with:
           name: gallery-package
           path: stage
+      - name: Select configured Gallery account (no credentials)
+        id: account
+        shell: pwsh
+        env:
+          MODULE: ${{ inputs.module }}
+        run: |
+          $config = ./scripts/gallery/Get-ReleaseConfig.ps1 -Module $env:MODULE
+          "name=$($config.GalleryAccount)" >> $env:GITHUB_OUTPUT
+          "secret=$($config.GallerySecret)" >> $env:GITHUB_OUTPUT
+          "Gallery route: $env:MODULE -> $($config.GalleryAccount) ($($config.GallerySecret))" >> $env:GITHUB_STEP_SUMMARY
       - name: Publish tested package
         id: upload
         shell: pwsh
         env:
-          PSGALLERY_API_KEY: ${{ secrets.PSGALLERY_API_KEY }}
+          PSGALLERY_API_KEY: ${{ secrets[steps.account.outputs.secret] }}
+          PSGALLERY_ACCOUNT: ${{ steps.account.outputs.name }}
           MODULE: ${{ inputs.module }}
           VERSION: ${{ inputs.version }}
           SOURCE_SHA: ${{ inputs.source_sha }}

@@ -18,35 +18,41 @@ $configs = @{
         PackagePath = 'Bookmarks/out'
         Manifest = 'Bookmarks.psd1'
         GalleryAccount = 'Stadub'
-        GallerySecret = 'PSGALLERY_API_KEY'
     }
     '7zip-Archive' = @{
         ReleaseBranch = '7-Zip/release/latest'
         PackagePath = '7Zip/out'
         Manifest = '7zip-Archive.psd1'
         GalleryAccount = 'Stadub'
-        GallerySecret = 'PSGALLERY_API_KEY'
     }
     'Currency-Conv' = @{
         ReleaseBranch = 'Currency-Conv/release/latest'
         PackagePath = 'Currency-Conv/out'
         Manifest = 'Currency-Conv.psd1'
         GalleryAccount = 'Stadub'
-        GallerySecret = 'PSGALLERY_API_KEY'
     }
     Base64String = @{
         ReleaseBranch = 'base64String/release/latest'
         PackagePath = 'Shared-Functions/Base64String/out'
         Manifest = 'Base64String.psd1'
         GalleryAccount = 'MiniModules'
-        GallerySecret = 'PSGALLERY_API_KEY'
     }
     Pipe = @{
         ReleaseBranch = 'Pipe/release/latest'
         PackagePath = 'Shared-Functions/Pipe/out'
         Manifest = 'Pipe.psd1'
         GalleryAccount = 'MiniModules'
-        GallerySecret = 'PSGALLERY_API_KEY'
     }
 }
-[pscustomobject]$configs[$Module]
+# Gallery usernames are public configuration. API key values live only in the
+# protected environment; module selection never accepts an account/secret input.
+$accountSecrets = @{
+    Stadub = 'PSGALLERY_API_KEY_STADUB'
+    MiniModules = 'PSGALLERY_API_KEY_MINIMODULES'
+}
+$config = $configs[$Module]
+if (-not $accountSecrets.ContainsKey($config.GalleryAccount)) {
+    throw 'No credential route for the configured Gallery account'
+}
+$config.GallerySecret = $accountSecrets[$config.GalleryAccount]
+[pscustomobject]$config

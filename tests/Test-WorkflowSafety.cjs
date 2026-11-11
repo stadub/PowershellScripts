@@ -7,7 +7,7 @@ assert.match(jobs.publish,/environment: powershell-gallery/);
 assert.match(jobs.publish,/!inputs.dry_run && github.ref == 'refs\/heads\/master'/);
 assert.match(jobs.publish,/needs: \[package, test, release\]/);
 for(const [name,job] of Object.entries(jobs)) {
-  if(name !== 'publish') assert.ok(!job.includes('secrets.PSGALLERY_API_KEY'),`Secret in ${name}`);
+  if(name !== 'publish') assert.ok(!job.includes('secrets.') && !job.includes('secrets['),`Secret in ${name}`);
   if(name !== 'complete-issues') assert.ok(!job.includes('issues: write'),`Issue write in ${name}`);
 }
 for(const term of ['!inputs.dry_run',"github.ref == 'refs/heads/master'","needs.publish.result == 'success'","needs.publish.outputs.published == 'true'","needs.verify.result == 'success'","needs.verify.outputs.verified == 'true'"]) assert.ok(jobs['complete-issues'].includes(term),term);
@@ -16,3 +16,13 @@ assert.ok(!jobs['complete-issues'].includes('ref: ${{ inputs.source_sha }}'));
 assert.match(workflow,/dry_run:[\s\S]*?default: true/);
 assert.match(workflow,/cancel-in-progress: false/);
 console.log('Workflow safety: trusted closure, secret/permission scope, dry-run and success gates passed.');
+
+assert.match(jobs.publish,/PSGALLERY_API_KEY: \$\{\{ secrets\[steps\.account\.outputs\.secret\] \}\}/);
+assert.match(jobs.publish,/PSGALLERY_ACCOUNT: \$\{\{ steps\.account\.outputs\.name \}\}/);
+assert.ok(!workflow.includes('secrets.PSGALLERY_API_KEY'));
+assert.ok(!workflow.includes('inputs.account') && !workflow.includes('inputs.secret'));
+const selector = jobs.publish.split('      - name: Select configured Gallery account')[1].split('      - name: Publish tested package')[0];
+assert.ok(selector.includes('Get-ReleaseConfig.ps1'));
+assert.ok(selector.includes('config.GallerySecret') && selector.includes('config.GalleryAccount'));
+assert.ok(!selector.includes('secrets[') && !selector.includes('secrets.'));
+console.log('Credential safety: only selected configured account key reaches upload, with no fallback or dispatch override.');
