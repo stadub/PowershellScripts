@@ -242,3 +242,8 @@ numbers or release-branch code. See docs/release-pipeline.md for rollout blocker
 All five Gallery package paths now follow `<module source directory>/out`, including
 `7Zip/out` and `Currency-Conv/out`. The configured latest release snapshots must
 contain reviewed output there; never fall back to publishing module source roots.
+
+Use `scripts/gallery/New-ReleaseOutput.ps1` with reviewed source and a fresh output
+root to generate the flat out/ package. Review and commit it on the configured
+release branch; do not overwrite stale output automatically or substitute master.
+The workflow checks committed package hashes against an independent regeneration.

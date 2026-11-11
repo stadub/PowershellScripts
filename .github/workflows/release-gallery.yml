@@ -67,6 +67,9 @@ jobs:
           ./automation/scripts/gallery/Build-GalleryPackage.ps1 -Module $env:MODULE -SourceRoot ./source -OutputRoot ./stage -ExpectedVersion $env:VERSION
           ./automation/scripts/gallery/Assert-SourcePackage.ps1 -Module $env:MODULE -SourceRoot ./source -PackageRoot ./stage
           ./automation/scripts/gallery/Package-Evidence.ps1 -Module $env:MODULE -Version $env:VERSION -SourceSha $env:SHA -PackageRoot ./stage -EvidencePath ./stage/evidence.json
+          ./automation/scripts/gallery/New-ReleaseOutput.ps1 -Module $env:MODULE -SourceRoot ./source -OutputRoot ./generated -ExpectedVersion $env:VERSION
+          ./automation/scripts/gallery/Build-GalleryPackage.ps1 -Module $env:MODULE -SourceRoot ./generated -OutputRoot ./reproduced -ExpectedVersion $env:VERSION
+          ./automation/scripts/gallery/Package-Evidence.ps1 -Module $env:MODULE -Version $env:VERSION -SourceSha $env:SHA -PackageRoot ./reproduced -EvidencePath ./stage/evidence.json -Verify
       - uses: actions/upload-artifact@v7.0.2
         with:
           name: gallery-package

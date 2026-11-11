@@ -117,8 +117,9 @@ GitHub release first, then requests the protected environment before upload.
 Concurrency serializes each module, and never cancels an active publish.
 
 Staging copies only allowed flat package files plus LICENSE from the immutable
-snapshot. This reproduces reviewed release output; it does not recover historical
-PSM-Release.ps1 or regenerate stale out/ content implicitly. Every staged script,
+snapshot. The workflow independently regenerates output with New-ReleaseOutput.ps1
+and checks its staged hashes against the committed package. It does not recover
+historical PSM-Release.ps1 or silently replace stale committed output. Every staged script,
 module and manifest must match the corresponding source bytes (flattened names
 must be unique). Source/package divergence blocks release. Reconcile known Pipe
 and Bookmarks helper/manifest differences in their component release reviews.
@@ -149,6 +150,54 @@ runs manifest/import/export and installed regression checks. Only Gallery-genera
 PSGetModuleInfo.xml is excluded from the comparison. A different visible package,
 missing version, download error, hash change, or failed regression blocks completion.
 The `gallery-verification` artifact and run log contain verification evidence.
+
+## Populate a missing or stale out/ package
+
+`New-ReleaseOutput.ps1` builds the five configured packages from source; it does
+not publish, change versions, recover release-only fixes or overwrite old output.
+Prepare the module's reviewed release branch first. For Base64String, selectively
+port the already-reviewed #22 fix and regression suite from development, choose an
+unused version and update source manifest/release notes. For 7Zip/Currency-Conv,
+establish their configured latest release branches and review their source first.
+Do not generate a package from old master source and call it the fixed release.
+
+Run the helper from this automation checkout with a separate reviewed release
+checkout as input. This example uses Base64String; version 1.3.0 is illustrative
+and must be checked against Gallery before choosing it:
+
+```powershell
+$releaseRoot = '/path/to/reviewed-release-checkout'
+$version = '1.3.0' # Must match that checkout's updated source manifest.
+$candidate = Join-Path ([IO.Path]::GetTempPath()) "base64-candidate-$([guid]::NewGuid())"
+$stage = Join-Path ([IO.Path]::GetTempPath()) "base64-stage-$([guid]::NewGuid())"
+./scripts/gallery/New-ReleaseOutput.ps1 -Module Base64String -SourceRoot $releaseRoot -OutputRoot $candidate -ExpectedVersion $version
+./scripts/gallery/Build-GalleryPackage.ps1 -Module Base64String -SourceRoot $candidate -OutputRoot $stage -ExpectedVersion $version
+./scripts/gallery/Assert-SourcePackage.ps1 -Module Base64String -SourceRoot $releaseRoot -PackageRoot $stage
+./scripts/gallery/Test-ReleasePackage.ps1 -Module Base64String -SourceRoot $releaseRoot -PackageRoot $stage -ExpectedVersion $version
+```
+
+The generated folder is `$candidate/Shared-Functions/Base64String/out`. Compare it
+with the release checkout's existing out/ folder. Review every source/manifest,
+README, icon and license change; replace that checkout's entire old out/ with the
+generated folder after review (do not overlay and retain obsolete files). Stage
+and commit the reviewed source/version/tests and out/ changes on the configured
+release branch. Push the reviewed commit and use its full SHA in a manual dry-run.
+Windows tests remain hosted workflow gates, even when local checks succeed.
+
+The helper flattens runtime scripts into the established flat package layout,
+requires unique filenames, preserves source/manifest bytes, includes README,
+primary icon and canonical LICENSE, and excludes tests, CI files, old out/ and
+source assets other than the primary icon. Missing dependencies and ambiguous
+filenames fail validation before a destination package is created. If the source
+requires a different runtime layout, reconcile that layout in a separate reviewed
+source/packaging change; the generator does not rewrite manifests or script paths.
+
+The release workflow still requires a committed, reviewable out/ package. It also
+regenerates output independently from the same immutable source and verifies that
+the staged files match the committed package's hashes. This catches stale or extra
+package files and produces reproducible file contents, without making development
+source a fallback deployment input. Use a new output root for each generation;
+existing directories are never deleted or overwritten by the helper.
 
 ## CI coverage for all modules
 
@@ -270,6 +319,7 @@ pwsh -NoProfile -NonInteractive -File tests/Test-CiSelection.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-CiRunner.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-CiStructure.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-GalleryAutomation.ps1
+pwsh -NoProfile -NonInteractive -File tests/Test-ReleaseOutput.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-ReleaseEvidence.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-GalleryVerification.ps1
 node tests/Test-IssueCompletion.cjs
@@ -278,8 +328,8 @@ node tests/Test-ReleaseCreation.cjs
 ```
 
 All these automation contract checks passed locally. A temporary fixture extracted from the already
-committed fix, with its matching flat out/ copy, also passed source and installed
-regressions separately: **31 + 31**, macOS pwsh 7.7.0/Pester 4.10.1. This validates
+committed fix, packaged by New-ReleaseOutput.ps1 and staged by Build-GalleryPackage.ps1,
+also passed source and installed regressions separately: **31 + 31**, macOS pwsh 7.7.0/Pester 4.10.1. This validates
 runner behavior, not an actual release branch, Gallery download, or Windows run.
 Windows 5.1/pwsh and hosted cross-platform tests remain deployment gates.
 
