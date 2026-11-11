@@ -1,0 +1,15 @@
+name: FolderEncoder source checks
+on:
+  push:
+    branches: [fix/build-folderencoder]
+  pull_request:
+    branches: [FolderEncoder/develop]
+permissions:
+  contents: read
+jobs:
+  source:
+    uses: stadub/PowershellScripts/.github/workflows/validate-module-source.yml@d3fa5897213e3ff4e0d64897559bdfb516356512
+    with:
+      module: FolderEncoder
+      source_sha: ${{ github.event.pull_request.head.sha || github.sha }}
+      automation_sha: d3fa5897213e3ff4e0d64897559bdfb516356512
