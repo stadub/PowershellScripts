@@ -247,3 +247,15 @@ Use `scripts/gallery/New-ReleaseOutput.ps1` with reviewed source and a fresh out
 root to generate the flat out/ package. Review and commit it on the configured
 release branch; do not overwrite stale output automatically or substitute master.
 The workflow checks committed package hashes against an independent regeneration.
+
+Base64String 1.3.0 is prepared on `base64String/release/latest` at
+`6d30dbc22de8bfb8bccda5cd3880ffb9a6655f5f` (PRs #30/#34). The original encoding
+fix is preserved; PR #32 adds a Windows/.NET Framework padding follow-up through
+development. Exact-tip hosted validation passed 34 source + 34 installed tests on
+Windows PowerShell 5.1, Windows pwsh, Linux and macOS; downloaded payload hashes
+agree across all four artifacts. See docs/releases/base64string-1.3.0.md.
+The owner confirmed module-local WTFPL; preserve it during generation/staging and
+use the repository license only as a fallback. Do not relicense other components.
+The trusted completion entry maps only #22 to this exact version/SHA, still gated
+on actual successful Gallery publish and verification. No upload or issue closure
+has occurred; production workflow integration into master remains pending.

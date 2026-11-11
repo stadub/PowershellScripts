@@ -1,8 +1,10 @@
 # Tested releases and protected PowerShell Gallery publication
 
 This is automation for issue #29, not a deployment of the #22 fix. #22 stays open.
-No live Gallery upload, release, issue mutation, secret edit, master edit, or sibling
-worktree edit was performed while implementing this branch.
+No live Gallery upload, GitHub release creation, issue mutation, secret edit, master
+edit, or existing sibling worktree edit was performed by this task. The separately
+authorized Base64String release preparation is recorded in
+[the 1.3.0 snapshot report](releases/base64string-1.3.0.md).
 
 ## Ownership and integration
 
@@ -186,7 +188,8 @@ Windows tests remain hosted workflow gates, even when local checks succeed.
 
 The helper flattens runtime scripts into the established flat package layout,
 requires unique filenames, preserves source/manifest bytes, includes README,
-primary icon and canonical LICENSE, and excludes tests, CI files, old out/ and
+primary icon and explicit module LICENSE (repository LICENSE only as a fallback),
+and excludes tests, CI files, old out/ and
 source assets other than the primary icon. Missing dependencies and ambiguous
 filenames fail validation before a destination package is created. If the source
 requires a different runtime layout, reconcile that layout in a separate reviewed
@@ -242,7 +245,8 @@ and issue-completion mappings are unchanged.
 and successful verification outputs in this same workflow. No merge, PR event,
 release event, dry-run, failure, cancellation or skipped job closes issues. It runs
 trusted master automation only and executes no package code. Its JSON mapping is
-`scripts/gallery/issue-map.json`, deliberately empty until a release is reviewed.
+`scripts/gallery/issue-map.json`. The prepared Base64String 1.3.0 entry maps only
+its exact tested release SHA to #22; #29 remains outside automatic completion.
 No dispatch input accepts issue numbers. Example **schema only**, not active data:
 
 ```json
@@ -257,7 +261,7 @@ No dispatch input accepts issue numbers. Example **schema only**, not active dat
 ]
 ```
 
-Review this exact mapping on master **before** publishing. Do not map #29 unless
+Review the committed exact mapping on master **before** publishing. Do not map #29 unless
 its broader rollout work is also complete. The issue comment records the versioned
 Gallery URL, immutable source SHA, GitHub release link and verification workflow
 run/artifact. A stable per-package marker prevents duplicate bot comments; closing
@@ -272,18 +276,22 @@ Do not bypass that guard or close manually without verifying deployment evidence
 ## Owner rollout and remaining blockers
 
 1. Integrate automation into master and port read-only CI automation to maintained
-   module branches. Run hosted CI and a dry-run release candidate before enabling
-   required status checks. No hosted Actions runs/workflows existed at inspection.
+   module branches. Run hosted CI and a full production dry-run before enabling required status
+   checks. The prepared Base64String snapshot now has passing hosted validation;
+   the production manual workflow still needs default-branch integration.
 2. For #22, the reviewed fix is commit
    `5fe9e2344afacccd4cebe02f178d6eb8cd162d2f`, merged by PR #28 into
    `base64tring/develop` at `4d2e1c86e8083202f74b9b31c48447c0cd82808e`.
    Do not redo it. Selectively port reviewed files/tests to
    `base64String/release/latest`, choose an unused version, update release notes,
    and regenerate/review out/ with matching implementation and manifest bytes.
-   That branch was still `052b501de2762e10dd23267cce31c3bc84cf2d8c` on inspection.
-   It does not contain the fix; current stale packages should fail the new gates.
-3. Review and commit the exact issue mapping on master after the candidate SHA
-   exists. Run dry-run with that SHA. Review source and installed NUnit artifacts,
+   This preparation is now complete for 1.3.0: PR #30 integrated the reviewed source,
+   version, owner-confirmed WTFPL license and regenerated out/; PR #32 added the
+   Windows/.NET Framework padding follow-up through development; PR #34 fixed
+   checkout line endings. The prepared release tip is
+   `6d30dbc22de8bfb8bccda5cd3880ffb9a6655f5f`.
+   See [exact snapshot evidence](releases/base64string-1.3.0.md).
+3. Review and integrate the exact issue mapping from PR #31 into master. Run dry-run with that SHA. Review source and installed NUnit artifacts,
    including both Windows runtimes. Then optionally create the GitHub release with
    `create_release=true,dry_run=true` and review its snapshot/assets.
 4. Preserve `powershell-gallery` environment's custom deployment branch policy:

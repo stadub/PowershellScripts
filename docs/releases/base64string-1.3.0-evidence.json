@@ -1,0 +1,31 @@
+{
+  "module": "Base64String",
+  "version": "1.3.0",
+  "sourceSha": "6d30dbc22de8bfb8bccda5cd3880ffb9a6655f5f",
+  "files": [
+    {
+      "path": "Aliases.ps1",
+      "sha256": "9130AD1904843CEF13C309A83B9AF27C343A49F4A5332F208F49D3F48D7352AF"
+    },
+    {
+      "path": "Base64String.ps1",
+      "sha256": "CC92D77B62190E1973C1CDCFC6794A0602656DA2FB4562539056B0E8F28AEB50"
+    },
+    {
+      "path": "Base64String.psd1",
+      "sha256": "6A1B603AF12314129B129D871995825E2CD725EBBE21A9266FD4E6E6530150B2"
+    },
+    {
+      "path": "Icon.ico",
+      "sha256": "B3046898594275A1E8FA3729E6105F6571DB0BB40E5340CBB6FFA9D9DA0678AB"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "6FCB3400CC6126E54B9C5BE59BB396FD2CE4CD6D075EC559F0AA4171372307BE"
+    },
+    {
+      "path": "README.md",
+      "sha256": "CCC70F20C04316407651BC6258F41D561737F52ACDA6E404F40B4AC2B5F9A4DD"
+    }
+  ]
+}

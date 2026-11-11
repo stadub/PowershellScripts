@@ -28,3 +28,15 @@ assert.throws(()=>mappedIssues([{...identity,issues:['22']}],identity));
   await assert.rejects(complete(args),/not a PR/);
   console.log('Issue completion: exact mapping, evidence, retry idempotency and PR rejection passed.');
 })().catch(e=>{console.error(e);process.exitCode=1});
+// The real trusted mapping must agree with the checked-in immutable package evidence.
+const trusted = require('../scripts/gallery/issue-map.json');
+for (const entry of trusted) {
+  assert.equal(entry.repository, 'stadub/PowershellScripts');
+  assert.match(entry.sourceSha, /^[0-9a-f]{40}$/);
+  const evidence = require(`../docs/releases/${entry.module.toLowerCase()}-${entry.version}-evidence.json`);
+  assert.equal(evidence.module, entry.module);
+  assert.equal(evidence.version, entry.version);
+  assert.equal(evidence.sourceSha, entry.sourceSha);
+  assert.deepEqual(mappedIssues([entry], entry), entry.issues);
+}
+console.log('Trusted issue mapping agrees with recorded immutable package evidence.');
