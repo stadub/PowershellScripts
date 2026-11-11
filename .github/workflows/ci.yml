@@ -31,6 +31,7 @@ jobs:
           ./tests/Test-CiRunner.ps1
           ./tests/Test-CiStructure.ps1
           ./tests/Test-GalleryAutomation.ps1
+          ./tests/Test-GalleryKeySetup.ps1
           ./tests/Test-ReleaseOutput.ps1
           ./tests/Test-ReleaseEvidence.ps1
           ./tests/Test-GalleryVerification.ps1

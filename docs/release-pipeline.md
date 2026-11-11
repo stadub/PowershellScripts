@@ -103,6 +103,44 @@ API key; a username or manifest Author field cannot switch accounts.
 See [Microsoft's ownership rules](https://learn.microsoft.com/en-us/powershell/gallery/how-to/publishing-packages/managing-package-owners?view=powershellget-3.x)
 and [scoped API key setup](https://learn.microsoft.com/en-us/powershell/gallery/how-to/managing-profile/creating-apikeys?view=powershellget-3.x).
 
+### Set or rotate the keys from your terminal
+
+`scripts/gallery/Set-GalleryApiKey.ps1` creates or updates the correct environment
+secret for a selected module, using the same trusted account mapping as deployment.
+Authenticate GitHub CLI to github.com with an account allowed to manage this
+repository's environment secrets, then run:
+
+```powershell
+gh auth login --hostname github.com
+# Preview the exact target: no GitHub request, prompt or secret update.
+./scripts/gallery/Set-GalleryApiKey.ps1 -Module Base64String -WhatIf
+# gh prompts for the MiniModules Gallery API key with input hidden.
+./scripts/gallery/Set-GalleryApiKey.ps1 -Module Base64String
+# gh prompts for the Stadub Gallery API key with input hidden.
+./scripts/gallery/Set-GalleryApiKey.ps1 -Module Bookmarks
+```
+
+The MiniModules key is shared by Base64String/Pipe; the Stadub key is shared by
+Bookmarks/7zip-Archive/Currency-Conv. Rotating one updates that account's credential
+for all its mapped modules. The GitHub login and Gallery account are separate
+identities: enter the Gallery account's publishing key, not a GitHub token.
+`-Repository owner/repo` can explicitly select another repository; the default is
+`stadub/PowershellScripts`. Secret names and the environment cannot be overridden.
+
+The helper checks that the environment already exists and permits only master,
+then invokes `gh secret set` with `--env powershell-gallery` and the mapped name.
+It does not create environments or alter reviewer/branch protection. GitHub CLI
+owns the hidden prompt (or stdin) and local encryption; the key is never a script
+parameter, command argument, environment variable, file or printed output.
+Afterward the helper reads only secret metadata (name/update time). GitHub does
+not return secret values, so this cannot verify Gallery key identity/permissions.
+A failed metadata check after a successful update is reported distinctly.
+No workflow is dispatched, release created, package published or issue completed.
+
+See [the official gh secret set manual](https://cli.github.com/manual/gh_secret_set).
+No real secret was set while implementing or testing this helper; its tests use a
+fixture command and the real helper was invoked only with `-WhatIf`.
+
 After integration into master and preparation of a tested release snapshot, open
 Actions -> Tested release and protected Gallery deployment -> Run workflow. Select
 master, module, version and full reviewed release SHA. Start with dry_run=true and
@@ -327,6 +365,7 @@ pwsh -NoProfile -NonInteractive -File tests/Test-CiSelection.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-CiRunner.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-CiStructure.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-GalleryAutomation.ps1
+pwsh -NoProfile -NonInteractive -File tests/Test-GalleryKeySetup.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-ReleaseOutput.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-ReleaseEvidence.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-GalleryVerification.ps1

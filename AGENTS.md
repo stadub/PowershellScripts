@@ -259,3 +259,9 @@ use the repository license only as a fallback. Do not relicense other components
 The trusted completion entry maps only #22 to this exact version/SHA, still gated
 on actual successful Gallery publish and verification. No upload or issue closure
 has occurred; production workflow integration into master remains pending.
+
+`scripts/gallery/Set-GalleryApiKey.ps1` is an owner-operated setup/rotation helper.
+It resolves account/secret names through Get-ReleaseConfig.ps1 and delegates hidden
+key entry/encryption to gh. Never pass keys in arguments, files, environment values
+or chat. -WhatIf performs no network or update. It is not called by deployment
+workflows; implementation/tests use mocked gh and must not change live secrets.
