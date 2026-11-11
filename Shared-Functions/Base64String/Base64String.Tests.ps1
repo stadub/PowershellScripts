@@ -101,6 +101,9 @@ Describe 'Base64String encoding compatibility' {
         @{ InputText = 'AAAAA' }
         @{ InputText = 'Zg=' }
         @{ InputText = 'Zm8==' }
+        @{ InputText = 'Zg======' }
+        @{ InputText = 'Zm9v====' }
+        @{ InputText = '====' }
         @{ InputText = 'Zg===' }
         @{ InputText = '=Zg=' }
         @{ InputText = 'Z=g=' }
