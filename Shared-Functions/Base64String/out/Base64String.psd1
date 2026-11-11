@@ -44,7 +44,7 @@
             Tags = @('Base64String','Base64', 'encode','decode', 'encode64', 'decode64', 'encodeText')
     
             # A URL to the license for this module.
-            LicenseUri = 'http://opensource.org/licenses/MIT'
+            LicenseUri = 'http://www.wtfpl.net/txt/copying/'
     
             # A URL to the main website for this project.
             ProjectUri = 'https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Base64String'
