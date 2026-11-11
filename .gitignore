@@ -1,3 +1,4 @@
 # File types to ignore globally
 .history
 .vscode
+TestResults/

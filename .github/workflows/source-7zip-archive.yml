@@ -1,0 +1,15 @@
+name: 7zip-Archive source checks
+on:
+  push:
+    branches: [fix/build-7zip]
+  pull_request:
+    branches: [7Zip/develop]
+permissions:
+  contents: read
+jobs:
+  source:
+    uses: stadub/PowershellScripts/.github/workflows/validate-module-source.yml@d3fa5897213e3ff4e0d64897559bdfb516356512
+    with:
+      module: 7zip-Archive
+      source_sha: ${{ github.event.pull_request.head.sha || github.sha }}
+      automation_sha: d3fa5897213e3ff4e0d64897559bdfb516356512
