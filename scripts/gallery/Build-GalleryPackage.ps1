@@ -15,7 +15,7 @@ if (-not (Test-Path $manifestPath -PathType Leaf)) {
 }
 $metadata = Import-PowerShellDataFile $manifestPath
 if ([version]$metadata.ModuleVersion -ne $ExpectedVersion) {
-    throw "Expected $ExpectedVersion, but release manifest declares $($metadata.ModuleVersion)."
+    throw "Expected $ExpectedVersion for $Module, but release manifest declares $($metadata.ModuleVersion) on $($config.ReleaseBranch). Gallery reference: $($config.LatestGalleryVersion); highest registered: $($config.HighestRegisteredVersion); planned: $($config.PlannedVersion). Entering a version does not change a package; prepare and review matching source/out manifests first."
 }
 if ($metadata.PrivateData.PSData.Prerelease) {
     throw 'This workflow currently supports stable manifest versions only.'

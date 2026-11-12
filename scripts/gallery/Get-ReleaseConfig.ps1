@@ -20,6 +20,7 @@ $configs = @{
         PackagePath = 'Bookmarks/out'
         Manifest = 'Bookmarks.psd1'
         GalleryAccount = 'Stadub'
+        PublicationBlockReason = 'Bookmarks requires reconciliation with the published 3.0.1 implementation before preparing 3.0.2; do not relabel the repository 2.2.0 implementation.'
     }
     '7zip-Archive' = @{
         ReleaseBranch = '7-Zip/release/1.1'
@@ -79,6 +80,14 @@ $accountSecrets = @{
     MiniModules = 'PSGALLERY_API_KEY_MINIMODULES'
 }
 $config = $configs[$Module]
+$references = Get-Content (Join-Path $PSScriptRoot 'version-reference.json') -Raw | ConvertFrom-Json
+$reference = @($references.packages | Where-Object module -eq $Module)
+if ($reference.Count -ne 1) { throw "Missing or ambiguous Gallery version reference for $Module" }
+$config.LatestGalleryVersion = $reference[0].latestListedVersion
+$config.HighestRegisteredVersion = $reference[0].highestRegisteredVersion
+$config.PlannedVersion = $reference[0].plannedVersion
+$config.VersionChange = $reference[0].change
+$config.VersionPlanStatus = $reference[0].status
 if (-not $config.ContainsKey('CiModule')) { $config.CiModule = $Module }
 if (-not $config.ContainsKey('UseRepositoryLicense')) { $config.UseRepositoryLicense = $true }
 if (-not $config.ContainsKey('IncludeIcon')) { $config.IncludeIcon = $true }

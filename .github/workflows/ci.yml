@@ -33,6 +33,7 @@ jobs:
           ./tests/Test-CiRunner.ps1
           ./tests/Test-CiStructure.ps1
           ./tests/Test-ReleaseSelection.ps1
+          ./tests/Test-ReleaseVersionReferences.ps1
           ./tests/Test-GalleryAutomation.ps1
           ./tests/Test-GalleryKeySetup.ps1
           ./tests/Test-ReleaseOutput.ps1
@@ -93,10 +94,12 @@ jobs:
           ref: ${{ matrix.source_sha }}
           path: module-source
           persist-credentials: false
-      - name: Test release snapshot selection on Windows
+      - name: Test release selection and Gallery version references on Windows
         if: ${{ matrix.module == 'Base64String' && matrix.os == 'windows-latest' }}
         shell: pwsh
-        run: ./tests/Test-ReleaseSelection.ps1
+        run: |
+          ./tests/Test-ReleaseSelection.ps1
+          ./tests/Test-ReleaseVersionReferences.ps1
       - name: Run module checks
         shell: pwsh
         env:

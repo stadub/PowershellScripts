@@ -82,3 +82,7 @@ for (const candidate of candidateRecords) {
 }
 assert.ok(candidateValidation.includes('name: candidate-${{ inputs.module }}-${{ matrix.os }}-${{ matrix.shell }}'));
 console.log('Additional package QA pins the reviewed candidate identities and keeps credentials, writes and deployment environments unavailable.');
+
+assert.ok(jobs.package.includes('Test-ReleaseVersionReference.ps1'));
+assert.ok(ciWorkflow.includes('Test-ReleaseVersionReferences.ps1'));
+console.log('Release requests use recorded Gallery version references before package creation; offline policy tests remain in CI.');

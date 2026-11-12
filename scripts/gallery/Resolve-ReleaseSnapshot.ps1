@@ -27,6 +27,7 @@ if ($env:GITHUB_OUTPUT) {
 }
 if ($env:GITHUB_STEP_SUMMARY) {
     "Reviewed release snapshot: $Module $Version | $($config.ReleaseBranch) | $sha" >> $env:GITHUB_STEP_SUMMARY
+    "Gallery version reference: latest listed $($config.LatestGalleryVersion); highest registered $($config.HighestRegisteredVersion); planned $($config.PlannedVersion) ($($config.VersionChange)). $($config.VersionPlanStatus)" >> $env:GITHUB_STEP_SUMMARY
 }
 [pscustomobject]@{
     Module = $Module

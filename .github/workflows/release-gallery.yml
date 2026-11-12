@@ -8,7 +8,7 @@ on:
         required: true
         options: [Bookmarks, 7zip-Archive, Currency-Conv, Base64String, Pipe, FolderEncoder, Shell-Functions, MiniModules.Uninstall]
       version:
-        description: Prepared version number (for example, 1.3.0)
+        description: Version already prepared for this module; see the release version plan
         type: string
         required: true
       create_release:
@@ -69,6 +69,7 @@ jobs:
           $config = ./automation/scripts/gallery/Get-ReleaseConfig.ps1 -Module $env:MODULE
           git -C source merge-base --is-ancestor $env:SHA "origin/$($config.ReleaseBranch)"
           if ($LASTEXITCODE -ne 0) { throw 'Snapshot is not on the configured release branch' }
+          ./automation/scripts/gallery/Test-ReleaseVersionReference.ps1 -Module $env:MODULE -Version $env:VERSION
           ./automation/scripts/gallery/Build-GalleryPackage.ps1 -Module $env:MODULE -SourceRoot ./source -OutputRoot ./stage -ExpectedVersion $env:VERSION
           ./automation/scripts/gallery/Assert-SourcePackage.ps1 -Module $env:MODULE -SourceRoot ./source -PackageRoot ./stage
           ./automation/scripts/gallery/Package-Evidence.ps1 -Module $env:MODULE -Version $env:VERSION -SourceSha $env:SHA -PackageRoot ./stage -EvidencePath ./stage/evidence.json

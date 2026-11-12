@@ -38,6 +38,8 @@ try {
     if ($standalone.CiModule -cne 'Uninstall' -or $standalone.Manifest -cne 'MiniModules.Uninstall.psd1' -or
         ($standalone.RuntimeFiles -join '|') -cne 'Uninstall.psm1') { throw 'Standalone component/package identity or runtime scope changed' }
     Assert-Throws { & "$scripts/Get-ReleaseConfig.ps1" -Module Uninstall } '*ValidateSet*'
+    Assert-Throws { & "$scripts/Get-ReleaseConfig.ps1" -Module Bookmarks -RequirePublication } '*do not relabel*'
+    Assert-Throws { & "$scripts/Publish-GalleryPackage.ps1" -Module Bookmarks -PackageRoot "$fixture/not-a-payload" -ExpectedVersion 3.0.2 } '*do not relabel*'
     foreach ($name in 'FolderEncoder','Shell-Functions','MiniModules.Uninstall') {
         $reason = '*requires owner review*'
         Assert-Throws { & "$scripts/Get-ReleaseConfig.ps1" -Module $name -RequirePublication } $reason
@@ -113,9 +115,9 @@ try {
     Assert-Throws { & "$scripts/Publish-GalleryPackage.ps1" -Module Base64String -PackageRoot $stage -ExpectedVersion 1.2.0 } '*stable manifest versions only*'
     $originalManifest | Set-Content $manifest
     $env:PSGALLERY_API_KEY = ''
-    # Validate missing selected credentials for every configured module. These
+    # Validate missing selected credentials for every currently unblocked module. These
     # fixtures contain no module code and the Gallery commands remain mocked.
-    foreach ($name in @('Bookmarks','7zip-Archive','Currency-Conv','Base64String','Pipe')) {
+    foreach ($name in @('7zip-Archive','Currency-Conv','Base64String','Pipe')) {
         $config = & "$scripts/Get-ReleaseConfig.ps1" -Module $name
         $env:PSGALLERY_ACCOUNT = $config.GalleryAccount
         $accountPackage = Join-Path "$fixture/accounts" $name
@@ -140,10 +142,10 @@ try {
         if (-not (Test-Path $env:GALLERY_TEST_MARKER)) { throw 'Expected mocked publish call' }
         Remove-Item $env:GALLERY_TEST_MARKER
     }
-    # Both accounts and all five modules: verify selected-key use and reject
+    # Both accounts and the four currently unblocked modules: verify selected-key use and reject
     # mismatched/missing account routes even if a nonempty key is supplied.
     $env:GALLERY_TEST_MODE = 'upgrade'
-    foreach ($name in @('Bookmarks','7zip-Archive','Currency-Conv','Base64String','Pipe')) {
+    foreach ($name in @('7zip-Archive','Currency-Conv','Base64String','Pipe')) {
         $config = & "$scripts/Get-ReleaseConfig.ps1" -Module $name
         $env:PSGALLERY_API_KEY = "offline-key-$($config.GalleryAccount)"
         $env:PSGALLERY_ACCOUNT = 'wrong-account'

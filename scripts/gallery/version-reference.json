@@ -1,0 +1,385 @@
+{
+  "observedAt": "2026-11-12T15:37:26.266184+00:00",
+  "policy": "Only 7zip-Archive receives a new major version. All versions are references; they do not mutate manifests or authorize publication.",
+  "packages": [
+    {
+      "module": "Bookmarks",
+      "latestListedVersion": "3.0.1",
+      "highestRegisteredVersion": "3.0.1",
+      "unlistedVersions": [
+        "2.0.0",
+        "2.0.2",
+        "2.0.3",
+        "2.0.4",
+        "2.1.0"
+      ],
+      "plannedVersion": "3.0.2",
+      "change": "patch",
+      "status": "blocked: reconcile the Gallery 3.0.1 implementation; do not relabel repository 2.2.0",
+      "galleryAccount": "Stadub",
+      "feed": "https://www.powershellgallery.com/api/v2/FindPackagesById()?id='Bookmarks'",
+      "packagePage": "https://www.powershellgallery.com/packages/Bookmarks/3.0.1",
+      "developmentBranch": "Bookmarks/develop",
+      "developmentSha": "5d63a44e4135c5bc3f46f1b7e6cbd928476a2004",
+      "developmentVersion": "2.2.0",
+      "releaseBranch": "Bookmarks/release/latest",
+      "releaseSha": "209e4fe899ed3ec00ae1c1b528eb5afa87aef090",
+      "releaseSourceVersion": "2.2.0",
+      "committedPackageVersion": "2.2.0",
+      "downloadedReference": {
+        "version": "3.0.1",
+        "url": "https://www.powershellgallery.com/api/v2/package/Bookmarks/3.0.1",
+        "nupkgSha256": "89082db4c598a3e3bea7627587e4bab9661f4acb3dfe2a7c4029eee163b5fe3f",
+        "runtimeFiles": [
+          {
+            "path": "Aliases.ps1",
+            "sha256": "18d62c659826f2497f6d2a7faa69b30021df4517c3beaa8f2bfb90e75d9a4b32",
+            "size": 260
+          },
+          {
+            "path": "Bookmarks.psd1",
+            "sha256": "83cd59ac39106d0e61cc4abfff5db520848e4efb6d9db68770ad430da2f153df",
+            "size": 2161
+          },
+          {
+            "path": "Bookmarks.psm1",
+            "sha256": "0337f5f4de23d9a1eac4dc85d94309648b8e029578b45b57647b9ef4f4319f57",
+            "size": 860
+          },
+          {
+            "path": "cmdlets/Add-PSBookmark.ps1",
+            "sha256": "142cfdbf02a8734f2e0d34f882fb13c3956db2cb32b22501d861f04fda0090f0",
+            "size": 976
+          },
+          {
+            "path": "cmdlets/Get-BookmarksDataFile.ps1",
+            "sha256": "76bda1bf03a5d461f62800b7ca2f011588959a3420b7fc58e43e0ee996603d96",
+            "size": 1387
+          },
+          {
+            "path": "cmdlets/Get-PSBookmarks.ps1",
+            "sha256": "efe86e8c260df1f8d23bfeaf98f9da47dd5bc50595b4e096048bb717eb310375",
+            "size": 232
+          },
+          {
+            "path": "cmdlets/Import-PSBookmarks.ps1",
+            "sha256": "d0089d8234774fbd09ebabdcd08b68d1b73defccd78431dc7f258ee47e9f8105",
+            "size": 246
+          },
+          {
+            "path": "cmdlets/Open-PSBookmark.ps1",
+            "sha256": "33a6da2d40c1bbdc9ed90048956fce3589955c8e2678eba7180df1c90af41211",
+            "size": 631
+          },
+          {
+            "path": "cmdlets/Remove-AllPSBookmarks.ps1",
+            "sha256": "bac327bfbfd89cfac79670055f775d38f4169a3e3853bf18059413ab8970fb28",
+            "size": 244
+          },
+          {
+            "path": "cmdlets/Remove-PSBookmark.ps1",
+            "sha256": "06fc39cfc59125410623c0ea65b9ef8e03e3646ecc2257c484da68607b56cde9",
+            "size": 748
+          },
+          {
+            "path": "cmdlets/Save-PSBookmarks.ps1",
+            "sha256": "6ba888dda66cef94aa301285c5b439ee402b97d3ac61abf2c3db177bdf9969f1",
+            "size": 305
+          },
+          {
+            "path": "cmdlets/Update-PSBookmark.ps1",
+            "sha256": "1a65904d287035cb56edcf4ec32aa1b78fb9bdeae9c514d2e95d1bf890ff69a1",
+            "size": 1049
+          }
+        ]
+      }
+    },
+    {
+      "module": "7zip-Archive",
+      "latestListedVersion": "1.1.0",
+      "highestRegisteredVersion": "1.1.0",
+      "unlistedVersions": [
+        "1.0.0",
+        "1.0.1"
+      ],
+      "plannedVersion": "2.0.0",
+      "change": "major",
+      "status": "reference only: prepare and validate the reviewed major-release snapshot",
+      "galleryAccount": "Stadub",
+      "feed": "https://www.powershellgallery.com/api/v2/FindPackagesById()?id='7zip-Archive'",
+      "packagePage": "https://www.powershellgallery.com/packages/7zip-Archive/1.1.0",
+      "developmentBranch": "7Zip/develop",
+      "developmentSha": "b846f1b01fad8e193cb9e92abdc75a0338c6c823",
+      "developmentVersion": "1.1.0",
+      "releaseBranch": "7-Zip/release/1.1",
+      "releaseSha": "6f8e8f6a8d7bf608af005a5d6f7afa166e70deed",
+      "releaseSourceVersion": "1.1.0",
+      "committedPackageVersion": null,
+      "downloadedReference": {
+        "version": "1.1.0",
+        "url": "https://www.powershellgallery.com/api/v2/package/7zip-Archive/1.1.0",
+        "nupkgSha256": "a3f5bd925d8eb8f5782858a184186cae74e389cdc94f6bb56724ee35a05c181d",
+        "runtimeFiles": [
+          {
+            "path": "7zip-Archive.psd1",
+            "sha256": "99791d14e1f6463e3b31cff6b4996556ac535c79682aecd6a8778c427456c7cb",
+            "size": 5447
+          },
+          {
+            "path": "7zip-Archive.psm1",
+            "sha256": "b5cab60b58b275d666dc8e2846efeb8677cfe5eea1960d0dcfc9fc61b67ab644",
+            "size": 459
+          },
+          {
+            "path": "Aliases.ps1",
+            "sha256": "6c56af14bdb8ed5fae4fa62d5b8ef09f160c446ccda8e169fe01b8cef4e1402e",
+            "size": 281
+          },
+          {
+            "path": "Functions.ps1",
+            "sha256": "0cb4b324b6b5418e9d104e831c528d671ad11982e73271324465c66c1a7a88f9",
+            "size": 15407
+          },
+          {
+            "path": "Shared-Functions.ps1",
+            "sha256": "74e1081fcde2942e5cda911c2fe745f1a96485d16facf2162ef971dd2808c423",
+            "size": 5170
+          }
+        ]
+      }
+    },
+    {
+      "module": "Currency-Conv",
+      "latestListedVersion": "1.0.2",
+      "highestRegisteredVersion": "1.5.0",
+      "unlistedVersions": [
+        "1.0.0",
+        "1.0.1",
+        "1.5.0"
+      ],
+      "plannedVersion": "1.5.1",
+      "change": "patch",
+      "status": "reference only: 1.5.0 is registered but unlisted; prepare and validate a new patch",
+      "galleryAccount": "Stadub",
+      "feed": "https://www.powershellgallery.com/api/v2/FindPackagesById()?id='Currency-Conv'",
+      "packagePage": "https://www.powershellgallery.com/packages/Currency-Conv/1.0.2",
+      "developmentBranch": "Currency-Conv/develop",
+      "developmentSha": "7306a3b9c3deb1de7257fb51f9b0becdaf7acd4a",
+      "developmentVersion": "1.5.0",
+      "releaseBranch": "Currency-Conv/release/1.5",
+      "releaseSha": "372e316b6da9e418e870785ee6328e28899c0596",
+      "releaseSourceVersion": "1.5.0",
+      "committedPackageVersion": null,
+      "downloadedReference": {
+        "version": "1.0.2",
+        "url": "https://www.powershellgallery.com/api/v2/package/Currency-Conv/1.0.2",
+        "nupkgSha256": "18c02783be50cc648dd4a379d79f1f1b07d0a21e8d85809faf0156babcf7fe13",
+        "runtimeFiles": [
+          {
+            "path": "Aliases.ps1",
+            "sha256": "87e32add9064c123a598604e40c08be469033fa044f66dcd49f47c17fbb9712c",
+            "size": 87
+          },
+          {
+            "path": "Currency-Conv.psd1",
+            "sha256": "d5949085a5f5e3bbc00797e1797f25b1d91e16dd6797f65abeee5e1527e1c099",
+            "size": 4632
+          },
+          {
+            "path": "Currency-Conv.psm1",
+            "sha256": "ed217b094046d395eadab3c2e84db460c1f6f8f19614e60597636a0dfe9193f6",
+            "size": 312
+          },
+          {
+            "path": "Functions.ps1",
+            "sha256": "bb68eeff54d2ed30600f68b0d10fa635377d1abd895a2e88f0463164f0195eb3",
+            "size": 6502
+          },
+          {
+            "path": "Shared-Functions.ps1",
+            "sha256": "e5d3a4313a4247ea5d61a0a37c660d356777503a94dcc93e4e224cce0e63514a",
+            "size": 3263
+          }
+        ]
+      }
+    },
+    {
+      "module": "Base64String",
+      "latestListedVersion": "1.2.0",
+      "highestRegisteredVersion": "1.2.0",
+      "unlistedVersions": [],
+      "plannedVersion": "1.3.0",
+      "change": "minor",
+      "status": "prepared: preserve the owner-approved immutable candidate",
+      "galleryAccount": "MiniModules",
+      "feed": "https://www.powershellgallery.com/api/v2/FindPackagesById()?id='Base64String'",
+      "packagePage": "https://www.powershellgallery.com/packages/Base64String/1.2.0",
+      "developmentBranch": "base64tring/develop",
+      "developmentSha": "7eab2ac96dc04bbbfc78a54aeb817fe3cc9f25bd",
+      "developmentVersion": "1.2.0",
+      "releaseBranch": "base64String/release/latest",
+      "releaseSha": "6d30dbc22de8bfb8bccda5cd3880ffb9a6655f5f",
+      "releaseSourceVersion": "1.3.0",
+      "committedPackageVersion": "1.3.0",
+      "downloadedReference": {
+        "version": "1.2.0",
+        "url": "https://www.powershellgallery.com/api/v2/package/Base64String/1.2.0",
+        "nupkgSha256": "5914bc89d35244b33223a0b41a104f008fdc5614e91266a0612483314ed334c9",
+        "runtimeFiles": [
+          {
+            "path": "Aliases.ps1",
+            "sha256": "dc0e0e59c1cde104ba421857cb6eef73b00c97f218ddff6ac1227bdf7bab03b4",
+            "size": 116
+          },
+          {
+            "path": "Base64String.ps1",
+            "sha256": "fc2f208be82cd705ea938861a15900b31a8cca311a29941418bd608f089d8304",
+            "size": 1574
+          },
+          {
+            "path": "Base64String.psd1",
+            "sha256": "db90fa15a2d96f9b0791442d8a866b2cb1e105e960984770d3a4bdd6b4fef502",
+            "size": 2944
+          }
+        ]
+      }
+    },
+    {
+      "module": "Pipe",
+      "latestListedVersion": "1.0.0",
+      "highestRegisteredVersion": "1.0.0",
+      "unlistedVersions": [],
+      "plannedVersion": "1.0.1",
+      "change": "patch",
+      "status": "reference only: reconcile reviewed development fixes and regenerate out",
+      "galleryAccount": "MiniModules",
+      "feed": "https://www.powershellgallery.com/api/v2/FindPackagesById()?id='Pipe'",
+      "packagePage": "https://www.powershellgallery.com/packages/Pipe/1.0.0",
+      "developmentBranch": "Pipe/develop",
+      "developmentSha": "ed959361a5f0d08997a795967402bcd464b85410",
+      "developmentVersion": "1.0.0",
+      "releaseBranch": "Pipe/release/latest",
+      "releaseSha": "77a84404379f6f2a9798e7ffc1d16ac6bd74770d",
+      "releaseSourceVersion": "1.0.0",
+      "committedPackageVersion": "1.0.0",
+      "downloadedReference": {
+        "version": "1.0.0",
+        "url": "https://www.powershellgallery.com/api/v2/package/Pipe/1.0.0",
+        "nupkgSha256": "9ffab4f72ea7cf3140a4fe9e1011847f58c4e0395bfeef591326161edcaf2fc7",
+        "runtimeFiles": [
+          {
+            "path": "Aliases.ps1",
+            "sha256": "14dc3eac663a43932ea58bd7952e4ca9b59ff359efa7713bd5284ec7409fe6a1",
+            "size": 357
+          },
+          {
+            "path": "Hide-Out.ps1",
+            "sha256": "af21f07763af9aa24a1dd3f07fc56561df8fa5cf580047f8d90357b84ee15184",
+            "size": 213
+          },
+          {
+            "path": "Limit-First.ps1",
+            "sha256": "bdf9becdfecfdd011b3023765cde5114e1953915d242fc08033ff8a55a3e5884",
+            "size": 180
+          },
+          {
+            "path": "Limit-Items.ps1",
+            "sha256": "76d8f74c2734f103e572acf5b7e043a61fcec62fe04db177ce970493ffb06694",
+            "size": 738
+          },
+          {
+            "path": "Limit-Last.ps1",
+            "sha256": "a0cbd21147a236fedf2feefc230596807b830c48fd2e4537b8f07c305bfa2ff6",
+            "size": 303
+          },
+          {
+            "path": "Limit-Type.ps1",
+            "sha256": "1cd8b8b7dad6d5c43e969a84f9bd81f11acd67ce05eda1c601c4e8fe740838ce",
+            "size": 2034
+          },
+          {
+            "path": "Pipe.psd1",
+            "sha256": "28dce809f5cda43425904547179dde1051f951aae369970b1174cd71b6750d48",
+            "size": 3470
+          },
+          {
+            "path": "Skip-Items.ps1",
+            "sha256": "e5dbc63eb18f3d8a81f2c87651bc7ca99dd6a7e514a934ffddc38aa0644f618b",
+            "size": 443
+          }
+        ]
+      }
+    },
+    {
+      "module": "FolderEncoder",
+      "latestListedVersion": "2.0.0",
+      "highestRegisteredVersion": "2.0.0",
+      "unlistedVersions": [],
+      "plannedVersion": "2.0.1",
+      "change": "patch",
+      "status": "candidate: source PR46 and release PR49 await review",
+      "galleryAccount": "Stadub",
+      "feed": "https://www.powershellgallery.com/api/v2/FindPackagesById()?id='FolderEncoder'",
+      "packagePage": "https://www.powershellgallery.com/packages/FolderEncoder/2.0.0",
+      "developmentBranch": "FolderEncoder/develop",
+      "developmentSha": "9b339c1d02e67e601b253da97d770c43242953ca",
+      "releaseBranch": "FolderEncoder/release/2.0.1",
+      "releaseSha": "9b339c1d02e67e601b253da97d770c43242953ca",
+      "candidateSha": "afb5b7ef10cd53c388d4c6a6b6f6f8d5fb7652d6",
+      "candidateVersion": "2.0.1",
+      "downloadedReference": {
+        "version": "2.0.0",
+        "url": "https://www.powershellgallery.com/api/v2/package/FolderEncoder/2.0.0",
+        "nupkgSha256": "65f027db61bf2e5070465e1a1a5343192ad3b192e3c46f5c35de757f8967d886",
+        "runtimeFiles": [
+          {
+            "path": "FolderEncoder.psd1",
+            "sha256": "f9026928d01e05d0c7401623d5a3247b18881cbd19efc68dfd21a455c87d4c00",
+            "size": 4327
+          },
+          {
+            "path": "Functions.ps1",
+            "sha256": "4fdacde482dc7868d1fe8eb084bf33b58a39acba474f2dd2253a562b07c75bad",
+            "size": 9207
+          }
+        ]
+      }
+    },
+    {
+      "module": "Shell-Functions",
+      "latestListedVersion": null,
+      "highestRegisteredVersion": null,
+      "unlistedVersions": [],
+      "plannedVersion": "0.0.1",
+      "change": "initial",
+      "status": "candidate: new owner-approved name; PR47/50 await review",
+      "galleryAccount": "MiniModules",
+      "feed": "https://www.powershellgallery.com/api/v2/FindPackagesById()?id='Shell-Functions'",
+      "packagePage": null,
+      "developmentBranch": "Shell-Functions/develop",
+      "developmentSha": "5cd269b6602e973af70387ce04eaf26b82e04b89",
+      "releaseBranch": "Shell-Functions/release/0.0.1",
+      "releaseSha": "5cd269b6602e973af70387ce04eaf26b82e04b89",
+      "candidateSha": "5b83779c7c62cca738dc99770ce3724ed4e7fb85",
+      "candidateVersion": "0.0.1"
+    },
+    {
+      "module": "MiniModules.Uninstall",
+      "latestListedVersion": null,
+      "highestRegisteredVersion": null,
+      "unlistedVersions": [],
+      "plannedVersion": "1.0.1",
+      "change": "initial",
+      "status": "candidate: new owner-approved name; PR48/51 await review",
+      "galleryAccount": "MiniModules",
+      "feed": "https://www.powershellgallery.com/api/v2/FindPackagesById()?id='MiniModules.Uninstall'",
+      "packagePage": null,
+      "developmentBranch": "Uninstall/develop",
+      "developmentSha": "cb191cc44ec85174187958b994065f6452ae046f",
+      "releaseBranch": "Uninstall/release/1.0.1",
+      "releaseSha": "cb191cc44ec85174187958b994065f6452ae046f",
+      "candidateSha": "a351e867d6fdb14a9650fc1d4f12f67e2dcfdf4c",
+      "candidateVersion": "1.0.1"
+    }
+  ]
+}
