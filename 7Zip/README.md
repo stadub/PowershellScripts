@@ -1,6 +1,6 @@
 # 7zip-Archive - 7zip utility warpper
 
-Download 7Zip utility from internet and use own bin floder
+Wraps an installed 7-Zip command-line runtime on Windows, Linux and macOS.
 
 [![PowerShell 3](https://dev.azure.com/Stadub-Gh/PowershellScripts/_apis/build/status/7Zip?branchName=master)](https://dev.azure.com/Stadub-Gh/PowershellScripts/_build/latest?definitionId=4&branchName=master)
 <!-- [![Linux & MacOS build](https://img.shields.io/travis/stadub/PowershellScripts/master.svg?label=linux/macos+build)](https://travis-ci.org/stadub/PowershellScripts) -->
@@ -34,6 +34,60 @@ Module import:
 ```powershell
 Import-Module 7zip-Archive
 ```
+
+## Runtime setup and compatibility
+
+Install a current runtime for your OS/architecture from the [official 7-Zip downloads](https://www.7-zip.org/download.html).
+The module never downloads or installs a runtime. Discovery runs when an archive
+command is invoked, so importing does not require 7-Zip to be installed.
+
+* Windows: searches PATH for `7z.exe`, `7zz.exe`, then `7za.exe`, followed by
+  `7-Zip/7z.exe` under native Program Files and Program Files (x86).
+* Linux/macOS: searches PATH for `7zz` (official standalone console), then `7z`,
+  then `7za`. Official Unix builds are supported; p7zip is not required.
+  Existing compatible `7z`/`7za` binaries still work, but their format support
+  depends on that runtime. The `p7zip` wrapper itself is not supported.
+* For a portable/custom install, set `SEVENZIP_PATH` to the full executable path,
+  without surrounding quotes. This overrides discovery; an invalid override fails
+  instead of silently selecting another runtime. On Unix the file must be executable.
+
+```powershell
+$env:SEVENZIP_PATH = 'C:\Program Files\7-Zip\7z.exe' # Windows example
+# $env:SEVENZIP_PATH = '/opt/7zip/7zz'            # Unix example
+```
+
+Keep the executable and any companion libraries together as supplied upstream.
+The old automatic 9.20 download and module-private cached runtime are no longer
+used. Existing private copies must be selected explicitly if still needed;
+upgrading to a maintained runtime is recommended. Missing tools produce setup
+instructions without network access. Archive cmdlets, aliases and switches are
+unchanged; paths and passwords containing spaces are passed as single arguments.
+The source already uses PowerShell 5 enum syntax: use Windows PowerShell 5.1 or
+PowerShell 7 on Windows, and PowerShell 7 on Unix.
+
+Help is available with `Get-Help New-ZipFile -Full` and this README. No updatable
+help package is published, so the manifest intentionally omits `HelpInfoURI`;
+`Update-Help` cannot download help for this module.
+
+## Local validation
+
+Run the offline unit suite with Pester 4.10.1:
+
+```powershell
+Invoke-Pester ./7Zip/7Zip-Archive.Tests.ps1
+```
+
+With an installed runtime, run the optional source smoke test:
+
+```powershell
+./7Zip/7zip-Archive.SmokeTests.ps1 -Executable '/opt/7zip/7zz'
+```
+
+The smoke test uses a fresh temporary directory and cleans it in `finally`.
+It exercises the archive implementation directly, bypassing the separate Gallery
+update check; it does not download a runtime. Local verification used PowerShell
+7.7.0 and official 7-Zip 26.06 on macOS; Windows/Linux discovery is covered by
+mocks, not actual platform execution. Release-package generation is separate.
 
 ## Commands
 

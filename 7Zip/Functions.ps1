@@ -1,54 +1,59 @@
 
 
-function _Initalize() {
-    
-$script:_binDir = szGet-ProfileDir "7zip" "bin"
-Write-Debug "The 7-zip is dir set to $_binDir"
-$script:_7zWin = Join-Path $_binDir "7za.exe"
-$script:_7zWinDownloadDir='https://www.7-zip.org/a/7za920.zip'
-
-$script:_7zPath = $null;
-
+# Keep initialization free of filesystem, network and installer side effects.
+function _Initalize {
+    $script:_7zPath = $null
 }
 
-##Check if 7zip p7z are installed
+function Get-7ZipPlatform {
+    return [System.Environment]::OSVersion.Platform
+}
+
 function Test-7ZipInstall {
-    $os = [System.Environment]::OSVersion.Platform
-    #windows
-    if($os -like 'win*'){
-        Write-Debug "Os:Windows"
+    $script:_7zPath = $null
 
-        #7-zip
-        Write-Debug "Trying to locate 7-zip by the path: $script:_7zWin"
-
-        if( -not (Test-Path "$script:_7zWin")){
-            Write-Output '7Zip didn''t downloaded.'
-            Write-Output 'Now script going to try to download it.'
-            
-            $file = szGet-TempFileName
-            Write-Debug "Temp file: ${file}"
-
-            szReceive-File  "7-Zip" $file $_7zWinDownloadDir
-            Write-Debug "Extracting to directory ${_binDir}"
-            if ( -not (Test-Path $_binDir )) {
-                New-Item -Path $_binDir -ItemType 'Directory'
-            }     
-
-            szExtract-ZipFile -FileName "$file" -Path "$_binDir"
+    # An explicit choice must not silently fall back to another runtime.
+    if (-not [string]::IsNullOrWhiteSpace($env:SEVENZIP_PATH)) {
+        if (-not [System.IO.Path]::IsPathRooted($env:SEVENZIP_PATH) -or
+            -not (Test-Path -LiteralPath $env:SEVENZIP_PATH -PathType Leaf)) {
+            throw 'SEVENZIP_PATH must be the full path to an installed 7-Zip executable (without surrounding quotes).'
         }
-        $script:_7zPath = $script:_7zWin
-
+        $script:_7zPath = (Get-Item -LiteralPath $env:SEVENZIP_PATH -ErrorAction Stop).FullName
+        return
     }
-    else{
-        #linux or macOs
-        Get-Command p7zip -Erroraction 'silentlycontinue'| ForEach-Object{ $script:_7zPath= $_.Path}
-        if ( -not (Test-Path $script:_7zPath )){
-             #sudo apt-get install p7zip
-             $script:aborted = $true
-            throw "p7zip application is not installed. 
-            If you using debian/ubuntu run `sudo apt-get install p7zip` then restart the script"
+
+    $windows = (Get-7ZipPlatform) -like 'Win*'
+    $names = @('7zz', '7z', '7za')
+    if ($windows) { $names = @('7z.exe', '7zz.exe', '7za.exe') }
+    foreach ($name in $names) {
+        $application = Get-Command -Name $name -CommandType Application -ErrorAction SilentlyContinue |
+            Select-Object -First 1
+        if ($null -ne $application) {
+            $script:_7zPath = $application.Path
+            return
         }
     }
+
+    if ($windows) {
+        # ProgramW6432 also finds the native install from a 32-bit PowerShell host.
+        foreach ($root in @($env:ProgramW6432, $env:ProgramFiles, ${env:ProgramFiles(x86)})) {
+            if ([string]::IsNullOrWhiteSpace($root)) { continue }
+            $candidate = Join-Path $root '7-Zip/7z.exe'
+            if (Test-Path -LiteralPath $candidate -PathType Leaf) {
+                $script:_7zPath = $candidate
+                return
+            }
+        }
+    }
+
+    throw '7-Zip was not found. Install a current runtime from https://www.7-zip.org/download.html and put 7zz/7z (7za also supported) on PATH, or set SEVENZIP_PATH to its full executable path. No runtime is downloaded automatically.'
+}
+
+# Start-Process joins ArgumentList with spaces. Quote each logical argument using
+# the native command-line escaping rules, including trailing backslashes.
+function ConvertTo-7ZipArgument {
+    param ([AllowEmptyString()][string]$Value)
+    return '"' + (($Value -replace '(\\*)"', '$1$1\"') -replace '(\\+)$', '$1$1') + '"'
 }
 
 function AddKeyArg {
@@ -72,9 +77,10 @@ function Start-7Zip {
     Test-7ZipInstall
 
     
-    Write-Debug "Starting process. 7Zip ${AllArgs} "
+    Write-Debug "Starting 7-Zip process."
 
-    $process = Start-Process -FilePath $script:_7zPath -ArgumentList $AllArgs -NoNewWindow -PassThru -Wait
+    $arguments = ($AllArgs | ForEach-Object { ConvertTo-7ZipArgument ([string]$_) }) -join ' '
+    $process = Start-Process -FilePath $script:_7zPath -ArgumentList $arguments -NoNewWindow -PassThru -Wait -ErrorAction Stop
 
     $code=$process.ExitCode
     Write-Debug "7-Zip process complete. Return code: $code"
