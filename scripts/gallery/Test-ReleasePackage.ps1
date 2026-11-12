@@ -28,9 +28,9 @@ try {
     }
     Remove-Module $loaded -Force
     if (-not $InstalledOnly) {
-        & "$PSScriptRoot/../ci/Invoke-ModuleTests.ps1" -Module $Module -SourceRoot $SourceRoot
+        & "$PSScriptRoot/../ci/Invoke-ModuleTests.ps1" -Module $config.CiModule -SourceRoot $SourceRoot
     }
-    & "$PSScriptRoot/../ci/Invoke-ModuleTests.ps1" -Module $Module -SourceRoot $testRoot
+    & "$PSScriptRoot/../ci/Invoke-ModuleTests.ps1" -Module $config.CiModule -SourceRoot $testRoot
 } finally {
     $reports = Join-Path $SourceRoot 'TestResults'
     New-Item $reports -ItemType Directory -Force | Out-Null

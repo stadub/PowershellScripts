@@ -63,3 +63,8 @@ for (const name of ['test','release','publish','verify','complete-issues']) {
 assert.match(jobs.verify, /needs: \[package, publish\]/);
 assert.match(jobs['complete-issues'], /needs: \[package, publish, verify\]/);
 console.log('Release form selects a module/version and propagates one resolved immutable snapshot through every job.');
+
+for (const moduleName of ['FolderEncoder','Shell-Functions','MiniModules.Uninstall']) assert.ok(dispatchForm.includes(moduleName));
+assert.ok(jobs.package.includes('-RequirePublication'));
+assert.ok(selector.includes('-RequirePublication'));
+console.log('Expanded publication selector preserves explicit candidate/account review gates before mutation.');

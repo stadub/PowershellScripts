@@ -45,7 +45,7 @@ $savedExitCode=$global:LASTEXITCODE
 try {
     & $scriptPath -Module Base64String -WhatIf
     if ($fixtureState.Calls.Count) { throw 'WhatIf contacted gh' }
-    $expected=@{Bookmarks='PSGALLERY_API_KEY_STADUB';'7zip-Archive'='PSGALLERY_API_KEY_STADUB';'Currency-Conv'='PSGALLERY_API_KEY_STADUB';Base64String='PSGALLERY_API_KEY_MINIMODULES';Pipe='PSGALLERY_API_KEY_MINIMODULES'}
+    $expected=@{Bookmarks='PSGALLERY_API_KEY_STADUB';'7zip-Archive'='PSGALLERY_API_KEY_STADUB';'Currency-Conv'='PSGALLERY_API_KEY_STADUB';Base64String='PSGALLERY_API_KEY_MINIMODULES';Pipe='PSGALLERY_API_KEY_MINIMODULES';FolderEncoder='PSGALLERY_API_KEY_STADUB';'Shell-Functions'='PSGALLERY_API_KEY_MINIMODULES';'MiniModules.Uninstall'='PSGALLERY_API_KEY_MINIMODULES'}
     foreach ($name in $expected.Keys) {
         $fixtureState.Mode='success';$fixtureState.Calls.Clear()
         $result=& $scriptPath -Module $name
@@ -65,5 +65,5 @@ try {
     Expect-KeySetupFailure verify-failure '*update command succeeded*'
     $fixtureState.MissingGh=$true
     Expect-KeySetupFailure missing-gh '*Install GitHub CLI*'
-    Write-Host 'Key setup contracts passed: five account routes, hidden-prompt arguments, environment-only scope, WhatIf, protection/auth/update/verification failures.'
+    Write-Host 'Key setup contracts passed: eight owner-approved account routes, hidden-prompt arguments, environment-only scope, WhatIf, protection/auth/update/verification failures.'
 } finally { $global:LASTEXITCODE=$savedExitCode }

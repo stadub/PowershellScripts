@@ -24,14 +24,14 @@ if ($metadata.PrivateData.PSData.Prerelease) {
 $destination = Join-Path $OutputRoot $Module
 if (Test-Path $destination) { throw "Output already exists: $destination. Use a fresh staging directory." }
 New-Item $destination -ItemType Directory -Force | Out-Null
-# These five release packages are flat. Never publish the monorepo, tests, CI,
+# These release packages are flat. Never publish the monorepo, tests, CI,
 # secrets, or nested build output by passing a module source tree wholesale.
 $allowed = '.ps1', '.psm1', '.psd1', '.dll', '.xml', '.ps1xml', '.md', '.txt', '.ico', '.png'
 Get-ChildItem $source -File | Where-Object {
     ($_.Extension -in $allowed -or $_.Name -eq 'LICENSE') -and $_.Name -notmatch '\.(Tests?|SmokeTests)\.ps1$'
 } | Copy-Item -Destination $destination
 $license = Join-Path $SourceRoot 'LICENSE'
-if (-not (Test-Path (Join-Path $destination 'LICENSE') -PathType Leaf) -and
+if ($config.UseRepositoryLicense -and -not (Test-Path (Join-Path $destination 'LICENSE') -PathType Leaf) -and
     (Test-Path $license -PathType Leaf)) { Copy-Item $license (Join-Path $destination 'LICENSE') }
 Test-ModuleManifest (Join-Path $destination $config.Manifest) -ErrorAction Stop | Out-Null
 Write-Host "Validated $Module $ExpectedVersion in $destination"

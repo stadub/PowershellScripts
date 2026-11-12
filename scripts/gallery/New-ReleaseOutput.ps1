@@ -25,21 +25,28 @@ $temporary = Join-Path ([IO.Path]::GetTempPath()) "release-output-$([guid]::NewG
 try {
     $package = New-Item (Join-Path $temporary $Module) -ItemType Directory -Force
     $files = @(Get-Item $manifest)
-    $files += @(Get-ChildItem $source -Recurse -File | Where-Object {
+    if ($config.RuntimeFiles) {
+        # A standalone module at repository root must never recursively collect
+        # scripts from unrelated modules or infrastructure.
+        foreach ($relative in $config.RuntimeFiles) {
+            $files += Get-Item (Join-Path $source $relative) -ErrorAction Stop
+        }
+    } else { $files += @(Get-ChildItem $source -Recurse -File | Where-Object {
         $relative = $_.FullName.Substring($source.Length + 1)
         $_.Extension -in '.ps1', '.psm1', '.dll', '.ps1xml' -and
         $relative -notmatch '(^|[/\\])(out|tests?|TestResults|Assets|\.git|\.github)([/\\]|$)' -and
         $_.Name -notmatch '\.(Tests?|SmokeTests)\.ps1$'
-    })
-    foreach ($name in 'README.md', 'LICENSE') {
+    }) }
+    $readme = if ($config.Readme) { $config.Readme } else { 'README.md' }
+    foreach ($name in $readme, 'LICENSE') {
         $file = Join-Path $source $name
         if (Test-Path $file -PathType Leaf) { $files += Get-Item $file }
     }
     $icon = Join-Path $source 'Assets/Icon.ico'
-    if (Test-Path $icon -PathType Leaf) { $files += Get-Item $icon }
+    if ($config.IncludeIcon -and (Test-Path $icon -PathType Leaf)) { $files += Get-Item $icon }
     # An explicit module license takes precedence; the repository license is a fallback.
     $license = Join-Path $sourceRootPath 'LICENSE'
-    if (-not (Test-Path (Join-Path $source 'LICENSE') -PathType Leaf) -and
+    if ($config.UseRepositoryLicense -and -not (Test-Path (Join-Path $source 'LICENSE') -PathType Leaf) -and
         (Test-Path $license -PathType Leaf)) { $files += Get-Item $license }
     $duplicates = @($files | Group-Object Name | Where-Object Count -gt 1)
     if ($duplicates.Count) { throw "Ambiguous flat package filenames: $($duplicates.Name -join ', ')" }

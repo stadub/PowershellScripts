@@ -6,7 +6,7 @@ on:
         description: Module to release
         type: choice
         required: true
-        options: [Bookmarks, 7zip-Archive, Currency-Conv, Base64String, Pipe]
+        options: [Bookmarks, 7zip-Archive, Currency-Conv, Base64String, Pipe, FolderEncoder, Shell-Functions, MiniModules.Uninstall]
       version:
         description: Prepared version number (for example, 1.3.0)
         type: string
@@ -38,12 +38,14 @@ jobs:
       - name: Validate request
         shell: pwsh
         env:
+          MODULE: ${{ inputs.module }}
           VERSION: ${{ inputs.version }}
           MUTATE: ${{ inputs.create_release || !inputs.dry_run }}
           REF: ${{ github.ref }}
         run: |
           if ($env:VERSION -notmatch '^\d+\.\d+\.\d+(\.\d+)?$') { throw 'Stable version required' }
           if ($env:MUTATE -eq 'true' -and $env:REF -ne 'refs/heads/master') { throw 'Mutations require master' }
+          if ($env:MUTATE -eq 'true') { ./automation/scripts/gallery/Get-ReleaseConfig.ps1 -Module $env:MODULE -RequirePublication | Out-Null }
       - name: Resolve the selected module's reviewed release snapshot
         id: snapshot
         shell: pwsh
@@ -181,7 +183,7 @@ jobs:
         env:
           MODULE: ${{ inputs.module }}
         run: |
-          $config = ./scripts/gallery/Get-ReleaseConfig.ps1 -Module $env:MODULE
+          $config = ./scripts/gallery/Get-ReleaseConfig.ps1 -Module $env:MODULE -RequirePublication
           "name=$($config.GalleryAccount)" >> $env:GITHUB_OUTPUT
           "secret=$($config.GallerySecret)" >> $env:GITHUB_OUTPUT
           "Gallery route: $env:MODULE -> $($config.GalleryAccount) ($($config.GallerySecret))" >> $env:GITHUB_STEP_SUMMARY

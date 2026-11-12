@@ -38,7 +38,7 @@ try {
     $shaA = Invoke-FixtureGit -C $seed rev-parse HEAD
     Invoke-FixtureGit -C $seed remote add origin $remote
     Invoke-FixtureGit -C $seed -c "core.hooksPath=$hooks" push --quiet origin HEAD:refs/heads/fixture
-    $modules = @('Bookmarks','7zip-Archive','Currency-Conv','Base64String','Pipe')
+    $modules = @('Bookmarks','7zip-Archive','Currency-Conv','Base64String','Pipe','FolderEncoder','Shell-Functions','MiniModules.Uninstall')
     foreach ($name in $modules) {
         $config = & "$PSScriptRoot/../scripts/gallery/Get-ReleaseConfig.ps1" -Module $name
         Invoke-FixtureGit --git-dir=$remote update-ref "refs/heads/$($config.ReleaseBranch)" $shaA
@@ -67,10 +67,10 @@ try {
     Invoke-FixtureGit --git-dir=$remote update-ref -d refs/heads/7-Zip/release/1.1
     Assert-SelectionFailure { & $resolver -Module 7zip-Archive -Version 1.3.0 -RepositoryRoot $seed } '*Cannot resolve the reviewed release branch*'
     Assert-SelectionFailure { & $resolver -Module Base64String -Version '1.3.0; echo injected' -RepositoryRoot $seed } '*Version*'
-    Assert-SelectionFailure { & $resolver -Module Uninstall -Version 1.3.0 -RepositoryRoot $seed } '*ValidateSet*'
+    Assert-SelectionFailure { & $resolver -Module EXportGithub -Version 1.3.0 -RepositoryRoot $seed } '*ValidateSet*'
     Invoke-FixtureGit -C $seed remote remove origin
     Assert-SelectionFailure { & $resolver -Module Base64String -Version 1.3.0 -RepositoryRoot $seed } '*Cannot resolve the reviewed release branch*'
-    Write-Host 'Release selection passed: five configured sources, one immutable SHA, advancing branches, summary evidence, missing refs/origin and invalid inputs.'
+    Write-Host 'Release selection passed: eight configured sources, one immutable SHA, advancing branches, summary evidence, missing refs/origin and invalid inputs.'
 } finally {
     $env:GITHUB_OUTPUT = $savedOutput
     $env:GITHUB_STEP_SUMMARY = $savedSummary

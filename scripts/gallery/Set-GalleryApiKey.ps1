@@ -13,18 +13,18 @@ the key as a parameter, command argument, environment variable or file.
 [CmdletBinding(SupportsShouldProcess, ConfirmImpact = 'Medium')]
 param(
     [Parameter(Mandatory)]
-    [ValidateSet('Bookmarks', '7zip-Archive', 'Currency-Conv', 'Base64String', 'Pipe')]
+    [ValidateSet('Bookmarks', '7zip-Archive', 'Currency-Conv', 'Base64String', 'Pipe', 'FolderEncoder', 'Shell-Functions', 'MiniModules.Uninstall')]
     [string]$Module,
     [ValidatePattern('^[A-Za-z0-9-]+/[A-Za-z0-9_.-]+$')]
     [string]$Repository = 'stadub/PowershellScripts'
 )
 $ErrorActionPreference = 'Stop'
 $PSNativeCommandUseErrorActionPreference = $false
-$config = & "$PSScriptRoot/Get-ReleaseConfig.ps1" -Module $Module
+$config = & "$PSScriptRoot/Get-ReleaseConfig.ps1" -Module $Module -RequireGalleryAccount
 $environmentName = 'powershell-gallery'
 $target = "$Repository / $environmentName / $($config.GallerySecret) (Gallery account $($config.GalleryAccount))"
 if (-not $PSCmdlet.ShouldProcess($target, 'Create or update environment secret')) { return }
-try { $ghCommand = Get-Command gh -CommandType Application -ErrorAction Stop } catch {
+try { $ghCommand = Get-Command gh -CommandType Application -ErrorAction Stop | Select-Object -First 1 } catch {
     throw 'Install GitHub CLI (gh) and authenticate to github.com before updating the environment secret.'
 }
 $environmentEndpoint = "repos/$Repository/environments/$environmentName"
