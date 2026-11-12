@@ -86,8 +86,14 @@ checks do not encode files, fetch external tools, or exercise archive roundtrips
 Uninstall checks never read real HKLM entries, invoke msiexec or remove software.
 Its existing Windows registry/uninstall implementation is unchanged and remains
 unvalidated. Shell link-provider tests mock New-Item; they create no real links.
-Windows PowerShell 5.1 and hosted pwsh on Windows/Linux/macOS remain explicit
-candidate gates; local macOS results alone do not satisfy them.
+Hosted run [43236263855](https://github.com/stadub/PowershellScripts/actions/runs/43236263855)
+passed all 12 candidate jobs: Windows PowerShell 5.1 and pwsh on Windows/Linux/macOS
+for each package. All 12 artifacts were independently downloaded and verified:
+exact candidate SHA/version, committed payload hashes, 96 source/installed Pester
+assertions and 72 structure assertions, zero failures/skips. Per-artifact IDs,
+archive digests and counts are in
+[new-module-hosted-validation.json](new-module-hosted-validation.json).
+The payload is identical across all four runtimes for each module.
 
 ## Review and rollout
 

@@ -85,9 +85,9 @@ new entries run syntax, manifest (where present), import and export checks, and
 source Pester suites when available. Do not hide current FolderEncoder missing-file
 or Shell-Functions empty-export failures with allow-failure rules.
 
-Gallery publication remains limited to the original five configured packages.
-FolderEncoder, Shell-Functions and Uninstall have no reviewed release branches or
-publication configuration. EXportGithub, Git-Functions and shared infrastructure
+The original Gallery setup limited publication to five configured packages.
+The owner subsequently authorized the three new package candidates documented at
+the end of this file; those routes remain review-blocked until separate approval. EXportGithub, Git-Functions and shared infrastructure
 are script/infrastructure components rather than formal modules; they do not gain
 module or publishing entries from this CI expansion.
 
@@ -259,7 +259,8 @@ The owner confirmed module-local WTFPL; preserve it during generation/staging an
 use the repository license only as a fallback. Do not relicense other components.
 The trusted completion entry maps only #22 to this exact version/SHA, still gated
 on actual successful Gallery publish and verification. No upload or issue closure
-has occurred; production workflow integration into master remains pending.
+has occurred. Production workflow integration was explicitly approved and merged
+through PR #31 at master 912d1d9bde07b95299f46eb99add2ae58bd2a0c9.
 
 CI source selection now pins each unchanged module's maintained development ref
 to a full SHA and records the identity with test artifacts. Component/release runs
