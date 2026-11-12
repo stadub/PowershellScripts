@@ -322,3 +322,24 @@ until separate owner approval. All three new config entries have publication
 review blocks: read-only QA is allowed, GitHub release creation and upload are not.
 Keep the master-only environment, dry-run default and account-specific keys.
 See docs/releases/new-module-packaging.md for exact SHAs, evidence and limits.
+
+## Gallery versions as release references (owner direction 2026-11-12)
+
+Use scripts/gallery/version-reference.json and docs/releases/gallery-version-reference.md
+as the dated Gallery baseline. Only 7zip-Archive receives a new major bump:
+latest listed 1.1.0 -> planned 2.0.0 because automatic runtime downloads are removed
+and an installed native runtime is now required. Preserve Base64String 1.3.0 and
+the three already validated new-module candidate versions. Do not blanket-bump.
+
+Bookmarks Gallery 3.0.1 has a different cmdlets-based implementation from repository
+2.2.0; planned 3.0.2 is explicitly blocked pending exact source reconciliation.
+No reachable 3.x source manifest was found. Do not relabel the 2.2 monolith or
+invent missing runtime helpers. Currency-Conv latest listed is 1.0.2, but 1.5.0
+is registered and unlisted; planned 1.5.1 must follow source/package validation.
+Pipe’s reference plan is 1.0.1. These are plans, not prepared release claims.
+
+The workflow checks recorded registered-version and major-version references
+before staging; source/out versions must still match and source hashes/tests
+must pass. Reference data never rewrites manifests or changes issue mappings.
+Refresh Gallery observations before actual rollout. No merge, tag, GitHub release
+or Gallery upload is authorized by this version audit.

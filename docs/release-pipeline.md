@@ -33,7 +33,9 @@ Only require `CI status` after a real hosted run succeeds on each maintained bra
 ## Inputs and behavior
 
 Run `release-gallery.yml` manually. Select a module from the dropdown and enter
-its prepared stable version number, such as `1.3.0`. No commit SHA is required in
+its prepared stable version number. Use the per-module
+[Gallery version reference plan](releases/gallery-version-reference.md); `1.3.0`
+is the prepared Base64String version, not a shared default. No commit SHA is required in
 the form. The workflow resolves the configured reviewed release branch once to a
 full immutable SHA, records it in the run summary, and passes that exact SHA to
 every checkout, test, release, publication, verification and issue-completion job.
@@ -176,7 +178,8 @@ The form contains:
 
 - **Module to release**: Bookmarks, 7zip-Archive, Currency-Conv, Base64String, Pipe,
   FolderEncoder, Shell-Functions or MiniModules.Uninstall.
-- **Prepared version number**: for example, `1.3.0`.
+- **Version already prepared for this module**: match that module’s committed
+  source/out manifests and the [version reference plan](releases/gallery-version-reference.md).
 - **Also create the GitHub release during a dry-run**: unchecked by default.
 - **Validate only; uncheck to publish to PowerShell Gallery**: checked by default.
 
@@ -221,6 +224,23 @@ runs manifest/import/export and installed regression checks. Only Gallery-genera
 PSGetModuleInfo.xml is excluded from the comparison. A different visible package,
 missing version, download error, hash change, or failed regression blocks completion.
 The `gallery-verification` artifact and run log contain verification evidence.
+
+## Gallery version references
+
+`scripts/gallery/version-reference.json` records the observed latest listed and
+highest registered stable versions (including unlisted packages), downloaded
+reference archive/runtime hashes, source/release SHAs and the next version plan.
+`Get-ReleaseConfig.ps1` exposes LatestGalleryVersion, HighestRegisteredVersion,
+PlannedVersion, VersionChange and VersionPlanStatus. The release workflow checks
+these references before staging and records them in the run summary. Only 7Zip
+has a planned major bump. Zero fourth-segment versions cannot bypass registered
+version checks. This is a dated reviewed reference, not a live query or a package
+builder; refresh it against Gallery before rollout. Actual upload still performs
+its existing credential-scoped live Gallery preflight.
+
+Bookmarks publication/release creation is additionally blocked pending
+reconciliation with the downloaded 3.0.1 implementation; do not relabel the stale
+2.2.0 source. See [exact version decisions and blockers](releases/gallery-version-reference.md).
 
 ## Populate a missing or stale out/ package
 
@@ -402,6 +422,7 @@ pwsh -NoProfile -NonInteractive -File tests/Test-CiRunner.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-CiStructure.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-GalleryAutomation.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-ReleaseSelection.ps1
+pwsh -NoProfile -NonInteractive -File tests/Test-ReleaseVersionReferences.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-GalleryKeySetup.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-ReleaseOutput.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-ReleaseEvidence.ps1
