@@ -68,3 +68,17 @@ for (const moduleName of ['FolderEncoder','Shell-Functions','MiniModules.Uninsta
 assert.ok(jobs.package.includes('-RequirePublication'));
 assert.ok(selector.includes('-RequirePublication'));
 console.log('Expanded publication selector preserves explicit candidate/account review gates before mutation.');
+
+const additionalCandidates = fs.readFileSync('.github/workflows/additional-gallery-candidates.yml','utf8');
+assert.match(additionalCandidates, /permissions:\n  contents: read/);
+for (const forbidden of ['secrets.', 'secrets[', 'issues: write', 'contents: write', 'environment:', 'Publish-GalleryPackage.ps1']) assert.ok(!additionalCandidates.includes(forbidden));
+const candidateRecords = JSON.parse(fs.readFileSync('docs/releases/new-module-candidates.json','utf8'));
+assert.equal(candidateRecords.length, 3);
+assert.equal((additionalCandidates.match(/uses: stadub\/PowershellScripts\/.github\/workflows\/validate-release-candidate.yml@[0-9a-f]{40}/g) || []).length, 3);
+for (const candidate of candidateRecords) {
+  assert.match(candidate.candidateSha, /^[0-9a-f]{40}$/);
+  assert.ok(additionalCandidates.includes(`module: ${candidate.module}\n`));
+  assert.ok(additionalCandidates.includes(`source_sha: ${candidate.candidateSha}\n`));
+}
+assert.ok(candidateValidation.includes('name: candidate-${{ inputs.module }}-${{ matrix.os }}-${{ matrix.shell }}'));
+console.log('Additional package QA pins the reviewed candidate identities and keeps credentials, writes and deployment environments unavailable.');

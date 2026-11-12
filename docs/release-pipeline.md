@@ -1,8 +1,9 @@
 # Tested releases and protected PowerShell Gallery publication
 
 This is automation for issue #29, not a deployment of the #22 fix. #22 stays open.
-No live Gallery upload, GitHub release creation, issue mutation, secret edit, master
-edit, or existing sibling worktree edit was performed by this task. The separately
+No live Gallery upload, GitHub release creation, issue completion or secret edit
+was performed. The owner approved PR #31 integration into master at
+912d1d9bde07b95299f46eb99add2ae58bd2a0c9; its hosted CI passed. The separately
 authorized Base64String release preparation is recorded in
 [the 1.3.0 snapshot report](releases/base64string-1.3.0.md).
 
@@ -12,8 +13,9 @@ authorized Base64String release preparation is recorded in
 `github-actions-ci` worktree and configuration/staging/preflight checks from the
 read-only `psgallery-deploy` worktree. The sibling files were uncommitted and have
 continued owner activity: merge this integrated implementation deliberately, not
-both its workflow and the sibling `publish-gallery.yml`. Preserve the five publication
-routes and Gallery account ownership. Public usernames and the module-to-account
+both its workflow and the sibling `publish-gallery.yml`. Preserve the original five
+routes and their ownership. The owner subsequently authorized three additional
+packages; their candidates remain review-blocked as described below. Public usernames and the module-to-account
 mapping live in `scripts/gallery/Get-ReleaseConfig.ps1`; API keys live in separate
 protected environment secrets. The selected key alone is passed to the upload
 process as `PSGALLERY_API_KEY`. Do not merge a duplicate sibling publishing workflow.
@@ -46,6 +48,16 @@ a publication fallback. The configured sources are:
 | Currency-Conv | Currency-Conv/release/1.5 | Currency-Conv/out |
 | Base64String | base64String/release/latest | Shared-Functions/Base64String/out |
 | Pipe | Pipe/release/latest | Shared-Functions/Pipe/out |
+| FolderEncoder (review-blocked) | FolderEncoder/release/2.0.1 | FolderEncoder/out |
+| Shell-Functions (review-blocked) | Shell-Functions/release/0.0.1 | Shell-Functions/out |
+| MiniModules.Uninstall (review-blocked) | Uninstall/release/1.0.1 | ./out |
+
+The three new release refs begin at their reviewed component baselines; candidate
+PRs explicitly add the source preparation and generated out/. Their final integration
+requires separate owner approval. See [candidate evidence and limitations](releases/new-module-packaging.md).
+`Get-ReleaseConfig.ps1 -RequirePublication` rejects GitHub release creation and
+upload for these candidates while review blocks are present; read-only dry-run
+and candidate validation remain available after packaging lands.
 
 These are literal Git branch names. The owner clarified that GitHub's
 `/releases/latest` is a release URL alias, not a requirement to create branches
@@ -78,6 +90,9 @@ relying on the module manifest's Author field:
 | [Currency-Conv](https://www.powershellgallery.com/packages/Currency-Conv/1.0.2) | Stadub | PSGALLERY_API_KEY_STADUB |
 | [Base64String](https://www.powershellgallery.com/packages/Base64String/1.2.0) | MiniModules | PSGALLERY_API_KEY_MINIMODULES |
 | [Pipe](https://www.powershellgallery.com/packages/Pipe/1.0.0) | MiniModules | PSGALLERY_API_KEY_MINIMODULES |
+| [FolderEncoder](https://www.powershellgallery.com/packages/FolderEncoder/2.0.0) | Stadub | PSGALLERY_API_KEY_STADUB |
+| Shell-Functions (new; owner-selected account) | MiniModules | PSGALLERY_API_KEY_MINIMODULES |
+| MiniModules.Uninstall (new; owner-selected account) | MiniModules | PSGALLERY_API_KEY_MINIMODULES |
 
 Usernames are public configuration, not secrets. Each module names its
 `GalleryAccount`; the account-to-secret-name table in the same script supplies
@@ -92,7 +107,8 @@ never values. Dry-runs and non-upload steps never receive either API key.
 The owner opens repository Settings -> Environments -> powershell-gallery ->
 Environment secrets -> Add environment secret and creates both named secrets,
 using a Gallery key generated while signed into the corresponding account. Scope
-the Stadub key to its three packages and the MiniModules key to its two packages,
+the Stadub key to its four mapped packages and the MiniModules key to its four
+mapped packages, including first-publication rights for the two approved new names,
 with suitable push/update permissions and expiry. Do not replace one account's key
 when deploying another module. The previous generic `PSGALLERY_API_KEY` environment
 secret is not read by this workflow and need not be configured.
@@ -124,8 +140,8 @@ gh auth login --hostname github.com
 ./scripts/gallery/Set-GalleryApiKey.ps1 -Module Bookmarks
 ```
 
-The MiniModules key is shared by Base64String/Pipe; the Stadub key is shared by
-Bookmarks/7zip-Archive/Currency-Conv. Rotating one updates that account's credential
+The MiniModules key is shared by Base64String/Pipe/Shell-Functions/MiniModules.Uninstall;
+the Stadub key is shared by Bookmarks/7zip-Archive/Currency-Conv/FolderEncoder. Rotating one updates that account's credential
 for all its mapped modules. The GitHub login and Gallery account are separate
 identities: enter the Gallery account's publishing key, not a GitHub token.
 `-Repository owner/repo` can explicitly select another repository; the default is
@@ -158,7 +174,8 @@ branch (`master`). A branch-only workflow does not expose the Run workflow form.
 See [GitHub's manual workflow documentation](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow).
 The form contains:
 
-- **Module to release**: Bookmarks, 7zip-Archive, Currency-Conv, Base64String or Pipe.
+- **Module to release**: Bookmarks, 7zip-Archive, Currency-Conv, Base64String, Pipe,
+  FolderEncoder, Shell-Functions or MiniModules.Uninstall.
 - **Prepared version number**: for example, `1.3.0`.
 - **Also create the GitHub release during a dry-run**: unchecked by default.
 - **Validate only; uncheck to publish to PowerShell Gallery**: checked by default.
@@ -182,8 +199,8 @@ The same staged artifact is tested on Windows PowerShell 5.1 and pwsh on Windows
 Linux and macOS (7zip-Archive runtime suites remain Windows-only). Tests use pinned
 Pester 4.10.1. Source suites run separately against an installed copy, imported by
 absolute manifest path; suite files never enter the publish payload. Pipe runs its source Pester suites when present, with manifest checks on older
-snapshots without suites. CI now covers all eight formal modules; this expansion
-does not add publication routes. See the coverage table below.
+snapshots without suites. CI covers all eight formal modules. The three newly authorized publication
+candidates retain explicit mutation blocks until review. See the coverage table below.
 
 Release tags are `<Module>-v<Version>` at the tested SHA, with `package.tar.gz` and
 `evidence.json` assets. No automatic closing keywords appear in release notes.
@@ -207,7 +224,7 @@ The `gallery-verification` artifact and run log contain verification evidence.
 
 ## Populate a missing or stale out/ package
 
-`New-ReleaseOutput.ps1` builds the five configured packages from source; it does
+`New-ReleaseOutput.ps1` builds the eight configured packages from source; it does
 not publish, change versions, recover release-only fixes or overwrite old output.
 Prepare the module's reviewed release branch first. For Base64String, selectively
 port the already-reviewed #22 fix and regression suite from development, choose an
@@ -265,7 +282,7 @@ in another component adds its coverage. Repository-wide runs pin maintained
 development commits for unchanged modules and test changed modules at the proposal
 SHA. Every job records its source identity; see [build repairs and source selection](ci-build-repairs.md). Existing
 7zip-Archive runtime suites remain Windows-only; all other entries run pwsh on
-Windows, Linux and macOS. The release workflow's publication choices remain five.
+Windows, Linux and macOS. The release workflow lists eight packages; the three new routes are review-blocked.
 
 | Module | CI checks |
 | --- | --- |
@@ -278,23 +295,19 @@ Windows, Linux and macOS. The release workflow's publication choices remain five
 | Shell-Functions | Parse source scripts/manifests, validate manifest, import, require exported commands; run source Pester suites when added |
 | Uninstall | Parse/import standalone Uninstall.psm1, verify exported Uninstall-Application command and SoftwareName/Application parameter contract; run Uninstall*.Tests.ps1 when added |
 
-The three new modules currently have no functional Pester suites. Their checks
-produce NUnit-compatible structure reports on success and failure. Uninstall's
-smoke checks never invoke its command, access HKLM, start msiexec, or uninstall
-software. This checks its loadable public API, not Windows uninstall behavior.
-
-Local real-source checks: Uninstall passes on macOS pwsh 7.7.0; FolderEncoder fails
-because Functions.ps1 is missing; Shell-Functions fails because its manifest imports
-an empty module with no exported commands. These are pre-existing module defects,
-not successful test runs or allow-failure exceptions. They will block aggregate CI
-until repaired through the module development branches. No module implementation
-or manifest was modified as part of this expansion. The three development branch
-source trees still match this worktree's source at inspection.
+FolderEncoder and Shell-Functions import defects were repaired through their
+component development PRs #44/#45 and now have 3 and 6 focused source tests.
+The new Uninstall packaging candidate adds 3 safe manifest/import/parameter tests.
+These run separately against source and installed output. The import/structure
+checks also produce NUnit-compatible reports. No test invokes real uninstall,
+encoding, downloads or archive roundtrips; those legacy behaviors remain outside
+this packaging validation. See [component merge evidence](ci-component-merges.json)
+and [the new package candidates](releases/new-module-packaging.md).
 
 EXportGithub, Git-Functions and shared infrastructure are the other three inventory
 components, not formal modules. They do not get invented module entries. All-module
-CI still runs on their branches through the default routing. Gallery automation
-and issue-completion mappings are unchanged.
+CI still runs on their branches through the default routing. Issue-completion mappings remain unchanged; only the exact Base64String 1.3.0
+release SHA can complete #22 after actual verified publication.
 
 ## Trusted issue completion
 
@@ -332,10 +345,10 @@ Do not bypass that guard or close manually without verifying deployment evidence
 
 ## Owner rollout and remaining blockers
 
-1. Integrate automation into master and port read-only CI automation to maintained
-   module branches. Run hosted CI and a full production dry-run before enabling required status
+1. PR #31 is integrated into master, and the read-only CI automation was ported to
+   maintained module branches. Run hosted CI and a full production dry-run before enabling required status
    checks. The prepared Base64String snapshot now has passing hosted validation;
-   the production manual workflow still needs default-branch integration.
+   the production manual workflow is now integrated in master via PR #31.
 2. For #22, the reviewed fix is commit
    `5fe9e2344afacccd4cebe02f178d6eb8cd162d2f`, merged by PR #28 into
    `base64tring/develop` at `4d2e1c86e8083202f74b9b31c48447c0cd82808e`.
@@ -348,7 +361,7 @@ Do not bypass that guard or close manually without verifying deployment evidence
    checkout line endings. The prepared release tip is
    `6d30dbc22de8bfb8bccda5cd3880ffb9a6655f5f`.
    See [exact snapshot evidence](releases/base64string-1.3.0.md).
-3. Review and integrate the exact issue mapping from PR #31 into master. Run a
+3. The exact issue mapping from PR #31 is integrated into master. Run a
    Base64String 1.3.0 dry-run and verify the resolved SHA matches the prepared
    snapshot above. Review source and installed NUnit artifacts,
    including both Windows runtimes. Then optionally create the GitHub release with

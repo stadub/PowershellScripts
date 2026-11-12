@@ -1,0 +1,126 @@
+[
+  {
+    "module": "FolderEncoder",
+    "ciModule": "FolderEncoder",
+    "version": "2.0.1",
+    "developmentBranch": "FolderEncoder/develop",
+    "releaseBranch": "FolderEncoder/release/2.0.1",
+    "sourcePreparationSha": "25c8ef37a3cae201a6e846010c6c7d0dd23d9fd3",
+    "candidateSha": "afb5b7ef10cd53c388d4c6a6b6f6f8d5fb7652d6",
+    "candidateBranch": "prepare/folderencoder-release-candidate",
+    "packagePath": "FolderEncoder/out",
+    "localSourceTests": 3,
+    "localInstalledTests": 3,
+    "payload": [
+      {
+        "path": "FolderEncoder.psd1",
+        "sha256": "d55eae9954070edc4282c641cf40e147c08bb4b5161d0ae976fd07a755775933",
+        "size": 4208
+      },
+      {
+        "path": "Functions.ps1",
+        "sha256": "eff6fd23669f0405b6eb2df6e0e4824e29fccaf49728886493d2d116e6cb8b01",
+        "size": 8882
+      },
+      {
+        "path": "Icon.ico",
+        "sha256": "3e0b9bf2d056eb321836935306ebc5131de903ea5056c280174362a581f71801",
+        "size": 3678
+      },
+      {
+        "path": "README.md",
+        "sha256": "2e49bdcfb9d3dfa222a347458fceded15b90783414ab60e5c6a0333e2c7a9cb3",
+        "size": 4937
+      }
+    ],
+    "sourcePr": 46,
+    "reviewedDevelopmentSha": "9b339c1d02e67e601b253da97d770c43242953ca",
+    "candidatePr": 49
+  },
+  {
+    "module": "Shell-Functions",
+    "ciModule": "Shell-Functions",
+    "version": "0.0.1",
+    "developmentBranch": "Shell-Functions/develop",
+    "releaseBranch": "Shell-Functions/release/0.0.1",
+    "sourcePreparationSha": "82db53158962a45b510a033f6b2eb87dc7606c08",
+    "candidateSha": "5b83779c7c62cca738dc99770ce3724ed4e7fb85",
+    "candidateBranch": "prepare/shell-release-candidate",
+    "packagePath": "Shell-Functions/out",
+    "localSourceTests": 6,
+    "localInstalledTests": 6,
+    "payload": [
+      {
+        "path": "LICENSE",
+        "sha256": "1a8f6a9c20c86c73234b3f49a25b2a0ba6bb8cf14f2d9666f44aa1db66915d76",
+        "size": 1321
+      },
+      {
+        "path": "README.md",
+        "sha256": "ccaa9a45500771b676415688d2456939eaadde6e5fc8208b291bfb786985577e",
+        "size": 1570
+      },
+      {
+        "path": "Shell-Alias.ps1",
+        "sha256": "e6a0fec9efc97aa55b62e8be1a7de09467f7518c2f1c3beaa20f9f8378c91508",
+        "size": 97
+      },
+      {
+        "path": "Shell-Function.ps1",
+        "sha256": "b05cdc54d03b96a8b430e9a5ca29244eafe1d51586922cd0c96c1a3b51923506",
+        "size": 3710
+      },
+      {
+        "path": "Shell-Function.psm1",
+        "sha256": "727ff077ae591dec5fdc97fb95fbd90c332c11f853800adc4f929de06f95f779",
+        "size": 384
+      },
+      {
+        "path": "Shell-Functions.psd1",
+        "sha256": "c4c4b21b9d87e67cdfc3a48c1660df8302c66b94319708be24442eaa19dba839",
+        "size": 4194
+      }
+    ],
+    "sourcePr": 47,
+    "reviewedDevelopmentSha": "5cd269b6602e973af70387ce04eaf26b82e04b89",
+    "candidatePr": 50
+  },
+  {
+    "module": "MiniModules.Uninstall",
+    "ciModule": "Uninstall",
+    "version": "1.0.1",
+    "developmentBranch": "Uninstall/develop",
+    "releaseBranch": "Uninstall/release/1.0.1",
+    "sourcePreparationSha": "b6427503f6d748b3e486d0228fc41f662e8ec6a1",
+    "candidateSha": "a351e867d6fdb14a9650fc1d4f12f67e2dcfdf4c",
+    "candidateBranch": "prepare/uninstall-release-candidate",
+    "packagePath": "out",
+    "localSourceTests": 3,
+    "localInstalledTests": 3,
+    "payload": [
+      {
+        "path": "LICENSE",
+        "sha256": "1a8f6a9c20c86c73234b3f49a25b2a0ba6bb8cf14f2d9666f44aa1db66915d76",
+        "size": 1321
+      },
+      {
+        "path": "MiniModules.Uninstall.psd1",
+        "sha256": "2cf53c5ec0a9347f0c056d43af067e6f861ddfe43a290c92069477a02511d006",
+        "size": 857
+      },
+      {
+        "path": "Uninstall.md",
+        "sha256": "7a5f1b0cbfb0d9269d010eb31963bce12eae4d262a675b1ba521fb07b56f8e6e",
+        "size": 993
+      },
+      {
+        "path": "Uninstall.psm1",
+        "sha256": "4d0e83f17b18994a2d1ae06de74f0da5581671a16fe80186da254853aa18e0c2",
+        "size": 1809
+      }
+    ],
+    "sourcePr": 48,
+    "reviewedDevelopmentSha": "cb191cc44ec85174187958b994065f6452ae046f",
+    "candidatePr": 51
+  }
+]

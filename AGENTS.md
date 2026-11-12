@@ -296,3 +296,28 @@ The manual release form now selects module and prepared version; it resolves the
 configured release tip once, records the full SHA, and reuses it throughout the
 run. It does not rewrite source/package versions or publish development directly.
 The form becomes visible only after reviewed automation is integrated into master.
+
+## Additional publishing candidates (owner-authorized 2026-11-12)
+
+The owner explicitly added FolderEncoder, Shell-Functions and Uninstall to release
+preparation, superseding the earlier five-package publication limit. Verified
+Gallery ownership maps FolderEncoder to Stadub. The owner explicitly selected
+MiniModules for Shell-Functions and the new package name MiniModules.Uninstall.
+Do not claim or relist the legacy Uninstall script owned by DimaStadub.
+
+CI/component identity remains Uninstall; its Gallery manifest/package identity is
+MiniModules.Uninstall, RootModule Uninstall.psm1, package directory ./out. The
+root standalone generator uses an explicit runtime-file list and module README;
+never recursively package the repository. Source and installed checks use the
+CiModule mapping. Shell-Functions.psd1 is the canonical package manifest; retain
+Shell-Function.psd1 as source compatibility metadata. FolderEncoder keeps its
+existing MIT declaration without substituting the repository BSD LICENSE. Other
+module licenses, including Base64String WTFPL, remain unchanged.
+
+Versioned release preparation refs are FolderEncoder/release/2.0.1,
+Shell-Functions/release/0.0.1 and Uninstall/release/1.0.1. Their candidate PRs must
+explicitly include source preparation and generated out/ and remain unmerged
+until separate owner approval. All three new config entries have publication
+review blocks: read-only QA is allowed, GitHub release creation and upload are not.
+Keep the master-only environment, dry-run default and account-specific keys.
+See docs/releases/new-module-packaging.md for exact SHAs, evidence and limits.
