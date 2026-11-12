@@ -16,7 +16,7 @@ foreach ($name in @($all.include.module | Select-Object -Unique)) {
     foreach ($item in $ChangedPaths) {
         $path = $item.Replace('\','/')
         if ($name -eq 'Uninstall') {
-            $matchesSource = $path -eq 'Uninstall.psm1' -or ($path -notlike '*/*' -and $path -like 'Uninstall*.Tests.ps1')
+            $matchesSource = $path -in 'Uninstall.psm1','MiniModules.Uninstall.psd1' -or ($path -notlike '*/*' -and $path -like 'Uninstall*.Tests.ps1')
         } else {
             $prefix = "$($config.SourcePath)/"
             $matchesSource = $path.StartsWith($prefix, [StringComparison]::OrdinalIgnoreCase) -and
