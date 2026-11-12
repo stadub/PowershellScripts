@@ -1,0 +1,15 @@
+name: Uninstall source checks
+on:
+  push:
+    branches: [prepare/uninstall-package]
+  pull_request:
+    branches: [Uninstall/develop]
+permissions:
+  contents: read
+jobs:
+  source:
+    uses: stadub/PowershellScripts/.github/workflows/validate-module-source.yml@42814913be33a4662a57dbf011333b96c5fa294f
+    with:
+      module: Uninstall
+      source_sha: ${{ github.event.pull_request.head.sha || github.sha }}
+      automation_sha: 42814913be33a4662a57dbf011333b96c5fa294f
