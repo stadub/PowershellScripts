@@ -6,6 +6,8 @@ $gitExe = (Get-Command git -CommandType Application -ErrorAction Stop | Select-O
 $fixture = Join-Path ([IO.Path]::GetTempPath()) "release-selection-$([guid]::NewGuid())"
 $savedOutput = $env:GITHUB_OUTPUT
 $savedSummary = $env:GITHUB_STEP_SUMMARY
+$exitCodeVariable = Get-Variable LASTEXITCODE -Scope Global -ErrorAction SilentlyContinue
+$savedExitCode = if ($null -ne $exitCodeVariable) { $exitCodeVariable.Value } else { 0 }
 function Invoke-FixtureGit {
     # A plain function preserves native flags such as -d; advanced functions
     # would bind that flag to PowerShell's common Debug parameter.
@@ -73,4 +75,7 @@ try {
     $env:GITHUB_OUTPUT = $savedOutput
     $env:GITHUB_STEP_SUMMARY = $savedSummary
     Remove-Item $fixture -Recurse -Force -ErrorAction SilentlyContinue
+    # Expected failing native-Git cases must not make Actions' shell wrapper
+    # report failure after all assertions passed.
+    $global:LASTEXITCODE = $savedExitCode
 }
