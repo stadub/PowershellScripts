@@ -286,3 +286,13 @@ The owner has no external service access. Internal definitions/history remain;
 GitHub has no supported individual deletion for their old check/status results.
 Preserve historical evidence and replacement Actions results. See
 docs/ci/legacy-ci-removal/README.md for exact scope and limitations.
+
+The owner clarified that GitHub Releases `/releases/latest` is a repository-wide
+URL alias, not a required branch suffix. Gallery sources for 7Zip and Currency
+use their verified `7-Zip/release/1.1` and `Currency-Conv/release/1.5` refs with
+the same out-only package paths. Existing literal release/latest branches for the
+other three modules remain preparation sources. Do not invent missing latest refs.
+The manual release form now selects module and prepared version; it resolves the
+configured release tip once, records the full SHA, and reuses it throughout the
+run. It does not rewrite source/package versions or publish development directly.
+The form becomes visible only after reviewed automation is integrated into master.

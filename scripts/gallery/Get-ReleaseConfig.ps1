@@ -7,8 +7,8 @@ param(
 
 # Package branches are deliberately distinct from feature/PR development bases.
 # Do not substitute master or dynamically accept arbitrary branch names here.
-# The owner must establish reviewed 7-Zip/Currency-Conv /release/latest branches
-# before deploying them; no fallback to numbered release or development refs.
+# These are literal reviewed Git branch names, separate from GitHub Releases
+# /releases/latest URL alias. Never resolve a package from development as fallback.
 # All configured packages use <module source directory>/out within the snapshot.
 # PackagePath is relative to that immutable snapshot, not the runner or branch name.
 # GallerySecret is a GitHub environment SECRET NAME, never the API key value.
@@ -20,13 +20,13 @@ $configs = @{
         GalleryAccount = 'Stadub'
     }
     '7zip-Archive' = @{
-        ReleaseBranch = '7-Zip/release/latest'
+        ReleaseBranch = '7-Zip/release/1.1'
         PackagePath = '7Zip/out'
         Manifest = '7zip-Archive.psd1'
         GalleryAccount = 'Stadub'
     }
     'Currency-Conv' = @{
-        ReleaseBranch = 'Currency-Conv/release/latest'
+        ReleaseBranch = 'Currency-Conv/release/1.5'
         PackagePath = 'Currency-Conv/out'
         Manifest = 'Currency-Conv.psd1'
         GalleryAccount = 'Stadub'

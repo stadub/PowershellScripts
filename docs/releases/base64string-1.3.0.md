@@ -69,9 +69,13 @@ After production workflow integration, run `release-gallery.yml` from master wit
 
 - module: `Base64String`
 - version: `1.3.0`
-- source_sha: `6d30dbc22de8bfb8bccda5cd3880ffb9a6655f5f`
 - create_release: `false`
 - dry_run: `true`
+
+No SHA entry is needed. Verify that the run summary automatically resolves
+`base64String/release/latest` to the prepared
+`6d30dbc22de8bfb8bccda5cd3880ffb9a6655f5f` snapshot. A different resolved tip
+requires its own source/package validation and exact issue-map review.
 
 This full production dry-run is still pending; the successful runs above are its
 credential-free source/package validation, not a simulated successful upload.

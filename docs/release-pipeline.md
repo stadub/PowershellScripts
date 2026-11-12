@@ -30,24 +30,29 @@ Only require `CI status` after a real hosted run succeeds on each maintained bra
 
 ## Inputs and behavior
 
-Run `release-gallery.yml` manually. Supply one configured module, its stable
-manifest version, and a **full 40-character reviewed release commit SHA**. The
-workflow rejects snapshots outside the configured release branch's history.
-It never checks out a development ref for publishing. The routes are:
+Run `release-gallery.yml` manually. Select a module from the dropdown and enter
+its prepared stable version number, such as `1.3.0`. No commit SHA is required in
+the form. The workflow resolves the configured reviewed release branch once to a
+full immutable SHA, records it in the run summary, and passes that exact SHA to
+every checkout, test, release, publication, verification and issue-completion job.
+The entered version must match both reviewed source and out/ manifests; entering a
+new number does not silently rewrite an unreviewed package. Development is never
+a publication fallback. The configured sources are:
 
 | Module | Release branch | Package directory |
 | --- | --- | --- |
 | Bookmarks | Bookmarks/release/latest | Bookmarks/out |
-| 7zip-Archive | 7-Zip/release/latest | 7Zip/out |
-| Currency-Conv | Currency-Conv/release/latest | Currency-Conv/out |
+| 7zip-Archive | 7-Zip/release/1.1 | 7Zip/out |
+| Currency-Conv | Currency-Conv/release/1.5 | Currency-Conv/out |
 | Base64String | base64String/release/latest | Shared-Functions/Base64String/out |
 | Pipe | Pipe/release/latest | Shared-Functions/Pipe/out |
 
-The user requested the two numbered release sources be changed to `latest`.
-Live inspection found **no** `7-Zip/release/latest` or `Currency-Conv/release/latest`
-branch. An owner must establish reviewed snapshots there before those modules can
-deploy; the workflow fails closed if either ref is missing. Existing numbered
-branches remain historical baselines, not fallback publication sources.
+These are literal Git branch names. The owner clarified that GitHub's
+`/releases/latest` is a release URL alias, not a requirement to create branches
+ending in latest. The 7Zip/Currency routes therefore use their verified reviewed
+numbered refs. The existing Bookmarks/Pipe/Base64 branches named latest are real
+branches and remain valid preparation sources. The GitHub URL alias is repository-wide;
+the versioned release tag and recorded SHA identify the individual module package.
 
 `PackagePath` follows one rule for every configured module:
 **<module source directory>/out** within the reviewed release snapshot. The nested
@@ -55,11 +60,11 @@ Shared-Functions prefix remains part of Base64String's and Pipe's source layout.
 Staging never falls back to source files beside out/ when a package is missing.
 
 The historical numbered 7Zip and Currency-Conv snapshots used their module
-directories directly. Their new latest snapshots must instead contain reviewed
+directories directly. Their configured snapshots must instead contain reviewed
 `7Zip/out` and `Currency-Conv/out` packages with matching source/manifest bytes.
 Preparing those release snapshots remains a rollout prerequisite; this automation
 change does not generate or commit release artifacts into development source.
-A branch named latest does not imply a directory named latest.
+No new latest branch is required solely because of GitHub's release URL alias.
 
 ### Gallery accounts and credential setup
 
@@ -142,11 +147,21 @@ fixture command and the real helper was invoked only with `-WhatIf`.
 
 After integration into master and preparation of a tested release snapshot, open
 Actions -> Tested release and protected Gallery deployment -> Run workflow. Select
-master, module, version and full reviewed release SHA. Start with dry_run=true and
+master, module and prepared version number. Start with dry_run=true and
 create_release=false. Inspect the resulting package/tests, optionally create the
 GitHub release with create_release=true while retaining dry_run=true, and only
 when actual deployment is authorized choose dry_run=false and approve its protected
 environment. Configuring a secret does not itself trigger a deployment.
+
+The manual form appears only after the workflow is integrated into the default
+branch (`master`). A branch-only workflow does not expose the Run workflow form.
+See [GitHub's manual workflow documentation](https://docs.github.com/en/actions/how-tos/manage-workflow-runs/manually-run-a-workflow).
+The form contains:
+
+- **Module to release**: Bookmarks, 7zip-Archive, Currency-Conv, Base64String or Pipe.
+- **Prepared version number**: for example, `1.3.0`.
+- **Also create the GitHub release during a dry-run**: unchecked by default.
+- **Validate only; uncheck to publish to PowerShell Gallery**: checked by default.
 
 `dry_run=true` (default) prevents Gallery publication and issue completion.
 `create_release=false` (default) also prevents GitHub release creation. A release-only
@@ -197,7 +212,7 @@ not publish, change versions, recover release-only fixes or overwrite old output
 Prepare the module's reviewed release branch first. For Base64String, selectively
 port the already-reviewed #22 fix and regression suite from development, choose an
 unused version and update source manifest/release notes. For 7Zip/Currency-Conv,
-establish their configured latest release branches and review their source first.
+prepare their configured reviewed numbered release sources first.
 Do not generate a package from old master source and call it the fixed release.
 
 Run the helper from this automation checkout with a separate reviewed release
@@ -220,7 +235,9 @@ with the release checkout's existing out/ folder. Review every source/manifest,
 README, icon and license change; replace that checkout's entire old out/ with the
 generated folder after review (do not overlay and retain obsolete files). Stage
 and commit the reviewed source/version/tests and out/ changes on the configured
-release branch. Push the reviewed commit and use its full SHA in a manual dry-run.
+release branch. Push the reviewed commit, then select its module and version in a
+manual dry-run. Confirm the automatically resolved SHA in the run summary matches
+the reviewed commit; later jobs reuse that immutable value.
 Windows tests remain hosted workflow gates, even when local checks succeed.
 
 The helper flattens runtime scripts into the established flat package layout,
@@ -331,7 +348,9 @@ Do not bypass that guard or close manually without verifying deployment evidence
    checkout line endings. The prepared release tip is
    `6d30dbc22de8bfb8bccda5cd3880ffb9a6655f5f`.
    See [exact snapshot evidence](releases/base64string-1.3.0.md).
-3. Review and integrate the exact issue mapping from PR #31 into master. Run dry-run with that SHA. Review source and installed NUnit artifacts,
+3. Review and integrate the exact issue mapping from PR #31 into master. Run a
+   Base64String 1.3.0 dry-run and verify the resolved SHA matches the prepared
+   snapshot above. Review source and installed NUnit artifacts,
    including both Windows runtimes. Then optionally create the GitHub release with
    `create_release=true,dry_run=true` and review its snapshot/assets.
 4. Preserve `powershell-gallery` environment's custom deployment branch policy:
@@ -369,6 +388,7 @@ pwsh -NoProfile -NonInteractive -File tests/Test-CiSources.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-CiRunner.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-CiStructure.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-GalleryAutomation.ps1
+pwsh -NoProfile -NonInteractive -File tests/Test-ReleaseSelection.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-GalleryKeySetup.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-ReleaseOutput.ps1
 pwsh -NoProfile -NonInteractive -File tests/Test-ReleaseEvidence.ps1

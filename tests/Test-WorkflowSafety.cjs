@@ -48,3 +48,18 @@ assert.ok(ciWorkflow.includes('-SourceRoot ./module-source'));
 assert.ok(ciWorkflow.includes('source-identity.json'));
 assert.ok(!ciWorkflow.includes('continue-on-error: true'));
 console.log('Aggregate CI tests and records exact selected source commits without allow-failure.');
+
+const dispatchForm = workflow.slice(0, workflow.indexOf('permissions:'));
+assert.match(dispatchForm, /module:[\s\S]*?type: choice/);
+assert.match(dispatchForm, /version:[\s\S]*?type: string/);
+assert.ok(!dispatchForm.includes('source_sha:'));
+assert.equal((jobs.package.match(/Resolve-ReleaseSnapshot.ps1/g) || []).length, 1);
+assert.ok(jobs.package.includes('source_sha: ${{ steps.snapshot.outputs.sha }}'));
+assert.ok(jobs.package.includes('ref: ${{ steps.snapshot.outputs.sha }}'));
+assert.ok(!workflow.includes('inputs.source_sha'));
+for (const name of ['test','release','publish','verify','complete-issues']) {
+  assert.ok(jobs[name].includes('needs.package.outputs.source_sha'), `Unpinned release source in ${name}`);
+}
+assert.match(jobs.verify, /needs: \[package, publish\]/);
+assert.match(jobs['complete-issues'], /needs: \[package, publish, verify\]/);
+console.log('Release form selects a module/version and propagates one resolved immutable snapshot through every job.');
