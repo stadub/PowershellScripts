@@ -4,8 +4,6 @@ Used as backups encoding solution.
 
 Encoding performed with 7z password protection
 
-[![PowerShell 3](https://Stadub-Gh.visualstudio.com/PowershellScripts/_apis/build/status/Bookmarks?branchName=master)](https://Stadub-Gh.visualstudio.com/PowershellScripts/_build/latest?definitionId=3?branchName=master)
-[![PowerShell 4, 5 & Core on Windows build](https://ci.appveyor.com/api/projects/status/7tmg8wy30ipanjsd?svg=true)](https://ci.appveyor.com/project/stadub/powershellscripts)
 [![Linux & MacOS build](https://img.shields.io/travis/stadub/PowershellScripts/master.svg?label=linux/macos+build)](https://travis-ci.org/stadub/PowershellScripts)
 [![latest version](https://img.shields.io/powershellgallery/v/FolderEncoder.svg?label=latest+version)](https://www.powershellgallery.com/packages/FolderEncoder/)
 [![downloads](https://img.shields.io/powershellgallery/dt/FolderEncoder.svg?label=download)](https://www.powershellgallery.com/packages/FolderEncoder)
@@ -117,3 +115,12 @@ encoding, download tools, prompt, or create key/archive files. CI checks manifes
 import/export and parameter contracts only. The legacy encoder algorithm, external
 tools and archive roundtrip are unchanged and are not validated by these checks.
 There is no Gallery publication route or release package in this source repair.
+
+## Release preparation
+
+Version 2.0.1 preserves the existing MIT LicenseUri and restores the documented
+Invoke-FolderEncode import/export contract. Package generation must not substitute
+the repository BSD license for this module's existing license declaration.
+Source and installed import/manifest/parameter tests do not validate the legacy
+encoder, external downloads or archive roundtrips. Review those limitations before
+any actual publication; no software was uploaded during preparation.
