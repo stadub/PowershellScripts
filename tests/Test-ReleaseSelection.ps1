@@ -2,7 +2,7 @@
 $ErrorActionPreference = 'Stop'
 $PSNativeCommandUseErrorActionPreference = $false
 $resolver = Join-Path $PSScriptRoot '../scripts/gallery/Resolve-ReleaseSnapshot.ps1'
-$gitExe = (Get-Command git -CommandType Application -ErrorAction Stop).Source
+$gitExe = (Get-Command git -CommandType Application -ErrorAction Stop | Select-Object -First 1).Source
 $fixture = Join-Path ([IO.Path]::GetTempPath()) "release-selection-$([guid]::NewGuid())"
 $savedOutput = $env:GITHUB_OUTPUT
 $savedSummary = $env:GITHUB_STEP_SUMMARY
