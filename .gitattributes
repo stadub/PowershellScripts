@@ -1,0 +1,7 @@
+/Uninstall.psm1 -text
+/MiniModules.Uninstall.psd1 text eol=lf
+/Uninstall*.Tests.ps1 text eol=lf
+/Uninstall.md text eol=lf
+/LICENSE text eol=lf
+/out/* text eol=lf
+/out/Uninstall.psm1 -text
