@@ -86,8 +86,9 @@ observation; inaccessible vendor-side schedules cannot be verified. Other PRs
 with unchanged old head SHAs can still
 show their historical external results. Do not rewrite those branches solely to
 hide history. Check the actual replacement Actions results independently: six
-component repairs remain unmerged and maintained-baseline CI still reports their
-failures. Removal of obsolete services does not resolve those source defects.
+component repairs were subsequently merged into their development branches with
+explicit owner approval; see [integration evidence](../../ci-component-merges.json).
+Removal of obsolete services alone did not resolve those source defects.
 
 See [sanitized scope and settings evidence](audit.json). The earlier
 [AppVeyor audit](../appveyor-cutover/README.md) predates this explicitly authorized

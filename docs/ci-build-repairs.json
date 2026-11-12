@@ -215,5 +215,11 @@
     "passingModuleOsJobs": 6,
     "failingModuleOsJobs": 16,
     "reason": "Six component repair drafts require review and integration into their development branches"
+  },
+  "integration": {
+    "status": "merged with explicit owner approval",
+    "date": "2026-11-12",
+    "evidence": "ci-component-merges.json",
+    "aggregateCheck": "https://github.com/stadub/PowershellScripts/pull/31/checks"
   }
 }

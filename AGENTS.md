@@ -265,10 +265,12 @@ CI source selection now pins each unchanged module's maintained development ref
 to a full SHA and records the identity with test artifacts. Component/release runs
 and changed module sources use the actual proposal snapshot; cross-component
 changes add coverage. Never substitute an unreviewed passing feature ref for a
-maintained baseline. Six component repair drafts #40–45 remain separate from this
-automation branch. Their review-only combined hosted matrix passes all 22 module/OS
-jobs; maintained baselines still fail until those repairs land. See
-docs/ci-build-repairs.md and docs/ci-matrix-verified.json for exact evidence.
+maintained baseline. With explicit owner approval on 2026-11-12, repair PRs #40–45
+were merged only into their module development branches. Source fixes remain
+separate from this automation branch. The maintained-source matrix now resolves
+those merge commits. See docs/ci-component-merges.json for exact merge/source SHAs,
+docs/ci-build-repairs.md for the failure inventory and docs/ci-matrix-verified.json
+for the earlier review-only validation evidence.
 
 `scripts/gallery/Set-GalleryApiKey.ps1` is an owner-operated setup/rotation helper.
 It resolves account/secret names through Get-ReleaseConfig.ps1 and delegates hidden

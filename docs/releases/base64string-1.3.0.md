@@ -58,9 +58,11 @@ across platforms; all eight NUnit reports have 34 tests and zero failures.
 
 The production manual workflow is not on master yet (contents lookup returned 404).
 Automation [PR #31](https://github.com/stadub/PowershellScripts/pull/31) remains a draft;
-its offline automation checks pass, but all-module CI exposes baseline source defects
-on master. Integrate reviewed automation and address/coordinate those module fixes
-before choosing required CI contexts. The owner's concurrent AppVeyor removal was
+its offline automation checks pass. The six component baseline repairs were merged
+into their module development branches after explicit owner approval; see
+[integration evidence](../ci-component-merges.json). Verify fresh maintained-source
+CI before choosing required contexts. Integrate reviewed automation separately.
+The owner's concurrent AppVeyor removal was
 merged into master through PR #33; this task did not change master or sibling worktrees.
 
 After production workflow integration, run `release-gallery.yml` from master with:

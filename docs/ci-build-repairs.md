@@ -45,7 +45,7 @@ Existing focused owner commits were reused in new module-targeted branches. Orig
 owner checkouts and branches were preserved. All component hosted matrices pass:
 three OS jobs each, except the established Windows-only 7zip-Archive route.
 
-| Module | Draft PR / target | Pester cases | Hosted source checks |
+| Module | Merged PR / target | Pester cases | Hosted source checks |
 | --- | --- | ---: | --- |
 | Bookmarks | [40](https://github.com/stadub/PowershellScripts/pull/40) → Bookmarks/develop | 26 | [passed](https://github.com/stadub/PowershellScripts/actions/runs/43114997026) |
 | Pipe | [41](https://github.com/stadub/PowershellScripts/pull/41) → Pipe/develop | 8 | [passed](https://github.com/stadub/PowershellScripts/actions/runs/43115004981) |
@@ -62,7 +62,7 @@ FolderEncoder restores its historical Functions.ps1 byte-for-byte from before
 4a336c7 and exports the documented Invoke-FolderEncode. Its three cases cover
 manifest/import/export/parameter contracts and import-time filesystem safety.
 They do **not** execute or validate the legacy encoder, downloads or archive
-roundtrip. This draft needs component review before any production-use decision.
+roundtrip. This import repair does not establish production encoder correctness.
 
 Shell wires the existing implementation into its manifest, preserves the protected
 fl alias, omits the dangling pb alias and scopes aliases to the module. It fixes
@@ -87,18 +87,25 @@ The seven changed modules use that exact review snapshot; Uninstall uses its pin
 development SHA. The file ledger links the snapshot's module files to their
 component candidates. See [verified report hashes and source identities](ci-matrix-verified.json).
 
-Component PRs remain draft; passing CI is not merge approval. Until their reviewed
-changes land on the maintained development branches, aggregate monitoring correctly
-continues to report those unfixed baselines. Review/approve the component PRs first,
-then rerun aggregate CI against the resulting maintained tips. No module behavior
-fixes were added to automation PR #31, and no source snapshot was substituted with
-a passing unreviewed branch in its maintained-baseline matrix.
+The owner explicitly approved merging PRs #40–45 on 2026-11-12. Each exact reviewed
+head and base SHA, active source checks, required-check configuration and
+mergeability was rechecked immediately before its normal merge commit. No rule
+bypass was used. The retired AppVeyor failures were historical, non-required
+contexts; their GitHub integration was already removed.
+
+All six repairs are now on their respective module development branches. See
+[merge and maintained-source identities](ci-component-merges.json). Fresh
+[aggregate checks on PR #31](https://github.com/stadub/PowershellScripts/pull/31/checks)
+resolve these maintained tips to immutable SHAs. No module behavior fixes were
+added to automation PR #31, and no passing feature branch substitutes for a
+maintained baseline. Master and release branches were not merged or edited.
 
 Specifically, [the maintained-baseline run at automation commit 06ee2de](https://github.com/stadub/PowershellScripts/actions/runs/43120912939)
-passes planning, Base64String and Uninstall (six module/OS jobs). Its remaining
-16 module/OS failures correspond to the six unmerged component repairs above;
-the aggregate status correctly fails. The successful combined run is evidence for
-those proposed repairs, not a claim that automation PR #31 is fully green.
+passed planning, Base64String and Uninstall (six module/OS jobs). Its historical
+16 module/OS failures correspond to the six component repairs, which were then
+unmerged. That failed run is preserved; it does not describe the newly integrated
+development tips. The successful preview remains evidence for the proposed files,
+while the fresh aggregate run tests the maintained branches after integration.
 
 The already approved AppVeyor removal from master was synced into the automation
 branch; this task did not edit master. Legacy external AppVeyor/Azure service
