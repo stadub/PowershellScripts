@@ -33,6 +33,46 @@ Module import:
 Import-Module Bookmarks
 ```
 
+## Update checks
+
+Bookmarks checks PowerShell Gallery at most once every 24 hours per user. Set
+these environment variables **before importing** (for example, in your profile):
+
+```powershell
+# Disable automatic checks completely (no network or update-cache access).
+$env:BOOKMARKS_UPDATE_CHECK = '0'
+Import-Module Bookmarks
+```
+
+```powershell
+# Enable checks, but only once a week.
+$env:BOOKMARKS_UPDATE_CHECK = '1'
+$env:BOOKMARKS_UPDATE_CHECK_INTERVAL_HOURS = '168'
+Import-Module Bookmarks
+```
+
+`0`, `false`, and `off` disable checks (case insensitive). Unset or other values
+leave checks enabled. The interval accepts whole hours from 1 through 8760;
+unset, malformed, zero, negative, or out-of-range values use 24 hours.
+Remove the variables to restore defaults.
+
+A due check makes one request for the latest stable version, with a three-second
+HTTP timeout and no redirects or retries. DNS resolution can take longer than
+that timeout on some systems; disable checks for startup with no network delay.
+Notifications use host output, never success-pipeline data. Offline and HTTP
+errors are silent and attempts, including failures, wait the full interval before
+retrying. The timestamp persists across imports and new shells in
+`[Environment]::GetFolderPath('LocalApplicationData')/PowershellScripts/UpdateChecks/Bookmarks.timestamp`.
+If the cache cannot be written or is busy, the check is skipped; simultaneous
+imports claim the timestamp exclusively. Deleting this file makes the next
+import eligible again. Bookmark files and commands are unaffected.
+
+For maintainers: port the reviewed update-check functions and tests selectively
+to the 7Zip and Currency helper copies on their own development/issue branches,
+with module-specific control names and cache keys. Those ports are not included
+here. Keep profile/storage helpers intact, then reconcile release packages through
+the separate packaging/release process; do not copy whole stale helper files.
+
 # Commands
 
 
@@ -190,3 +230,11 @@ a coffee or a beer is always appreciated. Thank you very much in advance.
 If you have any idea or suggestion - please add a github issue.
 
 <!-- https://www.contributor-covenant.org/version/1/4/code-of-conduct -->
+## Source regression checks
+
+Run `Invoke-Pester ./Bookmarks.Tests.ps1` with Pester 4.10.1. The suite uses real
+CSV files under Pester's TestDrive and covers save/reload, external session edits,
+add/update/remove/clear, pipeline paths, CSV punctuation, Unicode, and exports.
+It does not initialize or write the user's bookmark profile. The public update
+export is `Update-PSBookmark` (without trailing whitespace); storage helpers remain
+private. Startup/update-check work is maintained separately in #24/#27.

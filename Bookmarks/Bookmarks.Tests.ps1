@@ -1,158 +1,103 @@
-$NoExport = $true
-$ModuleDevelopment = $true
-$DebugPreference = "Continue"
+# Exercise real CSV persistence in an isolated directory; never initialize a user profile.
+Set-StrictMode -Version Latest
+. $PSScriptRoot/Shared-Functions.ps1
+. $PSScriptRoot/Functions.ps1
 
-Set-StrictMode -version Latest
+Describe 'Bookmark persistence and commands' {
+    BeforeEach {
+        $script:_marksPath = Join-Path $TestDrive 'Bookmarks.csv'
+        Remove-Item $script:_marksPath -ErrorAction SilentlyContinue
+    }
 
-$here = Split-Path -Parent $MyInvocation.MyCommand.Path
+    It 'starts with no bookmarks when the store does not exist' {
+        (Get-PSBookmarks).Count | Should -Be 0
+    }
 
-. $PSScriptRoot\Shared-Functions.ps1
+    It 'persists the current directory' {
+        $null = Add-PSBookmark here
+        (Get-PSBookmarks)['here'] | Should -BeExactly (Get-Location).Path
+    }
 
-. $PSScriptRoot\Functions.ps1
+    It 'persists explicit and pipeline paths including CSV punctuation and Unicode' {
+        $path = Join-Path $TestDrive ('a,b' + [char]0x2642)
+        $null = Add-PSBookmark explicit $path
+        $null = $path | Add-PSBookmark piped
+        $marks = Get-PSBookmarks
+        $marks.Count | Should -Be 2
+        $marks['explicit'] | Should -BeExactly $path
+        $marks['piped'] | Should -BeExactly $path
+    }
 
-_Initalize
+    It 'rejects duplicates without replacing the saved path' {
+        $null = Add-PSBookmark a original
+        { Add-PSBookmark a replaced } | Should -Throw
+        (Get-PSBookmarks)['a'] | Should -BeExactly 'original'
+    }
 
-Describe "Remove-AllPSBookmarks" {
+    It 'removes one bookmark while preserving others' {
+        $null = Add-PSBookmark a first
+        $null = Add-PSBookmark b second
+        $null = Remove-PSBookmark a
+        $marks = Get-PSBookmarks
+        $marks.Count | Should -Be 1
+        $marks['b'] | Should -BeExactly 'second'
+    }
 
-    It "clear all bookmarks" {
-        $_marks["a"]="A"
-        $_marks["b"]="B"
-
-        $_marks.Count | Should -Not -Be 0
-
-        Mock -CommandName Import-Csv -MockWith {} -Verifiable
-        Mock -CommandName Export-Csv -MockWith {} -Verifiable
-
+    It 'clears the persisted store' {
+        $null = Add-PSBookmark a first
         Remove-AllPSBookmarks
+        (Get-PSBookmarks).Count | Should -Be 0
+    }
 
-        $_marks.Count | Should -Be 0
+    It 'opens the persisted path' {
+        $null = Add-PSBookmark a $TestDrive
+        Mock Set-Location {}
+        Open-PSBookmark a
+        Assert-MockCalled Set-Location 1 -Exactly -ParameterFilter { $Path -eq $TestDrive }
+    }
+
+    It 'updates paths from an argument, pipeline, and current location' {
+        $null = Add-PSBookmark a first
+        $null = Update-PSBookmark a second
+        (Get-PSBookmarks)['a'] | Should -BeExactly 'second'
+        $null = 'third' | Update-PSBookmark a
+        (Get-PSBookmarks)['a'] | Should -BeExactly 'third'
+        $null = Update-PSBookmark a
+        (Get-PSBookmarks)['a'] | Should -BeExactly (Get-Location).Path
+    }
+
+    It 'rejects updating a missing bookmark' {
+        { Update-PSBookmark missing anything } | Should -Throw
+        (Get-PSBookmarks).Count | Should -Be 0
+    }
+
+    It 'reloads external session changes on every operation' {
+        $null = Add-PSBookmark a first
+        @([pscustomobject]@{ Key = 'a'; Value = 'external' },
+          [pscustomobject]@{ Key = 'b'; Value = 'other' }) |
+            Export-Csv $script:_marksPath -NoTypeInformation
+        $null = Add-PSBookmark c third
+        $marks = Get-PSBookmarks
+        $marks.Count | Should -Be 3
+        $marks['a'] | Should -BeExactly 'external'
+        $marks['b'] | Should -BeExactly 'other'
+    }
+
+    It 'returns an independent snapshot' {
+        $null = Add-PSBookmark a first
+        $marks = Get-PSBookmarks
+        $marks['a'] = 'mutated'
+        (Get-PSBookmarks)['a'] | Should -BeExactly 'first'
     }
 }
 
-Describe "Add-PSBookmark" {
-
-    It "adds current folder to bookmarks" {
-        $_marks = @{ }
-        Mock -CommandName Import-Csv -MockWith {} -Verifiable
-        Mock -CommandName Export-Csv -MockWith {} -Verifiable
-
-        Set-Location $here
-        Add-PSBookmark testDir1
-        $_marks.Count | Should -Be 1
-        $_marks.Keys | Should -Be "testDir1"
-        $_marks.Values | Should -Be $here
-    }
-
-    It "adds selected folder to bookmarks" {
-        $_marks = @{ }
-        Mock -CommandName Import-Csv -MockWith {} -Verifiable
-        Mock -CommandName Export-Csv -MockWith {} -Verifiable
-
-        Add-PSBookmark testDir2 "c:"
-        $_marks = Get-PSBookmarks 
-        $_marks.Count | Should -Be 1
-        $_marks.Keys | Should -Be "testDir2"
-        $_marks.Values | Should -Be "c:"
-    }
-
-    It "adds path from pipeline to bookmarks" {
-        $_marks = @{ }
-        Mock -CommandName Import-Csv -MockWith {} -Verifiable
-        Mock -CommandName Export-Csv -MockWith {} -Verifiable
-
-        "c:" |Add-PSBookmark testDir3 
-        $_marks = Get-PSBookmarks 
-        $_marks.Count | Should -Be 1
-        $_marks.Keys | Should -Be "testDir3"
-        $_marks.Values | Should -Be "c:"
-    }
-}
-
-
-Describe "Remove-PSBookmark" {
-
-    It "remove bookmark from list" {
-        $_marks = @{ }
-        $_marks["a"]="A";
-
-        Mock -CommandName Import-Csv -MockWith {}
-        Mock -CommandName Export-Csv -MockWith {}
-
-        Mock -CommandName Restore-PSBookmarks -MockWith {} -Verifiable
-        Mock -CommandName Save-PSBookmarks -MockWith {} -Verifiable
-        
-        $_marks.Count | Should -Be 1
-        $_marks.Keys[0] | Should -Be "a"
-        $_marks.Values[0] | Should -Be "A"
-
-        Remove-PSBookmark  "a"
-
-        $_marks.Count | Should -Be 0
-
-        Assert-VerifiableMock
-    }
-
-}
-
-Describe "Open-PSBookmark" {
-
-    It "open specific bookmark" {
-        $_marks = @{ }
-        $_marks["a"]="A";
-
-        Mock -CommandName Import-Csv -MockWith {} -Verifiable
-        Mock -CommandName Export-Csv -MockWith {} -Verifiable
-
-        Mock -CommandName Set-Location -MockWith {} 
-    
-        Open-PSBookmark "a"
-
-        Assert-MockCalled Set-Location 1 
-
-    }
-}
-    
-Describe "Update-PSBookmark" {
-
-    It "update current folder to bookmarks" {
-        $_marks = @{ }
-        Mock -CommandName Import-Csv -MockWith {} -Verifiable
-        Mock -CommandName Export-Csv -MockWith {} -Verifiable
-
-        Add-PSBookmark testDir1 "c:"
-
-        Set-Location $here
-        Update-PSBookmark testDir1
-        $_marks.Count | Should -Be 1
-        $_marks.Keys | Should -Be "testDir1"
-        $_marks.Values | Should -Be $here
-    }
-
-    It "Update selected folder in bookmarks list" {
-        $_marks = @{ }
-        Mock -CommandName Import-Csv -MockWith {} -Verifiable
-        Mock -CommandName Export-Csv -MockWith {} -Verifiable
-
-        Add-PSBookmark testDir2 "c:"
-
-        Update-PSBookmark testDir2 "$pwd"
-        $_marks = Get-PSBookmarks 
-        $_marks.Count | Should -Be 1
-        $_marks.Keys | Should -Be "testDir2"
-        $_marks.Values | Should -Be "$pwd"
-    }
-
-    It "Update path from pipeline to bookmarks" {
-        $_marks = @{ }
-        Mock -CommandName Import-Csv -MockWith {} -Verifiable
-        Mock -CommandName Export-Csv -MockWith {} -Verifiable
-        
-        Add-PSBookmark testDir3 "$pwd"
-
-        "c:" |Update-PSBookmark testDir3
-        $_marks = Get-PSBookmarks 
-        $_marks.Count | Should -Be 1
-        $_marks.Keys | Should -Be "testDir3"
-        $_marks.Values | Should -Be "c:"
+Describe 'Bookmark manifest export contract' {
+    It 'lists only implemented public functions without trailing whitespace' {
+        $manifest = Import-PowerShellDataFile (Join-Path $PSScriptRoot 'Bookmarks.psd1')
+        $expected = @('Add-PSBookmark', 'Remove-PSBookmark', 'Remove-AllPSBookmarks',
+            'Open-PSBookmark', 'Get-PSBookmarks', 'Update-PSBookmark')
+        ($manifest.FunctionsToExport | Sort-Object) -join ',' |
+            Should -BeExactly (($expected | Sort-Object) -join ',')
+        foreach ($name in $expected) { (Get-Command $name).CommandType | Should -Be 'Function' }
     }
 }
