@@ -1,0 +1,31 @@
+name: Additional Gallery package candidate validation
+on:
+  push:
+    branches: [ci/gallery-all-modules]
+    paths:
+      - .github/workflows/additional-gallery-candidates.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  folderencoder:
+    uses: stadub/PowershellScripts/.github/workflows/validate-release-candidate.yml@42814913be33a4662a57dbf011333b96c5fa294f
+    with:
+      module: FolderEncoder
+      version: 2.0.1
+      source_sha: afb5b7ef10cd53c388d4c6a6b6f6f8d5fb7652d6
+      automation_sha: 42814913be33a4662a57dbf011333b96c5fa294f
+  shell:
+    uses: stadub/PowershellScripts/.github/workflows/validate-release-candidate.yml@42814913be33a4662a57dbf011333b96c5fa294f
+    with:
+      module: Shell-Functions
+      version: 0.0.1
+      source_sha: 5b83779c7c62cca738dc99770ce3724ed4e7fb85
+      automation_sha: 42814913be33a4662a57dbf011333b96c5fa294f
+  uninstall:
+    uses: stadub/PowershellScripts/.github/workflows/validate-release-candidate.yml@42814913be33a4662a57dbf011333b96c5fa294f
+    with:
+      module: MiniModules.Uninstall
+      version: 1.0.1
+      source_sha: a351e867d6fdb14a9650fc1d4f12f67e2dcfdf4c
+      automation_sha: 42814913be33a4662a57dbf011333b96c5fa294f

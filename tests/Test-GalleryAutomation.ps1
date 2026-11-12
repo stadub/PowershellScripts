@@ -24,12 +24,26 @@ try {
         'Currency-Conv' = @('Currency-Conv/release/1.5', 'Currency-Conv/out', 'Currency-Conv.psd1', 'Stadub', 'PSGALLERY_API_KEY_STADUB')
         Base64String = @('base64String/release/latest', 'Shared-Functions/Base64String/out', 'Base64String.psd1', 'MiniModules', 'PSGALLERY_API_KEY_MINIMODULES')
         Pipe = @('Pipe/release/latest', 'Shared-Functions/Pipe/out', 'Pipe.psd1', 'MiniModules', 'PSGALLERY_API_KEY_MINIMODULES')
+        FolderEncoder = @('FolderEncoder/release/2.0.1', 'FolderEncoder/out', 'FolderEncoder.psd1', 'Stadub', 'PSGALLERY_API_KEY_STADUB')
+        'Shell-Functions' = @('Shell-Functions/release/0.0.1', 'Shell-Functions/out', 'Shell-Functions.psd1', 'MiniModules', 'PSGALLERY_API_KEY_MINIMODULES')
+        'MiniModules.Uninstall' = @('Uninstall/release/1.0.1', './out', 'MiniModules.Uninstall.psd1', 'MiniModules', 'PSGALLERY_API_KEY_MINIMODULES')
     }
     foreach ($name in $expectedConfigs.Keys) {
         $config = & "$scripts/Get-ReleaseConfig.ps1" -Module $name
         if ((@($config.ReleaseBranch, $config.PackagePath, $config.Manifest, $config.GalleryAccount, $config.GallerySecret) -join '|') -cne ($expectedConfigs[$name] -join '|')) {
             throw "Unexpected release configuration for $name"
         }
+    }
+    $standalone = & "$scripts/Get-ReleaseConfig.ps1" -Module MiniModules.Uninstall
+    if ($standalone.CiModule -cne 'Uninstall' -or $standalone.Manifest -cne 'MiniModules.Uninstall.psd1' -or
+        ($standalone.RuntimeFiles -join '|') -cne 'Uninstall.psm1') { throw 'Standalone component/package identity or runtime scope changed' }
+    Assert-Throws { & "$scripts/Get-ReleaseConfig.ps1" -Module Uninstall } '*ValidateSet*'
+    Assert-Throws { & "$scripts/Get-ReleaseConfig.ps1" -Module Bookmarks -RequirePublication } '*do not relabel*'
+    Assert-Throws { & "$scripts/Publish-GalleryPackage.ps1" -Module Bookmarks -PackageRoot "$fixture/not-a-payload" -ExpectedVersion 3.0.2 } '*do not relabel*'
+    foreach ($name in 'FolderEncoder','Shell-Functions','MiniModules.Uninstall') {
+        $reason = '*requires owner review*'
+        Assert-Throws { & "$scripts/Get-ReleaseConfig.ps1" -Module $name -RequirePublication } $reason
+        Assert-Throws { & "$scripts/Publish-GalleryPackage.ps1" -Module $name -PackageRoot "$fixture/not-a-payload" -ExpectedVersion 1.3.0 } $reason
     }
     # Every module must stage out/, even when a source manifest exists beside it.
     foreach ($name in $expectedConfigs.Keys) {
@@ -68,7 +82,7 @@ try {
     Assert-Throws { & "$scripts/Build-GalleryPackage.ps1" -Module Base64String -SourceRoot $source -OutputRoot "$fixture/wrong" -ExpectedVersion 1.3.0 } '*Expected 1.3.0*'
     Assert-Throws { & "$scripts/Build-GalleryPackage.ps1" -Module Base64String -SourceRoot $source -OutputRoot $stage -ExpectedVersion 1.2.0 } '*Output already exists*'
     Assert-Throws { & "$scripts/Get-ReleaseConfig.ps1" -Module '../invalid' } '*ValidateSet*'
-    Assert-Throws { & "$scripts/Get-ReleaseConfig.ps1" -Module 'FolderEncoder' } '*ValidateSet*'
+    Assert-Throws { & "$scripts/Get-ReleaseConfig.ps1" -Module 'EXportGithub' } '*ValidateSet*'
     $manifest = Join-Path $built 'Base64String.psd1'
     $originalManifest = Get-Content $manifest -Raw
     $prereleaseManifest = $originalManifest.Replace("ModuleVersion = '1.2.0'", "ModuleVersion = '1.2.0'; PrivateData = @{ PSData = @{ Prerelease = 'beta1' } }")
@@ -101,9 +115,9 @@ try {
     Assert-Throws { & "$scripts/Publish-GalleryPackage.ps1" -Module Base64String -PackageRoot $stage -ExpectedVersion 1.2.0 } '*stable manifest versions only*'
     $originalManifest | Set-Content $manifest
     $env:PSGALLERY_API_KEY = ''
-    # Validate missing selected credentials for every configured module. These
+    # Validate missing selected credentials for every currently unblocked module. These
     # fixtures contain no module code and the Gallery commands remain mocked.
-    foreach ($name in $expectedConfigs.Keys) {
+    foreach ($name in @('7zip-Archive','Currency-Conv','Base64String','Pipe')) {
         $config = & "$scripts/Get-ReleaseConfig.ps1" -Module $name
         $env:PSGALLERY_ACCOUNT = $config.GalleryAccount
         $accountPackage = Join-Path "$fixture/accounts" $name
@@ -128,10 +142,10 @@ try {
         if (-not (Test-Path $env:GALLERY_TEST_MARKER)) { throw 'Expected mocked publish call' }
         Remove-Item $env:GALLERY_TEST_MARKER
     }
-    # Both accounts and all five modules: verify selected-key use and reject
+    # Both accounts and the four currently unblocked modules: verify selected-key use and reject
     # mismatched/missing account routes even if a nonempty key is supplied.
     $env:GALLERY_TEST_MODE = 'upgrade'
-    foreach ($name in $expectedConfigs.Keys) {
+    foreach ($name in @('7zip-Archive','Currency-Conv','Base64String','Pipe')) {
         $config = & "$scripts/Get-ReleaseConfig.ps1" -Module $name
         $env:PSGALLERY_API_KEY = "offline-key-$($config.GalleryAccount)"
         $env:PSGALLERY_ACCOUNT = 'wrong-account'

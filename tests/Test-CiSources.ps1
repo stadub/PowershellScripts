@@ -30,6 +30,11 @@ try {
         $expected=if($entry.module -in 'Base64String','Uninstall') {$current} else {'b'*40}
         if($entry.source_sha -cne $expected) {throw 'A changed module was ignored or unrelated baseline replaced'}
     }
+    $plan=Get-Plan master @('MiniModules.Uninstall.psd1')
+    if (@($plan.include | Where-Object { $_.module -eq 'Uninstall' -and $_.source_sha -cne $current }).Count -or
+        @($plan.include | Where-Object { $_.module -ne 'Uninstall' -and $_.source_sha -cne ('b'*40) }).Count) { throw 'New standalone manifest change did not select the Uninstall source snapshot' }
+    $plan=Get-Plan master @('out/MiniModules.Uninstall.psd1')
+    if (@($plan.include | Where-Object source_mode -ne development).Count) { throw 'Standalone packaged output replaced source baseline' }
     $plan=Get-Plan 'Bookmarks/develop' @('Currency-Conv/Functions.ps1')
     if($plan.include.Count -ne 6 -or @($plan.include|Where-Object source_sha -ne $current).Count) {throw 'Cross-component source changes escaped checks'}
     $plan=Get-Plan master @('Bookmarks/README.md','Shared-Functions/Base64String/out/Base64String.ps1')

@@ -6,7 +6,7 @@ param(
 )
 
 $ErrorActionPreference = 'Stop'
-$config = & (Join-Path $PSScriptRoot 'Get-ReleaseConfig.ps1') -Module $Module
+$config = & (Join-Path $PSScriptRoot 'Get-ReleaseConfig.ps1') -Module $Module -RequirePublication
 if ($env:PSGALLERY_ACCOUNT -cne $config.GalleryAccount) {
     throw "Gallery account mismatch: $Module requires $($config.GalleryAccount). Select its configured credential route."
 }

@@ -7,8 +7,16 @@ $ErrorActionPreference = 'Stop'
 $root = (Resolve-Path $SourceRoot).Path
 $entry = switch ($Module) {
     FolderEncoder { Join-Path $root 'FolderEncoder/FolderEncoder.psd1' }
-    Shell-Functions { Join-Path $root 'Shell-Functions/Shell-Function.psd1' }
-    Uninstall { Join-Path $root 'Uninstall.psm1' }
+    Shell-Functions {
+        $canonical = Join-Path $root 'Shell-Functions/Shell-Functions.psd1'
+        if (Test-Path $canonical -PathType Leaf) { $canonical }
+        else { Join-Path $root 'Shell-Functions/Shell-Function.psd1' }
+    }
+    Uninstall {
+        $canonical = Join-Path $root 'MiniModules.Uninstall.psd1'
+        if (Test-Path $canonical -PathType Leaf) { $canonical }
+        else { Join-Path $root 'Uninstall.psm1' }
+    }
 }
 $results = Join-Path $root 'TestResults'
 New-Item $results -ItemType Directory -Force | Out-Null
@@ -28,7 +36,7 @@ function Add-Check([string]$Name, [scriptblock]$Action) {
 try {
     Add-Check 'syntax' {
         if (-not (Test-Path $entry -PathType Leaf)) { throw "Module entry missing: $entry" }
-        $files = if ($Module -eq 'Uninstall') { @(Get-Item $entry) } else {
+        $files = if ($Module -eq 'Uninstall') { @(Get-Item $entry) + @(Get-Item (Join-Path $root 'Uninstall.psm1')) | Sort-Object FullName -Unique } else {
             @(Get-ChildItem (Split-Path $entry) -File -Recurse | Where-Object {
                 $_.Extension -in '.ps1', '.psm1', '.psd1' -and $_.FullName -notmatch '[/\\]out[/\\]'
             })
@@ -39,7 +47,7 @@ try {
             if ($parseErrors.Count) { throw "Syntax errors in $($file.Name): $($parseErrors.Message -join '; ')" }
         }
     }
-    if ($Module -ne 'Uninstall') {
+    if ([IO.Path]::GetExtension($entry) -eq '.psd1') {
         Add-Check 'manifest' { Test-ModuleManifest $entry -ErrorAction Stop | Out-Null }
     }
     # Import into this script's local scope, then remove by module object in finally.

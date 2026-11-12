@@ -91,7 +91,7 @@ jobs:
       - uses: actions/upload-artifact@v7.0.2
         if: always()
         with:
-          name: candidate-${{ matrix.os }}-${{ matrix.shell }}
+          name: candidate-${{ inputs.module }}-${{ matrix.os }}-${{ matrix.shell }}
           path: |
             stage/
             source/TestResults/*.xml

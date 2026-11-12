@@ -1,8 +1,10 @@
 [CmdletBinding()]
 param(
     [Parameter(Mandatory)]
-    [ValidateSet('Bookmarks', '7zip-Archive', 'Currency-Conv', 'Base64String', 'Pipe')]
-    [string]$Module
+    [ValidateSet('Bookmarks', '7zip-Archive', 'Currency-Conv', 'Base64String', 'Pipe', 'FolderEncoder', 'Shell-Functions', 'MiniModules.Uninstall')]
+    [string]$Module,
+    [switch]$RequireGalleryAccount,
+    [switch]$RequirePublication
 )
 
 # Package branches are deliberately distinct from feature/PR development bases.
@@ -18,6 +20,7 @@ $configs = @{
         PackagePath = 'Bookmarks/out'
         Manifest = 'Bookmarks.psd1'
         GalleryAccount = 'Stadub'
+        PublicationBlockReason = 'Bookmarks requires reconciliation with the published 3.0.1 implementation before preparing 3.0.2; do not relabel the repository 2.2.0 implementation.'
     }
     '7zip-Archive' = @{
         ReleaseBranch = '7-Zip/release/1.1'
@@ -43,6 +46,32 @@ $configs = @{
         Manifest = 'Pipe.psd1'
         GalleryAccount = 'MiniModules'
     }
+    FolderEncoder = @{
+        ReleaseBranch = 'FolderEncoder/release/2.0.1'
+        PackagePath = 'FolderEncoder/out'
+        Manifest = 'FolderEncoder.psd1'
+        GalleryAccount = 'Stadub'
+        UseRepositoryLicense = $false
+        PublicationBlockReason = 'The new FolderEncoder release candidate requires owner review and integration approval.'
+    }
+    'Shell-Functions' = @{
+        ReleaseBranch = 'Shell-Functions/release/0.0.1'
+        PackagePath = 'Shell-Functions/out'
+        Manifest = 'Shell-Functions.psd1'
+        GalleryAccount = 'MiniModules'
+        PublicationBlockReason = 'The new Shell-Functions package requires owner review and integration approval.'
+    }
+    'MiniModules.Uninstall' = @{
+        ReleaseBranch = 'Uninstall/release/1.0.1'
+        PackagePath = './out'
+        Manifest = 'MiniModules.Uninstall.psd1'
+        CiModule = 'Uninstall'
+        GalleryAccount = 'MiniModules'
+        RuntimeFiles = @('Uninstall.psm1')
+        Readme = 'Uninstall.md'
+        IncludeIcon = $false
+        PublicationBlockReason = 'The new MiniModules.Uninstall release candidate requires owner review and integration approval.'
+    }
 }
 # Gallery usernames are public configuration. API key values live only in the
 # protected environment; module selection never accepts an account/secret input.
@@ -51,8 +80,28 @@ $accountSecrets = @{
     MiniModules = 'PSGALLERY_API_KEY_MINIMODULES'
 }
 $config = $configs[$Module]
-if (-not $accountSecrets.ContainsKey($config.GalleryAccount)) {
-    throw 'No credential route for the configured Gallery account'
+$references = Get-Content (Join-Path $PSScriptRoot 'version-reference.json') -Raw | ConvertFrom-Json
+$reference = @($references.packages | Where-Object module -eq $Module)
+if ($reference.Count -ne 1) { throw "Missing or ambiguous Gallery version reference for $Module" }
+$config.LatestGalleryVersion = $reference[0].latestListedVersion
+$config.HighestRegisteredVersion = $reference[0].highestRegisteredVersion
+$config.PlannedVersion = $reference[0].plannedVersion
+$config.VersionChange = $reference[0].change
+$config.VersionPlanStatus = $reference[0].status
+if (-not $config.ContainsKey('CiModule')) { $config.CiModule = $Module }
+if (-not $config.ContainsKey('UseRepositoryLicense')) { $config.UseRepositoryLicense = $true }
+if (-not $config.ContainsKey('IncludeIcon')) { $config.IncludeIcon = $true }
+if (-not $config.ContainsKey('RuntimeFiles')) { $config.RuntimeFiles = @() }
+if (-not $config.ContainsKey('Readme')) { $config.Readme = 'README.md' }
+if (-not $config.ContainsKey('PublicationBlockReason')) { $config.PublicationBlockReason = $null }
+$config.GallerySecret = $null
+if (-not [string]::IsNullOrWhiteSpace($config.GalleryAccount) -and $accountSecrets.ContainsKey($config.GalleryAccount)) {
+    $config.GallerySecret = $accountSecrets[$config.GalleryAccount]
 }
-$config.GallerySecret = $accountSecrets[$config.GalleryAccount]
+if (($RequireGalleryAccount -or $RequirePublication) -and -not $config.GallerySecret) {
+    throw "No approved Gallery account/key mapping for $Module. Owner selection or ownership access is required."
+}
+if ($RequirePublication -and $config.PublicationBlockReason) {
+    throw $config.PublicationBlockReason
+}
 [pscustomobject]$config
