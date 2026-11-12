@@ -30,7 +30,7 @@ CompanyName = 'Unknown'
 Copyright = '(c) Dmitry.Stadub. All rights reserved.'
 
 # Description of the functionality provided by this module
-# Description = ''
+Description = 'Text filters and Windows shell helper functions with module-scoped aliases.'
 
 # Minimum version of the PowerShell engine required by this module
 # PowerShellVersion = ''
@@ -95,13 +95,13 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        # Tags = @()
+        Tags = @('Shell', 'Text', 'Windows')
 
         # A URL to the license for this module.
-        # LicenseUri = ''
+        LicenseUri = 'https://github.com/stadub/PowershellScripts/blob/master/LICENSE'
 
         # A URL to the main website for this project.
-        # ProjectUri = ''
+        ProjectUri = 'https://github.com/stadub/PowershellScripts/tree/Shell-Functions/develop/Shell-Functions'
 
         # A URL to an icon representing this module.
         # IconUri = ''

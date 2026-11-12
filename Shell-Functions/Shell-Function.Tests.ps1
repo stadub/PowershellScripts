@@ -1,8 +1,13 @@
-$manifest = Join-Path $PSScriptRoot 'Shell-Function.psd1'
+$manifest = Join-Path $PSScriptRoot 'Shell-Functions.psd1'
+$moduleName = 'Shell-Functions'
+if (-not (Test-Path $manifest)) {
+    $manifest = Join-Path $PSScriptRoot 'Shell-Function.psd1'
+    $moduleName = 'Shell-Function'
+}
 Import-Module $manifest -Force -ErrorAction Stop
 Describe 'Shell source imports and filters' {
     It 'exports callable functions and resolvable aliases from its manifest' {
-        $module = Get-Module 'Shell-Function'
+        $module = Get-Module $moduleName
         $module.ExportedFunctions.Count | Should -Be 7
         $module.ExportedAliases.Count | Should -Be 7
         $module.ExportedAliases.ContainsKey('pb') | Should -BeFalse
@@ -22,7 +27,7 @@ Describe 'Shell source imports and filters' {
         ('a b' | Split-String) -join '|' | Should -BeExactly 'a|b'
     }
 }
-InModuleScope 'Shell-Function' {
+InModuleScope $moduleName {
     Describe 'Link provider argument contracts' {
         It 'maps <Type> without creating a link' -TestCases @(
             @{ Type='Symbolic'; Expected='SymbolicLink' }
@@ -39,4 +44,4 @@ InModuleScope 'Shell-Function' {
         }
     }
 }
-Remove-Module 'Shell-Function' -Force
+Remove-Module $moduleName -Force
