@@ -1,0 +1,98 @@
+name: Read-only release candidate validation
+on:
+  workflow_call:
+    inputs:
+      module:
+        required: true
+        type: string
+      version:
+        required: true
+        type: string
+      source_sha:
+        required: true
+        type: string
+      require_committed_package:
+        type: boolean
+        default: true
+      automation_sha:
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            shell: pwsh
+          - os: windows-latest
+            shell: powershell
+          - os: ubuntu-latest
+            shell: pwsh
+          - os: macos-latest
+            shell: pwsh
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          ref: ${{ inputs.automation_sha }}
+          path: automation
+          persist-credentials: false
+      - name: Require immutable validation inputs
+        shell: pwsh
+        env:
+          SOURCE_SHA: ${{ inputs.source_sha }}
+          AUTOMATION_SHA: ${{ inputs.automation_sha }}
+          MODULE: ${{ inputs.module }}
+          VERSION: ${{ inputs.version }}
+        run: |
+          if ($env:SOURCE_SHA -cnotmatch '^[0-9a-f]{40}$' -or $env:AUTOMATION_SHA -cnotmatch '^[0-9a-f]{40}$') { throw 'Full commit SHAs required' }
+          if ($env:VERSION -notmatch '^\d+\.\d+\.\d+(\.\d+)?$') { throw 'Stable version required' }
+          ./automation/scripts/gallery/Get-ReleaseConfig.ps1 -Module $env:MODULE | Out-Null
+      - uses: actions/checkout@v7.0.1
+        with:
+          ref: ${{ inputs.source_sha }}
+          path: source
+          persist-credentials: false
+      - name: Reproduce committed package and record hashes
+        shell: pwsh
+        env:
+          MODULE: ${{ inputs.module }}
+          VERSION: ${{ inputs.version }}
+          SHA: ${{ inputs.source_sha }}
+          REQUIRE_PACKAGE: ${{ inputs.require_committed_package }}
+        run: |
+          if ($env:REQUIRE_PACKAGE -eq 'true') {
+            ./automation/scripts/gallery/Build-GalleryPackage.ps1 -Module $env:MODULE -SourceRoot ./source -OutputRoot ./stage -ExpectedVersion $env:VERSION
+            ./automation/scripts/gallery/Assert-SourcePackage.ps1 -Module $env:MODULE -SourceRoot ./source -PackageRoot ./stage
+          }
+          ./automation/scripts/gallery/New-ReleaseOutput.ps1 -Module $env:MODULE -SourceRoot ./source -OutputRoot ./generated -ExpectedVersion $env:VERSION
+          ./automation/scripts/gallery/Build-GalleryPackage.ps1 -Module $env:MODULE -SourceRoot ./generated -OutputRoot ./reproduced -ExpectedVersion $env:VERSION
+          if ($env:REQUIRE_PACKAGE -ne 'true') { Copy-Item ./reproduced ./stage -Recurse }
+          ./automation/scripts/gallery/Package-Evidence.ps1 -Module $env:MODULE -Version $env:VERSION -SourceSha $env:SHA -PackageRoot ./stage -EvidencePath ./stage/evidence.json
+          ./automation/scripts/gallery/Package-Evidence.ps1 -Module $env:MODULE -Version $env:VERSION -SourceSha $env:SHA -PackageRoot ./reproduced -EvidencePath ./stage/evidence.json -Verify
+      - name: Test source and installed candidate
+        if: ${{ matrix.shell == 'pwsh' && (inputs.module != '7zip-Archive' || matrix.os == 'windows-latest') }}
+        shell: pwsh
+        env:
+          MODULE: ${{ inputs.module }}
+          VERSION: ${{ inputs.version }}
+        run: ./automation/scripts/gallery/Test-ReleasePackage.ps1 -Module $env:MODULE -SourceRoot ./source -PackageRoot ./stage -ExpectedVersion $env:VERSION
+      - name: Test source and installed candidate on Windows PowerShell 5.1
+        if: ${{ matrix.shell == 'powershell' }}
+        shell: powershell
+        env:
+          MODULE: ${{ inputs.module }}
+          VERSION: ${{ inputs.version }}
+        run: ./automation/scripts/gallery/Test-ReleasePackage.ps1 -Module $env:MODULE -SourceRoot ./source -PackageRoot ./stage -ExpectedVersion $env:VERSION
+      - uses: actions/upload-artifact@v7.0.2
+        if: always()
+        with:
+          name: candidate-${{ matrix.os }}-${{ matrix.shell }}
+          path: |
+            stage/
+            source/TestResults/*.xml
+          if-no-files-found: ignore

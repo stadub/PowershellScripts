@@ -1,0 +1,118 @@
+{
+  "date": "2026-11-12",
+  "authorization": "Owner explicitly selected: Merge PRs #40\u201345 and rerun CI",
+  "scope": "Six component development branches only; master/release/Gallery unchanged",
+  "merges": [
+    {
+      "number": 40,
+      "base": "Bookmarks/develop",
+      "baseShaBefore": "a17e2b348807ec1688a713bebb2b973b211fa141",
+      "reviewedHeadSha": "8f122965e7fcc515ba6487901cc5860b6bc99a0a",
+      "mergeSha": "5d63a44e4135c5bc3f46f1b7e6cbd928476a2004",
+      "mergedAt": "2026-11-12T00:50:32Z",
+      "url": "https://github.com/stadub/PowershellScripts/pull/40",
+      "sourceCheckNames": [
+        "source / test (macos-latest)",
+        "source / test (ubuntu-latest)",
+        "source / test (windows-latest)"
+      ],
+      "requiredContexts": [],
+      "method": "merge",
+      "adminBypass": false
+    },
+    {
+      "number": 41,
+      "base": "Pipe/develop",
+      "baseShaBefore": "9567c81804cbe8fcd68913ea1b00c417152bb393",
+      "reviewedHeadSha": "ed386fb0c70539917fd90f629aee91d49c04ad37",
+      "mergeSha": "ed959361a5f0d08997a795967402bcd464b85410",
+      "mergedAt": "2026-11-12T00:50:39Z",
+      "url": "https://github.com/stadub/PowershellScripts/pull/41",
+      "sourceCheckNames": [
+        "source / test (macos-latest)",
+        "source / test (ubuntu-latest)",
+        "source / test (windows-latest)"
+      ],
+      "requiredContexts": [],
+      "method": "merge",
+      "adminBypass": false
+    },
+    {
+      "number": 42,
+      "base": "Currency-Conv/develop",
+      "baseShaBefore": "35cde0c1d50087e52324fde65831aeaef137ea8c",
+      "reviewedHeadSha": "91ec76d0dd2a2d1c74c3c2613cef9c9b12c2e0b6",
+      "mergeSha": "7306a3b9c3deb1de7257fb51f9b0becdaf7acd4a",
+      "mergedAt": "2026-11-12T00:50:45Z",
+      "url": "https://github.com/stadub/PowershellScripts/pull/42",
+      "sourceCheckNames": [
+        "source / test (macos-latest)",
+        "source / test (ubuntu-latest)",
+        "source / test (windows-latest)"
+      ],
+      "requiredContexts": [],
+      "method": "merge",
+      "adminBypass": false
+    },
+    {
+      "number": 43,
+      "base": "7Zip/develop",
+      "baseShaBefore": "93ac7b94cbb11b548bb7373de6eb088d9a242ff5",
+      "reviewedHeadSha": "06cabf8d6296cfe5ac5c806e66b0b81d8bf87339",
+      "mergeSha": "b846f1b01fad8e193cb9e92abdc75a0338c6c823",
+      "mergedAt": "2026-11-12T00:50:52Z",
+      "url": "https://github.com/stadub/PowershellScripts/pull/43",
+      "sourceCheckNames": [
+        "source / test (windows-latest)"
+      ],
+      "requiredContexts": [],
+      "method": "merge",
+      "adminBypass": false
+    },
+    {
+      "number": 44,
+      "base": "FolderEncoder/develop",
+      "baseShaBefore": "0515de02b0394e8818505aff1f9a1962492c380e",
+      "reviewedHeadSha": "f3175178e7a4ce19ab368cfa05e5ef0e6e78c002",
+      "mergeSha": "9b339c1d02e67e601b253da97d770c43242953ca",
+      "mergedAt": "2026-11-12T00:50:58Z",
+      "url": "https://github.com/stadub/PowershellScripts/pull/44",
+      "sourceCheckNames": [
+        "source / test (macos-latest)",
+        "source / test (ubuntu-latest)",
+        "source / test (windows-latest)"
+      ],
+      "requiredContexts": [],
+      "method": "merge",
+      "adminBypass": false
+    },
+    {
+      "number": 45,
+      "base": "Shell-Functions/develop",
+      "baseShaBefore": "0515de02b0394e8818505aff1f9a1962492c380e",
+      "reviewedHeadSha": "b31f26740aba6ed9d74a478de992a3f2f50b6dca",
+      "mergeSha": "5cd269b6602e973af70387ce04eaf26b82e04b89",
+      "mergedAt": "2026-11-12T00:51:05Z",
+      "url": "https://github.com/stadub/PowershellScripts/pull/45",
+      "sourceCheckNames": [
+        "source / test (macos-latest)",
+        "source / test (ubuntu-latest)",
+        "source / test (windows-latest)"
+      ],
+      "requiredContexts": [],
+      "method": "merge",
+      "adminBypass": false
+    }
+  ],
+  "maintainedSourcesAfterIntegration": {
+    "Bookmarks/develop": "5d63a44e4135c5bc3f46f1b7e6cbd928476a2004",
+    "Pipe/develop": "ed959361a5f0d08997a795967402bcd464b85410",
+    "Currency-Conv/develop": "7306a3b9c3deb1de7257fb51f9b0becdaf7acd4a",
+    "7Zip/develop": "b846f1b01fad8e193cb9e92abdc75a0338c6c823",
+    "FolderEncoder/develop": "9b339c1d02e67e601b253da97d770c43242953ca",
+    "Shell-Functions/develop": "5cd269b6602e973af70387ce04eaf26b82e04b89",
+    "base64tring/develop": "7eab2ac96dc04bbbfc78a54aeb817fe3cc9f25bd",
+    "Uninstall/develop": "cb191cc44ec85174187958b994065f6452ae046f"
+  },
+  "aggregateCheck": "https://github.com/stadub/PowershellScripts/pull/31/checks"
+}

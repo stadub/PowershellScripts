@@ -1,0 +1,131 @@
+name: PowerShell module validation
+
+on:
+  push:
+    branches: [master, '**/develop', '**/release/**', 'fix/**', 'ci/**']
+  pull_request:
+    branches: [master, '**/develop', '**/release/**']
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      matrix: ${{ steps.select.outputs.matrix }}
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - name: Test CI automation offline
+        shell: pwsh
+        run: |
+          ./tests/Test-CiSelection.ps1
+          ./tests/Test-CiSources.ps1
+          ./tests/Test-CiRunner.ps1
+          ./tests/Test-CiStructure.ps1
+          ./tests/Test-ReleaseSelection.ps1
+          ./tests/Test-GalleryAutomation.ps1
+          ./tests/Test-GalleryKeySetup.ps1
+          ./tests/Test-ReleaseOutput.ps1
+          ./tests/Test-ReleaseEvidence.ps1
+          ./tests/Test-GalleryVerification.ps1
+          node ./tests/Test-IssueCompletion.cjs
+          if ($LASTEXITCODE -ne 0) { throw 'Issue completion tests failed' }
+          node ./tests/Test-WorkflowSafety.cjs
+          if ($LASTEXITCODE -ne 0) { throw 'Workflow safety tests failed' }
+          node ./tests/Test-ReleaseCreation.cjs
+          if ($LASTEXITCODE -ne 0) { throw 'Release creation tests failed' }
+      - id: select
+        name: Select modules and immutable source snapshots
+        shell: pwsh
+        env:
+          TARGET_BRANCH: ${{ github.base_ref || github.ref_name }}
+          CURRENT_SHA: ${{ github.sha }}
+          PR_BASE: ${{ github.event.pull_request.base.sha }}
+          PUSH_BASE: ${{ github.event.before }}
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          $checkedOut = git rev-parse HEAD
+          if ($LASTEXITCODE -ne 0 -or $checkedOut -cne $env:CURRENT_SHA) { throw 'Automation checkout does not match workflow commit' }
+          $baseCandidate = if ($env:PR_BASE) { $env:PR_BASE } elseif ($env:REF_NAME -eq 'master' -and $env:PUSH_BASE -match '^[0-9a-f]{40}$' -and $env:PUSH_BASE -ne ('0' * 40)) { $env:PUSH_BASE } else { 'origin/master' }
+          $base = git merge-base HEAD $baseCandidate
+          if ($LASTEXITCODE -ne 0) { throw 'Cannot determine source comparison base' }
+          $changed = @(git diff --name-only -z $base HEAD)
+          if ($LASTEXITCODE -ne 0) { throw 'Cannot inspect source changes' }
+          $paths = @((($changed -join "`n").Split([char]0, [StringSplitOptions]::RemoveEmptyEntries)))
+          $remote = @(git ls-remote origin 'refs/heads/*')
+          if ($LASTEXITCODE -ne 0) { throw 'Cannot resolve maintained module refs' }
+          $refs = @{}
+          foreach ($line in $remote) {
+            if ($line -match '^([0-9a-f]{40})\s+refs/heads/(.+)$') { $refs[$Matches[2]] = $Matches[1] }
+          }
+          $json = ./scripts/ci/Resolve-CiSources.ps1 -Branch $env:TARGET_BRANCH -CurrentSha $env:CURRENT_SHA -RemoteRefs $refs -ChangedPaths $paths
+          'Module | Source ref | Commit | Mode' >> $env:GITHUB_STEP_SUMMARY
+          '--- | --- | --- | ---' >> $env:GITHUB_STEP_SUMMARY
+          foreach ($entry in (($json | ConvertFrom-Json).include | Sort-Object module -Unique)) {
+            "$($entry.module) | $($entry.source_ref) | $($entry.source_sha) | $($entry.source_mode)" >> $env:GITHUB_STEP_SUMMARY
+          }
+
+  test:
+    needs: plan
+    name: ${{ matrix.module }} / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+      - name: Check out the exact module source
+        uses: actions/checkout@v7.0.1
+        with:
+          ref: ${{ matrix.source_sha }}
+          path: module-source
+          persist-credentials: false
+      - name: Test release snapshot selection on Windows
+        if: ${{ matrix.module == 'Base64String' && matrix.os == 'windows-latest' }}
+        shell: pwsh
+        run: ./tests/Test-ReleaseSelection.ps1
+      - name: Run module checks
+        shell: pwsh
+        env:
+          MODULE: ${{ matrix.module }}
+          SOURCE_SHA: ${{ matrix.source_sha }}
+          SOURCE_REF: ${{ matrix.source_ref }}
+          SOURCE_MODE: ${{ matrix.source_mode }}
+          AUTOMATION_SHA: ${{ github.sha }}
+        run: |
+          New-Item ./module-source/TestResults -ItemType Directory -Force | Out-Null
+          @{module=$env:MODULE; sourceSha=$env:SOURCE_SHA; sourceRef=$env:SOURCE_REF; sourceMode=$env:SOURCE_MODE; automationSha=$env:AUTOMATION_SHA} | ConvertTo-Json | Set-Content ./module-source/TestResults/source-identity.json
+          ./scripts/ci/Invoke-ModuleTests.ps1 -Module $env:MODULE -SourceRoot ./module-source
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v7.0.2
+        with:
+          name: tests-${{ matrix.module }}-${{ matrix.os }}
+          path: module-source/TestResults/
+          if-no-files-found: ignore
+
+  status:
+    name: CI status
+    if: always()
+    needs: [plan, test]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Require successful planning and module checks
+        env:
+          PLAN_RESULT: ${{ needs.plan.result }}
+          TEST_RESULT: ${{ needs.test.result }}
+        run: test "$PLAN_RESULT" = success && test "$TEST_RESULT" = success

@@ -1,0 +1,11 @@
+[
+  {
+    "repository": "stadub/PowershellScripts",
+    "module": "Base64String",
+    "version": "1.3.0",
+    "sourceSha": "6d30dbc22de8bfb8bccda5cd3880ffb9a6655f5f",
+    "issues": [
+      22
+    ]
+  }
+]

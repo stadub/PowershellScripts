@@ -1,5 +1,10 @@
 # AppVeyor integration cutover
 
+**Historical audit:** the owner subsequently authorized live removal on 2026-11-12.
+The single-repository AppVeyor and Azure Pipelines GitHub installations are now
+removed. See [current outcome and remaining access limits](../legacy-ci-removal/README.md).
+The original findings and snapshots below are preserved as before-state evidence.
+
 Scope: `stadub/PowershellScripts`, branch `ci/remove-appveyor-checks`, intended PR
 target **master**. Audit date: 2026-11-11. Repository infrastructure only.
 Instructions were read from `/Users/dimastadub/orca/PowershellScripts/AGENTS.md`

@@ -1,0 +1,469 @@
+{
+  "run": {
+    "url": "https://github.com/stadub/PowershellScripts/actions/runs/43120956188",
+    "headSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+    "conclusion": "success"
+  },
+  "automationImplementationSha": "06ee2deb2bc11affb7dfa18f7b7098013964f479",
+  "scope": "review-only combined module candidates; not a merge or release authorization",
+  "successfulJobs": 24,
+  "moduleOsJobs": 22,
+  "pesterAssertions": 295,
+  "structureAssertions": 24,
+  "failures": 0,
+  "skipped": 0,
+  "identities": [
+    {
+      "artifact": "tests-7zip-Archive-windows-latest",
+      "sourceRef": "workflow snapshot",
+      "automationSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sourceSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sourceMode": "snapshot",
+      "module": "7zip-Archive",
+      "sha256": "4c1fc9f5ddca8bd9c41ba98651991278abb74f8741df9cb3d7a04db0122223a3"
+    },
+    {
+      "artifact": "tests-Base64String-macos-latest",
+      "module": "Base64String",
+      "sourceRef": "workflow snapshot",
+      "automationSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sourceMode": "snapshot",
+      "sourceSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sha256": "9544b17ca8d342c06eaede46152f5ee7b760f3514222e513898adcbdb41bc7ad"
+    },
+    {
+      "artifact": "tests-Base64String-ubuntu-latest",
+      "module": "Base64String",
+      "sourceMode": "snapshot",
+      "sourceRef": "workflow snapshot",
+      "sourceSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "automationSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sha256": "4232afa6e0d0975982efbdcd192eb09b1fb41dceec228c5769e7b8d462d4c974"
+    },
+    {
+      "artifact": "tests-Base64String-windows-latest",
+      "sourceSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sourceRef": "workflow snapshot",
+      "module": "Base64String",
+      "sourceMode": "snapshot",
+      "automationSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sha256": "1dfc06b8e307ed3b488e929bd41d3033208936167e5fa5d811ff707e12fec5a2"
+    },
+    {
+      "artifact": "tests-Bookmarks-macos-latest",
+      "sourceRef": "workflow snapshot",
+      "module": "Bookmarks",
+      "sourceSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "automationSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sourceMode": "snapshot",
+      "sha256": "5a7a265a7f58c8d9f241d46ed6aee6100daac2d012839fd8ea070c91e07e67cb"
+    },
+    {
+      "artifact": "tests-Bookmarks-ubuntu-latest",
+      "sourceMode": "snapshot",
+      "automationSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "module": "Bookmarks",
+      "sourceSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sourceRef": "workflow snapshot",
+      "sha256": "f11f0b900b3ba4c7408ff7de740e7326d13c76f5078a27661ee848debc274535"
+    },
+    {
+      "artifact": "tests-Bookmarks-windows-latest",
+      "sourceMode": "snapshot",
+      "automationSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sourceRef": "workflow snapshot",
+      "sourceSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "module": "Bookmarks",
+      "sha256": "ede21c53a14668721148b09c04e08b2c2bf5872bf04e0d336f1c2b736e2d22db"
+    },
+    {
+      "artifact": "tests-Currency-Conv-macos-latest",
+      "module": "Currency-Conv",
+      "sourceRef": "workflow snapshot",
+      "automationSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sourceMode": "snapshot",
+      "sourceSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sha256": "91338cc2dc75a834e19733784e804f82ec5c56663236bc5cfa4c841e2761c4db"
+    },
+    {
+      "artifact": "tests-Currency-Conv-ubuntu-latest",
+      "automationSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sourceRef": "workflow snapshot",
+      "module": "Currency-Conv",
+      "sourceMode": "snapshot",
+      "sourceSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sha256": "72cd60ce4a08507cfe885f8f61ddbe640611eadd823e4c9277328f8a907669a2"
+    },
+    {
+      "artifact": "tests-Currency-Conv-windows-latest",
+      "module": "Currency-Conv",
+      "sourceSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "automationSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sourceRef": "workflow snapshot",
+      "sourceMode": "snapshot",
+      "sha256": "b4296adbf7bb1414e69eb4682edcde08b0490b300b3f1105011dc825df35192a"
+    },
+    {
+      "artifact": "tests-FolderEncoder-macos-latest",
+      "sourceMode": "snapshot",
+      "module": "FolderEncoder",
+      "sourceRef": "workflow snapshot",
+      "sourceSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "automationSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sha256": "82eaccff2a65a334c66432fd5371b38f20d742d4dbf2336bdb05c7140bcb7631"
+    },
+    {
+      "artifact": "tests-FolderEncoder-ubuntu-latest",
+      "sourceMode": "snapshot",
+      "sourceRef": "workflow snapshot",
+      "sourceSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "module": "FolderEncoder",
+      "automationSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sha256": "c40945e10201d4ab0cded37a69c659e4939110cf38499b98cf559cc21eefb657"
+    },
+    {
+      "artifact": "tests-FolderEncoder-windows-latest",
+      "sourceRef": "workflow snapshot",
+      "sourceSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "module": "FolderEncoder",
+      "automationSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sourceMode": "snapshot",
+      "sha256": "2f7e7c7ffc5e0bc1014f25cf7f1b8002bf8bcec3fcd31abac0dac836ed88b649"
+    },
+    {
+      "artifact": "tests-Pipe-macos-latest",
+      "automationSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sourceMode": "snapshot",
+      "module": "Pipe",
+      "sourceRef": "workflow snapshot",
+      "sourceSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sha256": "14845cfd380b5db63b17c998c579737cba976777a40fd8088ad3b67836e4da62"
+    },
+    {
+      "artifact": "tests-Pipe-ubuntu-latest",
+      "sourceSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "automationSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sourceRef": "workflow snapshot",
+      "module": "Pipe",
+      "sourceMode": "snapshot",
+      "sha256": "e0fc5dc2397dd16a25a24322d1978ac6c894b9b130b4176450eac0ee55d68296"
+    },
+    {
+      "artifact": "tests-Pipe-windows-latest",
+      "sourceMode": "snapshot",
+      "sourceSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "automationSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sourceRef": "workflow snapshot",
+      "module": "Pipe",
+      "sha256": "3d0d61715a199df01271576dd9ba4406b5cc9f6f646fb7f4ba0f07212073f30f"
+    },
+    {
+      "artifact": "tests-Shell-Functions-macos-latest",
+      "sourceMode": "snapshot",
+      "sourceSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "module": "Shell-Functions",
+      "sourceRef": "workflow snapshot",
+      "automationSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sha256": "35b5e9f200e1c619a215c5115c7024a31005a999d9d50c29ac1bb8264f1d152f"
+    },
+    {
+      "artifact": "tests-Shell-Functions-ubuntu-latest",
+      "sourceMode": "snapshot",
+      "module": "Shell-Functions",
+      "sourceSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sourceRef": "workflow snapshot",
+      "automationSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sha256": "ed31e92f8e038fa30e3f12dc015b7400e6524668a0394d4f65e4e4f9a36a95d6"
+    },
+    {
+      "artifact": "tests-Shell-Functions-windows-latest",
+      "sourceMode": "snapshot",
+      "module": "Shell-Functions",
+      "sourceSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "automationSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sourceRef": "workflow snapshot",
+      "sha256": "f77fef3f5e78cafe4459785bccc97915d7ebb443b1a192244d3ae308bc638787"
+    },
+    {
+      "artifact": "tests-Uninstall-macos-latest",
+      "module": "Uninstall",
+      "sourceRef": "Uninstall/develop",
+      "automationSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sourceMode": "development",
+      "sourceSha": "cb191cc44ec85174187958b994065f6452ae046f",
+      "sha256": "8012eeca4038ac883d631df4a05fff00aa912acf896896e59ad24e95ad7d3d34"
+    },
+    {
+      "artifact": "tests-Uninstall-ubuntu-latest",
+      "sourceSha": "cb191cc44ec85174187958b994065f6452ae046f",
+      "module": "Uninstall",
+      "automationSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sourceRef": "Uninstall/develop",
+      "sourceMode": "development",
+      "sha256": "abb21d584241118d5d3a576546efde0fe32a92fc5c5c90984ae87b8716ca9ee2"
+    },
+    {
+      "artifact": "tests-Uninstall-windows-latest",
+      "sourceRef": "Uninstall/develop",
+      "sourceSha": "cb191cc44ec85174187958b994065f6452ae046f",
+      "automationSha": "9f6273bf9198dec336f56fe565665a37f7c84758",
+      "sourceMode": "development",
+      "module": "Uninstall",
+      "sha256": "29bd2983f9c617244290b187a80d657ab778bbc9a82632a663cb47ee1fae6409"
+    }
+  ],
+  "reports": [
+    {
+      "artifact": "tests-7zip-Archive-windows-latest",
+      "file": "7zip-Archive.xml",
+      "kind": "pester",
+      "total": 19,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "c7fa8a8c515cad994219d3641e97d41013b66c76be3e70bcfc9c4361befaf3cf"
+    },
+    {
+      "artifact": "tests-Base64String-macos-latest",
+      "file": "Base64String.xml",
+      "kind": "pester",
+      "total": 34,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "60f5fc7e3380f734da94a1144892ff6f09f28b1067e403a9ca3458ccc7babed0"
+    },
+    {
+      "artifact": "tests-Base64String-ubuntu-latest",
+      "file": "Base64String.xml",
+      "kind": "pester",
+      "total": 34,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "0e754548333fb971959a28e7c2af185a8791b1fd037dafbee1ec84028eaae096"
+    },
+    {
+      "artifact": "tests-Base64String-windows-latest",
+      "file": "Base64String.xml",
+      "kind": "pester",
+      "total": 34,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "ed2f5cc7b836b2ea2c8c0fde7db9ec6ee2f53bde1f40f9e4b453c69ab41a8cec"
+    },
+    {
+      "artifact": "tests-Bookmarks-macos-latest",
+      "file": "Bookmarks.xml",
+      "kind": "pester",
+      "total": 26,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "050218cbbf4704907e6349d2120092b34271e384bfcf80acd3a214d6f7e0ce2d"
+    },
+    {
+      "artifact": "tests-Bookmarks-ubuntu-latest",
+      "file": "Bookmarks.xml",
+      "kind": "pester",
+      "total": 26,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "5afd5e87c77baa463d98b9d55553883c5d5c25e9e6ae257ec80e2c47f354aeb2"
+    },
+    {
+      "artifact": "tests-Bookmarks-windows-latest",
+      "file": "Bookmarks.xml",
+      "kind": "pester",
+      "total": 26,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "08382a655401e637b0fd0b9b2b995b7c6d5ad6dfbc59f71f346786fc847020e4"
+    },
+    {
+      "artifact": "tests-Currency-Conv-macos-latest",
+      "file": "Currency-Conv.xml",
+      "kind": "pester",
+      "total": 15,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "c99e3615998ed92191549e512d22174e2d2a769689e2e66a0241556b73e36b85"
+    },
+    {
+      "artifact": "tests-Currency-Conv-ubuntu-latest",
+      "file": "Currency-Conv.xml",
+      "kind": "pester",
+      "total": 15,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "401b0d2be51e4f6f088bc816b5a9ac10ecbda4d4859e44b769818e10e3bb034a"
+    },
+    {
+      "artifact": "tests-Currency-Conv-windows-latest",
+      "file": "Currency-Conv.xml",
+      "kind": "pester",
+      "total": 15,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "a21b584feda61ba8c3c4eadf4fc5f09cd6d849129c29ae475b73ba1697579844"
+    },
+    {
+      "artifact": "tests-FolderEncoder-macos-latest",
+      "file": "FolderEncoder-structure.xml",
+      "kind": "structure",
+      "total": 3,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "f249ded7a9a16e7ef7d8955810fa0d2a58f0eba7b24fd34426195dfbf56bba65"
+    },
+    {
+      "artifact": "tests-FolderEncoder-macos-latest",
+      "file": "FolderEncoder.xml",
+      "kind": "pester",
+      "total": 3,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "9a0d0c9ef0e7316061a8bde4e9472a72fae2c74d6a38b4def6e64f79e34cd0b1"
+    },
+    {
+      "artifact": "tests-FolderEncoder-ubuntu-latest",
+      "file": "FolderEncoder-structure.xml",
+      "kind": "structure",
+      "total": 3,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "f249ded7a9a16e7ef7d8955810fa0d2a58f0eba7b24fd34426195dfbf56bba65"
+    },
+    {
+      "artifact": "tests-FolderEncoder-ubuntu-latest",
+      "file": "FolderEncoder.xml",
+      "kind": "pester",
+      "total": 3,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "079f6bb81c2833f1e04366a73e19bc234618b4303a7278b9ef63ac2650dfe27e"
+    },
+    {
+      "artifact": "tests-FolderEncoder-windows-latest",
+      "file": "FolderEncoder-structure.xml",
+      "kind": "structure",
+      "total": 3,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "d54894b092cb478e3dcecee14e244b9e341bfeaf57d26c783cf6d1760a26ee48"
+    },
+    {
+      "artifact": "tests-FolderEncoder-windows-latest",
+      "file": "FolderEncoder.xml",
+      "kind": "pester",
+      "total": 3,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "d4cc999f82fb88792762d40ba3b83305512d78309d1ba690bfb7d6c029f1e4a2"
+    },
+    {
+      "artifact": "tests-Pipe-macos-latest",
+      "file": "Pipe.xml",
+      "kind": "pester",
+      "total": 8,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "999ca41cf251aa57c3464232444c47f8d3f78c2ed229b3b4bf6160aa72b0ee95"
+    },
+    {
+      "artifact": "tests-Pipe-ubuntu-latest",
+      "file": "Pipe.xml",
+      "kind": "pester",
+      "total": 8,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "93c211c58903fb2f577de31e9ab4aaae4dfea6560abd642b445890686177dbeb"
+    },
+    {
+      "artifact": "tests-Pipe-windows-latest",
+      "file": "Pipe.xml",
+      "kind": "pester",
+      "total": 8,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "31566f8877e37b67ba7e23295921f9a2e21a09443d9da810da34a2b9621b9346"
+    },
+    {
+      "artifact": "tests-Shell-Functions-macos-latest",
+      "file": "Shell-Functions-structure.xml",
+      "kind": "structure",
+      "total": 3,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "3d6ea12311108ad6f01b15b6c89c3d07c5c6f9b30f4fa09d3533679e53881d24"
+    },
+    {
+      "artifact": "tests-Shell-Functions-macos-latest",
+      "file": "Shell-Functions.xml",
+      "kind": "pester",
+      "total": 6,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "f784bc76449c4518974f1bf95eca44735c2d7dbc2332b7dbee75c5f1ffe83eaa"
+    },
+    {
+      "artifact": "tests-Shell-Functions-ubuntu-latest",
+      "file": "Shell-Functions-structure.xml",
+      "kind": "structure",
+      "total": 3,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "3d6ea12311108ad6f01b15b6c89c3d07c5c6f9b30f4fa09d3533679e53881d24"
+    },
+    {
+      "artifact": "tests-Shell-Functions-ubuntu-latest",
+      "file": "Shell-Functions.xml",
+      "kind": "pester",
+      "total": 6,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "08856ac8091877a7a01fb7fd7606c7eecf52905edecbaff90da18d2519c925b6"
+    },
+    {
+      "artifact": "tests-Shell-Functions-windows-latest",
+      "file": "Shell-Functions-structure.xml",
+      "kind": "structure",
+      "total": 3,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "014dd294378e6875b711e5106417a505ed51653fe914d0af9566c8a5100440e4"
+    },
+    {
+      "artifact": "tests-Shell-Functions-windows-latest",
+      "file": "Shell-Functions.xml",
+      "kind": "pester",
+      "total": 6,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "a44184910fe2f9275df923fd400e43a3396f1b17c903db6ae9b9a3aba8ac8600"
+    },
+    {
+      "artifact": "tests-Uninstall-macos-latest",
+      "file": "Uninstall-structure.xml",
+      "kind": "structure",
+      "total": 2,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "ca6e36d821755dc8dc0902853dec1014e5b40b43d3dee46e2c255c021d5a90a2"
+    },
+    {
+      "artifact": "tests-Uninstall-ubuntu-latest",
+      "file": "Uninstall-structure.xml",
+      "kind": "structure",
+      "total": 2,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "ca6e36d821755dc8dc0902853dec1014e5b40b43d3dee46e2c255c021d5a90a2"
+    },
+    {
+      "artifact": "tests-Uninstall-windows-latest",
+      "file": "Uninstall-structure.xml",
+      "kind": "structure",
+      "total": 2,
+      "failures": 0,
+      "skipped": 0,
+      "sha256": "40464f0b933998d1b275ae92dd9263949dcc787a5b37b2ed67df54cf949f9c64"
+    }
+  ]
+}

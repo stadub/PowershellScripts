@@ -1,0 +1,52 @@
+name: Read-only module source validation
+on:
+  workflow_call:
+    inputs:
+      module:
+        required: true
+        type: string
+      source_sha:
+        required: true
+        type: string
+      automation_sha:
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        os: ${{ fromJSON(inputs.module == '7zip-Archive' && '["windows-latest"]' || '["windows-latest","ubuntu-latest","macos-latest"]') }}
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          ref: ${{ inputs.automation_sha }}
+          path: automation
+          persist-credentials: false
+      - name: Require exact commits
+        shell: pwsh
+        env:
+          SOURCE_SHA: ${{ inputs.source_sha }}
+          AUTOMATION_SHA: ${{ inputs.automation_sha }}
+        run: |
+          if ($env:SOURCE_SHA -cnotmatch '^[0-9a-f]{40}$' -or $env:AUTOMATION_SHA -cnotmatch '^[0-9a-f]{40}$') { throw 'Full commit SHAs required' }
+      - uses: actions/checkout@v7.0.1
+        with:
+          ref: ${{ inputs.source_sha }}
+          path: source
+          persist-credentials: false
+      - name: Test the actual module source snapshot
+        shell: pwsh
+        env:
+          MODULE: ${{ inputs.module }}
+        run: ./automation/scripts/ci/Invoke-ModuleTests.ps1 -Module $env:MODULE -SourceRoot ./source
+      - uses: actions/upload-artifact@v7.0.2
+        if: always()
+        with:
+          name: source-${{ inputs.module }}-${{ matrix.os }}
+          path: source/TestResults/*.xml
+          if-no-files-found: ignore
