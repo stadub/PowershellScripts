@@ -108,3 +108,12 @@ so if you found it useful you can Buy me a beer/cup of tea 😊.
 If you have any idea or suggestion - please add a github issue and I'll try to implement it as soon as possible😉
 
 <!-- https://www.contributor-covenant.org/version/1/4/code-of-conduct -->
+## Source import validation
+
+The missing Functions.ps1 is restored unchanged from the last repository version
+before its deletion in 4a336c7. The manifest now exports the documented
+Invoke-FolderEncode command. Importing the module does not invoke CheckUtils or
+encoding, download tools, prompt, or create key/archive files. CI checks manifest,
+import/export and parameter contracts only. The legacy encoder algorithm, external
+tools and archive roundtrip are unchanged and are not validated by these checks.
+There is no Gallery publication route or release package in this source repair.
