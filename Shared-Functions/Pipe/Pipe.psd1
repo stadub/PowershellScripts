@@ -20,20 +20,20 @@
     Description = 'Powershell Pipe filtering functions.
        Full documentation at the Github: https://github.com/stadub/PowershellScripts/tree/master/Shared-Functions/Pipe
     '
-    NestedModules = @('Limit-First.ps1','Limit-Last.ps1', 'Hide-Out.ps1', 'Limit-Items.ps1', 'Limit-Type.ps1', 'Skip-Items.ps1', 'Aliases.ps1')
+    RootModule = 'Pipe.psm1'
     #RootModule = "Base64String.psm1"
     
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-    FunctionsToExport = @('*')
+    FunctionsToExport = @('Limit-First', 'Limit-Last', 'Hide-Out', 'Limit-Items', 'Limit-Type', 'Skip-Items')
     
     # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.
-    CmdletsToExport = @('Limit-First', 'Limit-Last', 'Hide-Out', 'Limit-Items', 'Limit-Type', 'Skip-Items')
+    CmdletsToExport = @()
     
     # Variables to export from this module
-    VariablesToExport = '*'
+    VariablesToExport = @()
     
     # Aliases to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no aliases to export.
-    AliasesToExport = @('*')
+    AliasesToExport = @('skip', 'wtype', 'filter-type', 'where-type', 'take', 'first', 'last', 'suppress')
         
     # Private data to pass to the module specified in RootModule/ModuleToProcess. This may also contain a PSData hashtable with additional module metadata used by PowerShell.
     PrivateData = @{
