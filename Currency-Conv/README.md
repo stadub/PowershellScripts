@@ -58,15 +58,33 @@ Remove-CurrencyApiKey- Clean key
 
 ## Cache Timeouts
 
-Default cache timeouts are stored in global variables so it can be changed to meet your needs.
+Cache settings are durations (`TimeSpan`), measured from each successful response.
+Exchange rates are cached for 60 seconds per currency pair; countries and currencies
+are cached independently for 15 hours. Hits do not extend the lifetime. The first
+request at or after expiry refreshes that key, and subsequent requests use the new
+response. Failed requests and responses without `results` are not cached; the next
+request retries, while other cached keys remain available.
 
-Default values:
+After importing the module, change the global settings as needed (the historical
+`Cahche` spelling is retained):
 
 ```powershell
-    $global:CurrencyConvExchangeRateCahcheLifetime = $([System.DateTimeOffset]::Now.AddSeconds(60.0))
-    $global:CurrencyConvCountriesCahcheLifetime = $([System.DateTimeOffset]::Now.AddHours(15.0))
-    $global:CurrencyConvCurrenciesCahcheLifetime = $([System.DateTimeOffset]::Now.AddHours(15.0))
+$global:CurrencyConvExchangeRateCahcheLifetime = [TimeSpan]::FromSeconds(60)
+$global:CurrencyConvCountriesCahcheLifetime = [TimeSpan]::FromHours(15)
+$global:CurrencyConvCurrenciesCahcheLifetime = [TimeSpan]::FromHours(15)
 ```
+
+Changes apply to newly fetched entries; existing entries retain their expiry.
+A zero or negative duration disables storage of new responses. A fresh import
+(or `Import-Module -Force`) initializes the default settings again.
+
+Compatibility: these variables previously contained fixed `DateTimeOffset`
+deadlines calculated at import. Absolute timestamps are still accepted, but only
+cache responses until that deadline; after it passes, requests return fresh data
+without caching. Replace old `DateTimeOffset.Now.Add...` configuration with the
+`TimeSpan` examples above for recurring cache lifetimes. Public cmdlets, aliases,
+and API-key storage are unchanged. Cache entries are in memory only, and concurrent
+misses are not coalesced into a single request.
 
 ## Usage
 
